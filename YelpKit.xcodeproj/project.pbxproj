@@ -1,0 +1,394 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		005592EC140B0085001E9C43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005592EB140B0085001E9C43 /* Foundation.framework */; };
+		00559329140B00F6001E9C43 /* YKImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559300140B00F6001E9C43 /* YKImageLoader.h */; };
+		0055932A140B00F6001E9C43 /* YKImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 00559301140B00F6001E9C43 /* YKImageLoader.m */; };
+		0055932B140B00F6001E9C43 /* YKUIActivityLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559303140B00F6001E9C43 /* YKUIActivityLabel.h */; };
+		0055932C140B00F6001E9C43 /* YKUIActivityLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00559304140B00F6001E9C43 /* YKUIActivityLabel.m */; };
+		0055932D140B00F6001E9C43 /* YKCompressor.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559306140B00F6001E9C43 /* YKCompressor.h */; };
+		0055932E140B00F6001E9C43 /* YKResource.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559307140B00F6001E9C43 /* YKResource.h */; };
+		0055932F140B00F6001E9C43 /* YKResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 00559308140B00F6001E9C43 /* YKResource.m */; };
+		00559330140B00F6001E9C43 /* YKURL.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559309140B00F6001E9C43 /* YKURL.h */; };
+		00559331140B00F6001E9C43 /* YKURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 0055930A140B00F6001E9C43 /* YKURL.m */; };
+		00559332140B00F6001E9C43 /* YKURLCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 0055930B140B00F6001E9C43 /* YKURLCache.h */; };
+		00559333140B00F6001E9C43 /* YKURLCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0055930C140B00F6001E9C43 /* YKURLCache.m */; };
+		00559334140B00F6001E9C43 /* YKURLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 0055930D140B00F6001E9C43 /* YKURLRequest.h */; };
+		00559335140B00F6001E9C43 /* YKURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0055930E140B00F6001E9C43 /* YKURLRequest.m */; };
+		00559336140B00F6001E9C43 /* YKUIRefreshTableHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559311140B00F6001E9C43 /* YKUIRefreshTableHeaderView.h */; };
+		00559337140B00F6001E9C43 /* YKUIRefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00559312140B00F6001E9C43 /* YKUIRefreshTableHeaderView.m */; };
+		00559338140B00F6001E9C43 /* YKUIRefreshTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559313140B00F6001E9C43 /* YKUIRefreshTableView.h */; };
+		00559339140B00F6001E9C43 /* YKUIRefreshTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00559314140B00F6001E9C43 /* YKUIRefreshTableView.m */; };
+		0055933A140B00F6001E9C43 /* YKUIImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559316140B00F6001E9C43 /* YKUIImageView.h */; };
+		0055933B140B00F6001E9C43 /* YKUIImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00559317140B00F6001E9C43 /* YKUIImageView.m */; };
+		00559340140B00F6001E9C43 /* YKCGUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 0055931E140B00F6001E9C43 /* YKCGUtils.h */; };
+		00559341140B00F6001E9C43 /* YKCGUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0055931F140B00F6001E9C43 /* YKCGUtils.m */; };
+		00559342140B00F6001E9C43 /* YKLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559320140B00F6001E9C43 /* YKLayout.h */; };
+		00559343140B00F6001E9C43 /* YKLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 00559321140B00F6001E9C43 /* YKLayout.m */; };
+		00559344140B00F6001E9C43 /* YKUIView.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559322140B00F6001E9C43 /* YKUIView.h */; };
+		00559345140B00F6001E9C43 /* YKUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00559323140B00F6001E9C43 /* YKUIView.m */; };
+		00559346140B00F6001E9C43 /* YKDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559324140B00F6001E9C43 /* YKDefines.h */; };
+		00559347140B00F6001E9C43 /* YKError.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559325140B00F6001E9C43 /* YKError.h */; };
+		00559348140B00F6001E9C43 /* YKError.m in Sources */ = {isa = PBXBuildFile; fileRef = 00559326140B00F6001E9C43 /* YKError.m */; };
+		00559349140B00F6001E9C43 /* YKLocalized.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559327140B00F6001E9C43 /* YKLocalized.h */; };
+		0055934A140B00F6001E9C43 /* YKLocalized.m in Sources */ = {isa = PBXBuildFile; fileRef = 00559328140B00F6001E9C43 /* YKLocalized.m */; };
+		00559353140B0102001E9C43 /* GHKitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00559352140B0102001E9C43 /* GHKitIOS.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		005592E8140B0085001E9C43 /* libYelpKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libYelpKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		005592EB140B0085001E9C43 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		005592FD140B00E2001E9C43 /* YelpKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YelpKit-Prefix.pch"; sourceTree = "<group>"; };
+		00559300140B00F6001E9C43 /* YKImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKImageLoader.h; sourceTree = "<group>"; };
+		00559301140B00F6001E9C43 /* YKImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKImageLoader.m; sourceTree = "<group>"; };
+		00559303140B00F6001E9C43 /* YKUIActivityLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUIActivityLabel.h; sourceTree = "<group>"; };
+		00559304140B00F6001E9C43 /* YKUIActivityLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIActivityLabel.m; sourceTree = "<group>"; };
+		00559306140B00F6001E9C43 /* YKCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKCompressor.h; sourceTree = "<group>"; };
+		00559307140B00F6001E9C43 /* YKResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKResource.h; sourceTree = "<group>"; };
+		00559308140B00F6001E9C43 /* YKResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKResource.m; sourceTree = "<group>"; };
+		00559309140B00F6001E9C43 /* YKURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKURL.h; sourceTree = "<group>"; };
+		0055930A140B00F6001E9C43 /* YKURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKURL.m; sourceTree = "<group>"; };
+		0055930B140B00F6001E9C43 /* YKURLCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKURLCache.h; sourceTree = "<group>"; };
+		0055930C140B00F6001E9C43 /* YKURLCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKURLCache.m; sourceTree = "<group>"; };
+		0055930D140B00F6001E9C43 /* YKURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKURLRequest.h; sourceTree = "<group>"; };
+		0055930E140B00F6001E9C43 /* YKURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKURLRequest.m; sourceTree = "<group>"; };
+		00559310140B00F6001E9C43 /* pull_to_refresh_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pull_to_refresh_icon.png; sourceTree = "<group>"; };
+		00559311140B00F6001E9C43 /* YKUIRefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUIRefreshTableHeaderView.h; sourceTree = "<group>"; };
+		00559312140B00F6001E9C43 /* YKUIRefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIRefreshTableHeaderView.m; sourceTree = "<group>"; };
+		00559313140B00F6001E9C43 /* YKUIRefreshTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUIRefreshTableView.h; sourceTree = "<group>"; };
+		00559314140B00F6001E9C43 /* YKUIRefreshTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIRefreshTableView.m; sourceTree = "<group>"; };
+		00559316140B00F6001E9C43 /* YKUIImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUIImageView.h; sourceTree = "<group>"; };
+		00559317140B00F6001E9C43 /* YKUIImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIImageView.m; sourceTree = "<group>"; };
+		0055931E140B00F6001E9C43 /* YKCGUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKCGUtils.h; sourceTree = "<group>"; };
+		0055931F140B00F6001E9C43 /* YKCGUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKCGUtils.m; sourceTree = "<group>"; };
+		00559320140B00F6001E9C43 /* YKLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKLayout.h; sourceTree = "<group>"; };
+		00559321140B00F6001E9C43 /* YKLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKLayout.m; sourceTree = "<group>"; };
+		00559322140B00F6001E9C43 /* YKUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUIView.h; sourceTree = "<group>"; };
+		00559323140B00F6001E9C43 /* YKUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIView.m; sourceTree = "<group>"; };
+		00559324140B00F6001E9C43 /* YKDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKDefines.h; sourceTree = "<group>"; };
+		00559325140B00F6001E9C43 /* YKError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKError.h; sourceTree = "<group>"; };
+		00559326140B00F6001E9C43 /* YKError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKError.m; sourceTree = "<group>"; };
+		00559327140B00F6001E9C43 /* YKLocalized.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKLocalized.h; sourceTree = "<group>"; };
+		00559328140B00F6001E9C43 /* YKLocalized.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKLocalized.m; sourceTree = "<group>"; };
+		00559352140B0102001E9C43 /* GHKitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHKitIOS.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		005592E5140B0085001E9C43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				005592EC140B0085001E9C43 /* Foundation.framework in Frameworks */,
+				00559353140B0102001E9C43 /* GHKitIOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		005592DD140B0085001E9C43 = {
+			isa = PBXGroup;
+			children = (
+				005592FE140B00F6001E9C43 /* Classes */,
+				0055934B140B0102001E9C43 /* Libraries */,
+				005592FD140B00E2001E9C43 /* YelpKit-Prefix.pch */,
+				005592EA140B0085001E9C43 /* Frameworks */,
+				005592E9140B0085001E9C43 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		005592E9140B0085001E9C43 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				005592E8140B0085001E9C43 /* libYelpKit.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		005592EA140B0085001E9C43 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				005592EB140B0085001E9C43 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		005592FE140B00F6001E9C43 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				005592FF140B00F6001E9C43 /* ImageLoader */,
+				00559302140B00F6001E9C43 /* Labels */,
+				00559305140B00F6001E9C43 /* Network */,
+				0055930F140B00F6001E9C43 /* PullToRefresh */,
+				00559315140B00F6001E9C43 /* UIImageView */,
+				00559318140B00F6001E9C43 /* UIView */,
+				00559324140B00F6001E9C43 /* YKDefines.h */,
+				00559325140B00F6001E9C43 /* YKError.h */,
+				00559326140B00F6001E9C43 /* YKError.m */,
+				00559327140B00F6001E9C43 /* YKLocalized.h */,
+				00559328140B00F6001E9C43 /* YKLocalized.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		005592FF140B00F6001E9C43 /* ImageLoader */ = {
+			isa = PBXGroup;
+			children = (
+				00559300140B00F6001E9C43 /* YKImageLoader.h */,
+				00559301140B00F6001E9C43 /* YKImageLoader.m */,
+			);
+			path = ImageLoader;
+			sourceTree = "<group>";
+		};
+		00559302140B00F6001E9C43 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				00559303140B00F6001E9C43 /* YKUIActivityLabel.h */,
+				00559304140B00F6001E9C43 /* YKUIActivityLabel.m */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
+		00559305140B00F6001E9C43 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				00559306140B00F6001E9C43 /* YKCompressor.h */,
+				00559307140B00F6001E9C43 /* YKResource.h */,
+				00559308140B00F6001E9C43 /* YKResource.m */,
+				00559309140B00F6001E9C43 /* YKURL.h */,
+				0055930A140B00F6001E9C43 /* YKURL.m */,
+				0055930B140B00F6001E9C43 /* YKURLCache.h */,
+				0055930C140B00F6001E9C43 /* YKURLCache.m */,
+				0055930D140B00F6001E9C43 /* YKURLRequest.h */,
+				0055930E140B00F6001E9C43 /* YKURLRequest.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		0055930F140B00F6001E9C43 /* PullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				00559310140B00F6001E9C43 /* pull_to_refresh_icon.png */,
+				00559311140B00F6001E9C43 /* YKUIRefreshTableHeaderView.h */,
+				00559312140B00F6001E9C43 /* YKUIRefreshTableHeaderView.m */,
+				00559313140B00F6001E9C43 /* YKUIRefreshTableView.h */,
+				00559314140B00F6001E9C43 /* YKUIRefreshTableView.m */,
+			);
+			path = PullToRefresh;
+			sourceTree = "<group>";
+		};
+		00559315140B00F6001E9C43 /* UIImageView */ = {
+			isa = PBXGroup;
+			children = (
+				00559316140B00F6001E9C43 /* YKUIImageView.h */,
+				00559317140B00F6001E9C43 /* YKUIImageView.m */,
+			);
+			path = UIImageView;
+			sourceTree = "<group>";
+		};
+		00559318140B00F6001E9C43 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				0055931E140B00F6001E9C43 /* YKCGUtils.h */,
+				0055931F140B00F6001E9C43 /* YKCGUtils.m */,
+				00559320140B00F6001E9C43 /* YKLayout.h */,
+				00559321140B00F6001E9C43 /* YKLayout.m */,
+				00559322140B00F6001E9C43 /* YKUIView.h */,
+				00559323140B00F6001E9C43 /* YKUIView.m */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		0055934B140B0102001E9C43 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				00559352140B0102001E9C43 /* GHKitIOS.framework */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		005592E6140B0085001E9C43 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00559329140B00F6001E9C43 /* YKImageLoader.h in Headers */,
+				0055932B140B00F6001E9C43 /* YKUIActivityLabel.h in Headers */,
+				0055932D140B00F6001E9C43 /* YKCompressor.h in Headers */,
+				0055932E140B00F6001E9C43 /* YKResource.h in Headers */,
+				00559330140B00F6001E9C43 /* YKURL.h in Headers */,
+				00559332140B00F6001E9C43 /* YKURLCache.h in Headers */,
+				00559334140B00F6001E9C43 /* YKURLRequest.h in Headers */,
+				00559336140B00F6001E9C43 /* YKUIRefreshTableHeaderView.h in Headers */,
+				00559338140B00F6001E9C43 /* YKUIRefreshTableView.h in Headers */,
+				0055933A140B00F6001E9C43 /* YKUIImageView.h in Headers */,
+				00559340140B00F6001E9C43 /* YKCGUtils.h in Headers */,
+				00559342140B00F6001E9C43 /* YKLayout.h in Headers */,
+				00559344140B00F6001E9C43 /* YKUIView.h in Headers */,
+				00559346140B00F6001E9C43 /* YKDefines.h in Headers */,
+				00559347140B00F6001E9C43 /* YKError.h in Headers */,
+				00559349140B00F6001E9C43 /* YKLocalized.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		005592E7140B0085001E9C43 /* YelpKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 005592F2140B0085001E9C43 /* Build configuration list for PBXNativeTarget "YelpKit" */;
+			buildPhases = (
+				005592E4140B0085001E9C43 /* Sources */,
+				005592E5140B0085001E9C43 /* Frameworks */,
+				005592E6140B0085001E9C43 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YelpKit;
+			productName = YelpKit;
+			productReference = 005592E8140B0085001E9C43 /* libYelpKit.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		005592DF140B0085001E9C43 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 005592E2140B0085001E9C43 /* Build configuration list for PBXProject "YelpKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 005592DD140B0085001E9C43;
+			productRefGroup = 005592E9140B0085001E9C43 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				005592E7140B0085001E9C43 /* YelpKit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		005592E4140B0085001E9C43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0055932A140B00F6001E9C43 /* YKImageLoader.m in Sources */,
+				0055932C140B00F6001E9C43 /* YKUIActivityLabel.m in Sources */,
+				0055932F140B00F6001E9C43 /* YKResource.m in Sources */,
+				00559331140B00F6001E9C43 /* YKURL.m in Sources */,
+				00559333140B00F6001E9C43 /* YKURLCache.m in Sources */,
+				00559335140B00F6001E9C43 /* YKURLRequest.m in Sources */,
+				00559337140B00F6001E9C43 /* YKUIRefreshTableHeaderView.m in Sources */,
+				00559339140B00F6001E9C43 /* YKUIRefreshTableView.m in Sources */,
+				0055933B140B00F6001E9C43 /* YKUIImageView.m in Sources */,
+				00559341140B00F6001E9C43 /* YKCGUtils.m in Sources */,
+				00559343140B00F6001E9C43 /* YKLayout.m in Sources */,
+				00559345140B00F6001E9C43 /* YKUIView.m in Sources */,
+				00559348140B00F6001E9C43 /* YKError.m in Sources */,
+				0055934A140B00F6001E9C43 /* YKLocalized.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		005592F0140B0085001E9C43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		005592F1140B0085001E9C43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		005592F3140B0085001E9C43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/YelpKit.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "YelpKit-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		005592F4140B0085001E9C43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/YelpKit.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "YelpKit-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		005592E2140B0085001E9C43 /* Build configuration list for PBXProject "YelpKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				005592F0140B0085001E9C43 /* Debug */,
+				005592F1140B0085001E9C43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		005592F2140B0085001E9C43 /* Build configuration list for PBXNativeTarget "YelpKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				005592F3140B0085001E9C43 /* Debug */,
+				005592F4140B0085001E9C43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 005592DF140B0085001E9C43 /* Project object */;
+}
