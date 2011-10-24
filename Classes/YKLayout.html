@@ -78,9 +78,13 @@
 	
 	<option value="//api/name/setNeedsLayout">&nbsp;&nbsp;&nbsp;&nbsp;- setNeedsLayout</option>
 	
+	<option value="//api/name/setOrigin:frame:view:">&nbsp;&nbsp;&nbsp;&nbsp;- setOrigin:frame:view:</option>
+	
 	<option value="//api/name/setOrigin:view:">&nbsp;&nbsp;&nbsp;&nbsp;- setOrigin:view:</option>
 	
-	<option value="//api/name/setX:view:">&nbsp;&nbsp;&nbsp;&nbsp;- setX:view:</option>
+	<option value="//api/name/setX:frame:view:">&nbsp;&nbsp;&nbsp;&nbsp;- setX:frame:view:</option>
+	
+	<option value="//api/name/setY:frame:view:">&nbsp;&nbsp;&nbsp;&nbsp;- setY:frame:view:</option>
 	
 	<option value="//api/name/setY:view:">&nbsp;&nbsp;&nbsp;&nbsp;- setY:view:</option>
 	
@@ -150,9 +154,13 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setNeedsLayout">setNeedsLayout</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setOrigin:frame:view:">setOrigin:frame:view:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setOrigin:view:">setOrigin:view:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setX:view:">setX:view:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setX:frame:view:">setX:frame:view:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setY:frame:view:">setY:frame:view:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setY:view:">setY:view:</a></span></li>
 	
@@ -366,7 +374,7 @@ Use this value instead of view.frame since the views frame might not have been s
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/setX:view:">&ndash;&nbsp;setX:view:</a></code>
+		<code><a href="#//api/name/setX:frame:view:">&ndash;&nbsp;setX:frame:view:</a></code>
 		<span class="tooltip"><p>Set origin, x position.
 Use this value instead of view.frame since the views frame might not have been set.</p></span>
 	</span>
@@ -382,7 +390,7 @@ Use this value instead of view.frame since the views frame might not have been s
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/setY:view:">&ndash;&nbsp;setY:view:</a></code>
+		<code><a href="#//api/name/setY:frame:view:">&ndash;&nbsp;setY:frame:view:</a></code>
 		<span class="tooltip"><p>Set origin, y position.</p></span>
 	</span>
 	
@@ -397,10 +405,40 @@ Use this value instead of view.frame since the views frame might not have been s
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/setOrigin:view:">&ndash;&nbsp;setOrigin:view:</a></code>
+		<code><a href="#//api/name/setOrigin:frame:view:">&ndash;&nbsp;setOrigin:frame:view:</a></code>
 		<span class="tooltip"><p>Set origin for the (sub)view (for views with fixed sizes).
 If we are calculating sizeThatFits, this doesn&rsquo;t actually set the views frame.
 Use this value instead of view.frame since the views frame might not have been set.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setOrigin:view:">&ndash;&nbsp;setOrigin:view:</a></code>
+		<span class="tooltip"><p>@deprecated Use <a href="../Protocols/YKLayout.html#//api/name/setOrigin:frame:view:">setOrigin:frame:view:</a></p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setY:view:">&ndash;&nbsp;setY:view:</a></code>
+		<span class="tooltip"><p>@deprecated Use <a href="../Protocols/YKLayout.html#//api/name/setY:frame:view:">setY:frame:view:</a></p></span>
 	</span>
 	
 	
@@ -557,6 +595,16 @@ If height is not set (is 0), then we will use this size value for <a href="#//ap
 	<div class="method-subsection method-declaration"><code>+ (YKLayoutStats *)statsForView:(UIView *)<em>view</em></code></div>
 	
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>view</em></dt>
+			<dd><p>View</p></dd>
+		</dl>
+		
+	</div>
+	
 	
 	
 	
@@ -599,6 +647,16 @@ If height is not set (is 0), then we will use this size value for <a href="#//ap
 	<div class="method-subsection method-declaration"><code>- (void)addSubview:(UIView *)<em>view</em></code></div>
 	
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>view</em></dt>
+			<dd><p>View to add</p></dd>
+		</dl>
+		
+	</div>
+	
 	
 	
 	
@@ -614,8 +672,6 @@ draw <a href="YKLayout.html">YKLayout</a> managed subviews.</p>
 or touches. Layout managed subviews are intended for simple views
 or views in table view cells that need better scrolling performance.
 For resizing you may need to adjust the contentMode.</p>
-
-<p>@param view</p>
 	</div>
 	
 	
@@ -853,16 +909,21 @@ be applied or not via <a href="../Protocols/YKLayout.html#//api/name/setFrame:vi
 	<div class="method-subsection method-declaration"><code>- (void)removeSubview:(UIView *)<em>view</em></code></div>
 	
 	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>@param view</p>
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>view</em></dt>
+			<dd><p>View to remove</p></dd>
+		</dl>
+		
 	</div>
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -1081,8 +1142,8 @@ This should be called when a views data changes.</p>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/setOrigin:view:" title="setOrigin:view:"></a>
-	<h3 class="subsubtitle method-title">setOrigin:view:</h3>
+	<a name="//api/name/setOrigin:frame:view:" title="setOrigin:frame:view:"></a>
+	<h3 class="subsubtitle method-title">setOrigin:frame:view:</h3>
 	
 	
 	
@@ -1093,7 +1154,7 @@ Use this value instead of view.frame since the views frame might not have been s
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (CGRect)setOrigin:(CGPoint)<em>origin</em> view:(UIView *)<em>view</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (CGRect)setOrigin:(CGPoint)<em>origin</em> frame:(CGRect)<em>frame</em> view:(UIView *)<em>view</em></code></div>
 	
 	
 	<div class="method-subsection arguments-section parameters">
@@ -1102,6 +1163,11 @@ Use this value instead of view.frame since the views frame might not have been s
 		<dl class="argument-def parameter-def">
 			<dt><em>origin</em></dt>
 			<dd><p>Origin</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>frame</em></dt>
+			<dd><p>Frame</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -1137,8 +1203,42 @@ Use this value instead of view.frame since the views frame might not have been s
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/setX:view:" title="setX:view:"></a>
-	<h3 class="subsubtitle method-title">setX:view:</h3>
+	<a name="//api/name/setOrigin:view:" title="setOrigin:view:"></a>
+	<h3 class="subsubtitle method-title">setOrigin:view:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>@deprecated Use <a href="../Protocols/YKLayout.html#//api/name/setOrigin:frame:view:">setOrigin:frame:view:</a></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (CGRect)setOrigin:(CGPoint)<em>origin</em> view:(UIView *)<em>view</em></code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKLayout.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setX:frame:view:" title="setX:frame:view:"></a>
+	<h3 class="subsubtitle method-title">setX:frame:view:</h3>
 	
 	
 	
@@ -1148,7 +1248,7 @@ Use this value instead of view.frame since the views frame might not have been s
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (CGRect)setX:(CGFloat)<em>x</em> view:(UIView *)<em>view</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (CGRect)setX:(CGFloat)<em>x</em> frame:(CGRect)<em>frame</em> view:(UIView *)<em>view</em></code></div>
 	
 	
 	<div class="method-subsection arguments-section parameters">
@@ -1160,8 +1260,18 @@ Use this value instead of view.frame since the views frame might not have been s
 		</dl>
 		
 		<dl class="argument-def parameter-def">
+			<dt><em>frame</em></dt>
+			<dd><p>Frame</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
 			<dt><em>view</em></dt>
 			<dd><p>View</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>frame</em></dt>
+			<dd><p>Frame</p></dd>
 		</dl>
 		
 	</div>
@@ -1176,6 +1286,75 @@ Use this value instead of view.frame since the views frame might not have been s
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKLayout.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setY:frame:view:" title="setY:frame:view:"></a>
+	<h3 class="subsubtitle method-title">setY:frame:view:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Set origin, y position.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (CGRect)setY:(CGFloat)<em>y</em> frame:(CGRect)<em>frame</em> view:(UIView *)<em>view</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>y</em></dt>
+			<dd><p>Y position</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>frame</em></dt>
+			<dd><p>Frame</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>view</em></dt>
+			<dd><p>View</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>frame</em></dt>
+			<dd><p>Frame</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The view frame.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Use this value instead of view.frame since the views frame might not have been set.</p>
+	</div>
 	
 	
 	
@@ -1198,43 +1377,18 @@ Use this value instead of view.frame since the views frame might not have been s
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Set origin, y position.</p>
+		<p>@deprecated Use <a href="../Protocols/YKLayout.html#//api/name/setY:frame:view:">setY:frame:view:</a></p>
 	</div>		
 	
 	
 	<div class="method-subsection method-declaration"><code>- (CGRect)setY:(CGFloat)<em>y</em> view:(UIView *)<em>view</em></code></div>
 	
 	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>y</em></dt>
-			<dd><p>Y position</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>view</em></dt>
-			<dd><p>View</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The view frame.</p>
-	</div>
 	
 	
 	
 	
 	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Use this value instead of view.frame since the views frame might not have been set.</p>
-	</div>
 	
 	
 	
@@ -1312,7 +1466,7 @@ Use this value instead of view.frame since the views frame might not have been s
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 YelpKit. All rights reserved. (Last updated: 2011-08-28)</span><br />
+						<p><span class="copyright">&copy; 2011 YelpKit. All rights reserved. (Last updated: 2011-10-24)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
 						

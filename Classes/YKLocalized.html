@@ -27,6 +27,8 @@
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 	
 	
 	
@@ -40,17 +42,31 @@
 	
 	<option value="class_methods">Class Methods</option>
 	
+	<option value="//api/name/currencySymbol">&nbsp;&nbsp;&nbsp;&nbsp;+ currencySymbol</option>
+	
 	<option value="//api/name/currentLocale">&nbsp;&nbsp;&nbsp;&nbsp;+ currentLocale</option>
 	
 	<option value="//api/name/dateFormatter">&nbsp;&nbsp;&nbsp;&nbsp;+ dateFormatter</option>
 	
+	<option value="//api/name/isMetric">&nbsp;&nbsp;&nbsp;&nbsp;+ isMetric</option>
+	
+	<option value="//api/name/isMetric:">&nbsp;&nbsp;&nbsp;&nbsp;+ isMetric:</option>
+	
+	<option value="//api/name/languageCode">&nbsp;&nbsp;&nbsp;&nbsp;+ languageCode</option>
+	
 	<option value="//api/name/localeIdentifier">&nbsp;&nbsp;&nbsp;&nbsp;+ localeIdentifier</option>
 	
-	<option value="//api/name/localize:table:value:">&nbsp;&nbsp;&nbsp;&nbsp;+ localize:table:value:</option>
+	<option value="//api/name/localize:tableName:value:">&nbsp;&nbsp;&nbsp;&nbsp;+ localize:tableName:value:</option>
+	
+	<option value="//api/name/localizedListFromStrings:">&nbsp;&nbsp;&nbsp;&nbsp;+ localizedListFromStrings:</option>
 	
 	<option value="//api/name/localizedPath:ofType:">&nbsp;&nbsp;&nbsp;&nbsp;+ localizedPath:ofType:</option>
 	
 	<option value="//api/name/setDefaultTableName:">&nbsp;&nbsp;&nbsp;&nbsp;+ setDefaultTableName:</option>
+	
+	<option value="//api/name/setSupportedLanguages:">&nbsp;&nbsp;&nbsp;&nbsp;+ setSupportedLanguages:</option>
+	
+	<option value="//api/name/supportedLanguages">&nbsp;&nbsp;&nbsp;&nbsp;+ supportedLanguages</option>
 	
 	
 	
@@ -63,6 +79,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -78,17 +96,31 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currencySymbol">currencySymbol</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currentLocale">currentLocale</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dateFormatter">dateFormatter</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isMetric">isMetric</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isMetric:">isMetric:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/languageCode">languageCode</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/localeIdentifier">localeIdentifier</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/localize:table:value:">localize:table:value:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/localize:tableName:value:">localize:tableName:value:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/localizedListFromStrings:">localizedListFromStrings:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/localizedPath:ofType:">localizedPath:ofType:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setDefaultTableName:">setDefaultTableName:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setSupportedLanguages:">setSupportedLanguages:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/supportedLanguages">supportedLanguages</a></span></li>
 	
 </ul></li>
 
@@ -126,6 +158,14 @@
 					
 					
 					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Wrapper for localization calls, that caches localized key/value pairs.</p>
+					</div>
+					
+					
+					
 					
 					
 					<div class="section section-tasks">
@@ -139,7 +179,7 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/localize:table:value:">+&nbsp;localize:table:value:</a></code>
+		<code><a href="#//api/name/localize:tableName:value:">+&nbsp;localize:tableName:value:</a></code>
 		<span class="tooltip"><p>Get localized string.</p></span>
 	</span>
 	
@@ -147,9 +187,28 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setDefaultTableName:">+&nbsp;setDefaultTableName:</a></code>
-		<span class="tooltip"><p>Set default table name.
-Defaults to &ldquo;Localizable&rdquo;.
-Set to nil to reset to default.</p></span>
+		<span class="tooltip"><p>Set default table name.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isMetric">+&nbsp;isMetric</a></code>
+		<span class="tooltip"><p>Shortcut for determining if current locale is metric.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isMetric:">+&nbsp;isMetric:</a></code>
+		<span class="tooltip"><p>Shortcut for determining if current locale is metric.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/currencySymbol">+&nbsp;currencySymbol</a></code>
+		<span class="tooltip"><p>Shortcut for determining currency symbol.</p></span>
 	</span>
 	
 	
@@ -165,11 +224,36 @@ relevant to the region format. That is, for language = Español and region forma
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/languageCode">+&nbsp;languageCode</a></code>
+		<span class="tooltip"><p>Current language code.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setSupportedLanguages:">+&nbsp;setSupportedLanguages:</a></code>
+		<span class="tooltip"><p>Set supported languages.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/supportedLanguages">+&nbsp;supportedLanguages</a></code>
+		<span class="tooltip"><p>Supported languages, or nil if not set.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/localizedPath:ofType:">+&nbsp;localizedPath:ofType:</a></code>
-		<span class="tooltip"><p>Get localized path.
-(1) Checks specific localized bundle directory (en_GB).
-(2) Otherwise, checks default localized  bundle directory (en).
-(3) Otherwise checks default bundle directory.</p></span>
+		<span class="tooltip"><p>Get localized path.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/localizedListFromStrings:">+&nbsp;localizedListFromStrings:</a></code>
+		<span class="tooltip"><p>Localized list.</p></span>
 	</span>
 	
 	
@@ -202,6 +286,40 @@ relevant to the region format. That is, for language = Español and region forma
 					<div class="section section-methods">
 						<a title="Class Methods" name="class_methods"></a>
 						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/currencySymbol" title="currencySymbol"></a>
+	<h3 class="subsubtitle method-title">currencySymbol</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Shortcut for determining currency symbol.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (NSString *)currencySymbol</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKLocalized.h</code><br />
+	</div>				
+	
+	
+</div>
 						
 						<div class="section-method">
 	<a name="//api/name/currentLocale" title="currentLocale"></a>
@@ -290,6 +408,123 @@ will correctly localize for the region</p></code></li>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/isMetric" title="isMetric"></a>
+	<h3 class="subsubtitle method-title">isMetric</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Shortcut for determining if current locale is metric.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (BOOL)isMetric</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKLocalized.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isMetric:" title="isMetric:"></a>
+	<h3 class="subsubtitle method-title">isMetric:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Shortcut for determining if current locale is metric.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (BOOL)isMetric:(id)<em>locale</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>locale</em></dt>
+			<dd><p>Locale</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKLocalized.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/languageCode" title="languageCode"></a>
+	<h3 class="subsubtitle method-title">languageCode</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Current language code.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (NSString *)languageCode</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Language code</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKLocalized.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/localeIdentifier" title="localeIdentifier"></a>
 	<h3 class="subsubtitle method-title">localeIdentifier</h3>
 	
@@ -332,8 +567,8 @@ relevant to the region format. That is, for language = Español and region forma
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/localize:table:value:" title="localize:table:value:"></a>
-	<h3 class="subsubtitle method-title">localize:table:value:</h3>
+	<a name="//api/name/localize:tableName:value:" title="localize:tableName:value:"></a>
+	<h3 class="subsubtitle method-title">localize:tableName:value:</h3>
 	
 	
 	
@@ -342,7 +577,7 @@ relevant to the region format. That is, for language = Español and region forma
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>+ (NSString *)localize:(NSString *)<em>key</em> table:(NSString *)<em>table</em> value:(NSString *)<em>value</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (NSString *)localize:(NSString *)<em>key</em> tableName:(NSString *)<em>tableName</em> value:(NSString *)<em>value</em></code></div>
 	
 	
 	<div class="method-subsection arguments-section parameters">
@@ -354,7 +589,7 @@ relevant to the region format. That is, for language = Español and region forma
 		</dl>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>table</em></dt>
+			<dt><em>tableName</em></dt>
 			<dd><p>The strings file to lookup. Defaults to Localizable (which uses Localizable.strings)</p></dd>
 		</dl>
 		
@@ -386,21 +621,83 @@ relevant to the region format. That is, for language = Español and region forma
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/localizedListFromStrings:" title="localizedListFromStrings:"></a>
+	<h3 class="subsubtitle method-title">localizedListFromStrings:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Localized list.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (NSString *)localizedListFromStrings:(NSArray *)<em>strings</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>strings</em></dt>
+			<dd><p>Strings</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<pre><code>[YKLocalized localizedListFromStrings:[NSArray arrayWithObjects:@"one", @"two", @"three", nil]]; =&gt; @"one, two and three"
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKLocalized.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/localizedPath:ofType:" title="localizedPath:ofType:"></a>
 	<h3 class="subsubtitle method-title">localizedPath:ofType:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Get localized path.
-(1) Checks specific localized bundle directory (en_GB).
-(2) Otherwise, checks default localized  bundle directory (en).
-(3) Otherwise checks default bundle directory.</p>
+		<p>Get localized path.</p>
 	</div>		
 	
 	
 	<div class="method-subsection method-declaration"><code>+ (NSString *)localizedPath:(NSString *)<em>name</em> ofType:(NSString *)<em>type</em></code></div>
 	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>Name</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>type</em></dt>
+			<dd><p>Type</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -415,8 +712,9 @@ relevant to the region format. That is, for language = Español and region forma
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>@param name
-@param type</p>
+		<p>(1) Checks specific localized bundle directory (en_GB).
+(2) Otherwise, checks default localized  bundle directory (en).
+(3) Otherwise checks default bundle directory.</p>
 	</div>
 	
 	
@@ -440,13 +738,99 @@ relevant to the region format. That is, for language = Español and region forma
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Set default table name.
-Defaults to &ldquo;Localizable&rdquo;.
-Set to nil to reset to default.</p>
+		<p>Set default table name.</p>
 	</div>		
 	
 	
 	<div class="method-subsection method-declaration"><code>+ (void)setDefaultTableName:(NSString *)<em>defaultTableName</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>defaultTableName</em></dt>
+			<dd><p>Default table name. Defaults to &ldquo;Localizable&rdquo;. Set to nil to reset to default.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKLocalized.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setSupportedLanguages:" title="setSupportedLanguages:"></a>
+	<h3 class="subsubtitle method-title">setSupportedLanguages:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Set supported languages.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)setSupportedLanguages:(NSSet *)<em>supportedLanguages</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>supportedLanguages</em></dt>
+			<dd><p>List of supported languages</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKLocalized.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/supportedLanguages" title="supportedLanguages"></a>
+	<h3 class="subsubtitle method-title">supportedLanguages</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Supported languages, or nil if not set.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (NSSet *)supportedLanguages</code></div>
 	
 	
 	
@@ -484,7 +868,7 @@ Set to nil to reset to default.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 YelpKit. All rights reserved. (Last updated: 2011-08-28)</span><br />
+						<p><span class="copyright">&copy; 2011 YelpKit. All rights reserved. (Last updated: 2011-10-24)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
 						

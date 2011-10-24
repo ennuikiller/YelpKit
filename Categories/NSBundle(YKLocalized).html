@@ -40,15 +40,26 @@
 	
 	
 	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/yelp_clearCache">&nbsp;&nbsp;&nbsp;&nbsp;+ yelp_clearCache</option>
+	
+	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
 	<option value="//api/name/yelp_loadResourceForTableName:localization:">&nbsp;&nbsp;&nbsp;&nbsp;- yelp_loadResourceForTableName:localization:</option>
 	
-	<option value="//api/name/yelp_localizedStringForKey:value:table:">&nbsp;&nbsp;&nbsp;&nbsp;- yelp_localizedStringForKey:value:table:</option>
+	<option value="//api/name/yelp_localizedStringForKey:tableName:">&nbsp;&nbsp;&nbsp;&nbsp;- yelp_localizedStringForKey:tableName:</option>
+	
+	<option value="//api/name/yelp_localizedStringForKey:value:tableName:">&nbsp;&nbsp;&nbsp;&nbsp;- yelp_localizedStringForKey:value:tableName:</option>
+	
+	<option value="//api/name/yelp_pathForResource:localization:">&nbsp;&nbsp;&nbsp;&nbsp;- yelp_pathForResource:localization:</option>
 	
 	<option value="//api/name/yelp_preferredLanguageForTableName:">&nbsp;&nbsp;&nbsp;&nbsp;- yelp_preferredLanguageForTableName:</option>
+	
+	<option value="//api/name/yelp_stringForKey:tableName:localization:">&nbsp;&nbsp;&nbsp;&nbsp;- yelp_stringForKey:tableName:localization:</option>
 	
 	
 	
@@ -74,15 +85,27 @@
 
 
 
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/yelp_clearCache">yelp_clearCache</a></span></li>
+	
+</ul></li>
+
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/yelp_loadResourceForTableName:localization:">yelp_loadResourceForTableName:localization:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/yelp_localizedStringForKey:value:table:">yelp_localizedStringForKey:value:table:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/yelp_localizedStringForKey:tableName:">yelp_localizedStringForKey:tableName:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/yelp_localizedStringForKey:value:tableName:">yelp_localizedStringForKey:value:tableName:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/yelp_pathForResource:localization:">yelp_pathForResource:localization:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/yelp_preferredLanguageForTableName:">yelp_preferredLanguageForTableName:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/yelp_stringForKey:tableName:localization:">yelp_stringForKey:tableName:localization:</a></span></li>
 	
 </ul></li>
 
@@ -118,7 +141,8 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Localized language name (English, German, French, etc) from two-letter language code (en, de, fr, etc)</p>
+						<p>Patching localizedStringForKey method.
+There are issues with locales and localized resources not being picked up correctly.</p>
 					</div>
 					
 					
@@ -136,15 +160,36 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/yelp_localizedStringForKey:value:table:">&ndash;&nbsp;yelp_localizedStringForKey:value:table:</a></code>
+		<code><a href="#//api/name/yelp_localizedStringForKey:value:tableName:">&ndash;&nbsp;yelp_localizedStringForKey:value:tableName:</a></code>
 		<span class="tooltip"><p>Localize string with key.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/yelp_localizedStringForKey:tableName:">&ndash;&nbsp;yelp_localizedStringForKey:tableName:</a></code>
+		<span class="tooltip"><p>Localize string with key.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/yelp_stringForKey:tableName:localization:">&ndash;&nbsp;yelp_stringForKey:tableName:localization:</a></code>
+		<span class="tooltip"><p>Get string for key based on localization.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/yelp_loadResourceForTableName:localization:">&ndash;&nbsp;yelp_loadResourceForTableName:localization:</a></code>
-		<span class="tooltip"><p>Load resource bundle for table name and localization.</p></span>
+		<span class="tooltip"><p>Load resource bundle for table name and localization (cached).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/yelp_pathForResource:localization:">&ndash;&nbsp;yelp_pathForResource:localization:</a></code>
+		<span class="tooltip"><p>Path for resource (cached).</p></span>
 	</span>
 	
 	
@@ -153,6 +198,13 @@
 		<code><a href="#//api/name/yelp_preferredLanguageForTableName:">&ndash;&nbsp;yelp_preferredLanguageForTableName:</a></code>
 		<span class="tooltip"><p>Find useable language for table name.
 Falls back to @&ldquo;en&rdquo; if no language bundles found.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/yelp_clearCache">+&nbsp;yelp_clearCache</a></code>
+		<span class="tooltip"><p>Clear any caching.</p></span>
 	</span>
 	
 	
@@ -167,6 +219,46 @@ Falls back to @&ldquo;en&rdquo; if no language bundles found.</p></span>
 					
 					
 					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/yelp_clearCache" title="yelp_clearCache"></a>
+	<h3 class="subsubtitle method-title">yelp_clearCache</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Clear any caching.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)yelp_clearCache</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKLocalized.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
 					
 					
 					<div class="section section-methods">
@@ -180,7 +272,7 @@ Falls back to @&ldquo;en&rdquo; if no language bundles found.</p></span>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Load resource bundle for table name and localization.</p>
+		<p>Load resource bundle for table name and localization (cached).</p>
 	</div>		
 	
 	
@@ -197,7 +289,7 @@ Falls back to @&ldquo;en&rdquo; if no language bundles found.</p></span>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>localization</em></dt>
-			<dd><p>en, es, en_US, en_GB</p></dd>
+			<dd><p>Localization, e.g. &ldquo;en_US&rdquo; or &ldquo;en&rdquo;</p></dd>
 		</dl>
 		
 	</div>
@@ -223,8 +315,8 @@ Falls back to @&ldquo;en&rdquo; if no language bundles found.</p></span>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/yelp_localizedStringForKey:value:table:" title="yelp_localizedStringForKey:value:table:"></a>
-	<h3 class="subsubtitle method-title">yelp_localizedStringForKey:value:table:</h3>
+	<a name="//api/name/yelp_localizedStringForKey:tableName:" title="yelp_localizedStringForKey:tableName:"></a>
+	<h3 class="subsubtitle method-title">yelp_localizedStringForKey:tableName:</h3>
 	
 	
 	
@@ -233,7 +325,7 @@ Falls back to @&ldquo;en&rdquo; if no language bundles found.</p></span>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (NSString *)yelp_localizedStringForKey:(NSString *)<em>key</em> value:(NSString *)<em>value</em> table:(NSString *)<em>tableName</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (NSString *)yelp_localizedStringForKey:(NSString *)<em>key</em> tableName:(NSString *)<em>tableName</em></code></div>
 	
 	
 	<div class="method-subsection arguments-section parameters">
@@ -241,17 +333,12 @@ Falls back to @&ldquo;en&rdquo; if no language bundles found.</p></span>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>key</em></dt>
-			<dd><p>Key</p></dd>
+			<dd><p>String to localize</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>value</em></dt>
-			<dd><p>Default localized string if key not found</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>table</em></dt>
-			<dd><p>Resource name; Defaults to Localizable</p></dd>
+			<dt><em>tableName</em></dt>
+			<dd><p>Name of strings file, defaults to &ldquo;Localizable&rdquo;</p></dd>
 		</dl>
 		
 	</div>
@@ -287,6 +374,119 @@ Falls back to @&ldquo;en&rdquo; if no language bundles found.</p></span>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/yelp_localizedStringForKey:value:tableName:" title="yelp_localizedStringForKey:value:tableName:"></a>
+	<h3 class="subsubtitle method-title">yelp_localizedStringForKey:value:tableName:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Localize string with key.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)yelp_localizedStringForKey:(NSString *)<em>key</em> value:(NSString *)<em>value</em> tableName:(NSString *)<em>tableName</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>key</em></dt>
+			<dd><p>String to localize</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>value</em></dt>
+			<dd><p>Default localized string if key not found</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>tableName</em></dt>
+			<dd><p>Name of strings file, defaults to &ldquo;Localizable&rdquo;</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Uses localized resource in order of:
+&ndash; locale identifier (language_region): &ldquo;en_CA&rdquo;
+&ndash; language: &ldquo;en&rdquo;
+&ndash; no locale: nil</p>
+
+<p>If still not found will return the specified (default) value and finally will return the key as a last resort.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKLocalized.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/yelp_pathForResource:localization:" title="yelp_pathForResource:localization:"></a>
+	<h3 class="subsubtitle method-title">yelp_pathForResource:localization:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Path for resource (cached).</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)yelp_pathForResource:(NSString *)<em>tableName</em> localization:(NSString *)<em>localization</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>tableName</em></dt>
+			<dd><p>Name of strings file, defaults to &ldquo;Localizable&rdquo;</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>localization</em></dt>
+			<dd><p>Localization, e.g. &ldquo;en_US&rdquo; or &ldquo;en&rdquo;</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKLocalized.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/yelp_preferredLanguageForTableName:" title="yelp_preferredLanguageForTableName:"></a>
 	<h3 class="subsubtitle method-title">yelp_preferredLanguageForTableName:</h3>
 	
@@ -300,6 +500,70 @@ Falls back to @&ldquo;en&rdquo; if no language bundles found.</p>
 	
 	<div class="method-subsection method-declaration"><code>- (NSString *)yelp_preferredLanguageForTableName:(NSString *)<em>tableName</em></code></div>
 	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>tableName</em></dt>
+			<dd><p>Name of strings file, defaults to &ldquo;Localizable&rdquo;</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKLocalized.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/yelp_stringForKey:tableName:localization:" title="yelp_stringForKey:tableName:localization:"></a>
+	<h3 class="subsubtitle method-title">yelp_stringForKey:tableName:localization:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get string for key based on localization.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)yelp_stringForKey:(NSString *)<em>key</em> tableName:(NSString *)<em>tableName</em> localization:(NSString *)<em>localization</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>key</em></dt>
+			<dd><p>String to localize</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>tableName</em></dt>
+			<dd><p>Name of strings file, defaults to &ldquo;Localizable&rdquo;</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>localization</em></dt>
+			<dd><p>Localization, e.g. &ldquo;en_US&rdquo; or &ldquo;en&rdquo;</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -334,7 +598,7 @@ Falls back to @&ldquo;en&rdquo; if no language bundles found.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 YelpKit. All rights reserved. (Last updated: 2011-08-28)</span><br />
+						<p><span class="copyright">&copy; 2011 YelpKit. All rights reserved. (Last updated: 2011-10-24)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
 						
