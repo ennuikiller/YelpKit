@@ -80,6 +80,11 @@ NSString *const YKErrorNotConnectedToInternet = @"YKErrorNotConnectedToInternet"
     YKDebug(@"Description for error key=%@: %@", _key, description);
     if (!description || [description isEqualToString:_key]) {
       if (_unknownDescription) return _unknownDescription;
+
+      // For backwards compatibility
+      NSString *defaultErrorMessage = YKLocalizedString(@"YPErrorUnknown");
+      if (![defaultErrorMessage isEqualToString:@"YPErrorUnknown"]) return defaultErrorMessage;
+      
       return YKLocalizedString(@"YKErrorUnknown");
     }
   }
