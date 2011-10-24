@@ -162,12 +162,10 @@
 <p><a href="../Classes/YKLayout.html">YKLayout</a> is designed to calculate and return a size that best fits the receiver’s subviews,
 without altering the subviews frames, or affecting layoutSubviews call hierarchy.</p>
 
-<p>Instead of defining both (CGSize)<a href="#//api/name/sizeThatFits:">sizeThatFits:</a>(CGSize)size; and (void)layoutSubviews;, you define a single method called:</p>
+<p>Instead of defining both <a href="#//api/name/sizeThatFits:">sizeThatFits:</a> and layoutSubviews, you define a single method called:</p>
 
-<ul>
-<li>(CGSize)layout:(id<a href="../Classes/YKLayout.html">YKLayout</a>)layout size:(CGSize)size;</li>
-</ul>
-
+<pre><code>- (CGSize)layout:(idYKLayout)layout size:(CGSize)size;
+</code></pre>
 
 <p>Then in this method you use the layout instance to set the subview frames (if sizing).</p>
 
@@ -175,20 +173,23 @@ without altering the subviews frames, or affecting layoutSubviews call hierarchy
 
 <p>For example,</p>
 
-<p>CGRect titleLabelFrame = [layout setFrame:CGRectMake(x, y, 400, 0) view:_titleLabel options:YKLayoutOptionsSizeToFit];
-// titleLabelFrame may have a different width and will have a valid height</p>
+<pre><code> CGRect titleLabelFrame = [layout setFrame:CGRectMake(x, y, 400, 0) view:_titleLabel options:YKLayoutOptionsSizeToFit];
+ // titleLabelFrame may have a different width and will have a valid height
+</code></pre>
 
 <p>You can combine YKLayoutOptionsSizeToFit and YKLayoutOptionsCenter to have it be centered with a variable height.
 For example,</p>
 
-<p>CGRect titleLabelFrame = [layout setFrame:CGRectMake(x, y, 400, 0) view:_titleLabel options:YKLayoutOptionsSizeToFit|YKLayoutOptionsCenter];
-// titleLabelFrame may have a different width and will have a valid height and will have an x position so it is centered</p>
+<pre><code> CGRect titleLabelFrame = [layout setFrame:CGRectMake(x, y, 400, 0) view:_titleLabel options:YKLayoutOptionsSizeToFit|YKLayoutOptionsCenter];
+ // titleLabelFrame may have a different width and will have a valid height and will have an x position so it is centered
+</code></pre>
 
 <p>You can also combine YKLayoutOptionsSizeToFit with YKLayoutOptionsConstraintWidth
 to make sure the width isn&rsquo;t set larger than expected. For example,</p>
 
-<p>CGRect titleLabelFrame = [layout setFrame:CGRectMake(x, y, 400, 0) view:_titleLabel options:YKLayoutOptionsSizeToFit|YKLayoutOptionsConstraintWidth];
-// titleLabelFrame may have a different width but it won&rsquo;t be larger than 400</p>
+<pre><code> CGRect titleLabelFrame = [layout setFrame:CGRectMake(x, y, 400, 0) view:_titleLabel options:YKLayoutOptionsSizeToFit|YKLayoutOptionsConstraintWidth];
+ // titleLabelFrame may have a different width but it won't be larger than 400
+</code></pre>
 
 <p>You can combine YKLayoutOptionsSizeToFit, YKLayoutOptionsConstraintWidth, and YKLayoutOptionsDefaultWidth to make sure
 a view sizes to fit with max and default width (when 0).</p>
