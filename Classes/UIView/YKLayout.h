@@ -139,8 +139,14 @@ typedef enum {
  Use this value instead of view.frame since the views frame might not have been set.
 
  @param origin Origin
+ @param frame Frame
  @param view View
  @result The view frame. 
+ */
+- (CGRect)setOrigin:(CGPoint)origin frame:(CGRect)frame view:(UIView *)view;
+
+/*!
+ @deprecated Use setOrigin:frame:view:
  */
 - (CGRect)setOrigin:(CGPoint)origin view:(UIView *)view;
 
