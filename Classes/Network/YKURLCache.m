@@ -52,7 +52,6 @@
 #import "YKResource.h"
 #import "YKDefines.h"
 
-//#include <sys/utsname.h>
 #include <sys/sysctl.h>
 
 
@@ -97,18 +96,16 @@ static NSMutableDictionary *gNamedCaches = NULL;
   [super dealloc];
 }
 
-#pragma mark sysctl
-
 + (NSUInteger)getSysInfo:(uint)typeSpecifier {
-	size_t size = sizeof(int);
-	int results;
-	int mib[2] = {CTL_HW, typeSpecifier};
-	sysctl(mib, 2, &results, &size, NULL, 0);
-	return (NSUInteger) results;
+  size_t size = sizeof(int);
+  int results;
+  int mib[2] = {CTL_HW, typeSpecifier};
+  sysctl(mib, 2, &results, &size, NULL, 0);
+  return (NSUInteger) results;
 }
 
 + (NSUInteger)totalMemory {
-	return [self getSysInfo:HW_PHYSMEM];
+  return [self getSysInfo:HW_PHYSMEM];
 }
 
 + (YKURLCache *)sharedCache {

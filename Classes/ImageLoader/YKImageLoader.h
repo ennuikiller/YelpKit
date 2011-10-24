@@ -87,6 +87,12 @@ typedef enum {
 
 - (void)setURL:(YKURL *)URL queue:(YKImageLoaderQueue *)queue;
 
+/*!
+ Load URL string.
+ @param URLString URL string
+ */
+- (void)setURLString:(NSString *)URLString;
+
 - (void)load;
 
 - (void)cancel;

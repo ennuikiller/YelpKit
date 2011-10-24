@@ -58,7 +58,7 @@
 
 + (YKImageLoader *)imageLoaderWithURLString:(NSString *)URLString loadingImage:(UIImage *)loadingImage defaultImage:(UIImage *)defaultImage delegate:(id<YKImageLoaderDelegate>)delegate {
   YKImageLoader *imageLoader = [[YKImageLoader alloc] initWithLoadingImage:loadingImage defaultImage:defaultImage delegate:delegate];
-  [imageLoader setURL:[YKURL URLString:URLString]];
+  [imageLoader setURLString:URLString];
   return [imageLoader autorelease]; 
 }
 
@@ -69,6 +69,15 @@
   [_defaultImage release];
   [_loadingImage release];
   [super dealloc];
+}
+
+- (void)setURLString:(NSString *)URLString {
+  if (URLString) {
+    YKURL *URL = [YKURL URLString:URLString];
+    self.URL = URL;
+  } else {
+    self.URL = nil;
+  }
 }
 
 - (void)setURL:(YKURL *)URL {

@@ -112,6 +112,9 @@ extern const double kYKURLRequestExpiresAgeMax;
   NSTimeInterval _responseInterval; // Time to receive the response (header)
   NSTimeInterval _dataInterval; // Time for receiving data  
   NSTimeInterval _totalInterval; // Total time for request
+  NSTimeInterval _sentInterval; // From start to end of sent data
+  
+  NSUInteger _bytesWritten;
   
   BOOL _detachOnThread; //! Experimental!
   
@@ -150,7 +153,9 @@ extern const double kYKURLRequestExpiresAgeMax;
 @property (readonly, nonatomic) NSTimeInterval start; // When request started
 @property (readonly, nonatomic) NSTimeInterval dataInterval;
 @property (readonly, nonatomic) NSTimeInterval totalInterval;
+@property (readonly, nonatomic) NSTimeInterval sentInterval;
 @property (readonly, nonatomic) NSTimeInterval responseInterval;
+@property (readonly, nonatomic) NSUInteger bytesWritten;
 
 @property (assign, nonatomic) BOOL detachOnThread;
 

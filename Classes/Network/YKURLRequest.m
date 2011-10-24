@@ -53,13 +53,7 @@ static BOOL gYKURLRequestCacheEnabled = YES; // Defaults to ON
 
 @implementation YKURLRequest
 
-@synthesize connection=_connection, timeout=_timeout, request=_request, response=_response, delegate=__delegate, 
-finishSelector=_finishSelector, failSelector=_failSelector, cancelSelector=_cancelSelector,
-expiresAge=_expiresAge, URL=_URL, cacheName=_cacheName,
-cachePolicy=_cachePolicy, mockResponse=_mockResponse, mockResponseDelayInterval=_mockResponseDelayInterval, dataInterval=_dataInterval, 
-totalInterval=_totalInterval, start=_start, downloadedData=_downloadedData, cacheHit=_cacheHit, inCache=_inCache,
-stopped=_stopped, error=_error, detachOnThread=_detachOnThread, 
-started=_started, responseInterval=_responseInterval, runLoop=_runLoop;
+@synthesize connection=_connection, timeout=_timeout, request=_request, response=_response, delegate=__delegate, finishSelector=_finishSelector, failSelector=_failSelector, cancelSelector=_cancelSelector, expiresAge=_expiresAge, URL=_URL, cacheName=_cacheName, cachePolicy=_cachePolicy, mockResponse=_mockResponse, mockResponseDelayInterval=_mockResponseDelayInterval, dataInterval=_dataInterval, totalInterval=_totalInterval, start=_start, downloadedData=_downloadedData, cacheHit=_cacheHit, inCache=_inCache, stopped=_stopped, error=_error, detachOnThread=_detachOnThread, started=_started, responseInterval=_responseInterval, runLoop=_runLoop, sentInterval=_sentInterval, bytesWritten=_bytesWritten;
 @synthesize responseData=_responseData; // Private properties
 
 
@@ -70,6 +64,7 @@ started=_started, responseInterval=_responseInterval, runLoop=_runLoop;
     _totalInterval = -1; 
     _dataInterval = -1;
     _responseInterval = -1;
+    _sentInterval = -1;
   }
   return self;
 }
@@ -124,7 +119,7 @@ started=_started, responseInterval=_responseInterval, runLoop=_runLoop;
 }
 
 - (BOOL)requestWithURL:(YKURL *)URL headers:(NSDictionary *)headers delegate:(id)delegate finishSelector:(SEL)finishSelector failSelector:(SEL)failSelector cancelSelector:(SEL)cancelSelector {
-  return [self requestWithURL:URL method:YKHTTPMethodGet headers:headers postParams:nil keyEnumerator:nil 
+  return [self requestWithURL:URL method:YPHTTPMethodGet headers:headers postParams:nil keyEnumerator:nil 
                      delegate:delegate finishSelector:finishSelector failSelector:failSelector cancelSelector:cancelSelector secure:NO];
 }
 
@@ -446,6 +441,13 @@ static id<YKCompressor> gCompressor = NULL;
 }
 
 #pragma mark Delegates (NSURLConnection)
+
+- (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
+  if (bytesWritten >= totalBytesExpectedToWrite) {
+    _bytesWritten = bytesWritten;
+    _sentInterval = [NSDate timeIntervalSinceReferenceDate] - _start;
+  }
+}
 
 // This method can be called multiple times (in case of redirect)
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {

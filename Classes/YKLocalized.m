@@ -17,14 +17,21 @@ static NSString *gDefaultTableName = kDefaultTableName;
 
 @implementation NSBundle (YKLocalized)
 
-static NSMutableDictionary *gLocalizationResourceCache = nil;
-
 // Get resource cache
 + (NSMutableDictionary *)yelp_localizationResourceCache {
+  static NSMutableDictionary *LocalizationResourceCache = nil;
   @synchronized([YKLocalized class]) {
-    if (!gLocalizationResourceCache) gLocalizationResourceCache = [[NSMutableDictionary alloc] init];
+    if (!LocalizationResourceCache) LocalizationResourceCache = [[NSMutableDictionary alloc] init];
   }
-  return gLocalizationResourceCache;
+  return LocalizationResourceCache;
+}
+
++ (NSMutableDictionary *)yelp_pathForResourceCache {
+  static NSMutableDictionary *PathForResourceCache = nil;
+  @synchronized([YKLocalized class]) {    
+    if (!PathForResourceCache) PathForResourceCache = [[NSMutableDictionary alloc] init];
+  }
+  return PathForResourceCache;
 }
 
 // Clear resource cache
@@ -32,22 +39,35 @@ static NSMutableDictionary *gLocalizationResourceCache = nil;
   [[self yelp_localizationResourceCache] removeAllObjects];
 }
 
-- (NSDictionary *)yelp_loadResourceForTableName:(NSString *)tableName localization:(NSString *)localization {
+// Cached version of path for resource
+- (NSString *)yelp_pathForResource:(NSString *)tableName localization:(NSString *)localization {
   if ([localization isEqual:@"en_US"]) localization = @"en";
-  NSString *resource = [self pathForResource:tableName ofType:@"strings" inDirectory:nil forLocalization:localization];
-  if (!resource) return nil;
+  NSString *key = [[NSString alloc] initWithFormat:@"%@%@", tableName, localization];
+  id resource = [[NSBundle yelp_pathForResourceCache] objectForKey:key];
+  if ([resource isEqual:[NSNull null]]) return nil;
   
-  NSDictionary *dict = nil;
-  
-  @synchronized([YKLocalized class]) {
-    dict = [[NSBundle yelp_localizationResourceCache] objectForKey:resource];   
-    if (!dict) {
-      NSDictionary *newDict = [[NSDictionary alloc] initWithContentsOfFile:resource];
-      [[NSBundle yelp_localizationResourceCache] setObject:newDict forKey:resource];
-      dict = newDict;
-      [newDict autorelease]; // Retained by yelp_localizationResourceCache
-    }
+  if (!resource) {
+    resource = [self pathForResource:tableName ofType:@"strings" inDirectory:nil forLocalization:localization];
+    [[NSBundle yelp_pathForResourceCache] setObject:(resource ? resource : [NSNull null]) forKey:key];
   }
+  
+  [key release];
+  return (NSString *)resource;
+}
+
+- (NSDictionary *)yelp_loadResourceForTableName:(NSString *)tableName localization:(NSString *)localization {
+  NSDictionary *dict = nil;
+  if ([localization isEqual:@"en_US"]) localization = @"en";
+  NSString *key = [[NSString alloc] initWithFormat:@"%@%@", tableName, localization];  
+  dict = [[NSBundle yelp_localizationResourceCache] objectForKey:key];
+  if (!dict) {
+    NSString *resource = [self yelp_pathForResource:tableName localization:localization];
+    if (!resource) return nil;
+    dict = [[NSDictionary alloc] initWithContentsOfFile:resource];
+    [[NSBundle yelp_localizationResourceCache] setObject:dict forKey:key];
+    [dict release];
+  }
+  [key release];
   return dict;
 }
 
@@ -55,15 +75,9 @@ static NSMutableDictionary *gLocalizationResourceCache = nil;
 - (NSString *)yelp_stringForKey:(NSString *)key tableName:(NSString *)tableName localization:(NSString *)localization {
   if (!localization) localization = [YKLocalized languageCode];
 
-  NSString *value = [[YKLocalized localizationCache] objectForKey:key];
-  if (value) return value;
-
+  
   NSDictionary *dict = [self yelp_loadResourceForTableName:tableName localization:localization];
-  value = [dict objectForKey:key];
-  if (value) {
-    [[YKLocalized localizationCache] setObject:value forKey:key];
-  }
-  return value;
+  return [dict objectForKey:key];
 }
 
 - (NSString *)yelp_preferredLanguageForTableName:(NSString *)tableName {
@@ -82,35 +96,44 @@ static NSMutableDictionary *gLocalizationResourceCache = nil;
 }
 
 // Patched localized string.
-- (NSString *)yelp_localizedStringForKey:(NSString *)key value:(NSString *)value table:(NSString *)table {
+- (NSString *)yelp_localizedStringForKey:(NSString *)key value:(NSString *)value tableName:(NSString *)tableName {
   if (!key) {
-    YKInfo(@"Trying to localize nil key, (with value=%@, tableName=%@)", value, table);
+    YKInfo(@"Trying to localize nil key, (with value=%@, tableName=%@)", value, tableName);
     return nil;
   }
-  if (!table) table = gDefaultTableName; // Default file is Localizable.strings
 
-  NSString *localizedString = [self yelp_localizedStringForKey:key table:table];
+  NSString *localizedString = [[YKLocalized localizationCache] objectForKey:key];
+  if (localizedString) return localizedString;
+  
+  if (!tableName) tableName = gDefaultTableName; // Default file is Localizable.strings
+
+  localizedString = [self yelp_localizedStringForKey:key tableName:tableName];
   
   if (!localizedString) {
-    YKWarn(@"\n\n\nNo localized string for key: %@, using default: %@\n\n", key, value);
     localizedString = value;
   }
+
   if (!localizedString) {
-    YKWarn(@"\n\n\nNo localized string for key: %@\n\n", key);
     localizedString = key;
   }
+   
+  if (localizedString) {
+    [[YKLocalized localizationCache] setObject:localizedString forKey:key];
+  }
+  
   return localizedString;
 }
 
-- (NSString *)yelp_localizedStringForKey:(NSString *)key table:(NSString *)table {
-  NSString *localizedString = [self yelp_stringForKey:key tableName:table localization:[YKLocalized localeIdentifier]];
+- (NSString *)yelp_localizedStringForKey:(NSString *)key tableName:(NSString *)tableName {
+  NSString *localizedString = [self yelp_stringForKey:key tableName:tableName localization:[YKLocalized localeIdentifier]];
   
   // If not found, check preferredLanguages
   if (!localizedString)
-    localizedString = [self yelp_stringForKey:key tableName:table localization:[self yelp_preferredLanguageForTableName:table]];
+    localizedString = [self yelp_stringForKey:key tableName:tableName localization:[self yelp_preferredLanguageForTableName:tableName]];
   
   return localizedString;
 }
+
 
 @end
 
@@ -129,16 +152,17 @@ static NSString *gLanguageCode = nil;
 }
 
 + (void)clearCache {
-  [[self localizationCache] removeAllObjects];
   [NSBundle yelp_clearCache];
+  [gLocalizationCache release];
+  gLocalizationCache = nil;
   [gLocaleIdentifier release];
   gLocaleIdentifier = nil;
   [gLanguageCode release];
   gLanguageCode = nil;
 }
 
-+ (NSString *)localize:(NSString *)key table:(NSString *)table value:(NSString *)value {
-  return NSLocalizedStringWithDefaultValue(key, table, [NSBundle bundleForClass:[self class]], value, @"");
++ (NSString *)localize:(NSString *)key tableName:(NSString *)tableName value:(NSString *)value {
+  return NSLocalizedStringWithDefaultValue(key, tableName, [NSBundle bundleForClass:[self class]], value, @"");
 }
 
 + (void)setDefaultTableName:(NSString *)defaultTableName {
@@ -158,6 +182,10 @@ static NSString *gLanguageCode = nil;
 }
 
 + (NSString *)currencySymbol {
+  // Special casing Switzerland and Sweden currency symbols to be
+  // $ so filters don't look ghetto.
+  if ([[self countryCode] isEqualToString:@"CH"]) return @"$";
+  if ([[self countryCode] isEqualToString:@"SE"]) return @"$";
   return [[NSLocale currentLocale] objectForKey:NSLocaleCurrencySymbol];
 }
 
@@ -171,12 +199,14 @@ static NSString *gLanguageCode = nil;
   return gLocaleIdentifier;
 }
 
-// TODO(johnb): This doesn't make sense in YelpKit. Move it to YPLocalized
 + (NSSet *)supportedLanguages {
-  if (!gSupportedLanguages) {
-    gSupportedLanguages = [[NSSet setWithObjects:@"en", @"es", @"fr", @"it", @"de", @"nl", nil] retain];
-  }
   return gSupportedLanguages;
+}
+
++ (void)setSupportedLanguages:(NSSet *)supportedLanguages {
+  [supportedLanguages retain];
+  [gSupportedLanguages release];
+  gSupportedLanguages = supportedLanguages;
 }
 
 + (NSString *)countryCode {
@@ -186,8 +216,9 @@ static NSString *gLanguageCode = nil;
 + (NSString *)languageCode {
   if (!gLanguageCode) {
     NSArray *preferredLanguages = [NSLocale preferredLanguages];
+    NSSet *supportedLanguages = [YKLocalized supportedLanguages];
     for (NSString *language in preferredLanguages) {
-      if ([[YKLocalized supportedLanguages] containsObject:language]) {
+      if (!supportedLanguages || [supportedLanguages containsObject:language]) {
         gLanguageCode = [language retain];
         return gLanguageCode;
       }

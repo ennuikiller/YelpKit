@@ -69,8 +69,6 @@
 #define YKAssert(value, desc, ...) do {} while(0)
 #define YKParameterAssert(__CONDITION__) do {} while(0)
 
-#define YKArrayLength(__ARRAY__) ((sizeof __ARRAY__) / (sizeof __ARRAY__[0]))
-
 /*!
  Logging macros.
  */
@@ -93,6 +91,7 @@
 #define YKParameterAssert(__CONDITION__) do { NSParameterAssert(__CONDITION__); } while(0)
 #endif
 
+#define YKArrayLength(__ARRAY__) ((sizeof __ARRAY__) / (sizeof __ARRAY__[0]))
 
 #define YKIsEqualWithAccuracy(n1, n2, accuracy) (n1 >= (n2-accuracy) && n1 <= (n2+accuracy))
 

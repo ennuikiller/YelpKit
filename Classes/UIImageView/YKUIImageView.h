@@ -27,7 +27,7 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "YKUIView.h"
+#import "YKUILayoutView.h"
 #import "YKImageLoader.h"
 
 
@@ -58,7 +58,7 @@ typedef enum {
 /*!
  Image base view. Doesn't draw contents. See YKUIImageView.
  */
-@interface YKUIImageBaseView : YKUIView <YKUIImageView, YKImageLoaderDelegate> {
+@interface YKUIImageBaseView : YKUILayoutView <YKUIImageView, YKImageLoaderDelegate> {
   YKImageLoader *_imageLoader;
   YKUIImageViewStatus _status;
   UIImage *_image;  

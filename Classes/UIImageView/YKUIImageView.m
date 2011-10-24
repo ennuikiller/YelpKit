@@ -223,7 +223,6 @@
   }
 }
 
-
 - (void)drawInRect:(CGRect)rect contentMode:(UIViewContentMode)contentMode {
   [YKUIImageView drawImage:_image inRect:rect contentMode:contentMode];
 }

@@ -29,11 +29,11 @@
 
 typedef enum {
   YKLayoutOptionsSizeToFit = 1 << 0, // Size to fit the view
+  YKLayoutOptionsSizeToFitVariableWidth = 1 << 1,
   
   // Alignment
-  YKLayoutOptionsCenter = 1 << 1, // Center the view in the specified size (horizontal + vertical)
-  YKLayoutOptionsCenterVertical = 1 << 2, // Center vertically
-  YKLayoutOptionsRightAlign = 1 << 3, // Right align
+  YKLayoutOptionsCenter = 1 << 2, // Center the view in the specified size (horizontal + vertical)
+  YKLayoutOptionsCenterVertical = 1 << 3, // Center vertically
   
   // Whether sizeToFit is constrained to the width specified.
   // For example UILabel sizeToFit may return a larger width than was specified,
@@ -147,12 +147,14 @@ typedef enum {
 /*!
  Set origin, x position.
  Use this value instead of view.frame since the views frame might not have been set.
-
+ 
  @param x X position
+ @param frame Frame
  @param view View
+ @param frame Frame
  @result The view frame. 
  */
-- (CGRect)setX:(CGFloat)x view:(UIView *)view;
+- (CGRect)setX:(CGFloat)x frame:(CGRect)frame view:(UIView *)view;
 
 /*!
  Set origin, y position.
@@ -160,8 +162,15 @@ typedef enum {
  Use this value instead of view.frame since the views frame might not have been set.
  
  @param y Y position
+ @param frame Frame
  @param view View
+ @param frame Frame
  @result The view frame. 
+ */
+- (CGRect)setY:(CGFloat)y frame:(CGRect)frame view:(UIView *)view;
+
+/*!
+ @deprecated Use setY:frame:view:
  */
 - (CGRect)setY:(CGFloat)y view:(UIView *)view;
 

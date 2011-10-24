@@ -29,6 +29,7 @@
 
 #import "YKLayout.h"
 #import "YKCGUtils.h"
+#import "YKUILayoutView.h"
 #import "YKDefines.h"
 
 
@@ -146,10 +147,19 @@ static NSMutableDictionary *gDebugStats = NULL;
 
 - (CGRect)setFrame:(CGRect)frame view:(UIView *)view options:(YKLayoutOptions)options {
   CGRect originalFrame = frame;
-  BOOL sizeToFit = ((options & YKLayoutOptionsSizeToFit) == YKLayoutOptionsSizeToFit);
+  BOOL sizeToFit = ((options & YKLayoutOptionsSizeToFit) == YKLayoutOptionsSizeToFit) || ((options & YKLayoutOptionsSizeToFitVariableWidth) == YKLayoutOptionsSizeToFitVariableWidth);
+
   CGSize sizeThatFits = CGSizeZero;
   if (sizeToFit) {
     sizeThatFits = [view sizeThatFits:frame.size];
+    
+    // If size that fits returns different width than passed in, it can cause weirdness when sizeToFit is called multiple times in succession.
+    // Here we assert the size passed into sizeThatFits returns the same width, unless you explicitly override this behavior.
+    // For example, most views are sized basd on a width. Although you may have a button with a variable width.
+    // This check only applies to YKUIView subclasses.
+    if ((options & YKLayoutOptionsSizeToFitVariableWidth) != YKLayoutOptionsSizeToFitVariableWidth && sizeThatFits.width != frame.size.width && [view isKindOfClass:[YKUILayoutView class]]) {
+      YKAssert(NO, @"sizeThatFits: on view returned width different from passed in width. If you have a variable width view, you can pass in the option YKLayoutOptionsSizeToFitVariableWidth to avoid this check.");
+    }
     
     // If size that fits returns a larger width, then we'll need to constrain it.
     if (((options & YKLayoutOptionsSizeToFitConstraintWidth) == YKLayoutOptionsSizeToFitConstraintWidth) && sizeThatFits.width > frame.size.width) {
@@ -164,7 +174,7 @@ static NSMutableDictionary *gDebugStats = NULL;
       sizeThatFits.height = frame.size.height;
     }
     
-    //NSAssert(sizeThatFits.width > 0, @"sizeThatFits: on view returned 0 width; Make sure that layout:size: doesn't return a zero width size");
+    YKAssert(sizeThatFits.width > 0, @"sizeThatFits: on view returned 0 width; Make sure that layout:size: doesn't return a zero width size");
     
     frame.size = sizeThatFits;
   }
@@ -177,31 +187,32 @@ static NSMutableDictionary *gDebugStats = NULL;
   if ((options & YKLayoutOptionsCenterVertical) == YKLayoutOptionsCenterVertical) {
     frame = YKCGRectToCenterY(CGRectMake(frame.origin.x, frame.origin.y, sizeForAlign.width, sizeForAlign.height), originalFrame);
   }
-  
-  if ((options & YKLayoutOptionsRightAlign) == YKLayoutOptionsRightAlign) {
-    frame = YKCGRectRightAlign(frame.origin.y, sizeForAlign.width, originalFrame.size.width, originalFrame.size.width, 0, frame.size.height);
-  }
-  
+    
   [self setFrame:frame view:view];
   return frame;  
 }
 
-- (CGRect)setX:(CGFloat)x view:(UIView *)view {
-  CGRect frame = view.frame;
+- (CGRect)setX:(CGFloat)x frame:(CGRect)frame view:(UIView *)view {
   frame.origin.x = x;
   return [self setFrame:frame view:view];
 }
 
-- (CGRect)setY:(CGFloat)y view:(UIView *)view {
-  CGRect frame = view.frame;
+- (CGRect)setY:(CGFloat)y frame:(CGRect)frame view:(UIView *)view {
   frame.origin.y = y;
   return [self setFrame:frame view:view];
 }
 
-- (CGRect)setOrigin:(CGPoint)origin view:(UIView *)view {
-  CGRect frame = view.frame;
+- (CGRect)setOrigin:(CGPoint)origin frame:(CGRect)frame view:(UIView *)view {
   frame.origin = origin;
   return [self setFrame:frame view:view];
+}
+
+- (CGRect)setOrigin:(CGPoint)origin view:(UIView *)view {
+  return [self setOrigin:origin frame:(view ? view.frame : CGRectZero) view:view];
+}
+
+- (CGRect)setY:(CGFloat)y view:(UIView *)view {
+  return [self setY:y frame:(view ? view.frame : CGRectZero) view:view];
 }
 
 - (CGRect)setFrame:(CGRect)frame view:(UIView *)view {

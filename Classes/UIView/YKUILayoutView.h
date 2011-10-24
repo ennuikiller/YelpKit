@@ -1,5 +1,5 @@
 //
-//  YKUIView.m
+//  YKUILayoutView.h
 //  YelpKit
 //
 //  Created by Gabriel Handford on 6/19/09.
@@ -27,57 +27,13 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "YKUIView.h"
-#import "YKCGUtils.h"
+#import "YKLayout.h"
 
 
-@implementation YKUIView
-
-@synthesize layout=_layout;
-
-- (void)dealloc {
-  [_layout clear];
-  [_layout release];
-  [super dealloc];
+@interface YKUILayoutView : UIView {
+  YKLayout *_layout;
 }
 
-- (void)setFrame:(CGRect)frame {
-  if (_layout && !YKCGRectIsEqual(self.frame, frame)) [_layout setNeedsLayout];
-  [super setFrame:frame];
-}
-
-#pragma mark Layout
-
-- (void)layoutSubviews {
-  [super layoutSubviews];
-  YKLayoutAssert(self, _layout);
-  if (_layout) {
-    [_layout layoutSubviews:self.frame.size];
-  }
-}
-
-- (CGSize)sizeThatFits:(CGSize)size {
-  YKLayoutAssert(self, _layout);  
-  if (_layout) {
-    return [_layout sizeThatFits:size];
-  }
-  return [super sizeThatFits:size];
-}
-
-- (void)setNeedsLayout {
-  [super setNeedsLayout];
-  [_layout setNeedsLayout];
-}
-
-#pragma mark Drawing/Layout
-
-- (void)drawRect:(CGRect)rect {
-  [super drawRect:rect];
-  [_layout drawSubviewsInRect:self.bounds];
-}
-
-- (void)drawInRect:(CGRect)rect {
-  [_layout drawSubviewsInRect:rect];
-}
+@property (retain, nonatomic) YKLayout *layout;
 
 @end

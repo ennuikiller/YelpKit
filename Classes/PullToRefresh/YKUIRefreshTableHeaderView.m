@@ -137,12 +137,14 @@
       [self setPullAmount:0];      
       [_activityLabel setText:YKLocalizedString(@"Pull down to refresh...")];
       [_activityLabel stopAnimating];
+      [_activityLabel setNeedsLayout];
       break;
       
     case YKUIPullRefreshLoading:     
       _imageView.hidden = YES;
       [_activityLabel setText:YKLocalizedString(@"Loading...")];
       [_activityLabel startAnimating];
+      [_activityLabel setNeedsLayout];
       if (!_momentary)
         [self setPullAmount:_pullHeight];
       break;

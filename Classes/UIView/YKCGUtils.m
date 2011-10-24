@@ -562,6 +562,12 @@ void YKCGContextDrawBorder(CGContextRef context, CGRect rect, YKUIBorderStyle st
   }
 }
 
+void YKCGContextDrawBorderWithShadow(CGContextRef context, CGRect rect, YKUIBorderStyle style, CGColorRef fillColor, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat alternateStrokeWidth, CGFloat cornerRadius, CGColorRef shadowColor, CGFloat shadowBlur) {
+  CGContextSetShadowWithColor(context, CGSizeZero, shadowBlur, shadowColor);
+  YKCGContextDrawBorder(context, rect, style, fillColor, strokeColor, strokeWidth, alternateStrokeWidth, cornerRadius);
+  CGContextSetShadowWithColor(context, CGSizeZero, 0, NULL);
+}
+
 void YKCGContextDrawRect(CGContextRef context, CGRect rect, CGColorRef fillColor, CGColorRef strokeColor, CGFloat strokeWidth) {
   _YKCGContextDrawStyledRect(context, rect, YKUIBorderStyleNormal, fillColor, strokeColor, strokeWidth, 1);
 }
