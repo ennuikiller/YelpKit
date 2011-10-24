@@ -133,7 +133,9 @@
 
 @end
 
-// Obj-C wrapper for localize call. Also caches localized key/value pairs.
+/*!
+ Wrapper for localization calls, that caches localized key/value pairs.
+ */
 @interface YKLocalized : NSObject { }
 
 // Cache for localized strings
@@ -145,15 +147,14 @@
  Get localized string.
  
  @param key Key
- @param table The strings file to lookup. Defaults to Localizable (which uses Localizable.strings)
+ @param tableName The strings file to lookup. Defaults to Localizable (which uses Localizable.strings)
  @param value Default if key is not present
  */
 + (NSString *)localize:(NSString *)key tableName:(NSString *)tableName value:(NSString *)value;
 
 /*!
  Set default table name.
- Defaults to "Localizable".
- Set to nil to reset to default.
+ @param defaultTableName Default table name. Defaults to "Localizable". Set to nil to reset to default.
  */
 + (void)setDefaultTableName:(NSString *)defaultTableName;
 
@@ -164,6 +165,7 @@
 
 /*!
  Shortcut for determining if current locale is metric.
+ @param locale Locale
  */
 + (BOOL)isMetric:(id)locale;
 

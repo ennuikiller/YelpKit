@@ -56,9 +56,9 @@ typedef enum {
  YKLayout is designed to calculate and return a size that best fits the receiver’s subviews,
  without altering the subviews frames, or affecting layoutSubviews call hierarchy.
  
- Instead of defining both (CGSize)sizeThatFits:(CGSize)size; and (void)layoutSubviews;, you define a single method called:
+ Instead of defining both sizeThatFits: and layoutSubviews, you define a single method called:
  
- - (CGSize)layout:(id<YKLayout>)layout size:(CGSize)size;
+    - (CGSize)layout:(id<YKLayout>)layout size:(CGSize)size;
  
  Then in this method you use the layout instance to set the subview frames (if sizing).
  
@@ -66,20 +66,20 @@ typedef enum {
  
  For example, 
  
- CGRect titleLabelFrame = [layout setFrame:CGRectMake(x, y, 400, 0) view:_titleLabel options:YKLayoutOptionsSizeToFit];
- // titleLabelFrame may have a different width and will have a valid height
+     CGRect titleLabelFrame = [layout setFrame:CGRectMake(x, y, 400, 0) view:_titleLabel options:YKLayoutOptionsSizeToFit];
+     // titleLabelFrame may have a different width and will have a valid height
  
  You can combine YKLayoutOptionsSizeToFit and YKLayoutOptionsCenter to have it be centered with a variable height. 
  For example,
  
- CGRect titleLabelFrame = [layout setFrame:CGRectMake(x, y, 400, 0) view:_titleLabel options:YKLayoutOptionsSizeToFit|YKLayoutOptionsCenter];
- // titleLabelFrame may have a different width and will have a valid height and will have an x position so it is centered
+     CGRect titleLabelFrame = [layout setFrame:CGRectMake(x, y, 400, 0) view:_titleLabel options:YKLayoutOptionsSizeToFit|YKLayoutOptionsCenter];
+     // titleLabelFrame may have a different width and will have a valid height and will have an x position so it is centered
  
  You can also combine YKLayoutOptionsSizeToFit with YKLayoutOptionsConstraintWidth 
  to make sure the width isn't set larger than expected. For example, 
  
- CGRect titleLabelFrame = [layout setFrame:CGRectMake(x, y, 400, 0) view:_titleLabel options:YKLayoutOptionsSizeToFit|YKLayoutOptionsConstraintWidth];
- // titleLabelFrame may have a different width but it won't be larger than 400
+     CGRect titleLabelFrame = [layout setFrame:CGRectMake(x, y, 400, 0) view:_titleLabel options:YKLayoutOptionsSizeToFit|YKLayoutOptionsConstraintWidth];
+     // titleLabelFrame may have a different width but it won't be larger than 400
  
  You can combine YKLayoutOptionsSizeToFit, YKLayoutOptionsConstraintWidth, and YKLayoutOptionsDefaultWidth to make sure
  a view sizes to fit with max and default width (when 0).  
@@ -201,17 +201,48 @@ typedef enum {
  UIView's can implement this protocol, to enable custom layouts.
  */
 @protocol YKUIViewLayout <NSObject>
+
+/*!
+ Layout or size the current view, with the specified size as a hint.
+ Return the size used. The returned size.width should match the width that was
+ passed in.
+
+ You should never setFrame on subviews in this method. Instead use the methods
+ in layout in order to setFrame, and use what those methods return to layout other
+ subviews. This is because setFrame calls are no-ops when the view is only sizing.
+
+ @param layout Layout
+ @param size Size to layout in
+ */
 - (CGSize)layout:(id<YKLayout>)layout size:(CGSize)size;
+
 @end
 
 /*!
  Subviews added to YKLayout need to implement these methods.
  */
 @protocol YKLayoutDrawable <NSObject>
+
+/*!
+ @result Size of drawable
+ */
 - (CGRect)frame;
+
+/*!
+ @result Whether drawable is hidden
+ */
 - (BOOL)isHidden;
+
+/*!
+ @result Set needs layout
+ */
 - (void)layoutIfNeeded;
+
+/*!
+ @result Draw the drawable
+ */
 - (void)drawInRect:(CGRect)rect;
+
 @end
 
 @class YKLayoutStats;
@@ -278,14 +309,14 @@ typedef enum {
  or views in table view cells that need better scrolling performance.
  For resizing you may need to adjust the contentMode.
 
- @param view
+ @param view View to add
  */
 - (void)addSubview:(UIView *)view;
 
 /*!
  Remove subview.
 
- @param view
+ @param view View to remove
  */
 - (void)removeSubview:(UIView *)view;
 
@@ -304,6 +335,7 @@ typedef enum {
 
 /*!
  Get debug stats.
+ @param view View
  */
 + (YKLayoutStats *)statsForView:(UIView *)view;
 

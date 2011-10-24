@@ -54,7 +54,7 @@
 /*!
  Path to resource copy in documents.
  @param source Source
- @param to Destination
+ @param dest Destination
  @param overwrite If YES, will overwrite existing file
  @result Returns path to file in documents directory, if it doesn't exist in the document directory, it is copied there first.
  */

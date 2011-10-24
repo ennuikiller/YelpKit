@@ -24,6 +24,10 @@
 //  THE SOFTWARE.
 //
 
+/*!
+ Label that includes an activity indicator or image and text, with optional detailed text below it.
+ For example, the pull to refresh loading indicator.
+ */
 @interface YKUIActivityLabel : UIView {
   UILabel *_textLabel;
   UILabel *_detailLabel;
@@ -40,6 +44,7 @@
 /*!
  Set image to display when not animating.
  By default no image is shown.
+ @param image Image
  */
 - (void)setImage:(UIImage *)image;
 

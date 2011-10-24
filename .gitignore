@@ -1,4 +1,4 @@
 build
-Documentation/appledoc
 YelpKit.xcodeproj/project.xcworkspace/xcuserdata
 .DS_Store
+Documentation/output
