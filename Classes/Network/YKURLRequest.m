@@ -142,7 +142,7 @@ static BOOL gYKURLRequestCacheEnabled = YES; // Defaults to ON
   _method = method;
   NSAssert(_method != YKHTTPMethodNone, @"Invalid method");
   
-#if YP_DEBUG
+#if YP_DEBUG || DEBUG
   // Check mock
   if (_mockResponse) {
     YKDebug(@"Mock response for: %@", _URL);
