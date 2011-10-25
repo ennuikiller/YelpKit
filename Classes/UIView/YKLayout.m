@@ -153,14 +153,6 @@ static NSMutableDictionary *gDebugStats = NULL;
   if (sizeToFit) {
     sizeThatFits = [view sizeThatFits:frame.size];
     
-    // If size that fits returns different width than passed in, it can cause weirdness when sizeToFit is called multiple times in succession.
-    // Here we assert the size passed into sizeThatFits returns the same width, unless you explicitly override this behavior.
-    // For example, most views are sized basd on a width. Although you may have a button with a variable width.
-    // This check only applies to YKUIView subclasses.
-    if ((options & YKLayoutOptionsSizeToFitVariableWidth) != YKLayoutOptionsSizeToFitVariableWidth && sizeThatFits.width != frame.size.width && [view isKindOfClass:[YKUILayoutView class]]) {
-      YKAssert(NO, @"sizeThatFits: on view returned width different from passed in width. If you have a variable width view, you can pass in the option YKLayoutOptionsSizeToFitVariableWidth to avoid this check.");
-    }
-    
     // If size that fits returns a larger width, then we'll need to constrain it.
     if (((options & YKLayoutOptionsSizeToFitConstraintWidth) == YKLayoutOptionsSizeToFitConstraintWidth) && sizeThatFits.width > frame.size.width) {
       sizeThatFits.width = frame.size.width;
@@ -172,6 +164,14 @@ static NSMutableDictionary *gDebugStats = NULL;
     
     if (sizeThatFits.height == 0 && ((options & YKLayoutOptionsSizeToFitDefaultSize) == YKLayoutOptionsSizeToFitDefaultSize)) {
       sizeThatFits.height = frame.size.height;
+    }
+    
+    // If size that fits returns different width than passed in, it can cause weirdness when sizeToFit is called multiple times in succession.
+    // Here we assert the size passed into sizeThatFits returns the same width, unless you explicitly override this behavior.
+    // For example, most views are sized basd on a width. Although you may have a button with a variable width.
+    // This check only applies to YKUIView subclasses.
+    if ((options & YKLayoutOptionsSizeToFitVariableWidth) != YKLayoutOptionsSizeToFitVariableWidth && sizeThatFits.width != frame.size.width && [view isKindOfClass:[YKUILayoutView class]]) {
+      YKAssert(NO, @"sizeThatFits: on view returned width different from passed in width. If you have a variable width view, you can pass in the option YKLayoutOptionsSizeToFitVariableWidth to avoid this check.");
     }
     
     YKAssert(sizeThatFits.width > 0, @"sizeThatFits: on view returned 0 width; Make sure that layout:size: doesn't return a zero width size");

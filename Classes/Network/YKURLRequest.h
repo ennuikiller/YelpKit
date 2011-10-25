@@ -74,7 +74,7 @@ extern const double kYKURLRequestExpiresAgeMax;
   SEL _cancelSelector;
   
   YKURL *_URL;
-  YKHTTPMethod _method;
+  YPHTTPMethod _method;
   
   NSTimeInterval _timeout;
   

@@ -59,7 +59,7 @@
   // Image cache
   NSMutableDictionary *_imageCache;
   NSMutableArray *_imageSortedList;
-  NSUInteger _totalPixelCount;
+  NSInteger _totalPixelCount;
   NSUInteger _maxPixelCount;  
 }
 
