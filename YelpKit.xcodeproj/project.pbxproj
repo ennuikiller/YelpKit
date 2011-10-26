@@ -29,8 +29,6 @@
 		00559339140B00F6001E9C43 /* YKUIRefreshTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00559314140B00F6001E9C43 /* YKUIRefreshTableView.m */; };
 		0055933A140B00F6001E9C43 /* YKUIImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559316140B00F6001E9C43 /* YKUIImageView.h */; };
 		0055933B140B00F6001E9C43 /* YKUIImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00559317140B00F6001E9C43 /* YKUIImageView.m */; };
-		00559340140B00F6001E9C43 /* YKCGUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 0055931E140B00F6001E9C43 /* YKCGUtils.h */; };
-		00559341140B00F6001E9C43 /* YKCGUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0055931F140B00F6001E9C43 /* YKCGUtils.m */; };
 		00559342140B00F6001E9C43 /* YKLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559320140B00F6001E9C43 /* YKLayout.h */; };
 		00559343140B00F6001E9C43 /* YKLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 00559321140B00F6001E9C43 /* YKLayout.m */; };
 		00559346140B00F6001E9C43 /* YKDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559324140B00F6001E9C43 /* YKDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -39,6 +37,15 @@
 		00559349140B00F6001E9C43 /* YKLocalized.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559327140B00F6001E9C43 /* YKLocalized.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0055934A140B00F6001E9C43 /* YKLocalized.m in Sources */ = {isa = PBXBuildFile; fileRef = 00559328140B00F6001E9C43 /* YKLocalized.m */; };
 		00559353140B0102001E9C43 /* GHKitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00559352140B0102001E9C43 /* GHKitIOS.framework */; };
+		00D575681457C35C00DE6487 /* YKCGUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 00D575661457C35C00DE6487 /* YKCGUtils.h */; };
+		00D575691457C35C00DE6487 /* YKCGUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D575671457C35C00DE6487 /* YKCGUtils.m */; };
+		00D5756C1457C38900DE6487 /* YKUIButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 00D5756A1457C38900DE6487 /* YKUIButton.h */; };
+		00D5756D1457C38900DE6487 /* YKUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D5756B1457C38900DE6487 /* YKUIButton.m */; };
+		00D575701457C3CF00DE6487 /* YKUIControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 00D5756E1457C3CF00DE6487 /* YKUIControl.h */; };
+		00D575711457C3CF00DE6487 /* YKUIControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D5756F1457C3CF00DE6487 /* YKUIControl.m */; };
+		00D575741457C47A00DE6487 /* YKUIButtonStyles.h in Headers */ = {isa = PBXBuildFile; fileRef = 00D575721457C47900DE6487 /* YKUIButtonStyles.h */; };
+		00D575751457C47A00DE6487 /* YKUIButtonStyles.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D575731457C47900DE6487 /* YKUIButtonStyles.m */; };
+		00D5757B1457C65200DE6487 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D5757A1457C65200DE6487 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,8 +74,6 @@
 		00559314140B00F6001E9C43 /* YKUIRefreshTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIRefreshTableView.m; sourceTree = "<group>"; };
 		00559316140B00F6001E9C43 /* YKUIImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUIImageView.h; sourceTree = "<group>"; };
 		00559317140B00F6001E9C43 /* YKUIImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIImageView.m; sourceTree = "<group>"; };
-		0055931E140B00F6001E9C43 /* YKCGUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKCGUtils.h; sourceTree = "<group>"; };
-		0055931F140B00F6001E9C43 /* YKCGUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKCGUtils.m; sourceTree = "<group>"; };
 		00559320140B00F6001E9C43 /* YKLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKLayout.h; sourceTree = "<group>"; };
 		00559321140B00F6001E9C43 /* YKLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKLayout.m; sourceTree = "<group>"; };
 		00559324140B00F6001E9C43 /* YKDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKDefines.h; sourceTree = "<group>"; };
@@ -77,6 +82,17 @@
 		00559327140B00F6001E9C43 /* YKLocalized.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKLocalized.h; sourceTree = "<group>"; };
 		00559328140B00F6001E9C43 /* YKLocalized.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKLocalized.m; sourceTree = "<group>"; };
 		00559352140B0102001E9C43 /* GHKitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHKitIOS.framework; sourceTree = "<group>"; };
+		00D575661457C35C00DE6487 /* YKCGUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKCGUtils.h; sourceTree = "<group>"; };
+		00D575671457C35C00DE6487 /* YKCGUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKCGUtils.m; sourceTree = "<group>"; };
+		00D5756A1457C38900DE6487 /* YKUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUIButton.h; sourceTree = "<group>"; };
+		00D5756B1457C38900DE6487 /* YKUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIButton.m; sourceTree = "<group>"; };
+		00D5756E1457C3CF00DE6487 /* YKUIControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUIControl.h; sourceTree = "<group>"; };
+		00D5756F1457C3CF00DE6487 /* YKUIControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIControl.m; sourceTree = "<group>"; };
+		00D575721457C47900DE6487 /* YKUIButtonStyles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUIButtonStyles.h; sourceTree = "<group>"; };
+		00D575731457C47900DE6487 /* YKUIButtonStyles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIButtonStyles.m; sourceTree = "<group>"; };
+		00D575761457C62A00DE6487 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		00D575781457C63400DE6487 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		00D5757A1457C65200DE6487 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00D5757B1457C65200DE6487 /* QuartzCore.framework in Frameworks */,
 				005592EC140B0085001E9C43 /* Foundation.framework in Frameworks */,
 				00559353140B0102001E9C43 /* GHKitIOS.framework in Frameworks */,
 			);
@@ -95,6 +112,9 @@
 		005592DD140B0085001E9C43 = {
 			isa = PBXGroup;
 			children = (
+				00D5757A1457C65200DE6487 /* QuartzCore.framework */,
+				00D575781457C63400DE6487 /* CoreFoundation.framework */,
+				00D575761457C62A00DE6487 /* CoreGraphics.framework */,
 				005592FE140B00F6001E9C43 /* Classes */,
 				0055934B140B0102001E9C43 /* Libraries */,
 				005592FD140B00E2001E9C43 /* YelpKit-Prefix.pch */,
@@ -122,6 +142,8 @@
 		005592FE140B00F6001E9C43 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				00D575641457C35C00DE6487 /* Buttons */,
+				00D575651457C35C00DE6487 /* UI */,
 				005592FF140B00F6001E9C43 /* ImageLoader */,
 				00559302140B00F6001E9C43 /* Labels */,
 				00559305140B00F6001E9C43 /* Network */,
@@ -195,8 +217,6 @@
 		00559318140B00F6001E9C43 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
-				0055931E140B00F6001E9C43 /* YKCGUtils.h */,
-				0055931F140B00F6001E9C43 /* YKCGUtils.m */,
 				00559320140B00F6001E9C43 /* YKLayout.h */,
 				00559321140B00F6001E9C43 /* YKLayout.m */,
 				004DA800145235F000247993 /* YKUILayoutView.h */,
@@ -211,6 +231,28 @@
 				00559352140B0102001E9C43 /* GHKitIOS.framework */,
 			);
 			path = Libraries;
+			sourceTree = "<group>";
+		};
+		00D575641457C35C00DE6487 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				00D5756A1457C38900DE6487 /* YKUIButton.h */,
+				00D5756B1457C38900DE6487 /* YKUIButton.m */,
+				00D5756E1457C3CF00DE6487 /* YKUIControl.h */,
+				00D5756F1457C3CF00DE6487 /* YKUIControl.m */,
+				00D575721457C47900DE6487 /* YKUIButtonStyles.h */,
+				00D575731457C47900DE6487 /* YKUIButtonStyles.m */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		00D575651457C35C00DE6487 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				00D575661457C35C00DE6487 /* YKCGUtils.h */,
+				00D575671457C35C00DE6487 /* YKCGUtils.m */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,12 +272,15 @@
 				00559336140B00F6001E9C43 /* YKUIRefreshTableHeaderView.h in Headers */,
 				00559338140B00F6001E9C43 /* YKUIRefreshTableView.h in Headers */,
 				0055933A140B00F6001E9C43 /* YKUIImageView.h in Headers */,
-				00559340140B00F6001E9C43 /* YKCGUtils.h in Headers */,
 				00559342140B00F6001E9C43 /* YKLayout.h in Headers */,
 				00559346140B00F6001E9C43 /* YKDefines.h in Headers */,
 				00559347140B00F6001E9C43 /* YKError.h in Headers */,
 				00559349140B00F6001E9C43 /* YKLocalized.h in Headers */,
 				004DA802145235F100247993 /* YKUILayoutView.h in Headers */,
+				00D575681457C35C00DE6487 /* YKCGUtils.h in Headers */,
+				00D5756C1457C38900DE6487 /* YKUIButton.h in Headers */,
+				00D575701457C3CF00DE6487 /* YKUIControl.h in Headers */,
+				00D575741457C47A00DE6487 /* YKUIButtonStyles.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,11 +343,14 @@
 				00559337140B00F6001E9C43 /* YKUIRefreshTableHeaderView.m in Sources */,
 				00559339140B00F6001E9C43 /* YKUIRefreshTableView.m in Sources */,
 				0055933B140B00F6001E9C43 /* YKUIImageView.m in Sources */,
-				00559341140B00F6001E9C43 /* YKCGUtils.m in Sources */,
 				00559343140B00F6001E9C43 /* YKLayout.m in Sources */,
 				00559348140B00F6001E9C43 /* YKError.m in Sources */,
 				0055934A140B00F6001E9C43 /* YKLocalized.m in Sources */,
 				004DA803145235F100247993 /* YKUILayoutView.m in Sources */,
+				00D575691457C35C00DE6487 /* YKCGUtils.m in Sources */,
+				00D5756D1457C38900DE6487 /* YKUIButton.m in Sources */,
+				00D575711457C3CF00DE6487 /* YKUIControl.m in Sources */,
+				00D575751457C47A00DE6487 /* YKUIButtonStyles.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
