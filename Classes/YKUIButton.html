@@ -1,0 +1,927 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>YKUIButton Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">YelpKit </a></h1>
+				<a id="developerHome" href="../index.html">YelpKit</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">YKUIButton Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/color">&nbsp;&nbsp;&nbsp;&nbsp;color</option>
+	
+	<option value="//api/name/color2">&nbsp;&nbsp;&nbsp;&nbsp;color2</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/button">&nbsp;&nbsp;&nbsp;&nbsp;+ button</option>
+	
+	<option value="//api/name/buttonWithFrame:title:">&nbsp;&nbsp;&nbsp;&nbsp;+ buttonWithFrame:title:</option>
+	
+	<option value="//api/name/buttonWithFrame:title:target:action:">&nbsp;&nbsp;&nbsp;&nbsp;+ buttonWithFrame:title:target:action:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/initWithFrame:title:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithFrame:title:</option>
+	
+	<option value="//api/name/initWithFrame:title:target:action:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithFrame:title:target:action:</option>
+	
+	<option value="//api/name/setBorderStyle:color:width:alternateWidth:cornerRadius:">&nbsp;&nbsp;&nbsp;&nbsp;- setBorderStyle:color:width:alternateWidth:cornerRadius:</option>
+	
+	<option value="//api/name/sharedInit">&nbsp;&nbsp;&nbsp;&nbsp;- sharedInit</option>
+	
+	<option value="//api/name/sizeThatFitsTitle:">&nbsp;&nbsp;&nbsp;&nbsp;- sizeThatFitsTitle:</option>
+	
+	<option value="//api/name/sizeToFitWithMinimumSize:">&nbsp;&nbsp;&nbsp;&nbsp;- sizeToFitWithMinimumSize:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/color">color</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/color2">color2</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/button">button</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/buttonWithFrame:title:">buttonWithFrame:title:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/buttonWithFrame:title:target:action:">buttonWithFrame:title:target:action:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithFrame:title:">initWithFrame:title:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithFrame:title:target:action:">initWithFrame:title:target:action:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setBorderStyle:color:width:alternateWidth:cornerRadius:">setBorderStyle:color:width:alternateWidth:cornerRadius:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedInit">sharedInit</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sizeThatFitsTitle:">sizeThatFitsTitle:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sizeToFitWithMinimumSize:">sizeToFitWithMinimumSize:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="YKUIButton Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">YKUIButton Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value"><a href="../Classes/YKUIControl.html">YKUIControl</a> : UIControl</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">YKUIButton.h<br />YKUIButton.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Button (control).</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/color">&nbsp;&nbsp;color</a></code>
+		<span class="tooltip"><p>Color (background) for <a href="#//api/name/button">button</a>.
+Can be used with <a href="#//api/name/shadingType">shadingType</a> and alternateColor.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/color2">&nbsp;&nbsp;color2</a></code>
+		<span class="tooltip"><p>Alternate colors (background) for shading.
+Not all shading types use an alternate <a href="#//api/name/color">color</a>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithFrame:title:target:action:">&ndash;&nbsp;initWithFrame:title:target:action:</a></code>
+		<span class="tooltip"><p>Create <a href="#//api/name/button">button</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithFrame:title:">&ndash;&nbsp;initWithFrame:title:</a></code>
+		<span class="tooltip"><p>Create <a href="#//api/name/button">button</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/button">+&nbsp;button</a></code>
+		<span class="tooltip"><p>Button</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/buttonWithFrame:title:">+&nbsp;buttonWithFrame:title:</a></code>
+		<span class="tooltip"><p>Button with style.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/buttonWithFrame:title:target:action:">+&nbsp;buttonWithFrame:title:target:action:</a></code>
+		<span class="tooltip"><p>Button with style.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sizeToFitWithMinimumSize:">&ndash;&nbsp;sizeToFitWithMinimumSize:</a></code>
+		<span class="tooltip"><p>Size to fit <a href="#//api/name/button">button</a> with a minimum size.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sizeThatFitsTitle:">&ndash;&nbsp;sizeThatFitsTitle:</a></code>
+		<span class="tooltip"><p>Size that fits title.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setBorderStyle:color:width:alternateWidth:cornerRadius:">&ndash;&nbsp;setBorderStyle:color:width:alternateWidth:cornerRadius:</a></code>
+		<span class="tooltip"><p>Set border.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sharedInit">&ndash;&nbsp;sharedInit</a></code>
+		<span class="tooltip"><p>This method gets called by both initWithFrame and initWithCoder. Subclasses taking advantage of
+this method should make sure to call [super sharedInit] at the top of their implementation
+of <a href="../Classes/YKUIControl.html#//api/name/sharedInit">sharedInit</a></p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/color" title="color"></a>
+	<h3 class="subsubtitle method-title">color</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Color (background) for <a href="#//api/name/button">button</a>.
+Can be used with <a href="#//api/name/shadingType">shadingType</a> and alternateColor.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (retain, nonatomic) UIColor *color</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIButton.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/color2" title="color2"></a>
+	<h3 class="subsubtitle method-title">color2</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Alternate colors (background) for shading.
+Not all shading types use an alternate <a href="#//api/name/color">color</a>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (retain, nonatomic) UIColor *color2</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIButton.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/button" title="button"></a>
+	<h3 class="subsubtitle method-title">button</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Button</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (YKUIButton *)button</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Button</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIButton.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/buttonWithFrame:title:" title="buttonWithFrame:title:"></a>
+	<h3 class="subsubtitle method-title">buttonWithFrame:title:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Button with style.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (YKUIButton *)buttonWithFrame:(CGRect)<em>frame</em> title:(NSString *)<em>title</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>frame</em></dt>
+			<dd><p>Frame</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>title</em></dt>
+			<dd><p>Title</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIButton.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/buttonWithFrame:title:target:action:" title="buttonWithFrame:title:target:action:"></a>
+	<h3 class="subsubtitle method-title">buttonWithFrame:title:target:action:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Button with style.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (YKUIButton *)buttonWithFrame:(CGRect)<em>frame</em> title:(NSString *)<em>title</em> target:(id)<em>target</em> action:(SEL)<em>action</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>frame</em></dt>
+			<dd><p>Frame</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>title</em></dt>
+			<dd><p>Title</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>target</em></dt>
+			<dd><p>Target</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>action</em></dt>
+			<dd><p>Action</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIButton.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithFrame:title:" title="initWithFrame:title:"></a>
+	<h3 class="subsubtitle method-title">initWithFrame:title:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create <a href="#//api/name/button">button</a>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithFrame:(CGRect)<em>frame</em> title:(NSString *)<em>title</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>frame</em></dt>
+			<dd><p>Frame</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>title</em></dt>
+			<dd><p>Title</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIButton.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithFrame:title:target:action:" title="initWithFrame:title:target:action:"></a>
+	<h3 class="subsubtitle method-title">initWithFrame:title:target:action:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create <a href="#//api/name/button">button</a>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithFrame:(CGRect)<em>frame</em> title:(NSString *)<em>title</em> target:(id)<em>target</em> action:(SEL)<em>action</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>frame</em></dt>
+			<dd><p>Frame</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>title</em></dt>
+			<dd><p>Title</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>target</em></dt>
+			<dd><p>Target</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>action</em></dt>
+			<dd><p>Action</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIButton.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setBorderStyle:color:width:alternateWidth:cornerRadius:" title="setBorderStyle:color:width:alternateWidth:cornerRadius:"></a>
+	<h3 class="subsubtitle method-title">setBorderStyle:color:width:alternateWidth:cornerRadius:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Set border.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)setBorderStyle:(YKUIBorderStyle)<em>borderStyle</em> color:(UIColor *)<em>color</em> width:(CGFloat)<em>width</em> alternateWidth:(CGFloat)<em>alternateWidth</em> cornerRadius:(CGFloat)<em>cornerRadius</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>borderStyle</em></dt>
+			<dd><p>Border style</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>color</em></dt>
+			<dd><p>Color</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>width</em></dt>
+			<dd><p>Width</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>alternateWidth</em></dt>
+			<dd><p>Alternate width</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>cornerRadius</em></dt>
+			<dd><p>Corner radius</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIButton.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sharedInit" title="sharedInit"></a>
+	<h3 class="subsubtitle method-title">sharedInit</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This method gets called by both initWithFrame and initWithCoder. Subclasses taking advantage of
+this method should make sure to call [super sharedInit] at the top of their implementation
+of <a href="../Classes/YKUIControl.html#//api/name/sharedInit">sharedInit</a></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)sharedInit</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIControl.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sizeThatFitsTitle:" title="sizeThatFitsTitle:"></a>
+	<h3 class="subsubtitle method-title">sizeThatFitsTitle:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Size that fits title.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (CGSize)sizeThatFitsTitle:(CGSize)<em>size</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>size</em></dt>
+			<dd><p>Size</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Size to only fit the title text (with insets).</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIButton.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sizeToFitWithMinimumSize:" title="sizeToFitWithMinimumSize:"></a>
+	<h3 class="subsubtitle method-title">sizeToFitWithMinimumSize:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Size to fit <a href="#//api/name/button">button</a> with a minimum size.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)sizeToFitWithMinimumSize:(CGSize)<em>minSize</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>minSize</em></dt>
+			<dd><p>Min size</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIButton.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2011 YelpKit. All rights reserved. (Last updated: 2011-10-25)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+		</script>
+	</body>
+</html>

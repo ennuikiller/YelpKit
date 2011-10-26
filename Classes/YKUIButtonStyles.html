@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>YKUIImageView Class Reference</title>
+		<title>YKUIButtonStyles Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">YKUIImageView Class Reference</h1>
+				<h1 class="hideInXcode">YKUIButtonStyles Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -40,11 +40,11 @@
 	
 	
 	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/setStyle:button:">&nbsp;&nbsp;&nbsp;&nbsp;+ setStyle:button:</option>
 	
 	
-	<option value="instance_methods">Instance Methods</option>
-	
-	<option value="//api/name/drawInRect:contentMode:">&nbsp;&nbsp;&nbsp;&nbsp;- drawInRect:contentMode:</option>
 	
 	
 	
@@ -70,20 +70,20 @@
 
 
 
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/drawInRect:contentMode:">drawInRect:contentMode:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setStyle:button:">setStyle:button:</a></span></li>
 	
 </ul></li>
+
+
 
 
 			</ul>
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="YKUIImageView Class Reference" name="top"></a>
+				<a title="YKUIButtonStyles Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -92,7 +92,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">YKUIImageView Class Reference</h1>
+						<h1 class="title title-header">YKUIButtonStyles Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -100,10 +100,10 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value"><a href="../Classes/YKUIImageBaseView.html">YKUIImageBaseView</a> : YKUILayoutView : UIView</td>
+	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">YKUIImageView.h<br />YKUIImageView.m</td>
+	<td class="specification-value">YKUIButtonStyles.h<br />YKUIButtonStyles.m</td>
 </tr>
 						</tbody></table></div>
 					
@@ -113,9 +113,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Image view.</p>
-
-<p>Defaults to non-opaque with white background and fill aspect fit content mode.</p>
+						<p>Button styles.</p>
 					</div>
 					
 					
@@ -133,8 +131,8 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/drawInRect:contentMode:">&ndash;&nbsp;drawInRect:contentMode:</a></code>
-		<span class="tooltip"><p>Draw image in rect for current graphics context.</p></span>
+		<code><a href="#//api/name/setStyle:button:">+&nbsp;setStyle:button:</a></code>
+		<span class="tooltip"><p>Set a button style.</p></span>
 	</span>
 	
 	
@@ -149,37 +147,35 @@
 					
 					
 					
-					
-					
 					<div class="section section-methods">
-						<a title="Instance Methods" name="instance_methods"></a>
-						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/drawInRect:contentMode:" title="drawInRect:contentMode:"></a>
-	<h3 class="subsubtitle method-title">drawInRect:contentMode:</h3>
+	<a name="//api/name/setStyle:button:" title="setStyle:button:"></a>
+	<h3 class="subsubtitle method-title">setStyle:button:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Draw image in rect for current graphics context.</p>
+		<p>Set a button style.</p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (void)drawInRect:(CGRect)<em>rect</em> contentMode:(UIViewContentMode)<em>contentMode</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (void)setStyle:(YKUIButtonStyle)<em>style</em> button:(YKUIButton *)<em>button</em></code></div>
 	
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>rect</em></dt>
-			<dd><p>Rect</p></dd>
+			<dt><em>style</em></dt>
+			<dd><p>Style</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>contentMode</em></dt>
-			<dd><p>Content mode</p></dd>
+			<dt><em>button</em></dt>
+			<dd><p>Button</p></dd>
 		</dl>
 		
 	</div>
@@ -198,13 +194,15 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">YKUIImageView.h</code><br />
+		<code class="declared-in-ref">YKUIButtonStyles.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 					</div>
+					
+					
 					
 					
 				</div>
