@@ -89,8 +89,6 @@ extern const double kYKURLRequestExpiresAgeMax;
   BOOL _cacheHit;
   BOOL _inCache;
   
-  BOOL _authProtectionDisabled;
-  
   NSRunLoop *_runLoop;
   
   // For caching
@@ -212,6 +210,12 @@ extern const double kYKURLRequestExpiresAgeMax;
  @param compress If YES, will apply the compressor
  */
 - (void)setHTTPBodyMultipart:(NSDictionary *)multipart keyEnumerator:(NSEnumerator *)keyEnumerator compress:(BOOL)compress;
+
+/*!
+ Set whether to ignore auth errors. Useful for testing in debug environments with self signed certs.
+ @param authProtectionDisabled Whether to disable protection
+ */
++ (void)setAuthProtectionDisabled:(BOOL)authProtectionDisabled;
 
 /*!
  Set the HTTP body data.

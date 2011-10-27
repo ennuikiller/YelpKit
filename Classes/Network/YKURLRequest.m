@@ -475,9 +475,14 @@ static id<YKCompressor> gCompressor = NULL;
   return nil;
 }
 
+static BOOL gAuthProtectionDisabled = NO;
++ (void)setAuthProtectionDisabled:(BOOL)authProtectionDisabled {
+  gAuthProtectionDisabled = authProtectionDisabled;
+}
+
 - (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
-  if (_authProtectionDisabled) {
-    // Accept all secure connections in debug mode
+  if (gAuthProtectionDisabled) {
+    // Accept all secure connections if protection is disabled
     return YES;
   }
   return NO; // The default
@@ -486,8 +491,8 @@ static id<YKCompressor> gCompressor = NULL;
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
   if (_stopped) return;
 
-  if (_authProtectionDisabled) {
-    // Accept all secure connections in debug mode
+  if (gAuthProtectionDisabled) {
+    // Accept all secure connections if protection is disabled
     YKDebug(@"Connecting to SSL host: %@", challenge.protectionSpace.host);
     [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
   } else {
