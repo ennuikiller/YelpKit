@@ -38,11 +38,26 @@
 	
 	
 	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/description">&nbsp;&nbsp;&nbsp;&nbsp;description</option>
+	
+	<option value="//api/name/key">&nbsp;&nbsp;&nbsp;&nbsp;key</option>
+	
+	<option value="//api/name/unknownDescription">&nbsp;&nbsp;&nbsp;&nbsp;unknownDescription</option>
+	
+	
 	
 	
 	<option value="class_methods">Class Methods</option>
 	
 	<option value="//api/name/errorForError:">&nbsp;&nbsp;&nbsp;&nbsp;+ errorForError:</option>
+	
+	<option value="//api/name/errorWithDescription:">&nbsp;&nbsp;&nbsp;&nbsp;+ errorWithDescription:</option>
+	
+	<option value="//api/name/errorWithKey:">&nbsp;&nbsp;&nbsp;&nbsp;+ errorWithKey:</option>
+	
+	<option value="//api/name/errorWithKey:error:">&nbsp;&nbsp;&nbsp;&nbsp;+ errorWithKey:error:</option>
 	
 	<option value="//api/name/errorWithKey:userInfo:">&nbsp;&nbsp;&nbsp;&nbsp;+ errorWithKey:userInfo:</option>
 	
@@ -53,9 +68,19 @@
 	
 	<option value="//api/name/fields">&nbsp;&nbsp;&nbsp;&nbsp;- fields</option>
 	
+	<option value="//api/name/initWithKey:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithKey:</option>
+	
+	<option value="//api/name/initWithKey:error:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithKey:error:</option>
+	
 	<option value="//api/name/initWithKey:userInfo:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithKey:userInfo:</option>
 	
+	<option value="//api/name/localizedDescriptionForKey">&nbsp;&nbsp;&nbsp;&nbsp;- localizedDescriptionForKey</option>
+	
 	<option value="//api/name/setDescription:">&nbsp;&nbsp;&nbsp;&nbsp;- setDescription:</option>
+	
+	<option value="//api/name/userInfoForKey:">&nbsp;&nbsp;&nbsp;&nbsp;- userInfoForKey:</option>
+	
+	<option value="//api/name/userInfoForKey:subKey:">&nbsp;&nbsp;&nbsp;&nbsp;- userInfoForKey:subKey:</option>
 	
 	
 	
@@ -79,11 +104,27 @@
 
 
 
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/description">description</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/key">key</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/unknownDescription">unknownDescription</a></span></li>
+	
+</ul></li>
+
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/errorForError:">errorForError:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/errorWithDescription:">errorWithDescription:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/errorWithKey:">errorWithKey:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/errorWithKey:error:">errorWithKey:error:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/errorWithKey:userInfo:">errorWithKey:userInfo:</a></span></li>
 	
@@ -95,9 +136,19 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fields">fields</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithKey:">initWithKey:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithKey:error:">initWithKey:error:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithKey:userInfo:">initWithKey:userInfo:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/localizedDescriptionForKey">localizedDescriptionForKey</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setDescription:">setDescription:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/userInfoForKey:">userInfoForKey:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/userInfoForKey:subKey:">userInfoForKey:subKey:</a></span></li>
 	
 </ul></li>
 
@@ -136,16 +187,16 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Generic error class, which stores error code as a unique string (key).</p>
+						<p>Generic error class, which stores error code as a unique string (<a href="#//api/name/key">key</a>).</p>
 
-<p>The localized description can be set using the same string key.</p>
+<p>The localized <a href="#//api/name/description">description</a> can be set using the same string <a href="#//api/name/key">key</a>.</p>
 
 <p>Usage might look like:</p>
 
-<pre><code> // In YKError.h
+<pre><code> // In .h
  extern NSString *const YKErrorBadFoo;
 
- // In YKError.m
+ // In .m
  NSString *const YKErrorBadFoo = @"YKErrorBadFoo";
 
  // Creating "bad foo" error
@@ -174,38 +225,111 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
+		<code><a href="#//api/name/key">&nbsp;&nbsp;key</a></code>
+		<span class="tooltip"><p>The unique string identifier for this error.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/description">&nbsp;&nbsp;description</a></code>
+		<span class="tooltip"><p>Description for error, to override in userInfo.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/unknownDescription">&nbsp;&nbsp;unknownDescription</a></code>
+		<span class="tooltip"><p>Allows us to override default <a href="#//api/name/description">description</a> if localized message not available.
+For example, if there was an error in talk we might set this to:</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithKey:">&ndash;&nbsp;initWithKey:</a></code>
+		<span class="tooltip"><p>Create error with <a href="#//api/name/key">key</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/initWithKey:userInfo:">&ndash;&nbsp;initWithKey:userInfo:</a></code>
-		<span class="tooltip"><p>Create error with key.
-The key is also used to look up the localized description.
-The NSError code defaults to -1; and is not mean to be used.
-The domain is set to YKErrorDomain.</p></span>
+		<span class="tooltip"><p>Create error with <a href="#//api/name/key">key</a>.
+See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithKey:error:">&ndash;&nbsp;initWithKey:error:</a></code>
+		<span class="tooltip"><p>Create error with <a href="#//api/name/key">key</a>, with source error.
+See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/errorWithKey:userInfo:">+&nbsp;errorWithKey:userInfo:</a></code>
-		<span class="tooltip"><p>Create error with key.
-The localized description is set via NSLocalizedString(key).
-See <a href="#//api/name/initWithKey:userInfo:">initWithKey:userInfo:</a> method.
-@param key
-@param userInfo</p></span>
+		<span class="tooltip"><p>See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/errorWithKey:">+&nbsp;errorWithKey:</a></code>
+		<span class="tooltip"><p>See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/errorWithKey:error:">+&nbsp;errorWithKey:error:</a></code>
+		<span class="tooltip"><p>See <a href="#//api/name/initWithKey:error:">initWithKey:error:</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/errorWithDescription:">+&nbsp;errorWithDescription:</a></code>
+		<span class="tooltip"><p>Create an error with no <a href="#//api/name/key">key</a> (a general error), with only a <a href="#//api/name/description">description</a>.
+@param <a href="#//api/name/description">description</a></p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/userInfoForKey:">&ndash;&nbsp;userInfoForKey:</a></code>
+		<span class="tooltip"><p>Get the user info for <a href="#//api/name/key">key</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/userInfoForKey:subKey:">&ndash;&nbsp;userInfoForKey:subKey:</a></code>
+		<span class="tooltip"><p>Get the user info for <a href="#//api/name/key">key</a> and subKey.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setDescription:">&ndash;&nbsp;setDescription:</a></code>
-		<span class="tooltip"><p>Set (override) description.
-@param description</p></span>
+		<span class="tooltip"><p>Set (override) <a href="#//api/name/description">description</a>.
+@param <a href="#//api/name/description">description</a></p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/localizedDescriptionForKey">&ndash;&nbsp;localizedDescriptionForKey</a></code>
+		<span class="tooltip"><p>For subclasses to overide the default implementation for localized <a href="#//api/name/description">description</a> from <a href="#//api/name/key">key</a>.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/errorForError:">+&nbsp;errorForError:</a></code>
-		<span class="tooltip"><p>Build <a href="YKError.html">YKError</a> from NSError.
-Returns error if error is already a <a href="YKError.html">YKError</a> instance.</p></span>
+		<span class="tooltip"><p>Create <a href="YKError.html">YKError</a> from NSError.</p></span>
 	</span>
 	
 	
@@ -225,6 +349,121 @@ Returns error if error is already a <a href="YKError.html">YKError</a> instance.
 					
 					
 					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/description" title="description"></a>
+	<h3 class="subsubtitle method-title">description</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Description for error, to override in userInfo.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (retain, nonatomic) NSString *description</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKError.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/key" title="key"></a>
+	<h3 class="subsubtitle method-title">key</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The unique string identifier for this error.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (readonly, retain, nonatomic) NSString *key</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKError.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/unknownDescription" title="unknownDescription"></a>
+	<h3 class="subsubtitle method-title">unknownDescription</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Allows us to override default <a href="#//api/name/description">description</a> if localized message not available.
+For example, if there was an error in talk we might set this to:</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (retain, nonatomic) NSString *unknownDescription</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<pre><code>  "We had trouble getting to Talk.\nPlease try again in a bit."
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKError.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
 					
 					
 					<div class="section section-methods">
@@ -238,13 +477,145 @@ Returns error if error is already a <a href="YKError.html">YKError</a> instance.
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Build <a href="YKError.html">YKError</a> from NSError.
-Returns error if error is already a <a href="YKError.html">YKError</a> instance.</p>
+		<p>Create <a href="YKError.html">YKError</a> from NSError.</p>
 	</div>		
 	
 	
 	<div class="method-subsection method-declaration"><code>+ (YKError *)errorForError:(NSError *)<em>error</em></code></div>
 	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Results passed in error if that was already a <a href="YKError.html">YKError</a></p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKError.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/errorWithDescription:" title="errorWithDescription:"></a>
+	<h3 class="subsubtitle method-title">errorWithDescription:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create an error with no <a href="#//api/name/key">key</a> (a general error), with only a <a href="#//api/name/description">description</a>.
+@param <a href="#//api/name/description">description</a></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (id)errorWithDescription:(NSString *)<em>description</em></code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKError.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/errorWithKey:" title="errorWithKey:"></a>
+	<h3 class="subsubtitle method-title">errorWithKey:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (id)errorWithKey:(NSString *const)<em>key</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>key</em></dt>
+			<dd><p>Key</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKError.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/errorWithKey:error:" title="errorWithKey:error:"></a>
+	<h3 class="subsubtitle method-title">errorWithKey:error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>See <a href="#//api/name/initWithKey:error:">initWithKey:error:</a>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (id)errorWithKey:(NSString *const)<em>key</em> error:(NSError *)<em>error</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>key</em></dt>
+			<dd><p>Key</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>Source error</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -273,16 +644,27 @@ Returns error if error is already a <a href="YKError.html">YKError</a> instance.
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Create error with key.
-The localized description is set via NSLocalizedString(key).
-See <a href="#//api/name/initWithKey:userInfo:">initWithKey:userInfo:</a> method.
-@param key
-@param userInfo</p>
+		<p>See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p>
 	</div>		
 	
 	
 	<div class="method-subsection method-declaration"><code>+ (id)errorWithKey:(NSString *const)<em>key</em> userInfo:(NSDictionary *)<em>userInfo</em></code></div>
 	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>key</em></dt>
+			<dd><p>Key</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>userInfo</em></dt>
+			<dd><p>User info</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -330,7 +712,120 @@ See <a href="#//api/name/initWithKey:userInfo:">initWithKey:userInfo:</a> method
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>Array of dictionary with name, localized_description keys, or nil</p>
+		<p>Array of dictionary with name, localized_<a href="#//api/name/description">description</a> keys, or nil</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKError.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithKey:" title="initWithKey:"></a>
+	<h3 class="subsubtitle method-title">initWithKey:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create error with <a href="#//api/name/key">key</a>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithKey:(NSString *const)<em>key</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>key</em></dt>
+			<dd><p>Key should be a unique string and include domain + error.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Error with <a href="#//api/name/key">key</a></p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The <a href="#//api/name/key">key</a> is also used to look up the localized <a href="#//api/name/description">description</a>.
+The NSError code defaults to -1; and is not mean to be used.
+The domain is set to YKErrorDomain.</p>
+
+<p>The localized <a href="#//api/name/description">description</a> is set via NSLocalizedString(<a href="#//api/name/key">key</a>).</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKError.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithKey:error:" title="initWithKey:error:"></a>
+	<h3 class="subsubtitle method-title">initWithKey:error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create error with <a href="#//api/name/key">key</a>, with source error.
+See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithKey:(NSString *const)<em>key</em> error:(NSError *)<em>error</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>key</em></dt>
+			<dd><p>Key should be a unique string and include domain + error.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>Source error</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Error with <a href="#//api/name/key">key</a></p>
 	</div>
 	
 	
@@ -358,10 +853,8 @@ See <a href="#//api/name/initWithKey:userInfo:">initWithKey:userInfo:</a> method
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Create error with key.
-The key is also used to look up the localized description.
-The NSError code defaults to -1; and is not mean to be used.
-The domain is set to YKErrorDomain.</p>
+		<p>Create error with <a href="#//api/name/key">key</a>.
+See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p>
 	</div>		
 	
 	
@@ -376,13 +869,57 @@ The domain is set to YKErrorDomain.</p>
 			<dd><p>Key should be a unique string and include domain + error.</p></dd>
 		</dl>
 		
+		<dl class="argument-def parameter-def">
+			<dt><em>userInfo</em></dt>
+			<dd><p>User info</p></dd>
+		</dl>
+		
 	</div>
 	
 	
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>Error with key</p>
+		<p>Error with <a href="#//api/name/key">key</a></p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKError.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/localizedDescriptionForKey" title="localizedDescriptionForKey"></a>
+	<h3 class="subsubtitle method-title">localizedDescriptionForKey</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>For subclasses to overide the default implementation for localized <a href="#//api/name/description">description</a> from <a href="#//api/name/key">key</a>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)localizedDescriptionForKey</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Localized <a href="#//api/name/description">description</a> for <a href="#//api/name/key">key</a>, by default is NSLocalizedString(<a href="#//api/name/key">key</a>)</p>
 	</div>
 	
 	
@@ -410,13 +947,96 @@ The domain is set to YKErrorDomain.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Set (override) description.
-@param description</p>
+		<p>Set (override) <a href="#//api/name/description">description</a>.
+@param <a href="#//api/name/description">description</a></p>
 	</div>		
 	
 	
 	<div class="method-subsection method-declaration"><code>- (void)setDescription:(NSString *)<em>description</em></code></div>
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKError.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/userInfoForKey:" title="userInfoForKey:"></a>
+	<h3 class="subsubtitle method-title">userInfoForKey:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get the user info for <a href="#//api/name/key">key</a>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)userInfoForKey:(NSString *)<em>key</em></code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKError.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/userInfoForKey:subKey:" title="userInfoForKey:subKey:"></a>
+	<h3 class="subsubtitle method-title">userInfoForKey:subKey:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get the user info for <a href="#//api/name/key">key</a> and subKey.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)userInfoForKey:(NSString *)<em>key</em> subKey:(NSString *)<em>subKey</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>key</em></dt>
+			<dd><p>Key</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>subKey</em></dt>
+			<dd><p>Sub <a href="#//api/name/key">key</a></p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
