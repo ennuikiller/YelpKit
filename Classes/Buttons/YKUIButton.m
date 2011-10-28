@@ -32,7 +32,7 @@
 
 @implementation YKUIButton
 
-@synthesize title=_title, titleColor=_titleColor, titleFont=_titleFont, borderWidth=_borderWidth, borderAlternateWidth=_borderAlternateWidth, color=_color, color2=_color2, color3=_color3, color4=_color4, highlightedTitleColor=_highlightedTitleColor, highlightedColor=_highlightedColor, highlightedColor2=_highlightedColor2, highlightedShadingType=_highlightedShadingType, disabledTitleColor=_disabledTitleColor, disabledColor=_disabledColor, disabledColor2=_disabledColor2, disabledShadingType=_disabledShadingType, shadingType=_shadingType, borderColor=_borderColor, borderStyle=_borderStyle, titleShadowColor=_titleShadowColor, imageView=_imageView, accessoryImageView=_accessoryImageView, titleAlignment=_titleAlignment, titleHidden=_titleHidden, titleEdgeInsets=_titleEdgeInsets, titleShadowOffset=_titleShadowOffset, selectedTitleColor=_selectedTitleColor, selectedColor=_selectedColor, selectedColor2=_selectedColor2, selectedShadingType=_selectedShadingType, cornerRadius=_cornerRadius, highlightedTitleShadowColor=_highlightedTitleShadowColor, highlightedTitleShadowOffset=_highlightedTitleShadowOffset, disabledBorderColor=_disabledBorderColor, insets=_insets, imageSize=_imageSize, borderShadowColor=_borderShadowColor, borderShadowBlur=_borderShadowBlur;
+@synthesize title=_title, titleColor=_titleColor, titleFont=_titleFont, borderWidth=_borderWidth, borderAlternateWidth=_borderAlternateWidth, color=_color, color2=_color2, color3=_color3, color4=_color4, highlightedTitleColor=_highlightedTitleColor, highlightedColor=_highlightedColor, highlightedColor2=_highlightedColor2, highlightedShadingType=_highlightedShadingType, disabledTitleColor=_disabledTitleColor, disabledColor=_disabledColor, disabledColor2=_disabledColor2, disabledShadingType=_disabledShadingType, shadingType=_shadingType, borderColor=_borderColor, borderStyle=_borderStyle, titleShadowColor=_titleShadowColor, imageView=_imageView, accessoryImageView=_accessoryImageView, titleAlignment=_titleAlignment, titleHidden=_titleHidden, titleInsets=_titleInsets, titleShadowOffset=_titleShadowOffset, selectedTitleColor=_selectedTitleColor, selectedColor=_selectedColor, selectedColor2=_selectedColor2, selectedShadingType=_selectedShadingType, cornerRadius=_cornerRadius, highlightedTitleShadowColor=_highlightedTitleShadowColor, highlightedTitleShadowOffset=_highlightedTitleShadowOffset, disabledBorderColor=_disabledBorderColor, insets=_insets, imageSize=_imageSize, borderShadowColor=_borderShadowColor, borderShadowBlur=_borderShadowBlur;
 
 
 - (id)init {
@@ -45,13 +45,12 @@
   self.backgroundColor = [UIColor clearColor];
   self.titleAlignment = UITextAlignmentCenter;
   self.insets = UIEdgeInsetsZero;
-  self.titleEdgeInsets = UIEdgeInsetsZero;
+  self.titleInsets = UIEdgeInsetsZero;
   self.imageSize = CGSizeZero;
   self.highlightedEnabled = YES;
 
   // Default style
   self.titleColor = [UIColor colorWithRed:(77.0/255.0) green:(95.0/255.0) blue:(154.0/255.0) alpha:1];
-  self.titleEdgeInsets = UIEdgeInsetsZero;
   self.titleFont = [UIFont boldSystemFontOfSize:14.0];
   self.titleShadowColor = nil;
   self.titleShadowOffset = CGSizeZero;
@@ -121,23 +120,23 @@
 - (CGSize)layout:(id<YKLayout>)layout size:(CGSize)size {
   CGFloat y = 0;
 
-  y += _titleEdgeInsets.top;
+  y += _titleInsets.top;
   
   if (_title) {
     CGSize constrainedToSize = size;
-    constrainedToSize.width -= (_titleEdgeInsets.left + _titleEdgeInsets.right);
+    constrainedToSize.width -= (_titleInsets.left + _titleInsets.right);
     _titleSize = [_title sizeWithFont:_titleFont constrainedToSize:constrainedToSize lineBreakMode:UILineBreakModeTailTruncation];
     y += _titleSize.height;
   }
   
-  y += _titleEdgeInsets.bottom;
+  y += _titleInsets.bottom;
 
   return CGSizeMake(size.width, y);
 }
 
 - (CGSize)sizeThatFitsTitle:(CGSize)size {
   CGSize titleSize = [_title sizeWithFont:_titleFont constrainedToSize:size lineBreakMode:UILineBreakModeTailTruncation];  
-  return CGSizeMake(titleSize.width + _titleEdgeInsets.left + _titleEdgeInsets.right, titleSize.height + _titleEdgeInsets.top + _titleEdgeInsets.bottom);
+  return CGSizeMake(titleSize.width + _titleInsets.left + _titleInsets.right, titleSize.height + _titleInsets.top + _titleInsets.bottom);
 }
 
 - (void)setHighlighted:(BOOL)highlighted {
@@ -155,9 +154,9 @@
   [self setNeedsDisplay];  
 }
 
-- (void)setTitleEdgeInsets:(UIEdgeInsets)titleEdgeInsets {
-  _titleEdgeInsets = titleEdgeInsets;
-  [self didChangeValueForKey:@"titleEdgeInsets"];
+- (void)setTitleInsets:(UIEdgeInsets)titleInsets {
+  _titleInsets = titleInsets;
+  [self didChangeValueForKey:@"titleInsets"];
 }
 
 - (void)setTitleFont:(UIFont *)titleFont {
@@ -298,7 +297,7 @@
   }
   
   if (!_titleHidden) {
-    CGFloat lineWidth = _titleSize.width + _titleEdgeInsets.left + _titleEdgeInsets.right;
+    CGFloat lineWidth = _titleSize.width + _titleInsets.left + _titleInsets.right;
     if (showIcon) lineWidth += iconSize.width + 2;
     CGFloat x = _insets.left;
     
@@ -318,7 +317,7 @@
       x += iconSize.width + 2;
     }
     
-    y += _titleEdgeInsets.top;
+    y += _titleInsets.top;
 
     [textColor setFill];
     if (_highlightedTitleShadowColor && isHighlighted) {
@@ -327,7 +326,7 @@
       CGContextSetShadowWithColor(context, _titleShadowOffset, 0.0, _titleShadowColor.CGColor);
     }
 
-    x += _titleEdgeInsets.left;
+    x += _titleInsets.left;
     [_title drawInRect:CGRectMake(x, y, _titleSize.width, _titleSize.height) withFont:font lineBreakMode:UILineBreakModeTailTruncation alignment:_titleAlignment];
   }
   
@@ -338,41 +337,5 @@
     [icon drawInRect:YKCGRectToCenterInRect(iconSize, bounds)];
   }  
 }
-
-@end
-
-
-@implementation YKUIButtonBackground
-
-@synthesize color=_color, color2=_color2, color3=_color3, color4=_color4, shadingType=_shadingType;
-
-- (id)initWithFrame:(CGRect)frame {
-  if ((self = [super initWithFrame:frame])) {
-    // Default to gray shading background (For use as selected background view)
-    self.color = [[UIColor colorWithRed:0.82 green:0.82 blue:0.82 alpha:1.0] retain];
-    self.color2 = [[UIColor colorWithRed:0.675 green:0.675 blue:0.675 alpha:1.0] retain];
-    self.layer.borderColor = [UIColor blackColor].CGColor;
-    self.layer.cornerRadius = 10.0;
-    self.layer.borderWidth = 0.5;
-    self.layer.masksToBounds = YES;
-    self.shadingType = YKUIShadingTypeLinear;
-    self.opaque = NO;
-    self.backgroundColor = [UIColor clearColor];
-  }
-  return self;
-}
-
-- (void)dealloc {
-  [_color release];
-  [_color2 release];
-  [_color3 release];
-  [_color4 release];
-  [super dealloc];
-}
-
-- (void)drawRect:(CGRect)rect {
-  CGContextRef context = UIGraphicsGetCurrentContext();
-  YKCGContextDrawShadingWithHeight(context, _color.CGColor, _color2.CGColor, _color3.CGColor, _color4.CGColor, self.bounds.size.height, _shadingType);
-} 
 
 @end

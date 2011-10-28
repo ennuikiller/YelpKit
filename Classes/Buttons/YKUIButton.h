@@ -35,7 +35,7 @@
 
 
 /*!
- Button (control).
+ Button.
  */
 @interface YKUIButton : YKUIControl {
 
@@ -43,9 +43,9 @@
   
   UIColor *_titleColor;
   UIFont *_titleFont;
-  UITextAlignment _titleAlignment; // Defaults to center
+  UITextAlignment _titleAlignment;
   CGSize _titleSize;
-  UIEdgeInsets _titleEdgeInsets;
+  UIEdgeInsets _titleInsets;
   
   UIColor *_color;
   UIColor *_color2;
@@ -73,11 +73,10 @@
   UIColor *_selectedColor2;
   YKUIShadingType _selectedShadingType;  
 
-  // For custom border styles
   UIColor *_borderColor;
   CGFloat _borderWidth;
-  CGFloat _borderAlternateWidth; // Defaults to 1; Used with custom border styles
-  YKUIBorderStyle _borderStyle; // Defaults to YKUIBorderStyleRounded
+  CGFloat _borderAlternateWidth;
+  YKUIBorderStyle _borderStyle;
   CGFloat _cornerRadius;
   UIColor *_borderShadowColor;
   CGFloat _borderShadowBlur;
@@ -93,67 +92,220 @@
   
 }
 
-@property (retain, nonatomic) NSString *title; // Text
-@property (retain, nonatomic) UIFont *titleFont; //! Button title font; Defaults to Helvetica-Bold/14
-@property (assign, nonatomic) UITextAlignment titleAlignment; //! Text alignment for title
-@property (retain, nonatomic) UIColor *titleColor; // Text color for title
+/*!
+ Text for button.
+ */
+@property (retain, nonatomic) NSString *title; 
 
 /*!
- Color (background) for button.
- Can be used with shadingType and alternateColor.
+ Text font for button.
+ */
+@property (retain, nonatomic) UIFont *titleFont;
+
+/*!
+ Text alignment for title. Defaults to center.
+ */
+@property (assign, nonatomic) UITextAlignment titleAlignment;
+
+/*!
+ Text color for title.
+ */
+@property (retain, nonatomic) UIColor *titleColor;
+
+/*!
+ Background color for button.
+ Can be used with shadingType, color2, color3, color4.
  */
 @property (retain, nonatomic) UIColor *color; 
 
 /*!
- Alternate colors (background) for shading.
- Not all shading types use an alternate color.
+ Background (alternate) color for button.
+ Not all shading types use color2.
  */
 @property (retain, nonatomic) UIColor *color2;
+
+/*!
+ Background (alternate) color for button.
+ Not all shading types use color3.
+ */
 @property (retain, nonatomic) UIColor *color3;
+
+/*!
+ Background (alternate) color for button.
+ Not all shading types use color4.
+ */
 @property (retain, nonatomic) UIColor *color4;
 
-
+/*!
+ Shading type for background.
+ */
 @property (assign, nonatomic) YKUIShadingType shadingType;
+
+/*!
+ Border style.
+ Defaults to YKUIBorderStyleRounded.
+ */
 @property (assign, nonatomic) YKUIBorderStyle borderStyle;
 
-@property (retain, nonatomic) UIColor *highlightedTitleColor;
-@property (retain, nonatomic) UIColor *highlightedColor;
-@property (retain, nonatomic) UIColor *highlightedColor2;
-@property (assign, nonatomic) YKUIShadingType highlightedShadingType;
-@property (assign, nonatomic) UIColor *highlightedTitleShadowColor;
-@property (assign, nonatomic) CGSize highlightedTitleShadowOffset;
+/*!
+ Border color.
+ */
+@property (retain, nonatomic) UIColor *borderColor;
 
-@property (retain, nonatomic) UIColor *selectedTitleColor;
-@property (retain, nonatomic) UIColor *selectedColor;
-@property (retain, nonatomic) UIColor *selectedColor2;
-@property (assign, nonatomic) YKUIShadingType selectedShadingType;
+/*!
+ Border width (stroke).
+ */
+@property (assign, nonatomic) CGFloat borderWidth;
 
-@property (retain, nonatomic) UIColor *disabledTitleColor;
-@property (retain, nonatomic) UIColor *disabledColor;
-@property (retain, nonatomic) UIColor *disabledColor2;
-@property (retain, nonatomic) UIColor *disabledBorderColor;
-@property (assign, nonatomic) YKUIShadingType disabledShadingType;
+/*!
+ Border width (alternate). Used with custom border styles like YKUIBorderStyleLeftRightWithAlternateTop.
+ Defaults to 1.
+ */
+@property (assign, nonatomic) CGFloat borderAlternateWidth;
 
+/*!
+ Border corner radius.
+ */
+@property (assign, nonatomic) CGFloat cornerRadius;
+
+/*!
+ Border shadow color (for inner glow).
+ */
+@property (retain, nonatomic) UIColor *borderShadowColor;
+
+/*!
+ Border shadow blur amount (for inner glow).
+ */
+@property (assign, nonatomic) CGFloat borderShadowBlur;
+
+/*!
+ Text shadow color.
+ */
 @property (retain, nonatomic) UIColor *titleShadowColor;
+
+/*!
+ Text shadow offset.
+ */
 @property (assign, nonatomic) CGSize titleShadowOffset;
 
+/*!
+ Image (view) to display to the left of the text.
+ Alternatively, you can set the image.
+ */
 @property (retain, nonatomic) UIImageView *imageView;
+
+/*!
+ Image to display on the right side of the button.
+ */
 @property (retain, nonatomic) UIImageView *accessoryImageView;
-@property (assign, nonatomic) UIEdgeInsets titleEdgeInsets; // Insets for title text; TODO(gabe): Rename to titleInsets
+
+/*!
+ Insets for title text.
+ */
+@property (assign, nonatomic) UIEdgeInsets titleInsets; 
+
+/*!
+ Insets for the button.
+ */
 @property (assign, nonatomic) UIEdgeInsets insets;
 
+/*!
+ Hide the text.
+ */
 @property (assign, nonatomic, getter=isTitleHidden) BOOL titleHidden;
 
+/*!
+ Image to display to the left of the text.
+ Alternatively, you can set the imageView.
+ */
 @property (retain, nonatomic) UIImage *image;
-@property (assign, nonatomic) CGSize imageSize; // Default to CGSizeZero; If set will use this size instead of the image size
 
-@property (retain, nonatomic) UIColor *borderColor;
-@property (assign, nonatomic) CGFloat borderWidth;
-@property (assign, nonatomic) CGFloat borderAlternateWidth;
-@property (assign, nonatomic) CGFloat cornerRadius;
-@property (retain, nonatomic) UIColor *borderShadowColor; // Inner shadow color for border
-@property (assign, nonatomic) CGFloat borderShadowBlur; // Inner shadow blur amount (width) for border
+/*!
+ If set, will use this size instead of the image.size.
+ Defaults to CGSizeZero (disabled).
+ */
+@property (assign, nonatomic) CGSize imageSize; 
 
+/*!
+ Text color for title (highlighted).
+ */
+@property (retain, nonatomic) UIColor *highlightedTitleColor;
+
+/*!
+ Background color for button (highlighted).
+ Can be used with shadingType, color2, color3, color4.
+ */
+@property (retain, nonatomic) UIColor *highlightedColor;
+
+/*!
+ Background (alternate) color for button (highlighted).
+ Not all shading types use color2.
+ */
+@property (retain, nonatomic) UIColor *highlightedColor2;
+
+/*!
+ Shading type for background (highlighted).
+ */
+@property (assign, nonatomic) YKUIShadingType highlightedShadingType;
+
+/*!
+ Text shadow color (highlighted).
+ */
+@property (assign, nonatomic) UIColor *highlightedTitleShadowColor;
+
+/*!
+ Text shadow offset (highlighted).
+ */
+@property (assign, nonatomic) CGSize highlightedTitleShadowOffset;
+
+/*!
+ Text color for title (selected).
+ */
+@property (retain, nonatomic) UIColor *selectedTitleColor;
+
+/*!
+ Background color for button (selected).
+ Can be used with shadingType, color2, color3, color4.
+ */
+@property (retain, nonatomic) UIColor *selectedColor;
+
+/*!
+ Background (alternate) color for button (selected).
+ Not all shading types use color2.
+ */
+@property (retain, nonatomic) UIColor *selectedColor2;
+
+/*!
+ Shading type for background (selected).
+ */
+@property (assign, nonatomic) YKUIShadingType selectedShadingType;
+
+/*!
+ Text color for title (selected).
+ */
+@property (retain, nonatomic) UIColor *disabledTitleColor;
+
+/*!
+ Background color for button (highlighted).
+ Can be used with shadingType, color2, color3, color4.
+ */
+@property (retain, nonatomic) UIColor *disabledColor;
+
+/*!
+ Background (alternate) color for button (highlighted).
+ Not all shading types use color2.
+ */
+@property (retain, nonatomic) UIColor *disabledColor2;
+
+/*!
+ Border color (disabled).
+ */
+@property (retain, nonatomic) UIColor *disabledBorderColor;
+
+/*!
+ Shading type for background (disabled).
+ */
+@property (assign, nonatomic) YKUIShadingType disabledShadingType;
 
 /*!
  Create button.
@@ -214,25 +366,5 @@
  @param cornerRadius Corner radius
  */
 - (void)setBorderStyle:(YKUIBorderStyle)borderStyle color:(UIColor *)color width:(CGFloat)width alternateWidth:(CGFloat)alternateWidth cornerRadius:(CGFloat)cornerRadius;
-
-@end
-
-
-@interface YKUIButtonBackground : UIView { 
-  UIColor *_color;
-  UIColor *_color2;
-  UIColor *_color3;
-  UIColor *_color4;
-  CGFloat _borderWidth;
-  CGFloat _cornerRadius;
-  UIColor *_borderColor;
-  YKUIShadingType _shadingType;
-}
-
-@property (assign, nonatomic) YKUIShadingType shadingType;
-@property (retain, nonatomic) UIColor *color;
-@property (retain, nonatomic) UIColor *color2;
-@property (retain, nonatomic) UIColor *color3;
-@property (retain, nonatomic) UIColor *color4;
 
 @end

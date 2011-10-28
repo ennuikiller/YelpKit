@@ -36,7 +36,7 @@
   switch (style) {
     case YKUIButtonStyleNone:
       button.titleColor = [UIColor blackColor];
-      button.titleEdgeInsets = UIEdgeInsetsZero;
+      button.titleInsets = UIEdgeInsetsZero;
       button.titleFont = [UIFont boldSystemFontOfSize:14.0];
       button.titleShadowColor = nil;
       button.color = nil;
@@ -46,7 +46,7 @@
       
     case YKUIButtonStyleBasic:
       button.titleColor = [UIColor colorWithRed:(77.0/255.0) green:(95.0/255.0) blue:(154.0/255.0) alpha:1];
-      button.titleEdgeInsets = UIEdgeInsetsZero;
+      button.titleInsets = UIEdgeInsetsZero;
       button.titleFont = [UIFont boldSystemFontOfSize:14.0];
       button.titleShadowColor = nil;
       button.titleShadowOffset = CGSizeZero;
@@ -71,7 +71,7 @@
       
     case YKUIButtonStyleBasicGrouped:
       button.titleColor = [UIColor colorWithRed:(77.0/255.0) green:(95.0/255.0) blue:(154.0/255.0) alpha:1];
-      button.titleEdgeInsets = UIEdgeInsetsZero;
+      button.titleInsets = UIEdgeInsetsZero;
       button.titleFont = [UIFont boldSystemFontOfSize:14.0];
       button.titleShadowColor = nil;
       button.titleShadowOffset = CGSizeZero;
@@ -237,12 +237,16 @@
       button.titleShadowOffset = CGSizeMake(0, 1);
       button.shadingType = YKUIShadingTypeMetalEdge;
       
+      /*
       button.highlightedColor = [UIColor colorWithWhite:0.82 alpha:1.0];
       button.highlightedColor2 = [UIColor colorWithWhite:0.94 alpha:1.0];
       button.highlightedShadingType = YKUIShadingTypeLinear;
       button.highlightedTitleColor = [UIColor colorWithWhite:0 alpha:1.0];
       button.highlightedTitleShadowColor = [UIColor whiteColor];
       button.highlightedTitleShadowOffset = CGSizeMake(0, 1);
+       */
+      button.highlightedTitleShadowColor = [UIColor grayColor];
+      button.highlightedTitleShadowOffset = CGSizeMake(0, 1);      
       
       [button setBorderStyle:YKUIBorderStyleRounded color:[UIColor colorWithWhite:0.698 alpha:1.0] width:1.0 alternateWidth:0 cornerRadius:10.0];
       button.borderShadowColor = [UIColor colorWithWhite:0 alpha:0.15];
@@ -335,7 +339,7 @@
     case YKUIButtonStyleGreen:
       button.titleFont = [UIFont boldSystemFontOfSize:20];
       button.titleColor = [UIColor whiteColor];
-      button.titleEdgeInsets = UIEdgeInsetsZero;
+      button.titleInsets = UIEdgeInsetsZero;
       button.color = [UIColor colorWithRed:0.27 green:0.78 blue:0.16 alpha:1.0];
       button.color2 = [UIColor colorWithRed:0.19 green:0.72 blue:0.08 alpha:1.0];
       button.shadingType = YKUIShadingTypeHorizontalEdge;
@@ -354,7 +358,7 @@
       button.titleFont = [UIFont systemFontOfSize:16];
       button.titleAlignment = UITextAlignmentLeft;
       button.titleColor = [UIColor blackColor];
-      button.titleEdgeInsets = UIEdgeInsetsZero;
+      button.titleInsets = UIEdgeInsetsZero;
       button.insets = UIEdgeInsetsMake(0, 10, 0, 0);
       button.color = [UIColor whiteColor];
       button.color2 = nil;
