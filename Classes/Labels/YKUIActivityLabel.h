@@ -35,11 +35,25 @@
   UIImageView *_imageView;
 }
 
+/*!
+ Text label.
+ */
 @property (readonly, nonatomic) UILabel *textLabel;
+
+/*!
+ Detail label, which appears under the textLabel.
+ */
 @property (readonly, nonatomic) UILabel *detailLabel;
+
+/*!
+ Image view, when not animating (activity indicator).
+ */
 @property (readonly, nonatomic) UIImageView *imageView;
 
-@property(nonatomic) UIActivityIndicatorViewStyle activityIndicatorViewStyle;
+/*!
+ Activity indicator style.
+ */
+@property (assign, nonatomic) UIActivityIndicatorViewStyle activityIndicatorViewStyle;
 
 /*!
  Set image to display when not animating.
@@ -48,12 +62,26 @@
  */
 - (void)setImage:(UIImage *)image;
 
+/*!
+ Set text.
+ Alternatively, you can set textLabel.text.
+ @param text Text
+ */
 - (void)setText:(NSString *)text;
 
+/*!
+ Start activity indicator.
+ */
 - (void)startAnimating;
 
+/*!
+ Stop activity indicator.
+ */
 - (void)stopAnimating;
 
+/*!
+ Check if animating (activity indicator).
+ */
 - (BOOL)isAnimating;
 
 @end

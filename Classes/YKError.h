@@ -47,11 +47,11 @@ extern NSString *const YKErrorNotConnectedToInternet;
  The localized description can be set using the same string key.
  
  Usage might look like:
- 
-     // In YKError.h
+
+     // In .h
      extern NSString *const YKErrorBadFoo;
      
-     // In YKError.m
+     // In .m
      NSString *const YKErrorBadFoo = @"YKErrorBadFoo";
      
      // Creating "bad foo" error
@@ -68,50 +68,104 @@ extern NSString *const YKErrorNotConnectedToInternet;
 
   NSString *_key;
   
-  // To override description in userInfo
   NSString *_description;
   
-  // Allows us to override default description if localized message not available; 
-  // For example, if there was an error in talk we might set this to: 
-  //  "We had trouble getting to Talk.\nPlease try again in a bit."
   NSString *_unknownDescription; 
   
 }
 
+/*!
+ The unique string identifier for this error.
+ */
 @property (readonly, retain, nonatomic) NSString *key;
+
+/*!
+ Description for error, to override in userInfo.
+ */
 @property (retain, nonatomic) NSString *description;
+
+/*!
+ Allows us to override default description if localized message not available.
+ For example, if there was an error in talk we might set this to: 
+ 
+      "We had trouble getting to Talk.\nPlease try again in a bit."
+
+ */
 @property (retain, nonatomic) NSString *unknownDescription;
 
 /*!
  Create error with key.
+
  The key is also used to look up the localized description.
  The NSError code defaults to -1; and is not mean to be used.
  The domain is set to YKErrorDomain.
  
+ The localized description is set via NSLocalizedString(key).
+ 
  @param key Key should be a unique string and include domain + error.
  @result Error with key
  */
-- (id)initWithKey:(NSString *const)key userInfo:(NSDictionary *)userInfo;
 - (id)initWithKey:(NSString *const)key;
-
-- (id)initWithKey:(NSString *const)key error:(NSError *)error;
 
 /*!
  Create error with key.
- The localized description is set via NSLocalizedString(key).
- See initWithKey:userInfo: method.
- @param key
- @param userInfo
+ See initWithKey:.
+ 
+ @param key Key should be a unique string and include domain + error.
+ @param userInfo User info
+ @result Error with key
+ */
+- (id)initWithKey:(NSString *const)key userInfo:(NSDictionary *)userInfo;
+
+/*!
+ Create error with key, with source error.
+ See initWithKey:.
+ 
+ @param key Key should be a unique string and include domain + error.
+ @param error Source error
+ @result Error with key
+ */
+- (id)initWithKey:(NSString *const)key error:(NSError *)error;
+
+/*!
+ See initWithKey:.
+ 
+ @param key Key
+ @param userInfo User info
  */
 + (id)errorWithKey:(NSString *const)key userInfo:(NSDictionary *)userInfo;
 
+/*!
+ See initWithKey:.
+ 
+ @param key Key
+ */
 + (id)errorWithKey:(NSString *const)key;
 
+/*!
+ See initWithKey:error:.
+ 
+ @param key Key
+ @param error Source error
+ */
 + (id)errorWithKey:(NSString *const)key error:(NSError *)error;
 
+/*!
+ Create an error with no key (a general error), with only a description.
+ @param description
+ */
 + (id)errorWithDescription:(NSString *)description;;
 
+/*!
+ Get the user info for key.
+ */
 - (id)userInfoForKey:(NSString *)key;
+
+/*!
+ Get the user info for key and subKey.
+ @param key Key
+ @param subKey Sub key
+ */
 - (id)userInfoForKey:(NSString *)key subKey:(NSString *)subKey;
 
 /*!
@@ -120,12 +174,15 @@ extern NSString *const YKErrorNotConnectedToInternet;
  */
 - (void)setDescription:(NSString *)description;
 
-// For subclasses to customize localized description from key
+/*!
+ For subclasses to overide the default implementation for localized description from key.
+ @result Localized description for key, by default is NSLocalizedString(key)
+ */
 - (NSString *)localizedDescriptionForKey;
 
 /*!
- Build YKError from NSError.
- Returns error if error is already a YKError instance.
+ Create YKError from NSError.
+ @result Results passed in error if that was already a YKError
  */
 + (YKError *)errorForError:(NSError *)error;
 
@@ -135,18 +192,36 @@ extern NSString *const YKErrorNotConnectedToInternet;
  */
 - (NSArray */*of NSDictionary*/)fields;
 
-- (NSArray *)fields;
-
 @end
 
-
+/*!
+ HTTP error, which is a YKError with an HTTP status code.
+ */
 @interface YKHTTPError : YKError {
   NSInteger _HTTPStatus;
 }
 
+/*!
+ HTTP status code.
+ */
 @property (readonly, assign, nonatomic) NSInteger HTTPStatus;
 
+/*!
+ Create error with HTTP status.
+ @param HTTPStatus HTTP status
+ */
 + (YKHTTPError *)errorWithHTTPStatus:(NSInteger)HTTPStatus;
+
+/*!
+ YKError key for HTTP status.
+ 
+    503: YKErrorServerMaintenance
+    404: YKErrorServerResourceNotFound
+    default: YKErrorServerResponse
+ 
+ @param HTTPStatus HTTP status
+ @result Key
+ */
 + (NSString *const)keyForHTTPStatus:(NSInteger)HTTPStatus;
 
 @end

@@ -51,38 +51,7 @@ typedef enum {
 
 
 /*!
- YKLayout is a way to size and layout dynamic (sub)views.
-
- YKLayout is designed to calculate and return a size that best fits the receiver’s subviews,
- without altering the subviews frames, or affecting layoutSubviews call hierarchy.
- 
- Instead of defining both sizeThatFits: and layoutSubviews, you define a single method called:
- 
-    - (CGSize)layout:(id<YKLayout>)layout size:(CGSize)size;
- 
- Then in this method you use the layout instance to set the subview frames (if sizing).
- 
- This prevents your code from altering subviews when you are sizing (for sizeThatFits:).
- 
- For example, 
- 
-     CGRect titleLabelFrame = [layout setFrame:CGRectMake(x, y, 400, 0) view:_titleLabel options:YKLayoutOptionsSizeToFit];
-     // titleLabelFrame may have a different width and will have a valid height
- 
- You can combine YKLayoutOptionsSizeToFit and YKLayoutOptionsCenter to have it be centered with a variable height. 
- For example,
- 
-     CGRect titleLabelFrame = [layout setFrame:CGRectMake(x, y, 400, 0) view:_titleLabel options:YKLayoutOptionsSizeToFit|YKLayoutOptionsCenter];
-     // titleLabelFrame may have a different width and will have a valid height and will have an x position so it is centered
- 
- You can also combine YKLayoutOptionsSizeToFit with YKLayoutOptionsConstraintWidth 
- to make sure the width isn't set larger than expected. For example, 
- 
-     CGRect titleLabelFrame = [layout setFrame:CGRectMake(x, y, 400, 0) view:_titleLabel options:YKLayoutOptionsSizeToFit|YKLayoutOptionsConstraintWidth];
-     // titleLabelFrame may have a different width but it won't be larger than 400
- 
- You can combine YKLayoutOptionsSizeToFit, YKLayoutOptionsConstraintWidth, and YKLayoutOptionsDefaultWidth to make sure
- a view sizes to fit with max and default width (when 0).  
+ See YKLayout.
  */
 @protocol YKLayout <NSObject>
 
@@ -197,8 +166,8 @@ typedef enum {
 @end
 
 
-/*!
- UIView's can implement this protocol, to enable custom layouts.
+/*
+ UIViews can implement this protocol, to enable custom layouts.
  */
 @protocol YKUIViewLayout <NSObject>
 
@@ -249,9 +218,38 @@ typedef enum {
 
 
 /*!
- Layout manager, default.
+ YKLayout is a way to size and layout dynamic (sub)views.
  
- If setting the layout, your view should implement the YKUIViewLayout protocol.
+ YKLayout is designed to calculate and return a size that best fits the receiver’s subviews,
+ without altering the subviews frames, or affecting layoutSubviews call hierarchy.
+ 
+ Instead of defining both sizeThatFits: and layoutSubviews, you define a single method called:
+ 
+      - (CGSize)layout:(id<YKLayout>)layout size:(CGSize)size;
+ 
+ Then in this method you use the layout instance to set the subview frames (if sizing).
+ 
+ This prevents your code from altering subviews when you are sizing (for sizeThatFits:).
+ 
+ For example, 
+ 
+      CGRect titleLabelFrame = [layout setFrame:CGRectMake(x, y, 400, 0) view:_titleLabel options:YKLayoutOptionsSizeToFit];
+      // titleLabelFrame may have a different width and will have a valid height
+ 
+ You can combine YKLayoutOptionsSizeToFit and YKLayoutOptionsCenter to have it be centered with a variable height. 
+ For example,
+ 
+      CGRect titleLabelFrame = [layout setFrame:CGRectMake(x, y, 400, 0) view:_titleLabel options:YKLayoutOptionsSizeToFit|YKLayoutOptionsCenter];
+      // titleLabelFrame may have a different width and will have a valid height and will have an x position so it is centered
+ 
+ You can also combine YKLayoutOptionsSizeToFit with YKLayoutOptionsConstraintWidth 
+ to make sure the width isn't set larger than expected. For example, 
+ 
+      CGRect titleLabelFrame = [layout setFrame:CGRectMake(x, y, 400, 0) view:_titleLabel options:YKLayoutOptionsSizeToFit|YKLayoutOptionsConstraintWidth];
+      // titleLabelFrame may have a different width but it won't be larger than 400
+ 
+ You can combine YKLayoutOptionsSizeToFit, YKLayoutOptionsConstraintWidth, and YKLayoutOptionsDefaultWidth to make sure
+ a view sizes to fit with max and default width (when 0).  
  */
 @interface YKLayout : NSObject <YKLayout> { 
   
@@ -348,7 +346,9 @@ void YKLayoutAssert(UIView *view, id<YKLayout> layout);
 
 @end
 
-
+/*
+ Layout stats.
+ */
 @interface YKLayoutStats : NSObject {
   NSMutableArray *_log;
   
