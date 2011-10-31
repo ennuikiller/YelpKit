@@ -43,9 +43,23 @@
 
 #define kExpiresAge YKTimeIntervalWeek
 
+static UIImage *gYKImageLoaderMockImage = NULL;
+
 @implementation YKImageLoader
 
 @synthesize URL=_URL, image=_image, loadingImage=_loadingImage, defaultImage=_defaultImage, delegate=_delegate, queue=_queue;
+
++ (YKImageLoader *)imageLoaderWithURLString:(NSString *)URLString loadingImage:(UIImage *)loadingImage defaultImage:(UIImage *)defaultImage delegate:(id<YKImageLoaderDelegate>)delegate {
+  YKImageLoader *imageLoader = [[YKImageLoader alloc] initWithLoadingImage:loadingImage defaultImage:defaultImage delegate:delegate];
+  [imageLoader setURLString:URLString];
+  return [imageLoader autorelease]; 
+}
+
++ (void)setMockImage:(UIImage *)mockImage {
+  [mockImage retain];
+  [gYKImageLoaderMockImage release];
+  gYKImageLoaderMockImage = mockImage;
+}
 
 - (id)initWithLoadingImage:(UIImage *)loadingImage defaultImage:(UIImage *)defaultImage delegate:(id<YKImageLoaderDelegate>)delegate {
   if ((self = [self init])) {
@@ -54,12 +68,6 @@
     self.delegate = delegate;
   }
   return self;
-}
-
-+ (YKImageLoader *)imageLoaderWithURLString:(NSString *)URLString loadingImage:(UIImage *)loadingImage defaultImage:(UIImage *)defaultImage delegate:(id<YKImageLoaderDelegate>)delegate {
-  YKImageLoader *imageLoader = [[YKImageLoader alloc] initWithLoadingImage:loadingImage defaultImage:defaultImage delegate:delegate];
-  [imageLoader setURLString:URLString];
-  return [imageLoader autorelease]; 
 }
 
 - (void)dealloc {
@@ -102,7 +110,13 @@
     [self setImage:_defaultImage status:YKImageLoaderStatusNone];    
     return;
   }
-  
+
+  // Check to see if we're using a mock image
+  if (gYKImageLoaderMockImage) {
+    [self setImage:gYKImageLoaderMockImage status:YKImageLoaderStatusLoaded];
+    return;
+  }
+
   // Check for cached image, and set immediately if available
   UIImage *cachedImage = [self _cachedImage:self.URL];  
   if (cachedImage) {
@@ -133,7 +147,7 @@
   return image;
 }
 
-- (void)load {  
+- (void)load {
   YKURLRequestRelease(_request);
   
   _request = [[YKURLRequest alloc] init];

@@ -78,6 +78,16 @@ typedef enum {
 + (YKImageLoader *)imageLoaderWithURLString:(NSString *)URLString loadingImage:(UIImage *)loadingImage defaultImage:(UIImage *)defaultImage delegate:(id<YKImageLoaderDelegate>)delegate;
 
 /*!
+ Set a global mock image.
+ If the mock image is set to something non-nil, all instances of YKImageLoader
+ will return the mock image instead of loading the image specified by the URL.
+ This is useful for UI verification.
+
+ @param mockImage Image to use as the mock
+ */
++ (void)setMockImage:(UIImage *)mockImage;
+
+/*!
  Load URL.
  By default this will use a loader queue; To override loadURLString:queue: with nil queue.
 
