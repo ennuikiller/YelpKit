@@ -32,7 +32,7 @@
 
 @implementation YKUIButton
 
-@synthesize title=_title, titleColor=_titleColor, titleFont=_titleFont, borderWidth=_borderWidth, borderAlternateWidth=_borderAlternateWidth, color=_color, color2=_color2, color3=_color3, color4=_color4, highlightedTitleColor=_highlightedTitleColor, highlightedColor=_highlightedColor, highlightedColor2=_highlightedColor2, highlightedShadingType=_highlightedShadingType, disabledTitleColor=_disabledTitleColor, disabledColor=_disabledColor, disabledColor2=_disabledColor2, disabledShadingType=_disabledShadingType, shadingType=_shadingType, borderColor=_borderColor, borderStyle=_borderStyle, titleShadowColor=_titleShadowColor, imageView=_imageView, accessoryImageView=_accessoryImageView, titleAlignment=_titleAlignment, titleHidden=_titleHidden, titleInsets=_titleInsets, titleShadowOffset=_titleShadowOffset, selectedTitleColor=_selectedTitleColor, selectedColor=_selectedColor, selectedColor2=_selectedColor2, selectedShadingType=_selectedShadingType, cornerRadius=_cornerRadius, highlightedTitleShadowColor=_highlightedTitleShadowColor, highlightedTitleShadowOffset=_highlightedTitleShadowOffset, disabledBorderColor=_disabledBorderColor, insets=_insets, imageSize=_imageSize, borderShadowColor=_borderShadowColor, borderShadowBlur=_borderShadowBlur;
+@synthesize title=_title, titleColor=_titleColor, titleFont=_titleFont, borderWidth=_borderWidth, borderAlternateWidth=_borderAlternateWidth, color=_color, color2=_color2, color3=_color3, color4=_color4, highlightedTitleColor=_highlightedTitleColor, highlightedColor=_highlightedColor, highlightedColor2=_highlightedColor2, highlightedShadingType=_highlightedShadingType, disabledTitleColor=_disabledTitleColor, disabledColor=_disabledColor, disabledColor2=_disabledColor2, disabledShadingType=_disabledShadingType, shadingType=_shadingType, borderColor=_borderColor, borderStyle=_borderStyle, titleShadowColor=_titleShadowColor, accessoryImageView=_accessoryImageView, titleAlignment=_titleAlignment, titleHidden=_titleHidden, titleInsets=_titleInsets, titleShadowOffset=_titleShadowOffset, selectedTitleColor=_selectedTitleColor, selectedColor=_selectedColor, selectedColor2=_selectedColor2, selectedShadingType=_selectedShadingType, cornerRadius=_cornerRadius, highlightedTitleShadowColor=_highlightedTitleShadowColor, highlightedTitleShadowOffset=_highlightedTitleShadowOffset, disabledBorderColor=_disabledBorderColor, insets=_insets, borderShadowColor=_borderShadowColor, borderShadowBlur=_borderShadowBlur, iconImageSize=_iconImageSize, iconImage=_iconImage, iconImageView=_iconImageView, highlightedImage=_highlightedImage, image=_image;
 
 
 - (id)init {
@@ -46,30 +46,13 @@
   self.titleAlignment = UITextAlignmentCenter;
   self.insets = UIEdgeInsetsZero;
   self.titleInsets = UIEdgeInsetsZero;
-  self.imageSize = CGSizeZero;
+  self.iconImageSize = CGSizeZero;
   self.highlightedEnabled = YES;
 
-  // Default style
-  self.titleColor = [UIColor colorWithRed:(77.0/255.0) green:(95.0/255.0) blue:(154.0/255.0) alpha:1];
+  // Default style  
+  self.titleColor = [UIColor blackColor];
   self.titleFont = [UIFont boldSystemFontOfSize:14.0];
-  self.titleShadowColor = nil;
   self.titleShadowOffset = CGSizeZero;
-  self.color = [UIColor whiteColor];          
-  self.color2 = nil;
-  self.shadingType = YKUIShadingTypeNone;        
-  // Highlighted: White text on gray linear shading
-  self.highlightedTitleColor = [UIColor whiteColor];
-  self.highlightedShadingType = YKUIShadingTypeLinear;
-  self.highlightedColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
-  self.highlightedColor2 = [UIColor colorWithRed:0.675 green:0.675 blue:0.675 alpha:1.0];
-  // Disabled: Gray text on gray linear shading
-  self.disabledTitleColor = [UIColor grayColor];
-  self.disabledShadingType = YKUIShadingTypeLinear;
-  self.disabledColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
-  self.disabledColor2 = [UIColor colorWithRed:0.675 green:0.675 blue:0.675 alpha:1.0];
-  // Border
-  [self setBorderStyle:YKUIBorderStyleRounded color:[UIColor colorWithRed:0.659 green:0.671 blue:0.678 alpha:1.0] width:1.0 alternateWidth:0 cornerRadius:10.0];
-
   self.accessibilityTraits |= UIAccessibilityTraitButton;
 }
 
@@ -104,8 +87,11 @@
   [_borderColor release];
   [_borderShadowColor release];
   [_titleShadowColor release];
-  [_imageView release];
+  [_iconImageView release];
   [_accessoryImageView release];
+  [_iconImage release];
+  [_image release];
+  [_highlightedImage release];
   [super dealloc];
 }
 
@@ -192,12 +178,12 @@
   self.cornerRadius = cornerRadius;  
 }
 
-- (void)setImage:(UIImage *)image {
-  self.imageView = [[[UIImageView alloc] initWithImage:image] autorelease];
+- (void)setIconImage:(UIImage *)iconImage {
+  self.iconImageView = [[[UIImageView alloc] initWithImage:iconImage] autorelease];
 }
 
-- (UIImage *)image {
-  return self.imageView.image;
+- (UIImage *)iconImage {
+  return self.iconImageView.image;
 }
 
 - (UIColor *)textColorForState:(UIControlState)state {
@@ -236,6 +222,8 @@
   UIColor *color4 = _color4;
   UIColor *borderColor = _borderColor;
   
+  UIImage *image = _image;
+  
   if (isDisabled) {
     if (_disabledShadingType != YKUIShadingTypeNone) shadingType = _disabledShadingType;
     if (_disabledColor) color = _disabledColor;
@@ -245,6 +233,7 @@
     if (_highlightedShadingType != YKUIShadingTypeNone) shadingType = _highlightedShadingType;
     if (_highlightedColor) color = _highlightedColor;
     if (_highlightedColor2) color2 = _highlightedColor2;
+    if (_highlightedImage) image = _highlightedImage;
   } else if (isSelected) {
     // Set from selected properties; Fall back to highlighted properties
     if (_selectedShadingType != YKUIShadingTypeNone) shadingType = _selectedShadingType;
@@ -257,11 +246,15 @@
   
   UIColor *fillColor = color;
   
-  UIImage *icon = _imageView.image;
-  if (isHighlighted && [_imageView respondsToSelector:@selector(highlightedImage)] && _imageView.highlightedImage) icon = _imageView.highlightedImage;
+  UIImage *icon = _iconImageView.image;
+  if (isHighlighted && [_iconImageView respondsToSelector:@selector(highlightedImage)] && _iconImageView.highlightedImage) icon = _iconImageView.highlightedImage;
   
   UIImage *accessoryIcon = _accessoryImageView.image;
   if (isHighlighted && _accessoryImageView.highlightedImage) accessoryIcon = _accessoryImageView.highlightedImage;
+  
+  if (image) {
+    [image drawInRect:CGRectMake(0, 0, bounds.size.width, bounds.size.height)];
+  }
   
   if (color && shadingType != YKUIShadingTypeNone) {
     YKCGContextAddStyledRect(context, bounds, _borderStyle, _borderWidth, _borderAlternateWidth, _cornerRadius);  
@@ -290,8 +283,8 @@
   
   CGFloat y = bounds.origin.y + roundf(YKCGPointToCenter(_titleSize, size).y) + _insets.top;
 
-  BOOL showIcon = (icon != nil && !_imageView.hidden);
-  CGSize iconSize = _imageSize;
+  BOOL showIcon = (icon != nil && !_iconImageView.hidden);
+  CGSize iconSize = _iconImageSize;
   if (icon && YKCGSizeIsZero(iconSize)) {
     iconSize = icon.size;
   }
@@ -307,7 +300,7 @@
       x = bounds.origin.x + roundf(width/2.0 - lineWidth/2.0);      
     }
     if (x < 0) x = 0;
-    
+
     if (showIcon) {
       CGFloat iconTop = roundf(YKCGPointToCenter(iconSize, size).y);
       [icon drawInRect:CGRectMake(x, iconTop, iconSize.width, iconSize.height)];

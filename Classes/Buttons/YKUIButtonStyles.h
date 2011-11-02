@@ -36,7 +36,6 @@ typedef enum {
   YKUIButtonStyleNone, //! No style
   YKUIButtonStyleBasic, //! Basic (rounded) button white background, blueish text with gray selection background (similar to Apple default)
   YKUIButtonStyleBasicGrouped, //! Same as YKUIButtonStyleBasic, but with background matching that of grouped table views
-  YKUIButtonStyleBlue, //! Button with white text on blue linear shaded background
   YKUIButtonStyleDarkBlue, //! Button with white (etched) text on dark blue linear shaded background
   YKUIButtonStyleGray, //! Gray background with linear shaded background and etched text
   YKUIButtonStyleDarkGray, //! Dark gray background with linear shaded background and etched text

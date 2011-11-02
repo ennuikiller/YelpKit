@@ -54,6 +54,9 @@
   
   YKUIShadingType _shadingType;
   
+  UIImage *_image;
+  UIImage *_highlightedImage;
+  
   UIColor *_highlightedTitleColor;
   UIColor *_highlightedTitleShadowColor;
   CGSize _highlightedTitleShadowOffset;
@@ -84,8 +87,8 @@
   UIColor *_titleShadowColor;
   CGSize _titleShadowOffset;
   
-  UIImageView *_imageView;
-  CGSize _imageSize;
+  UIImageView *_iconImageView;
+  CGSize _iconImageSize;
   UIImageView *_accessoryImageView;
   
   BOOL _titleHidden;
@@ -184,6 +187,16 @@
 @property (retain, nonatomic) UIColor *titleShadowColor;
 
 /*!
+ Background image.
+ */
+@property (retain, nonatomic) UIImage *image;
+
+/*!
+ Background image (highlighted).
+ */
+@property (retain, nonatomic) UIImage *highlightedImage;
+
+/*!
  Text shadow offset.
  */
 @property (assign, nonatomic) CGSize titleShadowOffset;
@@ -192,7 +205,7 @@
  Image (view) to display to the left of the text.
  Alternatively, you can set the image.
  */
-@property (retain, nonatomic) UIImageView *imageView;
+@property (retain, nonatomic) UIImageView *iconImageView;
 
 /*!
  Image to display on the right side of the button.
@@ -218,13 +231,13 @@
  Image to display to the left of the text.
  Alternatively, you can set the imageView.
  */
-@property (retain, nonatomic) UIImage *image;
+@property (retain, nonatomic) UIImage *iconImage;
 
 /*!
  If set, will use this size instead of the image.size.
  Defaults to CGSizeZero (disabled).
  */
-@property (assign, nonatomic) CGSize imageSize; 
+@property (assign, nonatomic) CGSize iconImageSize; 
 
 /*!
  Text color for title (highlighted).

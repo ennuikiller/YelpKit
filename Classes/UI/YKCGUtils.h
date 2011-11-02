@@ -350,7 +350,7 @@ void YKCGColorGetComponents(CGColorRef color, CGFloat *red, CGFloat *green, CGFl
 #pragma mark Shading
 
 typedef enum {
-  YKUIShadingTypeNone,
+  YKUIShadingTypeNone = 0,
   YKUIShadingTypeLinear, // Linear color blend (or solid color)
   YKUIShadingTypeHorizontalEdge, // Horizontal edge
   YKUIShadingTypeHorizontalReverseEdge, // Horizontal edge reversed

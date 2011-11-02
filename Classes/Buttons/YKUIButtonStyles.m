@@ -94,20 +94,6 @@
       [button setBorderStyle:YKUIBorderStyleRounded color:[UIColor colorWithRed:0.659 green:0.671 blue:0.678 alpha:1.0] width:1.0 alternateWidth:0 cornerRadius:10.0];
       break;
       
-    case YKUIButtonStyleBlue:
-      button.titleColor = [UIColor whiteColor];
-      button.titleFont = [UIFont boldSystemFontOfSize:14.0];
-      button.titleShadowColor = nil;
-      button.color = [UIColor colorWithRed:0.247 green:0.514 blue:0.953 alpha:1.0];
-      button.color2 = [UIColor colorWithRed:0.114 green:0.333 blue:0.871 alpha:1.0];
-      button.shadingType = YKUIShadingTypeLinear;
-      [button setBorderStyle:YKUIBorderStyleRounded 
-                     color:[UIColor blackColor]
-                     width:0.5
-            alternateWidth:0
-              cornerRadius:10.0];      
-      break;
-      
     case YKUIButtonStyleDarkBlue:           
       button.titleColor = [UIColor whiteColor];
       button.titleFont = [UIFont boldSystemFontOfSize:14.0];
