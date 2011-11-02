@@ -41,6 +41,19 @@
       button.titleShadowColor = nil;
       button.color = nil;
       button.color2 = nil;
+      
+      // Highlighted: White text on gray linear shading
+      button.highlightedTitleColor = [UIColor whiteColor];
+      button.highlightedShadingType = YKUIShadingTypeLinear;
+      button.highlightedColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+      button.highlightedColor2 = [UIColor colorWithRed:0.675 green:0.675 blue:0.675 alpha:1.0];
+      
+      // Disabled: Gray text on gray linear shading
+      button.disabledTitleColor = [UIColor grayColor];
+      button.disabledShadingType = YKUIShadingTypeLinear;
+      button.disabledColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+      button.disabledColor2 = [UIColor colorWithRed:0.675 green:0.675 blue:0.675 alpha:1.0];
+
       [button setBorderStyle:YKUIBorderStyleNone color:nil width:0 alternateWidth:0 cornerRadius:0];
       break;
       
@@ -101,9 +114,18 @@
       button.color = [UIColor colorWithRed:0.369 green:0.624 blue:1.0 alpha:1.0];
       button.color2 = [UIColor colorWithRed:0.02 green:0.275 blue:0.784 alpha:1.0];      
       
+      // Highlighted: White text on gray linear shading
+      button.highlightedTitleColor = [UIColor whiteColor];
+      button.highlightedShadingType = YKUIShadingTypeLinear;
       button.highlightedColor = [UIColor colorWithRed:0.227 green:0.388 blue:0.627 alpha:1.0];      
       button.highlightedColor2 = [UIColor colorWithRed:0.016 green:0.271 blue:0.784 alpha:1.0];
       
+      // Disabled: Gray text on gray linear shading
+      button.disabledTitleColor = [UIColor grayColor];
+      button.disabledShadingType = YKUIShadingTypeLinear;
+      button.disabledColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+      button.disabledColor2 = [UIColor colorWithRed:0.675 green:0.675 blue:0.675 alpha:1.0];
+
       button.shadingType = YKUIShadingTypeLinear;
       [button setBorderStyle:YKUIBorderStyleRounded 
                      color:[UIColor blackColor]
@@ -120,7 +142,20 @@
       button.color = [UIColor blackColor];
       button.color2 = [UIColor blackColor];   
       button.shadingType = YKUIShadingTypeHorizontalEdge;
-      [button setBorderStyle:YKUIBorderStyleRounded 
+      
+      // Highlighted: White text on gray linear shading
+      button.highlightedTitleColor = [UIColor whiteColor];
+      button.highlightedShadingType = YKUIShadingTypeLinear;
+      button.highlightedColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+      button.highlightedColor2 = [UIColor colorWithRed:0.675 green:0.675 blue:0.675 alpha:1.0];
+      
+      // Disabled: Gray text on gray linear shading
+      button.disabledTitleColor = [UIColor grayColor];
+      button.disabledShadingType = YKUIShadingTypeLinear;
+      button.disabledColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+      button.disabledColor2 = [UIColor colorWithRed:0.675 green:0.675 blue:0.675 alpha:1.0];
+      
+      [button setBorderStyle:YKUIBorderStyleRounded
                      color:[UIColor blackColor]
                      width:0.5
             alternateWidth:0
@@ -133,11 +168,19 @@
       button.titleShadowColor = [UIColor whiteColor];
       button.color = [UIColor whiteColor];
       button.color2 = [UIColor lightGrayColor];
+      button.shadingType = YKUIShadingTypeLinear;
       
+      // Highlighted: White text on gray linear shading
+      button.highlightedTitleColor = [UIColor whiteColor];
+      button.highlightedShadingType = YKUIShadingTypeLinear;
       button.highlightedColor = [UIColor lightGrayColor];
       button.highlightedColor2 = [UIColor grayColor];
       
-      button.shadingType = YKUIShadingTypeLinear;
+      // Disabled: Gray text on gray linear shading
+      button.disabledTitleColor = [UIColor grayColor];
+      button.disabledShadingType = YKUIShadingTypeLinear;
+      button.disabledColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+      button.disabledColor2 = [UIColor colorWithRed:0.675 green:0.675 blue:0.675 alpha:1.0];
       
       [button setBorderStyle:YKUIBorderStyleRounded 
                      color:[UIColor blackColor]
@@ -153,6 +196,19 @@
       button.color = nil;
       button.color2 = nil;
       button.shadingType = YKUIShadingTypeNone;
+      
+      // Highlighted: White text on gray linear shading
+      button.highlightedTitleColor = [UIColor whiteColor];
+      button.highlightedShadingType = YKUIShadingTypeLinear;
+      button.highlightedColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+      button.highlightedColor2 = [UIColor colorWithRed:0.675 green:0.675 blue:0.675 alpha:1.0];
+      
+      // Disabled: Gray text on gray linear shading
+      button.disabledTitleColor = [UIColor grayColor];
+      button.disabledShadingType = YKUIShadingTypeLinear;
+      button.disabledColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+      button.disabledColor2 = [UIColor colorWithRed:0.675 green:0.675 blue:0.675 alpha:1.0];
+
       [button setBorderStyle:YKUIBorderStyleRounded 
                      color:[UIColor blackColor]
                      width:0
@@ -167,10 +223,13 @@
       button.color = [UIColor colorWithWhite:0 alpha:0.5];
       button.color2 = [UIColor colorWithWhite:0 alpha:0.5];   
       button.shadingType = YKUIShadingTypeHorizontalEdge;
+      
       button.highlightedTitleColor = [UIColor colorWithWhite:0.8 alpha:1];
       button.highlightedShadingType = YKUIShadingTypeHorizontalEdge;
       button.highlightedColor = [UIColor colorWithWhite:0.2 alpha:0.6];
       button.highlightedColor2 = [UIColor colorWithWhite:0.2 alpha:0.6];
+      button.highlightedShadingType = YKUIShadingTypeLinear;
+
       button.disabledTitleColor = [UIColor colorWithWhite:0.9 alpha:0.6];
       button.disabledShadingType = button.shadingType;
       button.disabledColor = button.color;
@@ -196,6 +255,13 @@
       button.highlightedColor = [UIColor colorWithRed:0.29 green:0.42 blue:0.61 alpha:1.0];
       button.highlightedColor2 = nil;
       button.highlightedShadingType = YKUIShadingTypeHorizontalEdge;
+      
+      // Disabled: Gray text on gray linear shading
+      button.disabledTitleColor = [UIColor grayColor];
+      button.disabledShadingType = YKUIShadingTypeLinear;
+      button.disabledColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+      button.disabledColor2 = [UIColor colorWithRed:0.675 green:0.675 blue:0.675 alpha:1.0];
+      
       [button setBorderStyle:YKUIBorderStyleRounded 
                      color:[UIColor blackColor]
                      width:0.5
@@ -231,8 +297,21 @@
       button.highlightedTitleShadowColor = [UIColor whiteColor];
       button.highlightedTitleShadowOffset = CGSizeMake(0, 1);
        */
+
+      // Highlighted: White text on gray linear shading
+      button.highlightedTitleColor = [UIColor whiteColor];
+      button.highlightedShadingType = YKUIShadingTypeLinear;
+      button.highlightedColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+      button.highlightedColor2 = [UIColor colorWithRed:0.675 green:0.675 blue:0.675 alpha:1.0];
       button.highlightedTitleShadowColor = [UIColor grayColor];
-      button.highlightedTitleShadowOffset = CGSizeMake(0, 1);      
+      button.highlightedTitleShadowOffset = CGSizeMake(0, 1);  
+      
+      // Disabled: Gray text on gray linear shading
+      button.disabledTitleColor = [UIColor grayColor];
+      button.disabledShadingType = YKUIShadingTypeLinear;
+      button.disabledColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+      button.disabledColor2 = [UIColor colorWithRed:0.675 green:0.675 blue:0.675 alpha:1.0];
+
       
       [button setBorderStyle:YKUIBorderStyleRounded color:[UIColor colorWithWhite:0.698 alpha:1.0] width:1.0 alternateWidth:0 cornerRadius:10.0];
       button.borderShadowColor = [UIColor colorWithWhite:0 alpha:0.15];
@@ -247,9 +326,18 @@
       button.titleFont = [UIFont systemFontOfSize:14.0];
       button.titleShadowColor = [UIColor blackColor];
       button.titleShadowOffset = CGSizeMake(0, -1);
-      
+            
+      // Highlighted: White text on gray linear shading
+      button.highlightedTitleColor = [UIColor whiteColor];
+      button.highlightedShadingType = YKUIShadingTypeLinear;
       button.highlightedColor = [UIColor lightGrayColor];
       button.highlightedColor2 = [UIColor grayColor];
+      
+      // Disabled: Gray text on gray linear shading
+      button.disabledTitleColor = [UIColor grayColor];
+      button.disabledShadingType = YKUIShadingTypeLinear;
+      button.disabledColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+      button.disabledColor2 = [UIColor colorWithRed:0.675 green:0.675 blue:0.675 alpha:1.0];
       
       [button setBorderStyle:YKUIBorderStyleRounded 
                      color:[UIColor blackColor]
@@ -275,11 +363,18 @@
       button.highlightedTitleColor = [UIColor lightGrayColor];
       button.highlightedColor = [UIColor darkGrayColor];
       button.highlightedColor2 = nil;
+      button.highlightedShadingType = YKUIShadingTypeLinear;
       button.highlightedTitleShadowColor = [UIColor blackColor];
       button.highlightedTitleShadowOffset = CGSizeMake(0, 0.5);
       button.shadingType = YKUIShadingTypeLinear;
       button.accessoryImageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"disclosure.png"] 
                                                    highlightedImage:[UIImage imageNamed:@"disclosure_selected.png"]] autorelease];
+      
+      // Disabled: Gray text on gray linear shading
+      button.disabledTitleColor = [UIColor grayColor];
+      button.disabledShadingType = YKUIShadingTypeLinear;
+      button.disabledColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+      button.disabledColor2 = [UIColor colorWithRed:0.675 green:0.675 blue:0.675 alpha:1.0];
       
       // Custom border
       button.layer.cornerRadius = 15.0;
@@ -296,11 +391,20 @@
       button.shadingType = YKUIShadingTypeLinear;
       button.titleShadowColor = [UIColor darkGrayColor];
       button.titleShadowOffset = CGSizeMake(0, 2);
+
       button.highlightedColor = button.color2;
       button.highlightedColor2 = button.color;
+      button.highlightedShadingType = YKUIShadingTypeLinear;
       button.highlightedTitleColor = [UIColor darkGrayColor];
       button.highlightedTitleShadowColor = [UIColor whiteColor];
       button.highlightedTitleShadowOffset = CGSizeMake(0, 1);
+
+      // Disabled: Gray text on gray linear shading
+      button.disabledTitleColor = [UIColor grayColor];
+      button.disabledShadingType = YKUIShadingTypeLinear;
+      button.disabledColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+      button.disabledColor2 = [UIColor colorWithRed:0.675 green:0.675 blue:0.675 alpha:1.0];
+
       [button setBorderStyle:YKUIBorderStyleRounded color:[UIColor whiteColor] width:7
             alternateWidth:0 cornerRadius:20.0];
       break;
@@ -313,11 +417,20 @@
       button.shadingType = YKUIShadingTypeLinear;
       button.titleShadowColor = [UIColor darkGrayColor];
       button.titleShadowOffset = CGSizeMake(0, -1);
+      
       button.highlightedColor = button.color2;
       button.highlightedColor2 = button.color;
+      button.highlightedShadingType = YKUIShadingTypeLinear;
       button.highlightedTitleColor = [UIColor darkGrayColor];
       button.highlightedTitleShadowColor = [UIColor whiteColor];
       button.highlightedTitleShadowOffset = CGSizeMake(0, -1);
+      
+      // Disabled: Gray text on gray linear shading
+      button.disabledTitleColor = [UIColor grayColor];
+      button.disabledShadingType = YKUIShadingTypeLinear;
+      button.disabledColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+      button.disabledColor2 = [UIColor colorWithRed:0.675 green:0.675 blue:0.675 alpha:1.0];
+
       [button setBorderStyle:YKUIBorderStyleRounded color:[UIColor whiteColor] width:6
             alternateWidth:0 cornerRadius:10.0];      
       break;
@@ -331,11 +444,20 @@
       button.shadingType = YKUIShadingTypeHorizontalEdge;
       button.titleShadowColor = [UIColor darkGrayColor];
       button.titleShadowOffset = CGSizeMake(0, -1);
+      
       button.highlightedColor = [UIColor grayColor];
       button.highlightedColor2 = [UIColor lightGrayColor];
+      button.highlightedShadingType = YKUIShadingTypeLinear;
       button.highlightedTitleColor = [UIColor darkGrayColor];
       button.highlightedTitleShadowColor = [UIColor whiteColor];
       button.highlightedTitleShadowOffset = CGSizeMake(0, -1);
+      
+      // Disabled: Gray text on gray linear shading
+      button.disabledTitleColor = [UIColor grayColor];
+      button.disabledShadingType = YKUIShadingTypeLinear;
+      button.disabledColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+      button.disabledColor2 = [UIColor colorWithRed:0.675 green:0.675 blue:0.675 alpha:1.0];
+
       [button setBorderStyle:YKUIBorderStyleRounded color:[UIColor blackColor] width:0.5
             alternateWidth:0 cornerRadius:10.0];
       break;
@@ -353,6 +475,13 @@
       button.highlightedColor = [UIColor grayColor];
       button.highlightedColor2 = [UIColor lightGrayColor];
       button.highlightedTitleColor = [UIColor whiteColor];
+      button.highlightedShadingType = YKUIShadingTypeLinear;
+      
+      // Disabled: Gray text on gray linear shading
+      button.disabledTitleColor = [UIColor grayColor];
+      button.disabledShadingType = YKUIShadingTypeLinear;
+      button.disabledColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+      button.disabledColor2 = [UIColor colorWithRed:0.675 green:0.675 blue:0.675 alpha:1.0];
       
       button.accessoryImageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"disclosure.png"] 
                                                    highlightedImage:[UIImage imageNamed:@"disclosure_selected.png"]] autorelease];
