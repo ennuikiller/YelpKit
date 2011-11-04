@@ -259,12 +259,8 @@
   if (color && shadingType != YKUIShadingTypeNone) {
     YKCGContextAddStyledRect(context, bounds, _borderStyle, _borderWidth, _borderAlternateWidth, _cornerRadius);  
     // Clip for border styles that support it (that form a cohesive path)
-    if (_borderStyle != YKUIBorderStyleTop && 
-        _borderStyle != YKUIBorderStyleBottom &&
-        _borderStyle != YKUIBorderStyleTopBottom) {
-      
-      CGContextClip(context);
-    }
+    BOOL clip = (_borderStyle != YKUIBorderStyleTop && _borderStyle != YKUIBorderStyleBottom && _borderStyle != YKUIBorderStyleTopBottom);    
+    if (clip) CGContextClip(context);
     YKCGContextDrawShadingWithHeight(context, color.CGColor, color2.CGColor, color3.CGColor, color4.CGColor, self.bounds.size.height, shadingType);
     fillColor = nil;
   }
@@ -275,6 +271,9 @@
     } else {
       YKCGContextDrawBorder(context, bounds, _borderStyle, fillColor.CGColor, borderColor.CGColor, _borderWidth, _borderAlternateWidth, _cornerRadius);
     }
+  } else if (fillColor) {
+    [fillColor setFill];
+    CGContextFillRect(context, self.bounds);
   }
   
   UIColor *textColor = [self textColorForState:state];

@@ -283,7 +283,7 @@
       button.color2 = [UIColor colorWithWhite:0.94 alpha:1.0];
       button.color3 = [UIColor colorWithWhite:0.90 alpha:1.0];
       button.color4 = [UIColor colorWithWhite:0.86 alpha:1.0];
-      button.titleColor = [UIColor colorWithWhite:0 alpha:1.0];
+      button.titleColor = [UIColor blackColor];
       button.titleFont = [UIFont boldSystemFontOfSize:16];
       button.titleShadowColor = [UIColor whiteColor];
       button.titleShadowOffset = CGSizeMake(0, 1);

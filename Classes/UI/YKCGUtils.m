@@ -405,6 +405,7 @@ CGPathRef YKCGPathCreateStyledRect(CGRect rect, YKUIBorderStyle style, CGFloat s
       break;
       
     case YKUIBorderStyleRoundedTop:
+    case YKUIBorderStyleRoundedTopOnly:
       // Inset stroke width except for bottom border
       insetBounds = CGRectMake(rect.origin.x + strokeInset, rect.origin.y + strokeInset, rect.size.width - (strokeInset * 2), rect.size.height - strokeInset);
       break;
@@ -461,6 +462,13 @@ CGPathRef YKCGPathCreateStyledRect(CGRect rect, YKUIBorderStyle style, CGFloat s
       CGPathAddArcToPoint(path, &transform, fw, 0, fw, fh/2, 1);      
       CGPathAddLineToPoint(path, &transform, fw, fh);
       CGPathMoveToPoint(path, &transform, 0, fh); // Don't draw bottom border
+      break;
+      
+    case YKUIBorderStyleRoundedTopOnly:
+      CGPathMoveToPoint(path, &transform, 0, 1);
+      CGPathAddArcToPoint(path, &transform, 0, 0, fw/2, 0, 1);
+      CGPathAddArcToPoint(path, &transform, fw, 0, fw, fh/2, 1);
+      CGPathMoveToPoint(path, &transform, fw, fh);
       break;
       
     case YKUIBorderStyleTop:
@@ -563,9 +571,10 @@ void YKCGContextDrawBorder(CGContextRef context, CGRect rect, YKUIBorderStyle st
 }
 
 void YKCGContextDrawBorderWithShadow(CGContextRef context, CGRect rect, YKUIBorderStyle style, CGColorRef fillColor, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat alternateStrokeWidth, CGFloat cornerRadius, CGColorRef shadowColor, CGFloat shadowBlur) {
+  CGContextSaveGState(context);
   CGContextSetShadowWithColor(context, CGSizeZero, shadowBlur, shadowColor);
   YKCGContextDrawBorder(context, rect, style, fillColor, strokeColor, strokeWidth, alternateStrokeWidth, cornerRadius);
-  CGContextSetShadowWithColor(context, CGSizeZero, 0, NULL);
+  CGContextRestoreGState(context);
 }
 
 void YKCGContextDrawRect(CGContextRef context, CGRect rect, CGColorRef fillColor, CGColorRef strokeColor, CGFloat strokeWidth) {
