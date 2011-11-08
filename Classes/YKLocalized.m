@@ -44,7 +44,10 @@ static NSString *gDefaultTableName = kDefaultTableName;
   if ([localization isEqual:@"en_US"]) localization = @"en";
   NSString *key = [[NSString alloc] initWithFormat:@"%@%@", tableName, localization];
   id resource = [[NSBundle yelp_pathForResourceCache] objectForKey:key];
-  if ([resource isEqual:[NSNull null]]) return nil;
+  if ([resource isEqual:[NSNull null]]) {
+    [key release];
+    return nil;
+  }
   
   if (!resource) {
     resource = [self pathForResource:tableName ofType:@"strings" inDirectory:nil forLocalization:localization];
@@ -62,7 +65,10 @@ static NSString *gDefaultTableName = kDefaultTableName;
   dict = [[NSBundle yelp_localizationResourceCache] objectForKey:key];
   if (!dict) {
     NSString *resource = [self yelp_pathForResource:tableName localization:localization];
-    if (!resource) return nil;
+    if (!resource) {
+      [key release];
+      return nil;
+    }
     dict = [[NSDictionary alloc] initWithContentsOfFile:resource];
     [[NSBundle yelp_localizationResourceCache] setObject:dict forKey:key];
     [dict release];
