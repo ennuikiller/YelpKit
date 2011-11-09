@@ -112,7 +112,7 @@ static UIImage *gYKImageLoaderMockImage = NULL;
   }
 
   // Check to see if we're using a mock image
-  if (gYKImageLoaderMockImage) {
+  if (gYKImageLoaderMockImage && ![URL.URLString hasPrefix:@"bundle:"]) {
     [self setImage:gYKImageLoaderMockImage status:YKImageLoaderStatusLoaded];
     return;
   }
