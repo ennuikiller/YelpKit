@@ -168,7 +168,8 @@ static NSMutableDictionary *gDebugStats = NULL;
     
     // If size that fits returns different width than passed in, it can cause weirdness when sizeToFit is called multiple times in succession.
     // Here we assert the size passed into sizeThatFits returns the same width, unless you explicitly override this behavior.
-    // For example, most views are sized basd on a width. Although you may have a button with a variable width.
+    // This is because most views are sized based on a width. If you had a view (a button, for example) with a variable width, then you should specify the
+    // YKLayoutOptionsSizeToFitVariableWidth to override this check.
     // This check only applies to YKUIView subclasses.
     if ((options & YKLayoutOptionsSizeToFitVariableWidth) != YKLayoutOptionsSizeToFitVariableWidth && sizeThatFits.width != frame.size.width && [view isKindOfClass:[YKUILayoutView class]]) {
       YKAssert(NO, @"sizeThatFits: on view returned width different from passed in width. If you have a variable width view, you can pass in the option YKLayoutOptionsSizeToFitVariableWidth to avoid this check.");

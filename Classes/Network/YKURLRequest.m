@@ -512,6 +512,9 @@ static BOOL gAuthProtectionDisabled = NO;
   NSInteger status = [self responseStatusCode];
   YKDebug(@"Did finish loading; status=%d", status);
   if (status >= 300) {
+    if (_downloadedData) {
+      YKDebug(@"Error: %@", [[[NSString alloc] initWithData:_downloadedData encoding:NSUTF8StringEncoding] autorelease]);
+    }
     [self didError:[YKHTTPError errorWithHTTPStatus:status]];
   } else {
     [self didLoadData:_downloadedData withResponse:_response cacheKey:_URL.cacheableURLString];
