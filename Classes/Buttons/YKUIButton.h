@@ -74,7 +74,9 @@
   UIColor *_selectedTitleColor;
   UIColor *_selectedColor;
   UIColor *_selectedColor2;
-  YKUIShadingType _selectedShadingType;  
+  YKUIShadingType _selectedShadingType;
+  UIColor *_selectedBorderShadowColor;
+  CGFloat _selectedBorderShadowBlur;
 
   UIColor *_borderColor;
   CGFloat _borderWidth;
@@ -292,6 +294,16 @@
  Shading type for background (selected).
  */
 @property (assign, nonatomic) YKUIShadingType selectedShadingType;
+
+/*!
+ Border shadow color (selected).
+ */
+@property (retain, nonatomic) UIColor *selectedBorderShadowColor;
+
+/*!
+ Border shadow blur (selected).
+ */
+@property (assign, nonatomic) CGFloat selectedBorderShadowBlur;
 
 /*!
  Text color for title (selected).

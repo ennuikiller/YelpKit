@@ -32,7 +32,8 @@
 
 @implementation YKUIButton
 
-@synthesize title=_title, titleColor=_titleColor, titleFont=_titleFont, borderWidth=_borderWidth, borderAlternateWidth=_borderAlternateWidth, color=_color, color2=_color2, color3=_color3, color4=_color4, highlightedTitleColor=_highlightedTitleColor, highlightedColor=_highlightedColor, highlightedColor2=_highlightedColor2, highlightedShadingType=_highlightedShadingType, disabledTitleColor=_disabledTitleColor, disabledColor=_disabledColor, disabledColor2=_disabledColor2, disabledShadingType=_disabledShadingType, shadingType=_shadingType, borderColor=_borderColor, borderStyle=_borderStyle, titleShadowColor=_titleShadowColor, accessoryImageView=_accessoryImageView, titleAlignment=_titleAlignment, titleHidden=_titleHidden, titleInsets=_titleInsets, titleShadowOffset=_titleShadowOffset, selectedTitleColor=_selectedTitleColor, selectedColor=_selectedColor, selectedColor2=_selectedColor2, selectedShadingType=_selectedShadingType, cornerRadius=_cornerRadius, highlightedTitleShadowColor=_highlightedTitleShadowColor, highlightedTitleShadowOffset=_highlightedTitleShadowOffset, disabledBorderColor=_disabledBorderColor, insets=_insets, borderShadowColor=_borderShadowColor, borderShadowBlur=_borderShadowBlur, iconImageSize=_iconImageSize, iconImage=_iconImage, iconImageView=_iconImageView, highlightedImage=_highlightedImage, image=_image;
+@synthesize title=_title, titleColor=_titleColor, titleFont=_titleFont, borderWidth=_borderWidth, borderAlternateWidth=_borderAlternateWidth, color=_color, color2=_color2, color3=_color3, color4=_color4, highlightedTitleColor=_highlightedTitleColor, highlightedColor=_highlightedColor, highlightedColor2=_highlightedColor2, highlightedShadingType=_highlightedShadingType, disabledTitleColor=_disabledTitleColor, disabledColor=_disabledColor, disabledColor2=_disabledColor2, disabledShadingType=_disabledShadingType, shadingType=_shadingType, borderColor=_borderColor, borderStyle=_borderStyle, titleShadowColor=_titleShadowColor, accessoryImageView=_accessoryImageView, titleAlignment=_titleAlignment, titleHidden=_titleHidden, titleInsets=_titleInsets, titleShadowOffset=_titleShadowOffset, selectedTitleColor=_selectedTitleColor, selectedColor=_selectedColor, selectedColor2=_selectedColor2, selectedShadingType=_selectedShadingType, cornerRadius=_cornerRadius, highlightedTitleShadowColor=_highlightedTitleShadowColor, highlightedTitleShadowOffset=_highlightedTitleShadowOffset, disabledBorderColor=_disabledBorderColor, insets=_insets, borderShadowColor=_borderShadowColor, borderShadowBlur=_borderShadowBlur, iconImageSize=_iconImageSize, iconImageView=_iconImageView, highlightedImage=_highlightedImage, image=_image, selectedBorderShadowColor=_selectedBorderShadowColor, selectedBorderShadowBlur=_selectedBorderShadowBlur;
+;
 
 
 - (id)init {
@@ -86,10 +87,10 @@
   [_disabledBorderColor release];
   [_borderColor release];
   [_borderShadowColor release];
+  [_selectedBorderShadowColor release];
   [_titleShadowColor release];
   [_iconImageView release];
   [_accessoryImageView release];
-  [_iconImage release];
   [_image release];
   [_highlightedImage release];
   [super dealloc];
@@ -110,7 +111,18 @@
   
   if (_title) {
     CGSize constrainedToSize = size;
+    // Subtract insets
     constrainedToSize.width -= (_titleInsets.left + _titleInsets.right);
+    constrainedToSize.width -= (_insets.left + _insets.right);
+    
+    // Subtract icon width
+    CGSize iconSize = _iconImageSize;
+    if (_iconImageView.image && YKCGSizeIsZero(iconSize)) {
+      iconSize = _iconImageView.image.size;
+      iconSize.width += 2; // TODO(gabe): Set configurable
+    }
+    constrainedToSize.width -= iconSize.width;
+    
     _titleSize = [_title sizeWithFont:_titleFont constrainedToSize:constrainedToSize lineBreakMode:UILineBreakModeTailTruncation];
     y += _titleSize.height;
   }
@@ -224,6 +236,9 @@
   
   UIImage *image = _image;
   
+  UIColor *borderShadowColor = _borderShadowColor;
+  CGFloat borderShadowBlur = _borderShadowBlur;
+  
   if (isDisabled) {
     if (_disabledShadingType != YKUIShadingTypeNone) shadingType = _disabledShadingType;
     if (_disabledColor) color = _disabledColor;
@@ -242,6 +257,8 @@
     else if (_highlightedColor) color = _highlightedColor;
     if (_selectedColor2) color2 = _selectedColor2;
     else if (_highlightedColor2) color2 = _highlightedColor2;
+    if (_selectedBorderShadowColor) borderShadowColor = _selectedBorderShadowColor;
+    if (_selectedBorderShadowBlur) borderShadowBlur = _selectedBorderShadowBlur;
   }
   
   UIColor *fillColor = color;
@@ -266,8 +283,8 @@
   }
   
   if (_borderWidth > 0) {
-    if (_borderShadowColor) {
-      YKCGContextDrawBorderWithShadow(context, bounds, _borderStyle, fillColor.CGColor, borderColor.CGColor, _borderWidth, _borderAlternateWidth, _cornerRadius, _borderShadowColor.CGColor, _borderShadowBlur);
+    if (borderShadowColor) {
+      YKCGContextDrawBorderWithShadow(context, bounds, _borderStyle, fillColor.CGColor, borderColor.CGColor, _borderWidth, _borderAlternateWidth, _cornerRadius, borderShadowColor.CGColor, borderShadowBlur);
     } else {
       YKCGContextDrawBorder(context, bounds, _borderStyle, fillColor.CGColor, borderColor.CGColor, _borderWidth, _borderAlternateWidth, _cornerRadius);
     }
