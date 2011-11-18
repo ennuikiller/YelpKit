@@ -412,8 +412,12 @@
     case YKUIButtonStyleSkinnyYellow:
       button.titleFont = [UIFont boldSystemFontOfSize:20];
       button.titleColor = [UIColor whiteColor];
-      button.color = [UIColor colorWithRed:1.0 green:.77 blue:.23 alpha:1.0];
-      button.color2 = [UIColor colorWithRed:1.0 green:.59 blue:.16 alpha:1.0];
+      // Brighter Yellow
+      //button.color = [UIColor colorWithRed:1.0 green:.77 blue:.23 alpha:1.0];
+      //button.color2 = [UIColor colorWithRed:1.0 green:.59 blue:.16 alpha:1.0];
+      // Darker Yellow
+      button.color = [UIColor colorWithRed:.894 green:.60 blue:.13 alpha:1.0];
+      button.color2 = [UIColor colorWithRed:.894 green:.47 blue:.08 alpha:1.0];
       button.shadingType = YKUIShadingTypeLinear;
       button.titleShadowColor = [UIColor darkGrayColor];
       button.titleShadowOffset = CGSizeMake(0, -1);
