@@ -46,7 +46,12 @@ typedef enum {
   // This is useful for an image view that has to load its data and may 
   // initially return 0 for sizeThatFits.
   // This option is only available when using 
-  YKLayoutOptionsSizeToFitDefaultSize = 1 << 9, 
+  YKLayoutOptionsSizeToFitDefaultSize = 1 << 9,
+
+  // Whether sizeToFit is constrained to the size specified.
+  // This is useful for an image view that may need to be constrained to a max
+  // size, but still maintain its aspect ratio.
+  YKLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio = 1 << 10,
 } YKLayoutOptions;
 
 

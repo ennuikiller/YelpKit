@@ -147,7 +147,9 @@ static NSMutableDictionary *gDebugStats = NULL;
 
 - (CGRect)setFrame:(CGRect)frame view:(UIView *)view options:(YKLayoutOptions)options {
   CGRect originalFrame = frame;
-  BOOL sizeToFit = ((options & YKLayoutOptionsSizeToFit) == YKLayoutOptionsSizeToFit) || ((options & YKLayoutOptionsSizeToFitVariableWidth) == YKLayoutOptionsSizeToFitVariableWidth);
+  BOOL sizeToFit = ((options & YKLayoutOptionsSizeToFit) == YKLayoutOptionsSizeToFit)
+  || ((options & YKLayoutOptionsSizeToFitVariableWidth) == YKLayoutOptionsSizeToFitVariableWidth)
+  || ((options & YKLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio) == YKLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio);
 
   CGSize sizeThatFits = CGSizeZero;
   if (sizeToFit) {
@@ -157,7 +159,21 @@ static NSMutableDictionary *gDebugStats = NULL;
     if (((options & YKLayoutOptionsSizeToFitConstraintWidth) == YKLayoutOptionsSizeToFitConstraintWidth) && sizeThatFits.width > frame.size.width) {
       sizeThatFits.width = frame.size.width;
     }
-    
+
+    // If size that fits returns a larger width or height, constrain it, but also maintain the aspect ratio from sizeThatFits
+    if (((options & YKLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio) == YKLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio) && (sizeThatFits.height > frame.size.height || sizeThatFits.width > frame.size.width)) {
+      CGFloat aspectRatio = sizeThatFits.width / sizeThatFits.height;
+      // If we're going to constrain by width
+      if (sizeThatFits.width / frame.size.width > sizeThatFits.height / frame.size.height) {
+        sizeThatFits.width = frame.size.width;
+        sizeThatFits.height = roundf(frame.size.width / aspectRatio);
+      // If we're going to constrain by height
+      } else {
+        sizeThatFits.height = frame.size.height;
+        sizeThatFits.width = roundf(frame.size.height * aspectRatio);
+      }
+    }
+
     if (sizeThatFits.width == 0 && ((options & YKLayoutOptionsSizeToFitDefaultSize) == YKLayoutOptionsSizeToFitDefaultSize)) {
       sizeThatFits.width = frame.size.width;
     }
@@ -171,7 +187,9 @@ static NSMutableDictionary *gDebugStats = NULL;
     // This is because most views are sized based on a width. If you had a view (a button, for example) with a variable width, then you should specify the
     // YKLayoutOptionsSizeToFitVariableWidth to override this check.
     // This check only applies to YKUIView subclasses.
-    if ((options & YKLayoutOptionsSizeToFitVariableWidth) != YKLayoutOptionsSizeToFitVariableWidth && sizeThatFits.width != frame.size.width && [view isKindOfClass:[YKUILayoutView class]]) {
+    if (((options & YKLayoutOptionsSizeToFitVariableWidth) != YKLayoutOptionsSizeToFitVariableWidth)
+        && ((options & YKLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio) != YKLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio)
+        && sizeThatFits.width != frame.size.width && [view isKindOfClass:[YKUILayoutView class]]) {
       YKAssert(NO, @"sizeThatFits: on view returned width different from passed in width. If you have a variable width view, you can pass in the option YKLayoutOptionsSizeToFitVariableWidth to avoid this check.");
     }
     

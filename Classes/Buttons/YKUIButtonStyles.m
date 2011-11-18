@@ -419,7 +419,7 @@
       button.color = [UIColor colorWithRed:.894 green:.60 blue:.13 alpha:1.0];
       button.color2 = [UIColor colorWithRed:.894 green:.47 blue:.08 alpha:1.0];
       button.shadingType = YKUIShadingTypeLinear;
-      button.titleShadowColor = [UIColor darkGrayColor];
+      button.titleShadowColor = [UIColor colorWithRed:0.61f green:0.35f blue:0.00f alpha:1.0f];
       button.titleShadowOffset = CGSizeMake(0, -1);
       
       button.highlightedColor = button.color2;
