@@ -213,7 +213,7 @@ CGRect YKCGRectToCenterInRect(CGSize size, CGRect inRect);
 /*!
  TODO(gabe): Document
  */
-CGFloat YKCGFloatToCenter(CGFloat width, CGFloat inWidth, CGFloat minPosition);
+CGFloat YKCGFloatToCenter(CGFloat length, CGFloat inLength, CGFloat min);
 
 /*!
  Adds two rectangles.

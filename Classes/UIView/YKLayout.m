@@ -315,6 +315,7 @@ void YKLayoutAssert(UIView *view, id<YKLayout> layout) {
 }
 
 + (void)dumpStats {
+  /*
 #if DEBUG
   YKDebug(@"\n\n");
   YKDebug(@"Layout stats");
@@ -326,6 +327,7 @@ void YKLayoutAssert(UIView *view, id<YKLayout> layout) {
   [gDebugStats release];
   gDebugStats = nil;
 #endif
+   */
 }
 
 @end
