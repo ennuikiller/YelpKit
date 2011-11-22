@@ -140,6 +140,27 @@ static NSString *gDefaultTableName = kDefaultTableName;
   return localizedString;
 }
 
+- (NSString *)yelp_localizedStringForKey:(NSString *)key tableName:(NSString *)tableName locale:(NSString *)locale {
+  if (!tableName) tableName = gDefaultTableName; // Default file is Localizable.strings
+  NSString *localizedString = [self yelp_stringForKey:key tableName:tableName localization:locale];
+
+  // If not found, use the language code
+  if (!localizedString && [locale length] == 5) {
+    NSString *languageCode = [locale substringToIndex:2];
+    localizedString = [self yelp_stringForKey:key tableName:tableName localization:languageCode];
+  }
+
+  // If not found, use the current locale instead of the locale passed in
+  if (!localizedString) {
+    localizedString = [self yelp_localizedStringForKey:key tableName:tableName];
+  }
+
+  if (!localizedString) {
+    localizedString = key;
+  }
+  return localizedString;
+}
+
 
 @end
 
@@ -169,6 +190,10 @@ static NSString *gLanguageCode = nil;
 
 + (NSString *)localize:(NSString *)key tableName:(NSString *)tableName value:(NSString *)value {
   return NSLocalizedStringWithDefaultValue(key, tableName, [NSBundle bundleForClass:[self class]], value, @"");
+}
+
++ (NSString *)localize:(NSString *)key tableName:(NSString *)tableName locale:(NSString *)locale {
+  return NSLocalizedStringForLocale(key, tableName, [NSBundle bundleForClass:[self class]], locale);
 }
 
 + (void)setDefaultTableName:(NSString *)defaultTableName {

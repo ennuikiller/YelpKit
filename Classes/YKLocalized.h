@@ -15,12 +15,16 @@
 #define NSLocalizedStringWithDefaultValue(key, tbl, bundle, val, comment) \
 [bundle yelp_localizedStringForKey:(key) value:val tableName:(tbl)]
 
+#undef NSLocalizedStringForLocale
+#define NSLocalizedStringForLocale(key, tbl, bundle, locale) \
+[bundle yelp_localizedStringForKey:(key) tableName:(tbl) locale:(locale)]
 
 // Use instead of NSLocalizedString
 #ifdef YKLocalizedString
 #undef YKLocalizedString
 #endif
 #define YKLocalizedString(__KEY__) [YKLocalized localize:__KEY__ tableName:nil value:nil] // LOCALIZE_KEY_IGNORE
+#define YKLocalizedStringForLocale(__KEY__, __LOCALE__) [YKLocalized localize:__KEY__ tableName:nil locale:__LOCALE__]
 #define YKLocalizedFormat(__KEY__, ...) [NSString stringWithFormat:[YKLocalized localize:__KEY__ tableName:nil value:nil], ##__VA_ARGS__] // LOCALIZE_KEY_IGNORE
 #define YKLocalizedStringWithDefaultValue(__KEY__, __TABLE__, __VALUE__) [YKLocalized localize:__KEY__ tableName:__TABLE__ value:[YKLocalized localize:__VALUE__ tableName:__TABLE__ value:nil]]
 #define YKLocalizedStringForTable(__TABLE__, __KEY__) [YKLocalized localize:__KEY__ tableName:__TABLE__ value:nil]
@@ -98,6 +102,22 @@
 - (NSString *)yelp_localizedStringForKey:(NSString *)key tableName:(NSString *)tableName;
 
 /*!
+ Localize string to the given locale.
+ 
+ Uses localized resource in order of:
+ - locale parameter passed in (language_region): "en_CA"
+ - language: "en"
+ - device's current locale
+
+ If still not found will return the key as a last resort.
+
+ @param key String to localize
+ @param tableName Name of strings file, defaults to "Localizable"
+ @param locale The locale to localize to
+ */
+- (NSString *)yelp_localizedStringForKey:(NSString *)key tableName:(NSString *)tableName locale:(NSString *)locale;
+
+/*!
  Get string for key based on localization.
  @param key String to localize
  @param tableName Name of strings file, defaults to "Localizable"
@@ -151,6 +171,14 @@
  @param value Default if key is not present
  */
 + (NSString *)localize:(NSString *)key tableName:(NSString *)tableName value:(NSString *)value;
+
+/*!
+ Get localized string for specified locale
+ 
+@param key Key
+@param locale The locale to localize to
+*/
++ (NSString *)localize:(NSString *)key tableName:(NSString *)tableName locale:(NSString *)locale;
 
 /*!
  Set default table name.
