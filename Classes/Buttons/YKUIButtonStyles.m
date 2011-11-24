@@ -425,8 +425,8 @@
       button.highlightedColor = button.color2;
       button.highlightedColor2 = button.color;
       button.highlightedShadingType = YKUIShadingTypeLinear;
-      button.highlightedTitleColor = [UIColor darkGrayColor];
-      button.highlightedTitleShadowColor = [UIColor whiteColor];
+      button.highlightedTitleColor = [UIColor whiteColor];
+      button.highlightedTitleShadowColor = [UIColor grayColor];
       button.highlightedTitleShadowOffset = CGSizeMake(0, -1);
       
       // Disabled: Gray text on gray linear shading
