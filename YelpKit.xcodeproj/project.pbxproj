@@ -31,10 +31,10 @@
 		0055933B140B00F6001E9C43 /* YKUIImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00559317140B00F6001E9C43 /* YKUIImageView.m */; };
 		00559342140B00F6001E9C43 /* YKLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559320140B00F6001E9C43 /* YKLayout.h */; };
 		00559343140B00F6001E9C43 /* YKLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 00559321140B00F6001E9C43 /* YKLayout.m */; };
-		00559346140B00F6001E9C43 /* YKDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559324140B00F6001E9C43 /* YKDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		00559347140B00F6001E9C43 /* YKError.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559325140B00F6001E9C43 /* YKError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		00559346140B00F6001E9C43 /* YKDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559324140B00F6001E9C43 /* YKDefines.h */; settings = {ATTRIBUTES = (); }; };
+		00559347140B00F6001E9C43 /* YKError.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559325140B00F6001E9C43 /* YKError.h */; settings = {ATTRIBUTES = (); }; };
 		00559348140B00F6001E9C43 /* YKError.m in Sources */ = {isa = PBXBuildFile; fileRef = 00559326140B00F6001E9C43 /* YKError.m */; };
-		00559349140B00F6001E9C43 /* YKLocalized.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559327140B00F6001E9C43 /* YKLocalized.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		00559349140B00F6001E9C43 /* YKLocalized.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559327140B00F6001E9C43 /* YKLocalized.h */; settings = {ATTRIBUTES = (); }; };
 		0055934A140B00F6001E9C43 /* YKLocalized.m in Sources */ = {isa = PBXBuildFile; fileRef = 00559328140B00F6001E9C43 /* YKLocalized.m */; };
 		00559353140B0102001E9C43 /* GHKitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00559352140B0102001E9C43 /* GHKitIOS.framework */; };
 		00D575681457C35C00DE6487 /* YKCGUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 00D575661457C35C00DE6487 /* YKCGUtils.h */; };
@@ -369,6 +369,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -381,6 +382,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
