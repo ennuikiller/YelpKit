@@ -100,7 +100,7 @@
 
   _activityLabel.frame = CGRectMake(roundf((self.frame.size.width - activityLabelWidth) / 2.0), y, roundf(activityLabelWidth), height);
   
-  _imageView.frame = CGRectMake(_imageView.frame.size.width - _activityLabel.frame.origin.x - 10, y, _imageView.frame.size.width, height);
+  _imageView.frame = CGRectMake(_activityLabel.frame.origin.x - _imageView.frame.size.width - 10, y, _imageView.frame.size.width, height);
 
   _iconLayer.frame = CGRectMake(50, self.frame.size.height, _icon.size.width, _icon.size.height);
 }
