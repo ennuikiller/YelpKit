@@ -11,17 +11,19 @@
 #import <GHKitIOS/GHNSError+Utils.h>
 #import "YKLocalized.h"
 
-NSString *const YKErrorDomain = @"YKErrorDomain";
+// TODO(gabe): Adjust these back to YK prefixes when we fix our translation files
 
-NSString *const YKErrorUnknown = @"YKErrorUnknown"; // Unknown error
+NSString *const YKErrorDomain = @"YPErrorDomain";
 
-NSString *const YKErrorRequest = @"YKErrorRequest"; // General request error
-NSString *const YKErrorAuthChallenge = @"YKErrorAuthChallenge";
-NSString *const YKErrorServerResourceNotFound = @"YKErrorServerResourceNotFound"; // Server was reached but returned a 404 error
-NSString *const YKErrorServerMaintenance = @"YKErrorServerMaintenance"; // Server was reached but returned a 503 error
-NSString *const YKErrorServerResponse = @"YKErrorServerResponse"; // Reached server, but there was an error returned
-NSString *const YKErrorCannotConnectToHost = @"YKErrorCannotConnectToHost"; // Server not reachable but internet active
-NSString *const YKErrorNotConnectedToInternet = @"YKErrorNotConnectedToInternet";
+NSString *const YKErrorUnknown = @"YPErrorUnknown"; // Unknown error
+
+NSString *const YKErrorRequest = @"YPErrorRequest"; // General request error
+NSString *const YKErrorAuthChallenge = @"YPErrorAuthChallenge";
+NSString *const YKErrorServerResourceNotFound = @"YPErrorServerResourceNotFound"; // Server was reached but returned a 404 error
+NSString *const YKErrorServerMaintenance = @"YPErrorServerMaintenance"; // Server was reached but returned a 503 error
+NSString *const YKErrorServerResponse = @"YPErrorServerResponse"; // Reached server, but there was an error returned
+NSString *const YKErrorCannotConnectToHost = @"YPErrorCannotConnectToHost"; // Server not reachable but internet active
+NSString *const YKErrorNotConnectedToInternet = @"YPErrorNotConnectedToInternet";
 
 
 @interface YKError ()
