@@ -294,6 +294,11 @@ extern const double kYKURLRequestExpiresAgeMax;
 - (NSDate *)responseDate;
 
 /*!
+ Get downloaded data as string (UTF-8).
+ */
+- (NSString *)downloadedDataAsString;
+
+/*!
  Should load from cache.
  */
 - (BOOL)shouldAttemptLoadFromCache;

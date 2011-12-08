@@ -352,6 +352,11 @@ static BOOL gYKURLRequestCacheEnabled = YES; // Defaults to ON
           _responseInterval, _dataInterval, _totalInterval];
 }  
 
+- (NSString *)downloadedDataAsString {
+  if (!_downloadedData) return nil;
+  return [[[NSString alloc] initWithData:_downloadedData encoding:NSUTF8StringEncoding] autorelease];
+}
+
 #pragma mark Multipart POST
 
 - (void)setHTTPBodyMultipart:(NSDictionary *)multipart keyEnumerator:(NSEnumerator *)keyEnumerator compress:(BOOL)compress {
@@ -513,7 +518,7 @@ static BOOL gAuthProtectionDisabled = NO;
   YKDebug(@"Did finish loading; status=%d", status);
   if (status >= 300) {
     if (_downloadedData) {
-      YKDebug(@"Error: %@", [[[NSString alloc] initWithData:_downloadedData encoding:NSUTF8StringEncoding] autorelease]);
+      YKDebug(@"Error: %@", [self downloadedDataAsString]);
     }
     [self didError:[YKHTTPError errorWithHTTPStatus:status]];
   } else {
