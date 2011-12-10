@@ -39,7 +39,8 @@ typedef enum {
   YKHTTPMethodGet,
   YKHTTPMethodPostMultipart,
   YKHTTPMethodPostMultipartCompressed,
-  YKHTTPMethodPostForm
+  YKHTTPMethodPostForm,
+  YKHTTPMethodHead,
 } YKHTTPMethod;
 
 // Deprecated; TODO(gabe): Remove after search/replace
