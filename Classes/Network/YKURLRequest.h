@@ -47,7 +47,8 @@ typedef enum {
   YPHTTPMethodGet = 1,
   YPHTTPMethodPostMultipart,
   YPHTTPMethodPostMultipartCompressed,
-  YPHTTPMethodPostForm
+  YPHTTPMethodPostForm,
+  YPHTTPMethodHead,
 } YPHTTPMethod;
 
 typedef enum {

@@ -209,7 +209,9 @@ static BOOL gYKURLRequestCacheEnabled = YES; // Defaults to ON
   } else if (method == YPHTTPMethodPostForm) {
     [_request setHTTPMethod:@"POST"]; 
     [self setHTTPBodyFormData:postParams];
-  } 
+  } else if (method == YPHTTPMethodHead) {
+    [_request setHTTPMethod:@"HEAD"]; 
+  }
   _start = [NSDate timeIntervalSinceReferenceDate];
   _connection = [[connectionClass alloc] initWithRequest:_request delegate:self startImmediately:NO];   
   if (_detachOnThread) {
@@ -346,10 +348,14 @@ static BOOL gYKURLRequestCacheEnabled = YES; // Defaults to ON
 }
 
 #pragma mark Debug
-
+ 
 - (NSString *)metricsDescription {
-  return [NSString stringWithFormat:@"Latency: %0.4fs\nData: %0.4fs\nTotal: %0.4fs\n", 
-          _responseInterval, _dataInterval, _totalInterval];
+  NSMutableString *string = [NSMutableString string];
+  [string appendFormat:@"Response: %0.3fs\n", _totalInterval];
+  if (_dataInterval > 0) {
+    [string appendFormat:@"Download: %0.3fs\n", _dataInterval];
+  }
+  return string;
 }  
 
 - (NSString *)downloadedDataAsString {
