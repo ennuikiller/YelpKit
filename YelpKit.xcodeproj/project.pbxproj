@@ -37,6 +37,14 @@
 		00559349140B00F6001E9C43 /* YKLocalized.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559327140B00F6001E9C43 /* YKLocalized.h */; settings = {ATTRIBUTES = (); }; };
 		0055934A140B00F6001E9C43 /* YKLocalized.m in Sources */ = {isa = PBXBuildFile; fileRef = 00559328140B00F6001E9C43 /* YKLocalized.m */; };
 		00559353140B0102001E9C43 /* GHKitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00559352140B0102001E9C43 /* GHKitIOS.framework */; };
+		00BE005D14A148A8006B733B /* YKCLSortDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 00BE005514A148A8006B733B /* YKCLSortDescriptor.h */; };
+		00BE005E14A148A8006B733B /* YKCLSortDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 00BE005614A148A8006B733B /* YKCLSortDescriptor.m */; };
+		00BE005F14A148A8006B733B /* YKCLUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 00BE005714A148A8006B733B /* YKCLUtils.h */; };
+		00BE006014A148A8006B733B /* YKCLUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 00BE005814A148A8006B733B /* YKCLUtils.m */; };
+		00BE006114A148A8006B733B /* YKMKAnnotation.h in Headers */ = {isa = PBXBuildFile; fileRef = 00BE005914A148A8006B733B /* YKMKAnnotation.h */; };
+		00BE006214A148A8006B733B /* YKMKAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 00BE005A14A148A8006B733B /* YKMKAnnotation.m */; };
+		00BE006314A148A8006B733B /* YKMKUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 00BE005B14A148A8006B733B /* YKMKUtils.h */; };
+		00BE006414A148A8006B733B /* YKMKUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 00BE005C14A148A8006B733B /* YKMKUtils.m */; };
 		00D575681457C35C00DE6487 /* YKCGUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 00D575661457C35C00DE6487 /* YKCGUtils.h */; };
 		00D575691457C35C00DE6487 /* YKCGUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D575671457C35C00DE6487 /* YKCGUtils.m */; };
 		00D5756C1457C38900DE6487 /* YKUIButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 00D5756A1457C38900DE6487 /* YKUIButton.h */; };
@@ -82,6 +90,14 @@
 		00559327140B00F6001E9C43 /* YKLocalized.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKLocalized.h; sourceTree = "<group>"; };
 		00559328140B00F6001E9C43 /* YKLocalized.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKLocalized.m; sourceTree = "<group>"; };
 		00559352140B0102001E9C43 /* GHKitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHKitIOS.framework; sourceTree = "<group>"; };
+		00BE005514A148A8006B733B /* YKCLSortDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKCLSortDescriptor.h; sourceTree = "<group>"; };
+		00BE005614A148A8006B733B /* YKCLSortDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKCLSortDescriptor.m; sourceTree = "<group>"; };
+		00BE005714A148A8006B733B /* YKCLUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKCLUtils.h; sourceTree = "<group>"; };
+		00BE005814A148A8006B733B /* YKCLUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKCLUtils.m; sourceTree = "<group>"; };
+		00BE005914A148A8006B733B /* YKMKAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKMKAnnotation.h; sourceTree = "<group>"; };
+		00BE005A14A148A8006B733B /* YKMKAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKMKAnnotation.m; sourceTree = "<group>"; };
+		00BE005B14A148A8006B733B /* YKMKUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKMKUtils.h; sourceTree = "<group>"; };
+		00BE005C14A148A8006B733B /* YKMKUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKMKUtils.m; sourceTree = "<group>"; };
 		00D575661457C35C00DE6487 /* YKCGUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKCGUtils.h; sourceTree = "<group>"; };
 		00D575671457C35C00DE6487 /* YKCGUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKCGUtils.m; sourceTree = "<group>"; };
 		00D5756A1457C38900DE6487 /* YKUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUIButton.h; sourceTree = "<group>"; };
@@ -142,6 +158,7 @@
 		005592FE140B00F6001E9C43 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				00BE005414A148A8006B733B /* Location */,
 				00D575641457C35C00DE6487 /* Buttons */,
 				00D575651457C35C00DE6487 /* UI */,
 				005592FF140B00F6001E9C43 /* ImageLoader */,
@@ -233,6 +250,21 @@
 			path = Libraries;
 			sourceTree = "<group>";
 		};
+		00BE005414A148A8006B733B /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				00BE005514A148A8006B733B /* YKCLSortDescriptor.h */,
+				00BE005614A148A8006B733B /* YKCLSortDescriptor.m */,
+				00BE005714A148A8006B733B /* YKCLUtils.h */,
+				00BE005814A148A8006B733B /* YKCLUtils.m */,
+				00BE005914A148A8006B733B /* YKMKAnnotation.h */,
+				00BE005A14A148A8006B733B /* YKMKAnnotation.m */,
+				00BE005B14A148A8006B733B /* YKMKUtils.h */,
+				00BE005C14A148A8006B733B /* YKMKUtils.m */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 		00D575641457C35C00DE6487 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +313,10 @@
 				00D5756C1457C38900DE6487 /* YKUIButton.h in Headers */,
 				00D575701457C3CF00DE6487 /* YKUIControl.h in Headers */,
 				00D575741457C47A00DE6487 /* YKUIButtonStyles.h in Headers */,
+				00BE005D14A148A8006B733B /* YKCLSortDescriptor.h in Headers */,
+				00BE005F14A148A8006B733B /* YKCLUtils.h in Headers */,
+				00BE006114A148A8006B733B /* YKMKAnnotation.h in Headers */,
+				00BE006314A148A8006B733B /* YKMKUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +387,10 @@
 				00D5756D1457C38900DE6487 /* YKUIButton.m in Sources */,
 				00D575711457C3CF00DE6487 /* YKUIControl.m in Sources */,
 				00D575751457C47A00DE6487 /* YKUIButtonStyles.m in Sources */,
+				00BE005E14A148A8006B733B /* YKCLSortDescriptor.m in Sources */,
+				00BE006014A148A8006B733B /* YKCLUtils.m in Sources */,
+				00BE006214A148A8006B733B /* YKMKAnnotation.m in Sources */,
+				00BE006414A148A8006B733B /* YKMKUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
