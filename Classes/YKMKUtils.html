@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>YKCompressor Protocol Reference</title>
+		<title>YKMKUtils Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">YKCompressor Protocol Reference</h1>
+				<h1 class="hideInXcode">YKMKUtils Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -40,13 +40,15 @@
 	
 	
 	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/regionThatFits:">&nbsp;&nbsp;&nbsp;&nbsp;+ regionThatFits:</option>
+	
+	<option value="//api/name/regionThatFits:center:">&nbsp;&nbsp;&nbsp;&nbsp;+ regionThatFits:center:</option>
+	
+	<option value="//api/name/regionThatFits:useCurrentLocation:currentLocationCoordinate:">&nbsp;&nbsp;&nbsp;&nbsp;+ regionThatFits:useCurrentLocation:currentLocationCoordinate:</option>
 	
 	
-	<option value="instance_methods">Instance Methods</option>
-	
-	<option value="//api/name/compressData:">&nbsp;&nbsp;&nbsp;&nbsp;- compressData:</option>
-	
-	<option value="//api/name/contentEncoding">&nbsp;&nbsp;&nbsp;&nbsp;- contentEncoding</option>
 	
 	
 	
@@ -72,22 +74,24 @@
 
 
 
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/compressData:">compressData:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/regionThatFits:">regionThatFits:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/contentEncoding">contentEncoding</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/regionThatFits:center:">regionThatFits:center:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/regionThatFits:useCurrentLocation:currentLocationCoordinate:">regionThatFits:useCurrentLocation:currentLocationCoordinate:</a></span></li>
 	
 </ul></li>
+
+
 
 
 			</ul>
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="YKCompressor Protocol Reference" name="top"></a>
+				<a title="YKMKUtils Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -96,18 +100,18 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">YKCompressor Protocol Reference</h1>
+						<h1 class="title title-header">YKMKUtils Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<td class="specification-title">Conforms to</td>
+	<td class="specification-title">Inherits from</td>
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">YKCompressor.h</td>
+	<td class="specification-value">YKMKUtils.h<br />YKMKUtils.m</td>
 </tr>
 						</tbody></table></div>
 					
@@ -117,7 +121,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Protocol interface for something that compresses data, for example gzip.</p>
+						<p>Distance of the region longitude delta, based on YKCLLocationDistance (Haversine)</p>
 					</div>
 					
 					
@@ -135,19 +139,25 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/compressData:">&ndash;&nbsp;compressData:</a></code>
-		<span class="tooltip"><p>Compress the data.</p></span>
+		<code><a href="#//api/name/regionThatFits:useCurrentLocation:currentLocationCoordinate:">+&nbsp;regionThatFits:useCurrentLocation:currentLocationCoordinate:</a></code>
+		<span class="tooltip"><p>Region that fits annotations.</p></span>
 	</span>
 	
-	<span class="task-item-suffix">required method</span>
+	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/contentEncoding">&ndash;&nbsp;contentEncoding</a></code>
-		<span class="tooltip"><p>The content encoding to use when compressing an HTTP request.
-For example, if this is a gzip compressor, @&ldquo;gzip&rdquo;.</p></span>
+		<code><a href="#//api/name/regionThatFits:">+&nbsp;regionThatFits:</a></code>
+		<span class="tooltip"><p>Region that fits annotations.</p></span>
 	</span>
 	
-	<span class="task-item-suffix">required method</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/regionThatFits:center:">+&nbsp;regionThatFits:center:</a></code>
+		<span class="tooltip"><p>Region that fits annotations.</p></span>
+	</span>
+	
+	
 </li>
 						</ul>
 						
@@ -159,25 +169,33 @@ For example, if this is a gzip compressor, @&ldquo;gzip&rdquo;.</p></span>
 					
 					
 					
-					
-					
 					<div class="section section-methods">
-						<a title="Instance Methods" name="instance_methods"></a>
-						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/compressData:" title="compressData:"></a>
-	<h3 class="subsubtitle method-title">compressData:</h3>
+	<a name="//api/name/regionThatFits:" title="regionThatFits:"></a>
+	<h3 class="subsubtitle method-title">regionThatFits:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Compress the data.</p>
+		<p>Region that fits annotations.</p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (NSData *)compressData:(NSData *)<em>data</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (MKCoordinateRegion)regionThatFits:(NSArray *)<em>annotations</em></code></div>
 	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>annotations</em></dt>
+			<dd><p>Annotations, id<MKAnnotation> or any object that responds to &ndash; (CLLocationCoordinate2D)coordinate</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -193,26 +211,40 @@ For example, if this is a gzip compressor, @&ldquo;gzip&rdquo;.</p></span>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">YKCompressor.h</code><br />
+		<code class="declared-in-ref">YKMKUtils.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/contentEncoding" title="contentEncoding"></a>
-	<h3 class="subsubtitle method-title">contentEncoding</h3>
+	<a name="//api/name/regionThatFits:center:" title="regionThatFits:center:"></a>
+	<h3 class="subsubtitle method-title">regionThatFits:center:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The content encoding to use when compressing an HTTP request.
-For example, if this is a gzip compressor, @&ldquo;gzip&rdquo;.</p>
+		<p>Region that fits annotations.</p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (NSString *)contentEncoding</code></div>
+	<div class="method-subsection method-declaration"><code>+ (MKCoordinateRegion)regionThatFits:(NSArray *)<em>annotations</em> center:(CLLocationCoordinate2D)<em>center</em></code></div>
 	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>annotations</em></dt>
+			<dd><p>Annotations, id<MKAnnotation> or any object that responds to &ndash; (CLLocationCoordinate2D)coordinate</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>center</em></dt>
+			<dd><p>Center point</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -228,13 +260,69 @@ For example, if this is a gzip compressor, @&ldquo;gzip&rdquo;.</p>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">YKCompressor.h</code><br />
+		<code class="declared-in-ref">YKMKUtils.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/regionThatFits:useCurrentLocation:currentLocationCoordinate:" title="regionThatFits:useCurrentLocation:currentLocationCoordinate:"></a>
+	<h3 class="subsubtitle method-title">regionThatFits:useCurrentLocation:currentLocationCoordinate:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Region that fits annotations.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (MKCoordinateRegion)regionThatFits:(NSArray *)<em>annotations</em> useCurrentLocation:(BOOL)<em>useCurrentLocation</em> currentLocationCoordinate:(CLLocationCoordinate2D)<em>currentLocationCoordinate</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>annotations</em></dt>
+			<dd><p>Annotations, id<MKAnnotation> or any object that responds to &ndash; (CLLocationCoordinate2D)coordinate</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>useCurrentLocation</em></dt>
+			<dd><p>If YES, will use currentLocationCoordinate</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>currentLocationCoordinate</em></dt>
+			<dd><p>Coordinate to include</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKMKUtils.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 					</div>
+					
+					
 					
 					
 				</div>

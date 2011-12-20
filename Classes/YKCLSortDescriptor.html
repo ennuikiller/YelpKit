@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>YKCompressor Protocol Reference</title>
+		<title>YKCLSortDescriptor Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">YKCompressor Protocol Reference</h1>
+				<h1 class="hideInXcode">YKCLSortDescriptor Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -44,9 +44,9 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/compressData:">&nbsp;&nbsp;&nbsp;&nbsp;- compressData:</option>
+	<option value="//api/name/initWithAscending:coordinate:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithAscending:coordinate:</option>
 	
-	<option value="//api/name/contentEncoding">&nbsp;&nbsp;&nbsp;&nbsp;- contentEncoding</option>
+	<option value="//api/name/initWithLatitudeKey:longitudeKey:ascending:coordinate:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithLatitudeKey:longitudeKey:ascending:coordinate:</option>
 	
 	
 	
@@ -76,9 +76,9 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/compressData:">compressData:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithAscending:coordinate:">initWithAscending:coordinate:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/contentEncoding">contentEncoding</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithLatitudeKey:longitudeKey:ascending:coordinate:">initWithLatitudeKey:longitudeKey:ascending:coordinate:</a></span></li>
 	
 </ul></li>
 
@@ -87,7 +87,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="YKCompressor Protocol Reference" name="top"></a>
+				<a title="YKCLSortDescriptor Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -96,18 +96,18 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">YKCompressor Protocol Reference</h1>
+						<h1 class="title title-header">YKCLSortDescriptor Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<td class="specification-title">Conforms to</td>
-	<td class="specification-value">NSObject</td>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSSortDescriptor</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">YKCompressor.h</td>
+	<td class="specification-value">YKCLSortDescriptor.h<br />YKCLSortDescriptor.m</td>
 </tr>
 						</tbody></table></div>
 					
@@ -117,7 +117,17 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Protocol interface for something that compresses data, for example gzip.</p>
+						<p>Sort descriptor for object with coordinate (CLLocationCoordinate2D) properties.</p>
+
+<pre><code>YKCLSortDescriptor *distanceSortDescriptor = [[[YKCLSortDescriptor alloc] initWithAscending:YES coordinate:coordinate] autorelease];
+[annotations sortUsingDescriptors:[NSArray arrayWithObject:distanceSortDescriptor]];
+</code></pre>
+
+<p>Or with custom latitude and longitude selectors:</p>
+
+<pre><code>YKCLSortDescriptor *distanceSortDescriptor = [[[YKCLSortDescriptor alloc] initWithLatitudeKey:@"business.latitudeNumber" longitudeKey:@"business.longitudeNumber" ascending:YES coordinate:coordinate] autorelease];
+[bookmarks sortUsingDescriptors:[NSArray arrayWithObject:distanceSortDescriptor]];
+</code></pre>
 					</div>
 					
 					
@@ -135,19 +145,18 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/compressData:">&ndash;&nbsp;compressData:</a></code>
-		<span class="tooltip"><p>Compress the data.</p></span>
+		<code><a href="#//api/name/initWithAscending:coordinate:">&ndash;&nbsp;initWithAscending:coordinate:</a></code>
+		<span class="tooltip"><p>Sort descriptor when objects respond to the &ldquo;coordinate&rdquo; property.</p></span>
 	</span>
 	
-	<span class="task-item-suffix">required method</span>
+	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/contentEncoding">&ndash;&nbsp;contentEncoding</a></code>
-		<span class="tooltip"><p>The content encoding to use when compressing an HTTP request.
-For example, if this is a gzip compressor, @&ldquo;gzip&rdquo;.</p></span>
+		<code><a href="#//api/name/initWithLatitudeKey:longitudeKey:ascending:coordinate:">&ndash;&nbsp;initWithLatitudeKey:longitudeKey:ascending:coordinate:</a></code>
+		<span class="tooltip"><p>Sort descriptor when objects respond to a latitude and longitude property.</p></span>
 	</span>
 	
-	<span class="task-item-suffix">required method</span>
+	
 </li>
 						</ul>
 						
@@ -166,18 +175,33 @@ For example, if this is a gzip compressor, @&ldquo;gzip&rdquo;.</p></span>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/compressData:" title="compressData:"></a>
-	<h3 class="subsubtitle method-title">compressData:</h3>
+	<a name="//api/name/initWithAscending:coordinate:" title="initWithAscending:coordinate:"></a>
+	<h3 class="subsubtitle method-title">initWithAscending:coordinate:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Compress the data.</p>
+		<p>Sort descriptor when objects respond to the &ldquo;coordinate&rdquo; property.</p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (NSData *)compressData:(NSData *)<em>data</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithAscending:(BOOL)<em>ascending</em> coordinate:(CLLocationCoordinate2D)<em>coordinate</em></code></div>
 	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>ascending</em></dt>
+			<dd><p>Ascending order</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>coordinate</em></dt>
+			<dd><p>Coordinate to sort from</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -193,26 +217,50 @@ For example, if this is a gzip compressor, @&ldquo;gzip&rdquo;.</p></span>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">YKCompressor.h</code><br />
+		<code class="declared-in-ref">YKCLSortDescriptor.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/contentEncoding" title="contentEncoding"></a>
-	<h3 class="subsubtitle method-title">contentEncoding</h3>
+	<a name="//api/name/initWithLatitudeKey:longitudeKey:ascending:coordinate:" title="initWithLatitudeKey:longitudeKey:ascending:coordinate:"></a>
+	<h3 class="subsubtitle method-title">initWithLatitudeKey:longitudeKey:ascending:coordinate:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The content encoding to use when compressing an HTTP request.
-For example, if this is a gzip compressor, @&ldquo;gzip&rdquo;.</p>
+		<p>Sort descriptor when objects respond to a latitude and longitude property.</p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (NSString *)contentEncoding</code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithLatitudeKey:(NSString *)<em>latitudeKey</em> longitudeKey:(NSString *)<em>longitudeKey</em> ascending:(BOOL)<em>ascending</em> coordinate:(CLLocationCoordinate2D)<em>coordinate</em></code></div>
 	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>latitudeKey</em></dt>
+			<dd><p>Name of latitude property</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>longitudeKey</em></dt>
+			<dd><p>Name of longitude property</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>ascending</em></dt>
+			<dd><p>Ascending order</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>coordinate</em></dt>
+			<dd><p>Coordinate to sort from</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -228,7 +276,7 @@ For example, if this is a gzip compressor, @&ldquo;gzip&rdquo;.</p>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">YKCompressor.h</code><br />
+		<code class="declared-in-ref">YKCLSortDescriptor.h</code><br />
 	</div>				
 	
 	
