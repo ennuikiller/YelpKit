@@ -14,6 +14,17 @@
 #define kDefaultLongitudeDelta .005
 #define kDefaultSpan MKCoordinateSpanMake(kDefaultLatitudedDelta, kDefaultLongitudeDelta)
 
+//! Maximum distance from annotations to location coordinate in regionThatFits
+#define kMaxRegionThatFitsDistance 3000
+
+#define kMaxRegionThatFitsRelativeCenterDistance (50 * 1000)
+#define kDefaultRegionSpanDelta .1
+#define kMinLatitudeDelta .00001
+#define kMinLongitudeDelta .00001
+#define kMaxLatitudeDelta .3
+#define kMaxLongitudeDelta .3
+
+
 NSString *YKNSStringFromMKCoordinateSpan(MKCoordinateSpan span);
 
 NSString *YKNSStringFromMKCoordinateRegion(MKCoordinateRegion region);
@@ -69,10 +80,14 @@ MKCoordinateRegion YKMKCoordinateRegionInset(MKCoordinateRegion region, CLLocati
 /*!
  Region that fits annotations.
  @param annotations Annotations, id<MKAnnotation> or any object that responds to - (CLLocationCoordinate2D)coordinate
- @param useCurrentLocation If YES, will use currentLocationCoordinate
- @param currentLocationCoordinate Coordinate to include
+ @param locationCoordinate Coordinate to include. It won't include if the distance from any annotation is > kMaxRegionThatFitsDistance.
  */
-+ (MKCoordinateRegion)regionThatFits:(NSArray *)annotations useCurrentLocation:(BOOL)useCurrentLocation currentLocationCoordinate:(CLLocationCoordinate2D)currentLocationCoordinate;
++ (MKCoordinateRegion)regionThatFits:(NSArray *)annotations locationCoordinate:(CLLocationCoordinate2D)locationCoordinate;
+
+/*!
+ Region with insets.
+ */
++ (MKCoordinateRegion)regionForRegion:(MKCoordinateRegion)region insets:(UIEdgeInsets)insets size:(CGSize)size;
 
 /*!
  Region that fits annotations.
@@ -81,7 +96,7 @@ MKCoordinateRegion YKMKCoordinateRegionInset(MKCoordinateRegion region, CLLocati
 + (MKCoordinateRegion)regionThatFits:(NSArray *)annotations;
 
 /*!
- Region that fits annotations.
+ Region that fits annotations with center point.
  @param annotations Annotations, id<MKAnnotation> or any object that responds to - (CLLocationCoordinate2D)coordinate
  @param center Center point
  */

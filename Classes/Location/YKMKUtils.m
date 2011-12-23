@@ -12,16 +12,6 @@
 #import <GHKitIOS/GHNSDictionary+Utils.h>
 #import <GHKitIOS/GHNSDictionary+NSNull.h>
 
-// Maximum distance from annotations to current location for which to use current location in regionThatFits
-#define kMaxRegionThatFitsDistance 3000
-#define kMaxRegionThatFitsRelativeCenterDistance (50 * 1000)
-#define kDefaultRegionSpanDelta .1
-// Determines how much larger to make a region so that map items aren't on the very edge
-#define kRegionThatFitsPadding 1.0
-#define kMinLatitudeDelta .00001
-#define kMinLongitudeDelta .00001
-#define kMaxLatitudeDelta .3
-#define kMaxLongitudeDelta .3
 
 NSString *YKNSStringFromMKCoordinateSpan(MKCoordinateSpan span) {
   return [NSString stringWithFormat:@"(Δ%0.6f, Δ%0.6f)", span.latitudeDelta, span.longitudeDelta];
@@ -156,9 +146,10 @@ BOOL YKCLLocationCoordinate2DIsInsideRegion(CLLocationCoordinate2D coordinate, M
   return (coordinate.latitude < maxLatitude && coordinate.latitude > minLatitude && coordinate.longitude < maxLongitude && coordinate.longitude > minLongitude);
 }
 
+
 @implementation YKMKUtils
 
-+ (MKCoordinateRegion)regionThatFits:(NSArray *)annotations useCurrentLocation:(BOOL)useCurrentLocation currentLocationCoordinate:(CLLocationCoordinate2D)currentLocationCoordinate {
++ (MKCoordinateRegion)regionThatFits:(NSArray *)annotations locationCoordinate:(CLLocationCoordinate2D)locationCoordinate {
   CLLocationDegrees minLatitude = 90;
   CLLocationDegrees maxLatitude = -90;
   CLLocationDegrees minLongitude = 180;
@@ -167,7 +158,7 @@ BOOL YKCLLocationCoordinate2DIsInsideRegion(CLLocationCoordinate2D coordinate, M
   BOOL found = NO;
   CLLocationCoordinate2D center = YKCLLocationCoordinate2DNull;
 
-  for(id annotation in annotations) {
+  for (id annotation in annotations) {
     CLLocationCoordinate2D annotationCoordinate = [annotation coordinate];
     if (YKCLLocationCoordinate2DIsNull(annotationCoordinate)) continue;
     
@@ -185,10 +176,11 @@ BOOL YKCLLocationCoordinate2DIsInsideRegion(CLLocationCoordinate2D coordinate, M
     found = YES;
   }
   
+  BOOL useLocationCoordinate = !YKCLLocationCoordinate2DIsNull(locationCoordinate);
   CLLocationCoordinate2D coordinate;
-  if (useCurrentLocation) {
+  if (useLocationCoordinate) {
     // Use the current location, if available
-    coordinate = currentLocationCoordinate;
+    coordinate = locationCoordinate;
     // Check to make sure the current location is valid
     if (!YKCLLocationCoordinate2DIsNull(coordinate)) {
       if (found) {
@@ -202,7 +194,7 @@ BOOL YKCLLocationCoordinate2DIsInsideRegion(CLLocationCoordinate2D coordinate, M
           if (coordinate.longitude > maxLongitude) maxLongitude = coordinate.longitude;
         } else {
           // Don't use current location because it is too far away
-          useCurrentLocation = NO;
+          useLocationCoordinate = NO;
         }
       // If there is no location from annotations
       } else {
@@ -214,26 +206,33 @@ BOOL YKCLLocationCoordinate2DIsInsideRegion(CLLocationCoordinate2D coordinate, M
     }
   }
 
-  if (!found && (!useCurrentLocation || YKCLLocationCoordinate2DIsNull(coordinate))) return YKMKCoordinateRegionNull;
+  if (!found && (!useLocationCoordinate || YKCLLocationCoordinate2DIsNull(coordinate))) return YKMKCoordinateRegionNull;
     
   CLLocationDegrees centerLatitude = minLatitude + ((maxLatitude - minLatitude) / 2.0);
   CLLocationDegrees centerLongitude = minLongitude + ((maxLongitude - minLongitude) / 2.0);
   
   MKCoordinateSpan span = MKCoordinateSpanMake(maxLatitude - minLatitude, maxLongitude - minLongitude);
   // Ensure a minimum span in case there was only one point
-  if (span.latitudeDelta < kMinLatitudeDelta || span.longitudeDelta < kMinLongitudeDelta)
+  if (span.latitudeDelta < kMinLatitudeDelta || span.longitudeDelta < kMinLongitudeDelta) {
     span = kDefaultSpan;
-  else {
-    // Make the span a little bit larger so that the annotations aren't awkwardly on the edge of the map
-    span.latitudeDelta = span.latitudeDelta * kRegionThatFitsPadding;
-    span.longitudeDelta = span.longitudeDelta * kRegionThatFitsPadding;
   }
 
   return MKCoordinateRegionMake(YKCLLocationCoordinate2DMake(centerLatitude, centerLongitude), span);
 }
 
++ (MKCoordinateRegion)regionForRegion:(MKCoordinateRegion)region insets:(UIEdgeInsets)insets size:(CGSize)size {
+  if (CGSizeEqualToSize(size, CGSizeZero) || UIEdgeInsetsEqualToEdgeInsets(insets, UIEdgeInsetsZero)) return region;
+
+  CGFloat pixelsPerLongitude = region.span.longitudeDelta / size.width;
+  CGFloat pixelsPerLatitude = region.span.latitudeDelta / size.height;
+    
+  region.span.latitudeDelta += ((insets.top + insets.bottom) * pixelsPerLatitude);
+  region.span.longitudeDelta += ((insets.left + insets.right) * pixelsPerLongitude);
+  return region;
+}
+
 + (MKCoordinateRegion)regionThatFits:(NSArray *)annotations {
-  return [self regionThatFits:annotations useCurrentLocation:NO currentLocationCoordinate:YKCLLocationCoordinate2DNull];
+  return [self regionThatFits:annotations locationCoordinate:YKCLLocationCoordinate2DNull];
 }
 
 + (MKCoordinateRegion)regionThatFits:(NSArray *)annotations center:(CLLocationCoordinate2D)center {
@@ -246,8 +245,8 @@ BOOL YKCLLocationCoordinate2DIsInsideRegion(CLLocationCoordinate2D coordinate, M
   }
   if (longitudeDelta < kMinLongitudeDelta && latitudeDelta < kMinLatitudeDelta)
     return MKCoordinateRegionMake(center, MKCoordinateSpanMake(kDefaultRegionSpanDelta, kDefaultRegionSpanDelta));  
-  latitudeDelta = latitudeDelta * kRegionThatFitsPadding * 2;
-  longitudeDelta = longitudeDelta * kRegionThatFitsPadding * 2;
+  latitudeDelta = latitudeDelta * 2;
+  longitudeDelta = longitudeDelta * 2;
   if (latitudeDelta > kMaxLatitudeDelta)
     latitudeDelta = kDefaultLatitudedDelta;
   if (longitudeDelta > kMaxLongitudeDelta)
