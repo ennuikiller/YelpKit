@@ -200,7 +200,7 @@
 
 - (UIColor *)textColorForState:(UIControlState)state {
   
-  BOOL isHighlighted = self.isHighlighted;
+  BOOL isHighlighted = (self.isHighlighted && self.userInteractionEnabled);
   BOOL isDisabled = !self.isEnabled;
   
   if (_highlightedTitleColor && isHighlighted) {
@@ -223,7 +223,7 @@
   
   size.height -= _insets.top + _insets.bottom;
   
-  BOOL isHighlighted = self.isHighlighted;
+  BOOL isHighlighted = (self.isHighlighted && self.userInteractionEnabled);
   BOOL isSelected = self.isSelected;
   BOOL isDisabled = !self.isEnabled;
   
