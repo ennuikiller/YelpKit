@@ -749,6 +749,7 @@ void YKCGContextDrawShading(CGContextRef context, CGColorRef color, CGColorRef c
 }
 
 // From Three20: UIImageAdditions#convertRect
+// https://github.com/facebook/three20/blob/master/src/Three20Style/Sources/UIImageAdditions.m
 CGRect YKCGRectConvert(CGRect rect, CGSize size, UIViewContentMode contentMode) {
   if (size.width != rect.size.width || size.height != rect.size.height) {
     if (contentMode == UIViewContentModeLeft) {
@@ -800,7 +801,7 @@ CGRect YKCGRectConvert(CGRect rect, CGSize size, UIViewContentMode contentMode) 
                         rect.origin.y + floorf(rect.size.height/2 - imageSize.height/2),
                         imageSize.width, imageSize.height);
     } else if (contentMode == UIViewContentModeScaleAspectFit) {
-      if (size.height < size.width) {
+      if ((size.height/size.width) < (rect.size.height/rect.size.width)) {
         size.height = floorf((size.height/size.width) * rect.size.width);
         size.width = rect.size.width;
       } else {
