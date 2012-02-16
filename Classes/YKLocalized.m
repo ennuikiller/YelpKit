@@ -213,10 +213,12 @@ static NSString *gLanguageCode = nil;
 }
 
 + (NSString *)currencySymbol {
-  // Special casing Switzerland and Sweden currency symbols to be
+  // Special casing some currency symbols to be
   // $ so filters don't look ghetto.
   if ([[self countryCode] isEqualToString:@"CH"]) return @"$";
   if ([[self countryCode] isEqualToString:@"SE"]) return @"$";
+  if ([[self countryCode] isEqualToString:@"DK"]) return @"$";
+  if ([[self countryCode] isEqualToString:@"NO"]) return @"$";
   return [[NSLocale currentLocale] objectForKey:NSLocaleCurrencySymbol];
 }
 
