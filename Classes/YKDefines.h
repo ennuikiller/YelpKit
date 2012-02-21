@@ -60,13 +60,21 @@
 /*!
  Macro defaults.
  */
+#undef YKDebug
 #define YKDebug(fmt, ...) do {} while(0)
+#undef YKException
 #define YKException(e) do {} while(0)
+#undef YKWarn
 #define YKWarn(fmt, ...) do {} while(0)
+#undef YKInfo
 #define YKInfo(fmt, ...) do {} while(0)
+#undef YKErr
 #define YKErr(fmt, ...) do {} while(0)
+#undef YKNSError
 #define YKNSError(__ERROR__) do {} while(0)
+#undef YKAssert
 #define YKAssert(value, desc, ...) do {} while(0)
+#undef YKParameterAssert
 #define YKParameterAssert(__CONDITION__) do {} while(0)
 
 /*!

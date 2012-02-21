@@ -209,7 +209,9 @@ static BOOL gYKURLRequestCacheEnabled = YES; // Defaults to ON
   } else if (method == YPHTTPMethodPostForm) {
     [_request setHTTPMethod:@"POST"]; 
     [self setHTTPBodyFormData:postParams];
-  } 
+  } else if (method == YPHTTPMethodHead) {
+    [_request setHTTPMethod:@"HEAD"]; 
+  }
   _start = [NSDate timeIntervalSinceReferenceDate];
   _connection = [[connectionClass alloc] initWithRequest:_request delegate:self startImmediately:NO];   
   if (_detachOnThread) {
@@ -346,11 +348,20 @@ static BOOL gYKURLRequestCacheEnabled = YES; // Defaults to ON
 }
 
 #pragma mark Debug
-
+ 
 - (NSString *)metricsDescription {
-  return [NSString stringWithFormat:@"Latency: %0.4fs\nData: %0.4fs\nTotal: %0.4fs\n", 
-          _responseInterval, _dataInterval, _totalInterval];
+  NSMutableString *string = [NSMutableString string];
+  [string appendFormat:@"Response: %0.3fs\n", _totalInterval];
+  if (_dataInterval > 0) {
+    [string appendFormat:@"Download: %0.3fs\n", _dataInterval];
+  }
+  return string;
 }  
+
+- (NSString *)downloadedDataAsString {
+  if (!_downloadedData) return nil;
+  return [[[NSString alloc] initWithData:_downloadedData encoding:NSUTF8StringEncoding] autorelease];
+}
 
 #pragma mark Multipart POST
 
@@ -513,7 +524,7 @@ static BOOL gAuthProtectionDisabled = NO;
   YKDebug(@"Did finish loading; status=%d", status);
   if (status >= 300) {
     if (_downloadedData) {
-      YKDebug(@"Error: %@", [[[NSString alloc] initWithData:_downloadedData encoding:NSUTF8StringEncoding] autorelease]);
+      YKDebug(@"Error: %@", [self downloadedDataAsString]);
     }
     [self didError:[YKHTTPError errorWithHTTPStatus:status]];
   } else {

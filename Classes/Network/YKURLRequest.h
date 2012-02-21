@@ -39,7 +39,8 @@ typedef enum {
   YKHTTPMethodGet,
   YKHTTPMethodPostMultipart,
   YKHTTPMethodPostMultipartCompressed,
-  YKHTTPMethodPostForm
+  YKHTTPMethodPostForm,
+  YKHTTPMethodHead,
 } YKHTTPMethod;
 
 // Deprecated; TODO(gabe): Remove after search/replace
@@ -47,7 +48,8 @@ typedef enum {
   YPHTTPMethodGet = 1,
   YPHTTPMethodPostMultipart,
   YPHTTPMethodPostMultipartCompressed,
-  YPHTTPMethodPostForm
+  YPHTTPMethodPostForm,
+  YPHTTPMethodHead,
 } YPHTTPMethod;
 
 typedef enum {
@@ -292,6 +294,11 @@ extern const double kYKURLRequestExpiresAgeMax;
  Date from response header, if any.
  */
 - (NSDate *)responseDate;
+
+/*!
+ Get downloaded data as string (UTF-8).
+ */
+- (NSString *)downloadedDataAsString;
 
 /*!
  Should load from cache.
