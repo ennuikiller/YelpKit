@@ -170,6 +170,7 @@ static NSMutableDictionary *gLocalizationCache = nil;
 static NSString *gLocaleIdentifier = nil;
 static NSSet *gSupportedLanguages = nil;
 static NSString *gLanguageCode = nil;
+static NSString *gCountryCode = nil;
 
 + (NSMutableDictionary *)localizationCache {
   @synchronized([YKLocalized class]) {
@@ -243,7 +244,19 @@ static NSString *gLanguageCode = nil;
 }
 
 + (NSString *)countryCode {
+  if (gCountryCode) return gCountryCode;
   return [[NSLocale autoupdatingCurrentLocale] objectForKey:NSLocaleCountryCode];
+}
+
++ (void)setMockCountryCode:(NSString *)countryCode {
+  [countryCode retain];
+  [gCountryCode release];
+  gCountryCode = countryCode;
+}
+
++ (void)disableMockCountryCode {
+  [gCountryCode release];
+  gCountryCode = nil;
 }
 
 + (NSString *)languageCode {

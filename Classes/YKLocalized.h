@@ -211,12 +211,22 @@
  */
 + (NSString *)localeIdentifier;
 
-/*
+/*!
  Get the country code (for locale region format).
  */
 + (NSString *)countryCode;
 
-/*! 
+/*!
+ Set the mock country code (for testing)
+ */
++ (void)setMockCountryCode:(NSString *)countryCode;
+
+/*!
+ Disable the mock country code (for testing)
+ */
++ (void)disableMockCountryCode;
+
+/*!
  Current language code.
  @result Language code
  */
