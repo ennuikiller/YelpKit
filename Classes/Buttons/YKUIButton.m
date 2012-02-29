@@ -107,6 +107,7 @@
 - (CGSize)layout:(id<YKLayout>)layout size:(CGSize)size {
   CGFloat y = 0;
 
+  y += _insets.top;
   y += _titleInsets.top;
   
   if (_title) {
@@ -123,11 +124,16 @@
     }
     constrainedToSize.width -= iconSize.width;
     
+    if (constrainedToSize.height == 0) {
+      constrainedToSize.height = 9999;
+    }
+    
     _titleSize = [_title sizeWithFont:_titleFont constrainedToSize:constrainedToSize lineBreakMode:UILineBreakModeTailTruncation];
     y += _titleSize.height;
   }
   
   y += _titleInsets.bottom;
+  y += _insets.bottom;
 
   return CGSizeMake(size.width, y);
 }
@@ -339,8 +345,9 @@
     [_title drawInRect:CGRectMake(x, y, _titleSize.width, _titleSize.height) withFont:font lineBreakMode:UILineBreakModeTailTruncation alignment:_titleAlignment];
   }
   
-  if (accessoryIcon)
-    [accessoryIcon drawAtPoint:YKCGPointToRight(accessoryIcon.size, CGSizeMake(size.width - 10, size.height))];
+  if (accessoryIcon) {
+    [accessoryIcon drawAtPoint:YKCGPointToRight(accessoryIcon.size, CGSizeMake(size.width - 10, bounds.size.height))];
+  }
   
   if (showIcon) {
     [icon drawInRect:YKCGRectToCenterInRect(iconSize, bounds)];

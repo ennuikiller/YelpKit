@@ -139,6 +139,14 @@ extern NSString *const YKErrorNotConnectedToInternet;
  See initWithKey:.
  
  @param key Key
+ @param localizedDescription Localized description
+ */
++ (id)errorWithKey:(NSString *const)key localizedDescription:(NSString *)localizedDescription;
+
+/*!
+ See initWithKey:.
+ 
+ @param key Key
  */
 + (id)errorWithKey:(NSString *const)key;
 

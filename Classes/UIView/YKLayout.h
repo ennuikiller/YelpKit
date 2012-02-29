@@ -32,7 +32,8 @@ typedef enum {
   YKLayoutOptionsSizeToFitVariableWidth = 1 << 1,
   
   // Alignment
-  YKLayoutOptionsCenter = 1 << 2, // Center the view in the specified size (horizontal + vertical)
+  // Center the view in the specified size (horizontal + vertical). If you use this with YKLayoutOptionsSizeToFit then the origin width is maintained.
+  YKLayoutOptionsCenter = 1 << 2, 
   YKLayoutOptionsCenterVertical = 1 << 3, // Center vertically
   
   // Whether sizeToFit is constrained to the width specified.

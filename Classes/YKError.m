@@ -105,6 +105,11 @@ NSString *const YKErrorNotConnectedToInternet = @"YPErrorNotConnectedToInternet"
   return [[[self alloc] initWithKey:key error:error] autorelease];
 }
 
++ (id)errorWithKey:(NSString *const)key localizedDescription:(NSString *)localizedDescription {
+  NSDictionary *userInfo = [NSDictionary dictionaryWithObject:localizedDescription forKey:NSLocalizedDescriptionKey];  
+  return [self errorWithKey:key userInfo:userInfo];
+}
+
 + (id)errorWithDescription:(NSString *)description {
   return [self gh_errorWithDomain:YKErrorDomain code:-1 localizedDescription:description];
 }

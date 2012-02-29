@@ -116,6 +116,8 @@ extern const double kYKURLRequestExpiresAgeMax;
   
   NSUInteger _bytesWritten;
   
+  NSTimer *_timer;
+  
   BOOL _detachOnThread; //! Experimental!
   
   // Response data
