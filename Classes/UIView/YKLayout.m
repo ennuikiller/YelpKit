@@ -190,7 +190,7 @@ static NSMutableDictionary *gDebugStats = NULL;
     if (((options & YKLayoutOptionsSizeToFitVariableWidth) != YKLayoutOptionsSizeToFitVariableWidth)
         && ((options & YKLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio) != YKLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio)
         && sizeThatFits.width != frame.size.width && [view isKindOfClass:[YKUILayoutView class]]) {
-      YKAssert(NO, @"sizeThatFits: on view returned width different from passed in width. If you have a variable width view, you can pass in the option YKLayoutOptionsSizeToFitVariableWidth to avoid this check.");
+      YKAssert(NO, @"sizeThatFits: returned width different from passed in width. If you have a variable width view, you can pass in the option YKLayoutOptionsSizeToFitVariableWidth to avoid this check.");
     }
     
     YKAssert(sizeThatFits.width > 0, @"sizeThatFits: on view returned 0 width; Make sure that layout:size: doesn't return a zero width size");

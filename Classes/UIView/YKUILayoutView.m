@@ -71,6 +71,12 @@
 
 #pragma mark Drawing/Layout
 
+- (void)layoutView {
+  NSAssert(_layout, @"Missing layout instance");
+  [_layout setNeedsLayout];
+  [_layout layoutSubviews:self.frame.size];
+}
+
 - (void)drawRect:(CGRect)rect {
   [super drawRect:rect];
   [_layout drawSubviewsInRect:self.bounds];
