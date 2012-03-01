@@ -124,11 +124,22 @@
     }
     constrainedToSize.width -= iconSize.width;
     
+    if (_activityIndicatorView && _activityIndicatorView.isAnimating) {
+      constrainedToSize.width -= _activityIndicatorView.frame.size.width;
+    }
+    
     if (constrainedToSize.height == 0) {
       constrainedToSize.height = 9999;
     }
     
-    _titleSize = [_title sizeWithFont:_titleFont constrainedToSize:constrainedToSize lineBreakMode:UILineBreakModeTailTruncation];
+    _titleSize = [_title sizeWithFont:_titleFont constrainedToSize:constrainedToSize lineBreakMode:UILineBreakModeTailTruncation];    
+    
+    if (_activityIndicatorView) {
+      CGPoint p = YKCGPointToCenter(_titleSize, size);
+      p.x -= _activityIndicatorView.frame.size.width + 4;
+      [layout setOrigin:p view:_activityIndicatorView];
+    }
+    
     y += _titleSize.height;
   }
   
@@ -218,6 +229,21 @@
   } else {
     return [UIColor blackColor];
   }
+}
+
+- (void)setActivityIndicatorAnimating:(BOOL)animating {
+  if (!_activityIndicatorView) {
+    _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    _activityIndicatorView.hidesWhenStopped = YES;
+    [self addSubview:_activityIndicatorView];
+  }
+  if (animating) [_activityIndicatorView startAnimating];
+  else [_activityIndicatorView stopAnimating];
+  [self setNeedsLayout];
+}
+
+- (BOOL)isAnimating {
+  return [_activityIndicatorView isAnimating];
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -348,7 +374,7 @@
   if (accessoryIcon) {
     [accessoryIcon drawAtPoint:YKCGPointToRight(accessoryIcon.size, CGSizeMake(size.width - 10, bounds.size.height))];
   }
-  
+    
   if (showIcon) {
     [icon drawInRect:YKCGRectToCenterInRect(iconSize, bounds)];
   }  

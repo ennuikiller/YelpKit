@@ -93,6 +93,8 @@
   CGSize _iconImageSize;
   UIImageView *_accessoryImageView;
   
+  UIActivityIndicatorView *_activityIndicatorView;
+  
   BOOL _titleHidden;
   
 }
@@ -391,5 +393,16 @@
  @param cornerRadius Corner radius
  */
 - (void)setBorderStyle:(YKUIBorderStyle)borderStyle color:(UIColor *)color width:(CGFloat)width alternateWidth:(CGFloat)alternateWidth cornerRadius:(CGFloat)cornerRadius;
+
+/*!
+ Set activity indicator animating.
+ @param animating
+ */
+- (void)setActivityIndicatorAnimating:(BOOL)animating;
+
+/*!
+ @result YES if activity indicator is animating
+ */
+- (BOOL)isAnimating;
 
 @end
