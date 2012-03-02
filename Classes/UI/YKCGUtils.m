@@ -410,7 +410,7 @@ CGPathRef YKCGPathCreateStyledRect(CGRect rect, YKUIBorderStyle style, CGFloat s
       insetBounds = CGRectMake(rect.origin.x + strokeInset, rect.origin.y + strokeInset, rect.size.width - (strokeInset * 2), rect.size.height - strokeInset);
       break;
       
-    case YKUIBorderStyleTop:
+    case YKUIBorderStyleTopOnly:
       insetBounds = CGRectMake(rect.origin.x, rect.origin.y + strokeInset, rect.size.width, rect.size.height - strokeInset);
       break;
       
@@ -418,7 +418,7 @@ CGPathRef YKCGPathCreateStyledRect(CGRect rect, YKUIBorderStyle style, CGFloat s
       insetBounds = CGRectMake(rect.origin.x, rect.origin.y + strokeInset, rect.size.width, rect.size.height - (strokeInset * 2));
       break;
       
-    case YKUIBorderStyleBottom:
+    case YKUIBorderStyleBottomOnly:
       insetBounds = CGRectMake(rect.origin.x, rect.origin.y + strokeInset, rect.size.width, rect.size.height - strokeInset);
       break;
       
@@ -471,12 +471,12 @@ CGPathRef YKCGPathCreateStyledRect(CGRect rect, YKUIBorderStyle style, CGFloat s
       CGPathMoveToPoint(path, &transform, fw, fh);
       break;
       
-    case YKUIBorderStyleTop:
+    case YKUIBorderStyleTopOnly:
       CGPathMoveToPoint(path, &transform, fw, 0);
       CGPathAddLineToPoint(path, &transform, 0, 0);
       break;
       
-    case YKUIBorderStyleBottom:
+    case YKUIBorderStyleBottomOnly:
       CGPathMoveToPoint(path, &transform, fw, fh);
       CGPathAddLineToPoint(path, &transform, 0, fh);
       break;

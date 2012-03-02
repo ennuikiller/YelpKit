@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0013505515003C1900B0976D /* YKUISwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = 0013505315003C1900B0976D /* YKUISwitch.h */; };
 		004DA802145235F100247993 /* YKUILayoutView.h in Headers */ = {isa = PBXBuildFile; fileRef = 004DA800145235F000247993 /* YKUILayoutView.h */; };
 		004DA803145235F100247993 /* YKUILayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 004DA801145235F100247993 /* YKUILayoutView.m */; };
 		005592EC140B0085001E9C43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005592EB140B0085001E9C43 /* Foundation.framework */; };
@@ -57,6 +58,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0013505315003C1900B0976D /* YKUISwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUISwitch.h; sourceTree = "<group>"; };
 		004DA800145235F000247993 /* YKUILayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUILayoutView.h; sourceTree = "<group>"; };
 		004DA801145235F100247993 /* YKUILayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUILayoutView.m; sourceTree = "<group>"; };
 		005592E8140B0085001E9C43 /* libYelpKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libYelpKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -274,6 +276,7 @@
 				00D5756F1457C3CF00DE6487 /* YKUIControl.m */,
 				00D575721457C47900DE6487 /* YKUIButtonStyles.h */,
 				00D575731457C47900DE6487 /* YKUIButtonStyles.m */,
+				0013505315003C1900B0976D /* YKUISwitch.h */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				00BE005F14A148A8006B733B /* YKCLUtils.h in Headers */,
 				00BE006114A148A8006B733B /* YKMKAnnotation.h in Headers */,
 				00BE006314A148A8006B733B /* YKMKUtils.h in Headers */,
+				0013505515003C1900B0976D /* YKUISwitch.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

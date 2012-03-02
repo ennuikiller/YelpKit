@@ -313,8 +313,8 @@ typedef enum {
   YKUIBorderStyleNone = 0,
   YKUIBorderStyleNormal,
   YKUIBorderStyleRounded, // Rounded top, right, bottom, left
-  YKUIBorderStyleTop, // Top (straight) only
-  YKUIBorderStyleBottom, // Bottom (straight) only
+  YKUIBorderStyleTopOnly, // Top (straight) only
+  YKUIBorderStyleBottomOnly, // Bottom (straight) only
   YKUIBorderStyleTopBottom, // Top and bottom only
   YKUIBorderStyleRoundedTop, // Rounded top with left and right sides (no bottom); Uses strokeWidth for all sides
   YKUIBorderStyleLeftRightWithAlternateTop, // Left and right sides (no bottom) in strokeWidth; Top in alternateStrokeWidth

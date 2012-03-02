@@ -308,7 +308,7 @@
   if (color && shadingType != YKUIShadingTypeNone) {
     YKCGContextAddStyledRect(context, bounds, _borderStyle, _borderWidth, _borderAlternateWidth, _cornerRadius);  
     // Clip for border styles that support it (that form a cohesive path)
-    BOOL clip = (_borderStyle != YKUIBorderStyleTop && _borderStyle != YKUIBorderStyleBottom && _borderStyle != YKUIBorderStyleTopBottom);    
+    BOOL clip = (_borderStyle != YKUIBorderStyleTopOnly && _borderStyle != YKUIBorderStyleBottomOnly && _borderStyle != YKUIBorderStyleTopBottom);    
     if (clip) CGContextClip(context);
     YKCGContextDrawShadingWithHeight(context, color.CGColor, color2.CGColor, color3.CGColor, color4.CGColor, self.bounds.size.height, shadingType);
     fillColor = nil;
