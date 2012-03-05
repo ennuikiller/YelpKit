@@ -476,6 +476,13 @@ typedef enum {
 - (CGSize)sizeThatFitsTitle:(CGSize)size minWidth:(CGFloat)minWidth;
 
 /*!
+ Size that fits title and icon.
+ @param size Size
+ @result Size to fit the title text and icon (with insets).
+ */
+- (CGSize)sizeThatFitsTitleAndIcon:(CGSize)size;
+
+/*!
  Set border.
  @param borderStyle Border style
  @param color Color
@@ -495,5 +502,11 @@ typedef enum {
  @result YES if activity indicator is animating
  */
 - (BOOL)isAnimating;
+
+/*!
+ Draw the view in the given rect.
+ @param rect Rect to draw in.
+ */
+- (void)drawInRect:(CGRect)rect;
 
 @end

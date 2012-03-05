@@ -203,7 +203,21 @@
 
 - (CGSize)sizeThatFitsTitle:(CGSize)size {
   CGSize titleSize = [self _sizeForTitle:size];
-  return CGSizeMake(titleSize.width + _insets.left + _insets.right + _titleInsets.left + _titleInsets.right, titleSize.height + _titleInsets.top + _titleInsets.bottom);
+  CGSize accessoryImageSize = CGSizeZero;
+  if (_accessoryImageView.image) {
+    accessoryImageSize = _accessoryImageView.image.size;
+    accessoryImageSize.width += 10;
+  }
+  return CGSizeMake(titleSize.width + _titleInsets.left + _titleInsets.right + accessoryImageSize.width, titleSize.height + _titleInsets.top + _titleInsets.bottom);
+}
+
+- (CGSize)sizeThatFitsTitleAndIcon:(CGSize)size {
+  CGSize titleSize = [self sizeThatFitsTitle:size];
+  CGSize iconSize = _iconImageSize;
+  if (_iconImageView.image && YKCGSizeIsZero(iconSize)) {
+    iconSize = _iconImageView.image.size;
+  }
+  return CGSizeMake(titleSize.width + iconSize.width + _insets.left + _insets.right + 2, titleSize.height + iconSize.height + _insets.top + _insets.bottom);
 }
 
 - (void)setHighlighted:(BOOL)highlighted {
@@ -338,12 +352,11 @@
   [_contentView setNeedsDisplay];
 }
 
-- (void)drawRect:(CGRect)rect {
-  [super drawRect:rect];
+- (void)drawInRect:(CGRect)rect {
   CGContextRef context = UIGraphicsGetCurrentContext();
   
   UIControlState state = self.state;
-  CGRect bounds = self.bounds;
+  CGRect bounds = rect;
   CGSize size = bounds.size;
   
   size.height -= _insets.top + _insets.bottom;
@@ -403,7 +416,7 @@
   if (isHighlighted && _accessoryImageView.highlightedImage) accessoryIcon = _accessoryImageView.highlightedImage;
   
   if (image) {
-    [image drawInRect:CGRectMake(0, 0, bounds.size.width, bounds.size.height)];
+    [image drawInRect:CGRectMake(bounds.origin.x, bounds.origin.y, bounds.size.width, bounds.size.height)];
   }
   
   CGFloat borderWidth = _borderWidth;
@@ -417,8 +430,9 @@
     
     YKCGContextAddStyledRect(context, bounds, _borderStyle, _borderWidth, _borderAlternateWidth, _cornerRadius);  
     if (clip) CGContextClip(context);
-    
-    YKCGContextDrawShadingWithHeight(context, color.CGColor, color2.CGColor, color3.CGColor, color4.CGColor, self.bounds.size.height, shadingType);
+
+    YKCGContextDrawShadingWithHeight(context, color.CGColor, color2.CGColor, color3.CGColor, color4.CGColor, bounds.size.height, shadingType);
+
     fillColor = nil;
     if (clip) {
       CGContextRestoreGState(context);
@@ -433,7 +447,7 @@
     }
   } else if (fillColor) {
     [fillColor setFill];
-    CGContextFillRect(context, self.bounds);
+    CGContextFillRect(context, bounds);
   }
   
   UIColor *textColor = [self textColorForState:state];
@@ -451,7 +465,7 @@
   if (!_titleHidden) {
     CGFloat lineWidth = _titleSize.width + _titleInsets.left + _titleInsets.right;
     if (showIcon && _iconPosition == YKUIButtonIconPositionLeft) lineWidth += iconSize.width + 2;
-    CGFloat x;
+    CGFloat x = bounds.origin.x + _insets.left;
     
     if (_titleAlignment == UITextAlignmentCenter) {
       CGFloat width = size.width;
@@ -466,7 +480,8 @@
       switch (_iconPosition) {
         case YKUIButtonIconPositionLeft: {
           CGPoint iconTop = YKCGPointToCenter(iconSize, bounds.size);
-          iconTop.x = x;          
+          iconTop.x = x;     
+          iconTop.y += bounds.origin.y;
           [icon drawInRect:CGRectMake(iconTop.x, iconTop.y, iconSize.width, iconSize.height)];
           x += iconSize.width + 2; // TODO(gabe): This 2px padding should come from default inset
           break;
@@ -512,10 +527,14 @@
   if (accessoryIcon) {
     [accessoryIcon drawAtPoint:YKCGPointToRight(accessoryIcon.size, CGSizeMake(size.width - 10, bounds.size.height))];
   }
-    
+
   if (showIcon) {
     [icon drawInRect:YKCGRectToCenterInRect(iconSize, bounds)];
   }  
+}
+
+- (void)drawRect:(CGRect)rect {
+  [self drawInRect:self.bounds];
 }
 
 @end

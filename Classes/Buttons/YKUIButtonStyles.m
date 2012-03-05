@@ -381,7 +381,44 @@
       button.layer.borderWidth = 0.5;
       button.layer.borderColor = [UIColor grayColor].CGColor;
       break;
+
+    case YKUIButtonStyleWhiteDisclosure:
+      // Clear border style
+      [button setBorderStyle:YKUIBorderStyleNone 
+                       color:nil
+                       width:0.0
+              alternateWidth:0
+                cornerRadius:0.0];
       
+      button.color = [UIColor whiteColor];
+      button.color2 = nil;
+      button.titleColor = [UIColor colorWithWhite:0.333 alpha:1.0];
+      button.titleFont = [UIFont boldSystemFontOfSize:13.0];
+      button.titleShadowColor = [UIColor whiteColor];
+      button.titleShadowOffset = CGSizeMake(0, 1);
+      button.highlightedTitleColor = [UIColor whiteColor];
+      button.highlightedColor = [UIColor lightGrayColor];
+      button.highlightedColor2 = nil;
+      button.highlightedShadingType = YKUIShadingTypeLinear;
+      button.highlightedTitleShadowColor = [UIColor grayColor];
+      button.highlightedTitleShadowOffset = CGSizeMake(0, 0.5);
+      button.shadingType = YKUIShadingTypeLinear;
+      button.accessoryImageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"disclosure.png"] 
+                                                     highlightedImage:[UIImage imageNamed:@"disclosure_selected.png"]] autorelease];
+      
+      // Disabled: Gray text on gray linear shading
+      button.disabledTitleColor = [UIColor grayColor];
+      button.disabledShadingType = YKUIShadingTypeLinear;
+      button.disabledColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+      button.disabledColor2 = [UIColor colorWithRed:0.675 green:0.675 blue:0.675 alpha:1.0];
+      
+      // Custom border
+      button.layer.cornerRadius = 12.0;
+      button.layer.masksToBounds = YES;
+      button.layer.borderWidth = 0.5;
+      button.layer.borderColor = [UIColor grayColor].CGColor;
+      break;
+
     case YKUIButtonStyleFatYellow:
       button.titleFont = [UIFont boldSystemFontOfSize:28];
       button.titleColor = [UIColor whiteColor];

@@ -46,6 +46,7 @@ typedef enum {
   YKUIButtonStyleTransparent, //! Transparent button
   YKUIButtonStyleMetal, //! Top/bottom gray with shadow
   YKUIButtonStyleGrayDisclosure, //! Gray, extra rounded with disclosure
+  YKUIButtonStyleWhiteDisclosure, //! White, extra rounded with disclosure
   YKUIButtonStyleFatYellow, //! Yellow with white border
   YKUIButtonStyleSkinnyYellow, //! Yellow with smaller corner radius and font size
   YKUIButtonStyleGreen, //! Green
