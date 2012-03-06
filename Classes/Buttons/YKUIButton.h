@@ -56,6 +56,7 @@
   
   UIImage *_image;
   UIImage *_highlightedImage;
+  UIImage *_disabledImage;
   
   UIColor *_highlightedTitleColor;
   UIColor *_highlightedTitleShadowColor;
@@ -199,6 +200,11 @@
  Background image (highlighted).
  */
 @property (retain, nonatomic) UIImage *highlightedImage;
+
+/*@!
+ Background image (disabled).
+ */
+@property (retain, nonatomic) UIImage *disabledImage;
 
 /*!
  Text shadow offset.
