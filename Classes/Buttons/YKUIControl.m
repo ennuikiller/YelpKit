@@ -95,6 +95,12 @@ layout=_layout;
   [_layout setNeedsLayout];
 }
 
+- (void)layoutView {
+  NSAssert(_layout, @"Missing layout instance");
+  [_layout setNeedsLayout];
+  [_layout layoutSubviews:self.frame.size];
+}
+
 #pragma mark Touches
 
 - (void)didTouchUpInside { }
