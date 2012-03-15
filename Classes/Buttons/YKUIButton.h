@@ -56,6 +56,7 @@
   
   UIImage *_image;
   UIImage *_highlightedImage;
+  UIImage *_disabledImage;
   
   UIColor *_highlightedTitleColor;
   UIColor *_highlightedTitleShadowColor;
@@ -92,6 +93,8 @@
   UIImageView *_iconImageView;
   CGSize _iconImageSize;
   UIImageView *_accessoryImageView;
+  
+  UIActivityIndicatorView *_activityIndicatorView;
   
   BOOL _titleHidden;
   
@@ -197,6 +200,11 @@
  Background image (highlighted).
  */
 @property (retain, nonatomic) UIImage *highlightedImage;
+
+/*@!
+ Background image (disabled).
+ */
+@property (retain, nonatomic) UIImage *disabledImage;
 
 /*!
  Text shadow offset.
@@ -391,5 +399,16 @@
  @param cornerRadius Corner radius
  */
 - (void)setBorderStyle:(YKUIBorderStyle)borderStyle color:(UIColor *)color width:(CGFloat)width alternateWidth:(CGFloat)alternateWidth cornerRadius:(CGFloat)cornerRadius;
+
+/*!
+ Set activity indicator animating.
+ @param animating
+ */
+- (void)setActivityIndicatorAnimating:(BOOL)animating;
+
+/*!
+ @result YES if activity indicator is animating
+ */
+- (BOOL)isAnimating;
 
 @end

@@ -95,31 +95,37 @@ layout=_layout;
   [_layout setNeedsLayout];
 }
 
+- (void)layoutView {
+  NSAssert(_layout, @"Missing layout instance");
+  [_layout setNeedsLayout];
+  [_layout layoutSubviews:self.frame.size];
+}
+
 #pragma mark Touches
 
 - (void)didTouchUpInside { }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {    
-  if (_highlightedEnabled) {
+  if (_highlightedEnabled && self.userInteractionEnabled) {
     if (![self touchesAllInView:touches withEvent:event]) return; 
     self.highlighted = YES;
     [self setNeedsDisplay];
   } 
   [super touchesBegan:touches withEvent:event];
-  if (_highlightedEnabled) {
+  if (_highlightedEnabled && self.userInteractionEnabled) {
     // Force runloop to redraw so highlighted control appears instantly; must come after call to super
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
   }
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {  
-  if (_selectedEnabled && [self touchesAllInView:touches withEvent:event]) {
+  if (_selectedEnabled && [self touchesAllInView:touches withEvent:event] && self.userInteractionEnabled) {
     self.selected = !self.isSelected;
   }  
   
   [super touchesEnded:touches withEvent:event];
   
-  if (_highlightedEnabled) {
+  if (_highlightedEnabled && self.userInteractionEnabled) {
     self.highlighted = NO;
     [self setNeedsDisplay];
   }
@@ -127,7 +133,7 @@ layout=_layout;
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {  
   [super touchesCancelled:touches withEvent:event];
-  if (_highlightedEnabled) {
+  if (_highlightedEnabled && self.userInteractionEnabled) {
     self.highlighted = NO;
     [self setNeedsDisplay];
   }  

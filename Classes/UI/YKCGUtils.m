@@ -410,7 +410,7 @@ CGPathRef YKCGPathCreateStyledRect(CGRect rect, YKUIBorderStyle style, CGFloat s
       insetBounds = CGRectMake(rect.origin.x + strokeInset, rect.origin.y + strokeInset, rect.size.width - (strokeInset * 2), rect.size.height - strokeInset);
       break;
       
-    case YKUIBorderStyleTop:
+    case YKUIBorderStyleTopOnly:
       insetBounds = CGRectMake(rect.origin.x, rect.origin.y + strokeInset, rect.size.width, rect.size.height - strokeInset);
       break;
       
@@ -418,7 +418,7 @@ CGPathRef YKCGPathCreateStyledRect(CGRect rect, YKUIBorderStyle style, CGFloat s
       insetBounds = CGRectMake(rect.origin.x, rect.origin.y + strokeInset, rect.size.width, rect.size.height - (strokeInset * 2));
       break;
       
-    case YKUIBorderStyleBottom:
+    case YKUIBorderStyleBottomOnly:
       insetBounds = CGRectMake(rect.origin.x, rect.origin.y + strokeInset, rect.size.width, rect.size.height - strokeInset);
       break;
       
@@ -471,12 +471,12 @@ CGPathRef YKCGPathCreateStyledRect(CGRect rect, YKUIBorderStyle style, CGFloat s
       CGPathMoveToPoint(path, &transform, fw, fh);
       break;
       
-    case YKUIBorderStyleTop:
+    case YKUIBorderStyleTopOnly:
       CGPathMoveToPoint(path, &transform, fw, 0);
       CGPathAddLineToPoint(path, &transform, 0, 0);
       break;
       
-    case YKUIBorderStyleBottom:
+    case YKUIBorderStyleBottomOnly:
       CGPathMoveToPoint(path, &transform, fw, fh);
       CGPathAddLineToPoint(path, &transform, 0, fh);
       break;
@@ -749,6 +749,7 @@ void YKCGContextDrawShading(CGContextRef context, CGColorRef color, CGColorRef c
 }
 
 // From Three20: UIImageAdditions#convertRect
+// https://github.com/facebook/three20/blob/master/src/Three20Style/Sources/UIImageAdditions.m
 CGRect YKCGRectConvert(CGRect rect, CGSize size, UIViewContentMode contentMode) {
   if (size.width != rect.size.width || size.height != rect.size.height) {
     if (contentMode == UIViewContentModeLeft) {
@@ -800,7 +801,7 @@ CGRect YKCGRectConvert(CGRect rect, CGSize size, UIViewContentMode contentMode) 
                         rect.origin.y + floorf(rect.size.height/2 - imageSize.height/2),
                         imageSize.width, imageSize.height);
     } else if (contentMode == UIViewContentModeScaleAspectFit) {
-      if (size.height < size.width) {
+      if ((size.height/size.width) < (rect.size.height/rect.size.width)) {
         size.height = floorf((size.height/size.width) * rect.size.width);
         size.width = rect.size.width;
       } else {

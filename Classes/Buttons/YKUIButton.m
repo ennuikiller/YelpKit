@@ -32,7 +32,7 @@
 
 @implementation YKUIButton
 
-@synthesize title=_title, titleColor=_titleColor, titleFont=_titleFont, borderWidth=_borderWidth, borderAlternateWidth=_borderAlternateWidth, color=_color, color2=_color2, color3=_color3, color4=_color4, highlightedTitleColor=_highlightedTitleColor, highlightedColor=_highlightedColor, highlightedColor2=_highlightedColor2, highlightedShadingType=_highlightedShadingType, disabledTitleColor=_disabledTitleColor, disabledColor=_disabledColor, disabledColor2=_disabledColor2, disabledShadingType=_disabledShadingType, shadingType=_shadingType, borderColor=_borderColor, borderStyle=_borderStyle, titleShadowColor=_titleShadowColor, accessoryImageView=_accessoryImageView, titleAlignment=_titleAlignment, titleHidden=_titleHidden, titleInsets=_titleInsets, titleShadowOffset=_titleShadowOffset, selectedTitleColor=_selectedTitleColor, selectedColor=_selectedColor, selectedColor2=_selectedColor2, selectedShadingType=_selectedShadingType, cornerRadius=_cornerRadius, highlightedTitleShadowColor=_highlightedTitleShadowColor, highlightedTitleShadowOffset=_highlightedTitleShadowOffset, disabledBorderColor=_disabledBorderColor, insets=_insets, borderShadowColor=_borderShadowColor, borderShadowBlur=_borderShadowBlur, iconImageSize=_iconImageSize, iconImageView=_iconImageView, highlightedImage=_highlightedImage, image=_image, selectedBorderShadowColor=_selectedBorderShadowColor, selectedBorderShadowBlur=_selectedBorderShadowBlur;
+@synthesize title=_title, titleColor=_titleColor, titleFont=_titleFont, borderWidth=_borderWidth, borderAlternateWidth=_borderAlternateWidth, color=_color, color2=_color2, color3=_color3, color4=_color4, highlightedTitleColor=_highlightedTitleColor, highlightedColor=_highlightedColor, highlightedColor2=_highlightedColor2, highlightedShadingType=_highlightedShadingType, disabledTitleColor=_disabledTitleColor, disabledColor=_disabledColor, disabledColor2=_disabledColor2, disabledShadingType=_disabledShadingType, shadingType=_shadingType, borderColor=_borderColor, borderStyle=_borderStyle, titleShadowColor=_titleShadowColor, accessoryImageView=_accessoryImageView, titleAlignment=_titleAlignment, titleHidden=_titleHidden, titleInsets=_titleInsets, titleShadowOffset=_titleShadowOffset, selectedTitleColor=_selectedTitleColor, selectedColor=_selectedColor, selectedColor2=_selectedColor2, selectedShadingType=_selectedShadingType, cornerRadius=_cornerRadius, highlightedTitleShadowColor=_highlightedTitleShadowColor, highlightedTitleShadowOffset=_highlightedTitleShadowOffset, disabledBorderColor=_disabledBorderColor, insets=_insets, borderShadowColor=_borderShadowColor, borderShadowBlur=_borderShadowBlur, iconImageSize=_iconImageSize, iconImageView=_iconImageView, highlightedImage=_highlightedImage, image=_image, selectedBorderShadowColor=_selectedBorderShadowColor, selectedBorderShadowBlur=_selectedBorderShadowBlur, disabledImage=_disabledImage;
 ;
 
 
@@ -93,6 +93,7 @@
   [_accessoryImageView release];
   [_image release];
   [_highlightedImage release];
+  [_disabledImage release];
   [super dealloc];
 }
 
@@ -107,6 +108,7 @@
 - (CGSize)layout:(id<YKLayout>)layout size:(CGSize)size {
   CGFloat y = 0;
 
+  y += _insets.top;
   y += _titleInsets.top;
   
   if (_title) {
@@ -123,11 +125,27 @@
     }
     constrainedToSize.width -= iconSize.width;
     
-    _titleSize = [_title sizeWithFont:_titleFont constrainedToSize:constrainedToSize lineBreakMode:UILineBreakModeTailTruncation];
+    if (_activityIndicatorView && _activityIndicatorView.isAnimating) {
+      constrainedToSize.width -= _activityIndicatorView.frame.size.width;
+    }
+    
+    if (constrainedToSize.height == 0) {
+      constrainedToSize.height = 9999;
+    }
+    
+    _titleSize = [_title sizeWithFont:_titleFont constrainedToSize:constrainedToSize lineBreakMode:UILineBreakModeTailTruncation];    
+    
+    if (_activityIndicatorView) {
+      CGPoint p = YKCGPointToCenter(_titleSize, size);
+      p.x -= _activityIndicatorView.frame.size.width + 4;
+      [layout setOrigin:p view:_activityIndicatorView];
+    }
+    
     y += _titleSize.height;
   }
   
   y += _titleInsets.bottom;
+  y += _insets.bottom;
 
   return CGSizeMake(size.width, y);
 }
@@ -200,7 +218,7 @@
 
 - (UIColor *)textColorForState:(UIControlState)state {
   
-  BOOL isHighlighted = self.isHighlighted;
+  BOOL isHighlighted = (self.isHighlighted && self.userInteractionEnabled);
   BOOL isDisabled = !self.isEnabled;
   
   if (_highlightedTitleColor && isHighlighted) {
@@ -214,6 +232,21 @@
   }
 }
 
+- (void)setActivityIndicatorAnimating:(BOOL)animating {
+  if (!_activityIndicatorView) {
+    _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    _activityIndicatorView.hidesWhenStopped = YES;
+    [self addSubview:_activityIndicatorView];
+  }
+  if (animating) [_activityIndicatorView startAnimating];
+  else [_activityIndicatorView stopAnimating];
+  [self setNeedsLayout];
+}
+
+- (BOOL)isAnimating {
+  return [_activityIndicatorView isAnimating];
+}
+
 - (void)drawRect:(CGRect)rect {
   CGContextRef context = UIGraphicsGetCurrentContext();
   
@@ -223,7 +256,7 @@
   
   size.height -= _insets.top + _insets.bottom;
   
-  BOOL isHighlighted = self.isHighlighted;
+  BOOL isHighlighted = (self.isHighlighted && self.userInteractionEnabled);
   BOOL isSelected = self.isSelected;
   BOOL isDisabled = !self.isEnabled;
   
@@ -244,6 +277,7 @@
     if (_disabledColor) color = _disabledColor;
     if (_disabledColor2) color2 = _disabledColor2;
     if (_disabledBorderColor) borderColor = _disabledBorderColor;
+    if (_disabledImage) image = _disabledImage;
   } else if (isHighlighted) { //  || self.isTracking ; TODO(gabe): Check if we still need the tracking
     if (_highlightedShadingType != YKUIShadingTypeNone) shadingType = _highlightedShadingType;
     if (_highlightedColor) color = _highlightedColor;
@@ -276,7 +310,7 @@
   if (color && shadingType != YKUIShadingTypeNone) {
     YKCGContextAddStyledRect(context, bounds, _borderStyle, _borderWidth, _borderAlternateWidth, _cornerRadius);  
     // Clip for border styles that support it (that form a cohesive path)
-    BOOL clip = (_borderStyle != YKUIBorderStyleTop && _borderStyle != YKUIBorderStyleBottom && _borderStyle != YKUIBorderStyleTopBottom);    
+    BOOL clip = (_borderStyle != YKUIBorderStyleTopOnly && _borderStyle != YKUIBorderStyleBottomOnly && _borderStyle != YKUIBorderStyleTopBottom);    
     if (clip) CGContextClip(context);
     YKCGContextDrawShadingWithHeight(context, color.CGColor, color2.CGColor, color3.CGColor, color4.CGColor, self.bounds.size.height, shadingType);
     fillColor = nil;
@@ -339,9 +373,10 @@
     [_title drawInRect:CGRectMake(x, y, _titleSize.width, _titleSize.height) withFont:font lineBreakMode:UILineBreakModeTailTruncation alignment:_titleAlignment];
   }
   
-  if (accessoryIcon)
-    [accessoryIcon drawAtPoint:YKCGPointToRight(accessoryIcon.size, CGSizeMake(size.width - 10, size.height))];
-  
+  if (accessoryIcon) {
+    [accessoryIcon drawAtPoint:YKCGPointToRight(accessoryIcon.size, CGSizeMake(size.width - 10, bounds.size.height))];
+  }
+    
   if (showIcon) {
     [icon drawInRect:YKCGRectToCenterInRect(iconSize, bounds)];
   }  

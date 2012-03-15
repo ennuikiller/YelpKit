@@ -40,7 +40,7 @@ NSString *const kYKURLRequestDefaultContentType = @"application/octet-stream";
 
 const double kYKURLRequestExpiresAgeMax = DBL_MAX;
 
-static NSTimeInterval gYKURLRequestDefaultTimeout = 30.0;
+static NSTimeInterval gYKURLRequestDefaultTimeout = 25.0;
 static BOOL gYKURLRequestCacheEnabled = YES; // Defaults to ON
 
 
@@ -71,7 +71,8 @@ static BOOL gYKURLRequestCacheEnabled = YES; // Defaults to ON
 
 - (void)dealloc {
   [self _stop];
-  
+  [_timer invalidate];
+  _timer = nil;
   [__delegate release];
   __delegate = nil;
   [_URL release];
@@ -200,19 +201,26 @@ static BOOL gYKURLRequestCacheEnabled = YES; // Defaults to ON
   Class connectionClass = [[self class] connectionClass];
   YKDebug(@"\n\nConnecting to: %@ <%@>\n", URL, NSStringFromClass(connectionClass));
   
+  BOOL useCustomTimer = NO;
   if (method == YPHTTPMethodPostMultipart) {
     [_request setHTTPMethod:@"POST"]; 
     [self setHTTPBodyMultipart:postParams keyEnumerator:keyEnumerator compress:NO];
+    useCustomTimer = YES;
   } else if (method == YPHTTPMethodPostMultipartCompressed) {
     [_request setHTTPMethod:@"POST"]; 
     [self setHTTPBodyMultipart:postParams keyEnumerator:keyEnumerator compress:YES];
+    useCustomTimer = YES;
   } else if (method == YPHTTPMethodPostForm) {
     [_request setHTTPMethod:@"POST"]; 
     [self setHTTPBodyFormData:postParams];
+    useCustomTimer = YES;
   } else if (method == YPHTTPMethodHead) {
     [_request setHTTPMethod:@"HEAD"]; 
   }
   _start = [NSDate timeIntervalSinceReferenceDate];
+  if (useCustomTimer) {
+    _timer = [NSTimer scheduledTimerWithTimeInterval:_timeout target:self selector:@selector(_timeout) userInfo:nil repeats:NO];
+  }
   _connection = [[connectionClass alloc] initWithRequest:_request delegate:self startImmediately:NO];   
   if (_detachOnThread) {
     YKDebug(@"Request will detach on thread");
@@ -226,6 +234,13 @@ static BOOL gYKURLRequestCacheEnabled = YES; // Defaults to ON
 - (YKURLCache *)cache {
   if (_cacheName) return [YKURLCache cacheWithName:_cacheName];
   return [YKURLCache sharedCache];
+}
+
+- (void)_timeout {
+  if (_stopped) return;
+  [_timer invalidate];
+  _timer = nil;
+  [self didError:[YKError errorWithKey:YKErrorCannotConnectToHost]];
 }
 
 - (void)_start {
@@ -252,6 +267,8 @@ static BOOL gYKURLRequestCacheEnabled = YES; // Defaults to ON
 - (void)_stop {
   if (!_stopped) YKDebug(@"Stopping");
   _stopped = YES;
+  [_timer invalidate];
+  _timer = nil;
   if (_connection) {
     // In case cancelling the connection calls this recursively (from dealloc), 
     // nil connection before releasing

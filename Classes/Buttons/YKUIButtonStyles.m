@@ -490,8 +490,7 @@
       button.accessoryImageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"disclosure.png"] 
                                                    highlightedImage:[UIImage imageNamed:@"disclosure_selected.png"]] autorelease];
       
-      [button setBorderStyle:YKUIBorderStyleBottom color:[UIColor blackColor] width:0.5
-            alternateWidth:0 cornerRadius:0];
+      [button setBorderStyle:YKUIBorderStyleBottomOnly color:[UIColor blackColor] width:0.5 alternateWidth:0 cornerRadius:0];
       
       break;
   }

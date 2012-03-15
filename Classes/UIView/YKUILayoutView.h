@@ -36,4 +36,11 @@
 
 @property (retain, nonatomic) YKLayout *layout;
 
+/*!
+ Force the layout, if using YKLayout.
+ You can use this instead of setNeedsLayout + layoutIfNeeded.
+ This is also useful when using animations and setNeedsLayout + layoutIfNeeded don't work as expected.
+ */
+- (void)layoutView;
+
 @end
