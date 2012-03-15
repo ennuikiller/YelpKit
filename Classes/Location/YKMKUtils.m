@@ -8,6 +8,7 @@
 
 #import "YKMKUtils.h"
 #import "YKCLUtils.h"
+#import "YKCGUtils.h"
 #import "YKMKAnnotation.h"
 #import <GHKitIOS/GHNSDictionary+Utils.h>
 #import <GHKitIOS/GHNSDictionary+NSNull.h>
@@ -220,14 +221,18 @@ BOOL YKCLLocationCoordinate2DIsInsideRegion(CLLocationCoordinate2D coordinate, M
   return MKCoordinateRegionMake(YKCLLocationCoordinate2DMake(centerLatitude, centerLongitude), span);
 }
 
-+ (MKCoordinateRegion)regionForRegion:(MKCoordinateRegion)region insets:(UIEdgeInsets)insets size:(CGSize)size {
-  if (CGSizeEqualToSize(size, CGSizeZero) || UIEdgeInsetsEqualToEdgeInsets(insets, UIEdgeInsetsZero)) return region;
++ (MKCoordinateRegion)regionForRegion:(MKCoordinateRegion)region insets:(CGPoint)insets size:(CGSize)size {
+  if (YKMKCoordinateRegionIsNull(region)) return region;
+  if (CGSizeEqualToSize(size, CGSizeZero) || YKCGPointIsEqual(insets, CGPointZero)) return region;
 
-  CGFloat pixelsPerLongitude = region.span.longitudeDelta / size.width;
-  CGFloat pixelsPerLatitude = region.span.latitudeDelta / size.height;
-    
-  region.span.latitudeDelta += ((insets.top + insets.bottom) * pixelsPerLatitude);
-  region.span.longitudeDelta += ((insets.left + insets.right) * pixelsPerLongitude);
+  double pixelsPerLongitude = region.span.longitudeDelta / (double)size.width;
+  double pixelsPerLatitude = region.span.latitudeDelta / (double)size.height;
+  
+  double deltaY = (double)insets.y * pixelsPerLatitude;
+  double deltaX = (double)insets.x * pixelsPerLongitude;
+
+  region.span.latitudeDelta += deltaY;
+  region.span.longitudeDelta += deltaX;
   return region;
 }
 

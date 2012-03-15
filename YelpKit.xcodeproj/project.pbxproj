@@ -459,6 +459,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries\"",
 				);
+				"GCC_OPTIMIZATION_LEVEL[sdk=iphonesimulator*][arch=*]" = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YelpKit-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;

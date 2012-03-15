@@ -10,9 +10,7 @@
 
 @implementation YKMKAnnotation
 
-@synthesize coordinate=_coordinate, title=_title, subtitle=_subtitle, draggable=_draggable, selected=_selected, 
-enabled=_enabled, canShowCallout=_canShowCallout, animatesDrop=_animatesDrop, color=_color, 
-leftCalloutAccessoryView=_leftCalloutAccessoryView;
+@synthesize coordinate=_coordinate, title=_title, subtitle=_subtitle, draggable=_draggable, selected=_selected, enabled=_enabled, canShowCallout=_canShowCallout, animatesDrop=_animatesDrop, color=_color, leftCalloutAccessoryView=_leftCalloutAccessoryView, index=_index;
 
 - (id)init {
   if ((self = [super init])) {
@@ -53,10 +51,6 @@ leftCalloutAccessoryView=_leftCalloutAccessoryView;
 
 - (id<YKMKAnnotation>)annotationForCallout {
   return self;
-}
-
-- (NSInteger)index {
-  return 0;
 }
 
 - (MKAnnotationView<YKMKAnnotationView> *)view {

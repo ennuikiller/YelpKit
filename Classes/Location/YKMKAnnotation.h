@@ -50,6 +50,7 @@
   BOOL _animatesDrop;
   MKPinAnnotationColor _color;
   UIView *_leftCalloutAccessoryView;
+  NSInteger _index;
 }
 
 @property (assign, nonatomic) CLLocationCoordinate2D coordinate;
@@ -61,6 +62,7 @@
 @property (assign, nonatomic) BOOL animatesDrop;
 @property (assign, nonatomic) MKPinAnnotationColor color;
 @property (retain, nonatomic) UIView *leftCalloutAccessoryView;
+@property (assign, nonatomic) NSInteger index;
 
 
 + (YKMKAnnotation *)annotationWithCoordinate:(CLLocationCoordinate2D)coordinate title:(NSString *)title subtitle:(NSString *)subtitle leftCalloutAccessoryView:(UIView *)leftCalloutAccessoryView draggable:(BOOL)draggable;

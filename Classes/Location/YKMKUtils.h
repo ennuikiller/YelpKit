@@ -87,7 +87,7 @@ MKCoordinateRegion YKMKCoordinateRegionInset(MKCoordinateRegion region, CLLocati
 /*!
  Region with insets.
  */
-+ (MKCoordinateRegion)regionForRegion:(MKCoordinateRegion)region insets:(UIEdgeInsets)insets size:(CGSize)size;
++ (MKCoordinateRegion)regionForRegion:(MKCoordinateRegion)region insets:(CGPoint)insets size:(CGSize)size;
 
 /*!
  Region that fits annotations.
