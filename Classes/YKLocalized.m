@@ -104,7 +104,7 @@ static NSString *gDefaultTableName = kDefaultTableName;
 // Patched localized string.
 - (NSString *)yelp_localizedStringForKey:(NSString *)key value:(NSString *)value tableName:(NSString *)tableName {
   if (!key) {
-    YKInfo(@"Trying to localize nil key, (with value=%@, tableName=%@)", value, tableName);
+    YKDebug(@"Trying to localize nil key, (with value=%@, tableName=%@)", value, tableName);
     return nil;
   }
 

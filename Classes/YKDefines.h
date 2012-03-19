@@ -64,14 +64,8 @@
 #define YKDebug(fmt, ...) do {} while(0)
 #undef YKException
 #define YKException(e) do {} while(0)
-#undef YKWarn
-#define YKWarn(fmt, ...) do {} while(0)
-#undef YKInfo
-#define YKInfo(fmt, ...) do {} while(0)
 #undef YKErr
 #define YKErr(fmt, ...) do {} while(0)
-#undef YKNSError
-#define YKNSError(__ERROR__) do {} while(0)
 #undef YKAssert
 #define YKAssert(value, desc, ...) do {} while(0)
 #undef YKParameterAssert
@@ -82,17 +76,11 @@
  */
 #if DEBUG
 #undef YKDebug
-#define YKDebug(fmt, ...) NSLog(@"%@", [NSString stringWithFormat:fmt, ##__VA_ARGS__])
+#define YKDebug(fmt, ...) NSLog((@"%s:%d: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 #undef YKException
 #define YKException(__EXCEPTION__) NSLog(@"%@", [NSString stringWithFormat:@"\n\n%@\n", [__EXCEPTION__ description], nil])
-#undef YKWarn
-#define YKWarn(fmt, ...) do {NSString *desc = [NSString stringWithFormat:fmt, ##__VA_ARGS__]; NSLog(@"%@", desc); /*NSAssert(NO, desc);*/} while(0)
-#undef YKInfo
-#define YKInfo(fmt, ...) NSLog(@"%@", [NSString stringWithFormat:fmt, ##__VA_ARGS__])
 #undef YKErr
-#define YKErr(fmt, ...) NSLog(@"%@", [NSString stringWithFormat:fmt, ##__VA_ARGS__])
-#undef YKNSError
-#define YKNSError(__ERROR__) do { if (__ERROR__) NSLog(@"%@", [__ERROR__ gh_fullDescription]); } while(0)
+#define YKErr(fmt, ...) NSLog((@"%s:%d: " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 #undef YKAssert
 #define YKAssert(value, fmt, ...) do { if (!(value)) {NSString *desc = [NSString stringWithFormat:fmt, ##__VA_ARGS__]; NSLog(@"%@", desc); NSAssert(NO, desc); } } while(0)
 #undef YKParameterAssert

@@ -368,7 +368,7 @@ static NSMutableDictionary *gNamedCaches = NULL;
   
   // Cache is full
   if (pixelCount >= kLargeImageSize) {
-    YKDebug(@"NOT caching image in in memory (too large, pixelCount=%d > %d)", pixelCount, kLargeImageSize);
+    YKDebug(@"NOT caching image in in memory (too large, pixelCount=%d > %.0f)", pixelCount, kLargeImageSize);
     return NO;
   }
   
