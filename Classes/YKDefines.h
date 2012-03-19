@@ -105,6 +105,8 @@
 
 #define YKIsEqualObjects(obj1, obj2) ((obj1 == nil && obj2 == nil) || ([obj1 isEqual:obj2]))
 
+#define YKConstrain(value, min, max) (value) < (min) ? (min) : ((value) > (max) ? (max) : (value))
+
 #ifndef __has_feature      // Optional.
 #define __has_feature(x) 0 // Compatibility with non-clang compilers.
 #endif

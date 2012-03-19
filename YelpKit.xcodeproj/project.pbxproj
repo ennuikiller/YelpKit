@@ -55,6 +55,8 @@
 		00D575741457C47A00DE6487 /* YKUIButtonStyles.h in Headers */ = {isa = PBXBuildFile; fileRef = 00D575721457C47900DE6487 /* YKUIButtonStyles.h */; };
 		00D575751457C47A00DE6487 /* YKUIButtonStyles.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D575731457C47900DE6487 /* YKUIButtonStyles.m */; };
 		00D5757B1457C65200DE6487 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D5757A1457C65200DE6487 /* QuartzCore.framework */; };
+		4227623E150FFDC1002E177D /* UIColor+YKUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4227623C150FFDC1002E177D /* UIColor+YKUtils.h */; };
+		4227623F150FFDC1002E177D /* UIColor+YKUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4227623D150FFDC1002E177D /* UIColor+YKUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +113,8 @@
 		00D575761457C62A00DE6487 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		00D575781457C63400DE6487 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		00D5757A1457C65200DE6487 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4227623C150FFDC1002E177D /* UIColor+YKUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+YKUtils.h"; sourceTree = "<group>"; };
+		4227623D150FFDC1002E177D /* UIColor+YKUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+YKUtils.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,7 @@
 		005592FE140B00F6001E9C43 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4227623A150FFDAE002E177D /* UIColor */,
 				00BE005414A148A8006B733B /* Location */,
 				00D575641457C35C00DE6487 /* Buttons */,
 				00D575651457C35C00DE6487 /* UI */,
@@ -290,6 +295,15 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		4227623A150FFDAE002E177D /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				4227623C150FFDC1002E177D /* UIColor+YKUtils.h */,
+				4227623D150FFDC1002E177D /* UIColor+YKUtils.m */,
+			);
+			path = UIColor;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -321,6 +335,7 @@
 				00BE006114A148A8006B733B /* YKMKAnnotation.h in Headers */,
 				00BE006314A148A8006B733B /* YKMKUtils.h in Headers */,
 				0013505515003C1900B0976D /* YKUISwitch.h in Headers */,
+				4227623E150FFDC1002E177D /* UIColor+YKUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +410,7 @@
 				00BE006014A148A8006B733B /* YKCLUtils.m in Sources */,
 				00BE006214A148A8006B733B /* YKMKAnnotation.m in Sources */,
 				00BE006414A148A8006B733B /* YKMKUtils.m in Sources */,
+				4227623F150FFDC1002E177D /* UIColor+YKUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
