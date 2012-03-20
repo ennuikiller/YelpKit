@@ -33,8 +33,11 @@
 @implementation UIColor (YKUtils)
 
 - (UIColor *)colorByAddingRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha {
-  CGFloat originalRed, originalGreen, originalBlue, originalAlpha;
-  [self getRed:&originalRed green:&originalGreen blue:&originalBlue alpha:&originalAlpha];
+  const CGFloat* components = CGColorGetComponents(self.CGColor);
+  CGFloat originalRed = components[0];
+  CGFloat originalGreen = components[1];
+  CGFloat originalBlue = components[2];
+  CGFloat originalAlpha = CGColorGetAlpha(self.CGColor);
   red = YKConstrain(originalRed + red, 0, 1.0);
   green = YKConstrain(originalGreen + green, 0, 1.0);
   blue = YKConstrain(originalBlue + blue, 0, 1.0);
@@ -43,8 +46,11 @@
 }
 
 - (UIColor *)colorByMultiplyingRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha {
-  CGFloat originalRed, originalGreen, originalBlue, originalAlpha;
-  [self getRed:&originalRed green:&originalGreen blue:&originalBlue alpha:&originalAlpha];
+  const CGFloat* components = CGColorGetComponents(self.CGColor);
+  CGFloat originalRed = components[0];
+  CGFloat originalGreen = components[1];
+  CGFloat originalBlue = components[2];
+  CGFloat originalAlpha = CGColorGetAlpha(self.CGColor);
   red = YKConstrain(originalRed * red, 0, 1.0);
   green = YKConstrain(originalGreen * green, 0, 1.0);
   blue = YKConstrain(originalBlue * blue, 0, 1.0);
