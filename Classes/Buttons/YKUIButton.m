@@ -150,6 +150,12 @@
   return CGSizeMake(size.width, y);
 }
 
+- (CGSize)sizeThatFitsTitle:(CGSize)size minWidth:(CGFloat)minWidth {
+  CGSize sizeThatFitsTitle = [self sizeThatFitsTitle:size];
+  if (sizeThatFitsTitle.width < minWidth) sizeThatFitsTitle.width = minWidth;
+  return sizeThatFitsTitle;
+}
+
 - (CGSize)sizeThatFitsTitle:(CGSize)size {
   CGSize titleSize = [_title sizeWithFont:_titleFont constrainedToSize:size lineBreakMode:UILineBreakModeTailTruncation];  
   return CGSizeMake(titleSize.width + _titleInsets.left + _titleInsets.right, titleSize.height + _titleInsets.top + _titleInsets.bottom);

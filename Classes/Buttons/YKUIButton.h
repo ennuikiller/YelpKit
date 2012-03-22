@@ -391,6 +391,14 @@
 - (CGSize)sizeThatFitsTitle:(CGSize)size;
 
 /*!
+ Size that fits title.
+ @param size Size
+ @param minWidth Min width
+ @result Size to only fit the title text (with insets).
+ */
+- (CGSize)sizeThatFitsTitle:(CGSize)size minWidth:(CGFloat)minWidth;
+
+/*!
  Set border.
  @param borderStyle Border style
  @param color Color
