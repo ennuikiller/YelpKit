@@ -116,6 +116,14 @@
 #endif
 
 /*!
+ Core Graphics macros, for more concise syntax.
+*/
+#define CGRectLeft(rect) (rect.origin.x)
+#define CGRectRight(rect) (rect.origin.x + rect.size.width)
+#define CGRectTop(rect) (rect.origin.y)
+#define CGRectBottom(rect) (rect.origin.y + rect.size.height)
+
+/*!
  This is pulled from GData obj-c API
  @see http://code.google.com/p/gdata-objectivec-client/source/browse/trunk/Source/Networking/GDataHTTPFetcher.m
  */
