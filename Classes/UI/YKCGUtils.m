@@ -423,11 +423,14 @@ CGPathRef YKCGPathCreateStyledRect(CGRect rect, YKUIBorderStyle style, CGFloat s
       break;
       
     case YKUIBorderStyleNormal:
+    case YKUIBorderStyleRounded:
+    case YKUIBorderStyleRoundedLeftCap:
+    case YKUIBorderStyleRoundedRightCap:
       insetBounds = CGRectMake(rect.origin.x + strokeInset, rect.origin.y + strokeInset, rect.size.width - (strokeInset * 2), rect.size.height - (strokeInset * 2));
-      break;
-      
-    default:
-      insetBounds = CGRectMake(rect.origin.x, rect.origin.y, 0, 0);
+      break;  
+          
+    case YKUIBorderStyleNone:
+      insetBounds = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
       break;
   }
   rect = insetBounds;
@@ -514,7 +517,30 @@ CGPathRef YKCGPathCreateStyledRect(CGRect rect, YKUIBorderStyle style, CGFloat s
        CGPathAddLineToPoint(path, &transform, -2, fh);
        break;
        */
-    default:
+    case YKUIBorderStyleRoundedLeftCap:
+      CGPathMoveToPoint(path, &transform, 0, fh/2);
+      CGPathAddArcToPoint(path, &transform, 0, 0, fw/2, 0, 1);
+      CGPathAddLineToPoint(path, &transform, fw, 0);
+      CGPathAddLineToPoint(path, &transform, fw, fh);
+      CGPathAddLineToPoint(path, &transform, fw/2, fh);
+      CGPathAddArcToPoint(path, &transform, 0, fh, 0, fh/2, 1);
+      CGPathAddLineToPoint(path, &transform, 0, fh/2);
+      break;
+      
+    case YKUIBorderStyleRoundedRightCap:
+      CGPathMoveToPoint(path, &transform, 0, fh);
+      CGPathAddLineToPoint(path, &transform, 0, 0);
+      CGPathAddLineToPoint(path, &transform, fw/2, 0);
+      CGPathAddArcToPoint(path, &transform, fw, 0, fw, fh/2, 1);
+      CGPathAddArcToPoint(path, &transform, fw, fh, fw/2, fh, 1);
+      CGPathAddLineToPoint(path, &transform, 0, fh);
+      break;
+    
+    case YKUIBorderStyleRounded:
+      // Drawn in different method
+      break;
+      
+    case YKUIBorderStyleNone:
       break;
   }
   

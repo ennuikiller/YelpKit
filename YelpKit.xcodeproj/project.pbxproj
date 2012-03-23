@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0013505515003C1900B0976D /* YKUISwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = 0013505315003C1900B0976D /* YKUISwitch.h */; };
+		002629AF151BABB800F840DB /* YKUIButtons.h in Headers */ = {isa = PBXBuildFile; fileRef = 002629AD151BABB800F840DB /* YKUIButtons.h */; };
+		002629B0151BABB800F840DB /* YKUIButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 002629AE151BABB800F840DB /* YKUIButtons.m */; };
 		004DA802145235F100247993 /* YKUILayoutView.h in Headers */ = {isa = PBXBuildFile; fileRef = 004DA800145235F000247993 /* YKUILayoutView.h */; };
 		004DA803145235F100247993 /* YKUILayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 004DA801145235F100247993 /* YKUILayoutView.m */; };
 		005592EC140B0085001E9C43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005592EB140B0085001E9C43 /* Foundation.framework */; };
@@ -61,6 +63,8 @@
 
 /* Begin PBXFileReference section */
 		0013505315003C1900B0976D /* YKUISwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUISwitch.h; sourceTree = "<group>"; };
+		002629AD151BABB800F840DB /* YKUIButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUIButtons.h; sourceTree = "<group>"; };
+		002629AE151BABB800F840DB /* YKUIButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIButtons.m; sourceTree = "<group>"; };
 		004DA800145235F000247993 /* YKUILayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUILayoutView.h; sourceTree = "<group>"; };
 		004DA801145235F100247993 /* YKUILayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUILayoutView.m; sourceTree = "<group>"; };
 		005592E8140B0085001E9C43 /* libYelpKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libYelpKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -282,6 +286,8 @@
 				00D575721457C47900DE6487 /* YKUIButtonStyles.h */,
 				00D575731457C47900DE6487 /* YKUIButtonStyles.m */,
 				0013505315003C1900B0976D /* YKUISwitch.h */,
+				002629AD151BABB800F840DB /* YKUIButtons.h */,
+				002629AE151BABB800F840DB /* YKUIButtons.m */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -336,6 +342,7 @@
 				00BE006314A148A8006B733B /* YKMKUtils.h in Headers */,
 				0013505515003C1900B0976D /* YKUISwitch.h in Headers */,
 				4227623E150FFDC1002E177D /* UIColor+YKUtils.h in Headers */,
+				002629AF151BABB800F840DB /* YKUIButtons.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,7 +372,9 @@
 		005592DF140B0085001E9C43 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = YK;
 				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = Yelp;
 			};
 			buildConfigurationList = 005592E2140B0085001E9C43 /* Build configuration list for PBXProject "YelpKit" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -411,6 +420,7 @@
 				00BE006214A148A8006B733B /* YKMKAnnotation.m in Sources */,
 				00BE006414A148A8006B733B /* YKMKUtils.m in Sources */,
 				4227623F150FFDC1002E177D /* UIColor+YKUtils.m in Sources */,
+				002629B0151BABB800F840DB /* YKUIButtons.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

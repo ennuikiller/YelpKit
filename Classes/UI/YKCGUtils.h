@@ -321,6 +321,8 @@ typedef enum {
   YKUIBorderStyleRoundedBottomWithAlternateTop, // Rounded bottom with left and right sides in strokeWidth; Top in alternateStrokeWidth  
   //YKUIBorderStyleTopBottomRight, // Top bottom and right sides in strokeWidth
   YKUIBorderStyleRoundedTopOnly, // Rounded top with no sides
+  YKUIBorderStyleRoundedLeftCap,
+  YKUIBorderStyleRoundedRightCap,
 } YKUIBorderStyle;
 
 CGPathRef YKCGPathCreateStyledRect(CGRect rect, YKUIBorderStyle style, CGFloat strokeWidth, CGFloat alternateStrokeWidth, CGFloat cornerRadius);
@@ -351,6 +353,7 @@ void YKCGColorGetComponents(CGColorRef color, CGFloat *red, CGFloat *green, CGFl
 #pragma mark Shading
 
 typedef enum {
+  YKUIShadingTypeUnknown = -1,
   YKUIShadingTypeNone = 0,
   YKUIShadingTypeLinear, // Linear color blend (or solid color)
   YKUIShadingTypeHorizontalEdge, // Horizontal edge

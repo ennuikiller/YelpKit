@@ -33,6 +33,10 @@
 // A default button height
 #define kButtonHeight 37
 
+typedef enum {
+  YKUIButtonIconPositionLeft = 0, // Default
+  YKUIButtonIconPositionTop = 1,
+} YKUIButtonIconPosition;
 
 /*!
  Button.
@@ -65,6 +69,8 @@
   UIColor *_highlightedColor;
   UIColor *_highlightedColor2;
   YKUIShadingType _highlightedShadingType;
+  UIColor *_highlightedBorderShadowColor;
+  CGFloat _highlightedBorderShadowBlur;
   
   UIColor *_disabledTitleColor;
   UIColor *_disabledColor;
@@ -93,6 +99,7 @@
   UIImageView *_iconImageView;
   CGSize _iconImageSize;
   UIImageView *_accessoryImageView;
+  YKUIButtonIconPosition _iconPosition;
   
   UIActivityIndicatorView *_activityIndicatorView;
   
@@ -250,6 +257,12 @@
 @property (assign, nonatomic) CGSize iconImageSize; 
 
 /*!
+ Icon position.
+ Defaults to YKUIButtonIconPositionLeft.
+ */
+@property (assign, nonatomic) YKUIButtonIconPosition iconPosition;
+
+/*!
  Text color for title (highlighted).
  */
 @property (retain, nonatomic) UIColor *highlightedTitleColor;
@@ -270,6 +283,17 @@
  Shading type for background (highlighted).
  */
 @property (assign, nonatomic) YKUIShadingType highlightedShadingType;
+
+/*!
+ Border shadow color (highlighted).
+ */
+@property (retain, nonatomic) UIColor *highlightedBorderShadowColor;
+
+/*!
+ Border shadow blur (highlighted).
+ */
+@property (assign, nonatomic) CGFloat highlightedBorderShadowBlur;
+
 
 /*!
  Text shadow color (highlighted).
