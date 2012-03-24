@@ -32,7 +32,7 @@
 
 @implementation YKUIButton
 
-@synthesize title=_title, titleColor=_titleColor, titleFont=_titleFont, borderWidth=_borderWidth, borderAlternateWidth=_borderAlternateWidth, color=_color, color2=_color2, color3=_color3, color4=_color4, highlightedTitleColor=_highlightedTitleColor, highlightedColor=_highlightedColor, highlightedColor2=_highlightedColor2, highlightedShadingType=_highlightedShadingType, disabledTitleColor=_disabledTitleColor, disabledColor=_disabledColor, disabledColor2=_disabledColor2, disabledShadingType=_disabledShadingType, shadingType=_shadingType, borderColor=_borderColor, borderStyle=_borderStyle, titleShadowColor=_titleShadowColor, accessoryImageView=_accessoryImageView, titleAlignment=_titleAlignment, titleHidden=_titleHidden, titleInsets=_titleInsets, titleShadowOffset=_titleShadowOffset, selectedTitleColor=_selectedTitleColor, selectedColor=_selectedColor, selectedColor2=_selectedColor2, selectedShadingType=_selectedShadingType, cornerRadius=_cornerRadius, highlightedTitleShadowColor=_highlightedTitleShadowColor, highlightedTitleShadowOffset=_highlightedTitleShadowOffset, disabledBorderColor=_disabledBorderColor, insets=_insets, borderShadowColor=_borderShadowColor, borderShadowBlur=_borderShadowBlur, iconImageSize=_iconImageSize, iconImageView=_iconImageView, highlightedImage=_highlightedImage, image=_image, selectedBorderShadowColor=_selectedBorderShadowColor, selectedBorderShadowBlur=_selectedBorderShadowBlur, disabledImage=_disabledImage, iconPosition=_iconPosition, highlightedBorderShadowColor=_highlightedBorderShadowColor, highlightedBorderShadowBlur=_highlightedBorderShadowBlur;
+@synthesize title=_title, titleColor=_titleColor, titleFont=_titleFont, borderWidth=_borderWidth, borderAlternateWidth=_borderAlternateWidth, color=_color, color2=_color2, color3=_color3, color4=_color4, highlightedTitleColor=_highlightedTitleColor, highlightedColor=_highlightedColor, highlightedColor2=_highlightedColor2, highlightedShadingType=_highlightedShadingType, disabledTitleColor=_disabledTitleColor, disabledColor=_disabledColor, disabledColor2=_disabledColor2, disabledShadingType=_disabledShadingType, shadingType=_shadingType, borderColor=_borderColor, borderStyle=_borderStyle, titleShadowColor=_titleShadowColor, accessoryImageView=_accessoryImageView, titleAlignment=_titleAlignment, titleHidden=_titleHidden, titleInsets=_titleInsets, titleShadowOffset=_titleShadowOffset, selectedTitleColor=_selectedTitleColor, selectedColor=_selectedColor, selectedColor2=_selectedColor2, selectedShadingType=_selectedShadingType, cornerRadius=_cornerRadius, highlightedTitleShadowColor=_highlightedTitleShadowColor, highlightedTitleShadowOffset=_highlightedTitleShadowOffset, disabledBorderColor=_disabledBorderColor, insets=_insets, borderShadowColor=_borderShadowColor, borderShadowBlur=_borderShadowBlur, iconImageSize=_iconImageSize, iconImageView=_iconImageView, highlightedImage=_highlightedImage, image=_image, selectedBorderShadowColor=_selectedBorderShadowColor, selectedBorderShadowBlur=_selectedBorderShadowBlur, disabledImage=_disabledImage, iconPosition=_iconPosition, highlightedBorderShadowColor=_highlightedBorderShadowColor, highlightedBorderShadowBlur=_highlightedBorderShadowBlur, secondaryTitle=_secondaryTitle, secondaryTitleColor=_secondaryTitleColor, secondaryTitleFont=_secondaryTitleFont;
 ;
 
 
@@ -98,6 +98,9 @@
   [_highlightedImage release];
   [_disabledImage release];
   [_highlightedBorderShadowColor release];
+  [_secondaryTitle release];
+  [_secondaryTitleColor release];
+  [_secondaryTitleFont release];
   [super dealloc];
 }
 
@@ -107,6 +110,16 @@
 
 + (YKUIButton *)buttonWithFrame:(CGRect)frame title:(NSString *)title target:(id)target action:(SEL)action {
   return [[[[self class] alloc] initWithFrame:frame title:title target:target action:action] autorelease];
+}
+
+- (CGSize)_sizeForTitle:(CGSize)constrainedToSize {
+  CGSize titleSize = [_title sizeWithFont:_titleFont constrainedToSize:constrainedToSize lineBreakMode:UILineBreakModeTailTruncation];
+  if (_secondaryTitle) {
+    constrainedToSize.width -= titleSize.width;
+    CGSize secondaryTitleSize = [_secondaryTitle sizeWithFont:(_secondaryTitleFont ? _secondaryTitleFont : _titleFont) constrainedToSize:constrainedToSize lineBreakMode:UILineBreakModeTailTruncation];
+    titleSize.width += secondaryTitleSize.width;
+  }
+  return titleSize;
 }
 
 - (CGSize)layout:(id<YKLayout>)layout size:(CGSize)size {
@@ -137,7 +150,7 @@
       constrainedToSize.height = 9999;
     }
     
-    _titleSize = [_title sizeWithFont:_titleFont constrainedToSize:constrainedToSize lineBreakMode:UILineBreakModeTailTruncation];    
+    _titleSize = [self _sizeForTitle:constrainedToSize];
     
     if (_activityIndicatorView) {
       CGPoint p = YKCGPointToCenter(_titleSize, size);
@@ -161,8 +174,8 @@
 }
 
 - (CGSize)sizeThatFitsTitle:(CGSize)size {
-  CGSize titleSize = [_title sizeWithFont:_titleFont constrainedToSize:size lineBreakMode:UILineBreakModeTailTruncation];  
-  return CGSizeMake(titleSize.width + _titleInsets.left + _titleInsets.right, titleSize.height + _titleInsets.top + _titleInsets.bottom);
+  CGSize titleSize = [self _sizeForTitle:size];
+  return CGSizeMake(titleSize.width + _insets.left + _insets.right + _titleInsets.left + _titleInsets.right, titleSize.height + _titleInsets.top + _titleInsets.bottom);
 }
 
 - (void)setHighlighted:(BOOL)highlighted {
@@ -327,8 +340,8 @@
     if (clip) CGContextClip(context);
     if (shadingType != YKUIShadingTypeNone) {
       YKCGContextDrawShadingWithHeight(context, color.CGColor, color2.CGColor, color3.CGColor, color4.CGColor, self.bounds.size.height, shadingType);
+      fillColor = nil;
     }
-    fillColor = nil;
   }
   
   if (_borderWidth > 0) {
@@ -357,12 +370,14 @@
   if (!_titleHidden) {
     CGFloat lineWidth = _titleSize.width + _titleInsets.left + _titleInsets.right;
     if (showIcon && _iconPosition == YKUIButtonIconPositionLeft) lineWidth += iconSize.width + 2;
-    CGFloat x = _insets.left;
+    CGFloat x;
     
     if (_titleAlignment == UITextAlignmentCenter) {
       CGFloat width = size.width;
       if (accessoryIcon) width -= accessoryIcon.size.width;
       x = bounds.origin.x + roundf(width/2.0 - lineWidth/2.0);      
+    } else {
+      x = _insets.left;
     }
     if (x < 0) x = 0;
 
@@ -398,9 +413,15 @@
     }
 
     x += _titleInsets.left;
-    [_title drawInRect:CGRectMake(x, y, _titleSize.width, _titleSize.height) withFont:font lineBreakMode:UILineBreakModeTailTruncation alignment:_titleAlignment];
+    CGSize titleSize = [_title drawInRect:CGRectMake(x, y, _titleSize.width, _titleSize.height) withFont:font lineBreakMode:UILineBreakModeTailTruncation];
+    x += titleSize.width;
+    if (_secondaryTitle) {
+      if (_secondaryTitleColor) [_secondaryTitleColor set];
+      if (_secondaryTitleFont) font = _secondaryTitleFont;
+      [_secondaryTitle drawAtPoint:CGPointMake(x, y) withFont:font];  
+    }
   }
-  
+
   if (accessoryIcon) {
     [accessoryIcon drawAtPoint:YKCGPointToRight(accessoryIcon.size, CGSizeMake(size.width - 10, bounds.size.height))];
   }

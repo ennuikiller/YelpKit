@@ -103,6 +103,10 @@ typedef enum {
   
   UIActivityIndicatorView *_activityIndicatorView;
   
+  NSString *_secondaryTitle;
+  UIColor *_secondaryTitleColor;
+  UIFont *_secondaryTitleFont;
+  
   BOOL _titleHidden;
   
 }
@@ -363,6 +367,21 @@ typedef enum {
  Shading type for background (disabled).
  */
 @property (assign, nonatomic) YKUIShadingType disabledShadingType;
+
+/*!
+ Secondary title, that appears next to title.
+ */
+@property (retain, nonatomic) NSString *secondaryTitle;
+
+/*!
+ Secondary title color.
+ */
+@property (retain, nonatomic) UIColor *secondaryTitleColor;
+
+/*!
+ Secondary title font. Defaults to titleFont.
+ */
+@property (retain, nonatomic) UIFont *secondaryTitleFont;
 
 /*!
  Create button.
