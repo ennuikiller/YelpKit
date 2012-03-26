@@ -12,19 +12,45 @@
 
 @implementation YKUIButtons
 
-- (id)initWithCount:(NSInteger)count apply:(YKUIButtonsApplyBlock)apply {
+- (id)initWithCount:(NSInteger)count style:(YKUIButtonsStyle)style apply:(YKUIButtonsApplyBlock)apply {
+  NSMutableArray *buttons = [NSMutableArray arrayWithCapacity:count];
+  for (NSInteger i = 0; i < count; i++) {
+    [buttons addObject:[[[YKUIButton alloc] init] autorelease]];
+  }
+  return [self initWithButtons:buttons style:style apply:apply];
+}
+
+- (id)initWithButtons:(NSArray *)buttons style:(YKUIButtonsStyle)style apply:(YKUIButtonsApplyBlock)apply {
   if ((self = [super init])) {
-    _buttons = [[NSMutableArray alloc] initWithCapacity:count];
-    for (NSInteger i = 0; i < count; i++) {
-      YKUIButton *button = [[YKUIButton alloc] init];
-      
+    self.backgroundColor = [UIColor clearColor];
+    self.layout = [YKLayout layoutForView:self];
+
+    _style = style;
+    _buttons = [buttons mutableCopy];
+    for (NSInteger i = 0, count = [_buttons count]; i < count; i++) {
+      YKUIButton *button = [_buttons objectAtIndex:i];
+
       if (count == 1) {
         button.borderStyle = YKUIBorderStyleRounded;
       } else {
         if (i == 0) {
-          button.borderStyle = YKUIBorderStyleRoundedLeftCap;
+          switch (style) {
+            case YKUIButtonsStyleHorizontal:
+              button.borderStyle = YKUIBorderStyleRoundedLeftCap;
+              break;
+            case YKUIButtonsStyleVertical:
+              button.borderStyle = YKUIBorderStyleRoundedTop;
+              break;
+          }
         } else if (i == count - 1) {
-          button.borderStyle = YKUIBorderStyleRoundedRightCap;
+          switch (style) {
+            case YKUIButtonsStyleHorizontal:
+              button.borderStyle = YKUIBorderStyleRoundedRightCap;
+              break;
+            case YKUIButtonsStyleVertical:
+              button.borderStyle = YKUIBorderStyleRoundedBottomWithAlternateTop;
+              break;
+          }
         } else {
           button.borderStyle = YKUIBorderStyleNormal;
         }
@@ -32,9 +58,7 @@
       
       apply(button, i);
 
-      [_buttons addObject:button];
       [self addSubview:button];
-      [button release];
     }
   }
   return self;
@@ -45,17 +69,33 @@
   [super dealloc];
 }
 
-- (void)layoutSubviews {
-  [super layoutSubviews];
-  CGFloat x = 0;
-  CGFloat buttonWidth = roundf(self.frame.size.width / (CGFloat)[_buttons count]);
-  NSInteger i = 0;
-  for (YKUIButton *button in _buttons) {
-    CGFloat padding = (i == [_buttons count] - 1 ? 0 : 2);
-    button.frame = CGRectMake(x, 0, buttonWidth + padding, self.frame.size.height);
-    x += buttonWidth; // Have the left border overlap the previous right border
-    i++;
+- (CGSize)layout:(id<YKLayout>)layout size:(CGSize)size {
+  CGFloat y = 0;
+
+  switch (_style) {
+    case YKUIButtonsStyleHorizontal: {
+      CGFloat x = 0;
+      CGFloat buttonWidth = roundf(size.width / (CGFloat)[_buttons count]);
+      NSInteger i = 0;
+      for (YKUIButton *button in _buttons) {
+        CGFloat padding = (i == [_buttons count] - 1 ? 0 : 2);
+        button.frame = CGRectMake(x, 0, buttonWidth + padding, size.height);
+        x += buttonWidth; // Have the left border overlap the previous right border
+        i++;
+      }
+      y = size.height;
+      break;
+    }
+    case YKUIButtonsStyleVertical: {
+      for (YKUIButton *button in _buttons) {
+        button.frame = CGRectMake(0, y, size.width, button.frame.size.height);
+        y += button.frame.size.height;
+      }
+      break;
+    }
   }
+  
+  return CGSizeMake(size.width, y);
 }
 
 - (NSArray *)buttons {

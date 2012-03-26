@@ -33,11 +33,12 @@
 
 @implementation YKUILayoutView
 
-@synthesize layout=_layout;
+@synthesize layout=_layout, needsLayoutBlock=_needsLayoutBlock;
 
 - (void)dealloc {
   [_layout clear];
   [_layout release];
+  Block_release(_needsLayoutBlock);
   [super dealloc];
 }
 
@@ -57,7 +58,7 @@
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
-  YKLayoutAssert(self, _layout);  
+  YKLayoutAssert(self, _layout);
   if (_layout) {
     return [_layout sizeThatFits:size];
   }
@@ -67,6 +68,11 @@
 - (void)setNeedsLayout {
   [super setNeedsLayout];
   [_layout setNeedsLayout];
+}
+
+- (void)notifyNeedsLayout {
+  if (_needsLayoutBlock != NULL) _needsLayoutBlock(self);
+  else [self setNeedsLayout];
 }
 
 #pragma mark Drawing/Layout

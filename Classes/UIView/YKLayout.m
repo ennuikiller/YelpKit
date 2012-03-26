@@ -193,7 +193,9 @@ static NSMutableDictionary *gDebugStats = NULL;
       YKAssert(NO, @"sizeThatFits: returned width different from passed in width. If you have a variable width view, you can pass in the option YKLayoutOptionsSizeToFitVariableWidth to avoid this check.");
     }
     
-    YKAssert(sizeThatFits.width > 0, @"sizeThatFits: on view returned 0 width; Make sure that layout:size: doesn't return a zero width size");
+    if (frame.size.width > 0) {
+      YKAssert(sizeThatFits.width > 0, @"sizeThatFits: on view returned 0 width; Make sure that layout:size: doesn't return a zero width size");
+    }
     
     frame.size = sizeThatFits;
   }

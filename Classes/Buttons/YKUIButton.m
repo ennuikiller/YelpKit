@@ -32,7 +32,7 @@
 
 @implementation YKUIButton
 
-@synthesize title=_title, titleColor=_titleColor, titleFont=_titleFont, borderWidth=_borderWidth, borderAlternateWidth=_borderAlternateWidth, color=_color, color2=_color2, color3=_color3, color4=_color4, highlightedTitleColor=_highlightedTitleColor, highlightedColor=_highlightedColor, highlightedColor2=_highlightedColor2, highlightedShadingType=_highlightedShadingType, disabledTitleColor=_disabledTitleColor, disabledColor=_disabledColor, disabledColor2=_disabledColor2, disabledShadingType=_disabledShadingType, shadingType=_shadingType, borderColor=_borderColor, borderStyle=_borderStyle, titleShadowColor=_titleShadowColor, accessoryImageView=_accessoryImageView, titleAlignment=_titleAlignment, titleHidden=_titleHidden, titleInsets=_titleInsets, titleShadowOffset=_titleShadowOffset, selectedTitleColor=_selectedTitleColor, selectedColor=_selectedColor, selectedColor2=_selectedColor2, selectedShadingType=_selectedShadingType, cornerRadius=_cornerRadius, highlightedTitleShadowColor=_highlightedTitleShadowColor, highlightedTitleShadowOffset=_highlightedTitleShadowOffset, disabledBorderColor=_disabledBorderColor, insets=_insets, borderShadowColor=_borderShadowColor, borderShadowBlur=_borderShadowBlur, iconImageSize=_iconImageSize, iconImageView=_iconImageView, highlightedImage=_highlightedImage, image=_image, selectedBorderShadowColor=_selectedBorderShadowColor, selectedBorderShadowBlur=_selectedBorderShadowBlur, disabledImage=_disabledImage, iconPosition=_iconPosition, highlightedBorderShadowColor=_highlightedBorderShadowColor, highlightedBorderShadowBlur=_highlightedBorderShadowBlur, secondaryTitle=_secondaryTitle, secondaryTitleColor=_secondaryTitleColor, secondaryTitleFont=_secondaryTitleFont;
+@synthesize title=_title, titleColor=_titleColor, titleFont=_titleFont, borderWidth=_borderWidth, borderAlternateWidth=_borderAlternateWidth, color=_color, color2=_color2, color3=_color3, color4=_color4, highlightedTitleColor=_highlightedTitleColor, highlightedColor=_highlightedColor, highlightedColor2=_highlightedColor2, highlightedShadingType=_highlightedShadingType, disabledTitleColor=_disabledTitleColor, disabledColor=_disabledColor, disabledColor2=_disabledColor2, disabledShadingType=_disabledShadingType, shadingType=_shadingType, borderColor=_borderColor, borderStyle=_borderStyle, titleShadowColor=_titleShadowColor, accessoryImageView=_accessoryImageView, titleAlignment=_titleAlignment, titleHidden=_titleHidden, titleInsets=_titleInsets, titleShadowOffset=_titleShadowOffset, selectedTitleColor=_selectedTitleColor, selectedColor=_selectedColor, selectedColor2=_selectedColor2, selectedShadingType=_selectedShadingType, cornerRadius=_cornerRadius, highlightedTitleShadowColor=_highlightedTitleShadowColor, highlightedTitleShadowOffset=_highlightedTitleShadowOffset, disabledBorderColor=_disabledBorderColor, insets=_insets, borderShadowColor=_borderShadowColor, borderShadowBlur=_borderShadowBlur, iconImageSize=_iconImageSize, iconImageView=_iconImageView, highlightedImage=_highlightedImage, image=_image, selectedBorderShadowColor=_selectedBorderShadowColor, selectedBorderShadowBlur=_selectedBorderShadowBlur, disabledImage=_disabledImage, iconPosition=_iconPosition, highlightedBorderShadowColor=_highlightedBorderShadowColor, highlightedBorderShadowBlur=_highlightedBorderShadowBlur, secondaryTitle=_secondaryTitle, secondaryTitleColor=_secondaryTitleColor, secondaryTitleFont=_secondaryTitleFont, iconOrigin=_iconOrigin;
 ;
 
 
@@ -41,6 +41,7 @@
 }
 
 - (void)sharedInit {
+  self.userInteractionEnabled = YES;
   self.layout = [YKLayout layoutForView:self];
   self.opaque = YES;
   self.backgroundColor = [UIColor clearColor];
@@ -49,6 +50,7 @@
   self.titleInsets = UIEdgeInsetsZero;
   self.iconImageSize = CGSizeZero;
   self.highlightedEnabled = YES;
+  self.iconOrigin = CGPointMake(CGFLOAT_MAX, CGFLOAT_MAX);
   _selectedShadingType = YKUIShadingTypeUnknown;
   _highlightedShadingType = YKUIShadingTypeUnknown;
   _disabledShadingType = YKUIShadingTypeUnknown;
@@ -263,6 +265,7 @@
   }
   if (animating) [_activityIndicatorView startAnimating];
   else [_activityIndicatorView stopAnimating];
+  self.userInteractionEnabled = !animating;
   [self setNeedsLayout];
 }
 
@@ -332,11 +335,17 @@
     [image drawInRect:CGRectMake(0, 0, bounds.size.width, bounds.size.height)];
   }
   
+  CGContextSaveGState(context);
+  
   // Clip for border styles that support it (that form a cohesive path)
   BOOL clip = (_borderStyle != YKUIBorderStyleTopOnly && _borderStyle != YKUIBorderStyleBottomOnly && _borderStyle != YKUIBorderStyleTopBottom);    
   
+  CGFloat borderWidth = _borderWidth;
+  CGFloat borderAlternateWidth = _borderAlternateWidth;
+  if (borderAlternateWidth == 0) borderAlternateWidth = borderWidth;
+  
   if (color) {
-    YKCGContextAddStyledRect(context, bounds, _borderStyle, _borderWidth, _borderAlternateWidth, _cornerRadius);  
+    YKCGContextAddStyledRect(context, bounds, _borderStyle, borderWidth, borderAlternateWidth, _cornerRadius);  
     if (clip) CGContextClip(context);
     if (shadingType != YKUIShadingTypeNone) {
       YKCGContextDrawShadingWithHeight(context, color.CGColor, color2.CGColor, color3.CGColor, color4.CGColor, self.bounds.size.height, shadingType);
@@ -346,14 +355,16 @@
   
   if (_borderWidth > 0) {
     if (borderShadowColor) {
-      YKCGContextDrawBorderWithShadow(context, bounds, _borderStyle, fillColor.CGColor, borderColor.CGColor, _borderWidth, _borderAlternateWidth, _cornerRadius, borderShadowColor.CGColor, borderShadowBlur);
+      YKCGContextDrawBorderWithShadow(context, bounds, _borderStyle, fillColor.CGColor, borderColor.CGColor, borderWidth, borderAlternateWidth, _cornerRadius, borderShadowColor.CGColor, borderShadowBlur);
     } else {
-      YKCGContextDrawBorder(context, bounds, _borderStyle, fillColor.CGColor, borderColor.CGColor, _borderWidth, _borderAlternateWidth, _cornerRadius);
+      YKCGContextDrawBorder(context, bounds, _borderStyle, fillColor.CGColor, borderColor.CGColor, borderWidth, borderAlternateWidth, _cornerRadius);
     }
   } else if (fillColor) {
     [fillColor setFill];
     CGContextFillRect(context, self.bounds);
   }
+  
+  CGContextRestoreGState(context);
   
   UIColor *textColor = [self textColorForState:state];
   
@@ -385,12 +396,15 @@
       switch (_iconPosition) {
         case YKUIButtonIconPositionLeft: {
           CGPoint iconTop = YKCGPointToCenter(iconSize, size);
-          [icon drawInRect:CGRectMake(x, iconTop.y, iconSize.width, iconSize.height)];
+          iconTop.x = x;          
+          [icon drawInRect:CGRectMake(iconTop.x, iconTop.y, iconSize.width, iconSize.height)];
           x += iconSize.width + 2; // TODO(gabe): This 2px padding should come from default inset
           break;
         }
         case YKUIButtonIconPositionTop: {
           CGPoint iconTop = YKCGPointToCenter(iconSize, CGSizeMake(size.width, size.height - _titleSize.height - _titleInsets.top - _titleInsets.bottom));
+          if (_iconOrigin.x != CGFLOAT_MAX) iconTop.x = _iconOrigin.x;
+          if (_iconOrigin.y != CGFLOAT_MAX) iconTop.y = _iconOrigin.y;
           [icon drawInRect:CGRectMake(iconTop.x, iconTop.y, iconSize.width, iconSize.height)];
           y = iconTop.y + iconSize.height;
           break;

@@ -40,6 +40,12 @@
 		00559349140B00F6001E9C43 /* YKLocalized.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559327140B00F6001E9C43 /* YKLocalized.h */; settings = {ATTRIBUTES = (); }; };
 		0055934A140B00F6001E9C43 /* YKLocalized.m in Sources */ = {isa = PBXBuildFile; fileRef = 00559328140B00F6001E9C43 /* YKLocalized.m */; };
 		00559353140B0102001E9C43 /* GHKitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00559352140B0102001E9C43 /* GHKitIOS.framework */; };
+		006E7DAD151FF2DE005FD9D3 /* YKUIBorder.h in Headers */ = {isa = PBXBuildFile; fileRef = 006E7DAB151FF2DE005FD9D3 /* YKUIBorder.h */; };
+		006E7DAE151FF2DE005FD9D3 /* YKUIBorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 006E7DAC151FF2DE005FD9D3 /* YKUIBorder.m */; };
+		006E7DB2151FF3C5005FD9D3 /* YKUIBorderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 006E7DB0151FF3C5005FD9D3 /* YKUIBorderView.h */; };
+		006E7DB3151FF3C5005FD9D3 /* YKUIBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 006E7DB1151FF3C5005FD9D3 /* YKUIBorderView.m */; };
+		0072E459151E74D2006EAC84 /* YKUIListView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0072E457151E74D2006EAC84 /* YKUIListView.h */; };
+		0072E45A151E74D2006EAC84 /* YKUIListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0072E458151E74D2006EAC84 /* YKUIListView.m */; };
 		00BE005D14A148A8006B733B /* YKCLSortDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 00BE005514A148A8006B733B /* YKCLSortDescriptor.h */; };
 		00BE005E14A148A8006B733B /* YKCLSortDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 00BE005614A148A8006B733B /* YKCLSortDescriptor.m */; };
 		00BE005F14A148A8006B733B /* YKCLUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 00BE005714A148A8006B733B /* YKCLUtils.h */; };
@@ -98,6 +104,12 @@
 		00559327140B00F6001E9C43 /* YKLocalized.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKLocalized.h; sourceTree = "<group>"; };
 		00559328140B00F6001E9C43 /* YKLocalized.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKLocalized.m; sourceTree = "<group>"; };
 		00559352140B0102001E9C43 /* GHKitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHKitIOS.framework; sourceTree = "<group>"; };
+		006E7DAB151FF2DE005FD9D3 /* YKUIBorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUIBorder.h; sourceTree = "<group>"; };
+		006E7DAC151FF2DE005FD9D3 /* YKUIBorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIBorder.m; sourceTree = "<group>"; };
+		006E7DB0151FF3C5005FD9D3 /* YKUIBorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUIBorderView.h; sourceTree = "<group>"; };
+		006E7DB1151FF3C5005FD9D3 /* YKUIBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIBorderView.m; sourceTree = "<group>"; };
+		0072E457151E74D2006EAC84 /* YKUIListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUIListView.h; sourceTree = "<group>"; };
+		0072E458151E74D2006EAC84 /* YKUIListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIListView.m; sourceTree = "<group>"; };
 		00BE005514A148A8006B733B /* YKCLSortDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKCLSortDescriptor.h; sourceTree = "<group>"; };
 		00BE005614A148A8006B733B /* YKCLSortDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKCLSortDescriptor.m; sourceTree = "<group>"; };
 		00BE005714A148A8006B733B /* YKCLUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKCLUtils.h; sourceTree = "<group>"; };
@@ -245,10 +257,16 @@
 		00559318140B00F6001E9C43 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
+				006E7DAB151FF2DE005FD9D3 /* YKUIBorder.h */,
+				006E7DAC151FF2DE005FD9D3 /* YKUIBorder.m */,
+				006E7DB0151FF3C5005FD9D3 /* YKUIBorderView.h */,
+				006E7DB1151FF3C5005FD9D3 /* YKUIBorderView.m */,
 				00559320140B00F6001E9C43 /* YKLayout.h */,
 				00559321140B00F6001E9C43 /* YKLayout.m */,
 				004DA800145235F000247993 /* YKUILayoutView.h */,
 				004DA801145235F100247993 /* YKUILayoutView.m */,
+				0072E457151E74D2006EAC84 /* YKUIListView.h */,
+				0072E458151E74D2006EAC84 /* YKUIListView.m */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -343,6 +361,9 @@
 				0013505515003C1900B0976D /* YKUISwitch.h in Headers */,
 				4227623E150FFDC1002E177D /* UIColor+YKUtils.h in Headers */,
 				002629AF151BABB800F840DB /* YKUIButtons.h in Headers */,
+				0072E459151E74D2006EAC84 /* YKUIListView.h in Headers */,
+				006E7DAD151FF2DE005FD9D3 /* YKUIBorder.h in Headers */,
+				006E7DB2151FF3C5005FD9D3 /* YKUIBorderView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,6 +442,9 @@
 				00BE006414A148A8006B733B /* YKMKUtils.m in Sources */,
 				4227623F150FFDC1002E177D /* UIColor+YKUtils.m in Sources */,
 				002629B0151BABB800F840DB /* YKUIButtons.m in Sources */,
+				0072E45A151E74D2006EAC84 /* YKUIListView.m in Sources */,
+				006E7DAE151FF2DE005FD9D3 /* YKUIBorder.m in Sources */,
+				006E7DB3151FF3C5005FD9D3 /* YKUIBorderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -61,6 +61,10 @@ CGPathRef YKCGPathCreateLine(CGFloat x1, CGFloat y1, CGFloat x2, CGFloat y2) {
 
 CGPathRef YKCGPathCreateRoundedRect(CGRect rect, CGFloat strokeWidth, CGFloat cornerRadius) { 
   
+  // TODO: Switch to UIBezierPath?
+  // UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:cornerRadius];
+  // return path.CGPath;
+  
   CGMutablePathRef path = CGPathCreateMutable();
   
   CGFloat fw, fh;
@@ -918,3 +922,31 @@ UIImage *YKCreateVerticalGradientImage(CGFloat height, CGColorRef topColor, CGCo
   return outputImg;
 }
 
+UIImage *YKCGContextRoundedMask(CGRect rect, CGFloat cornerRadius) {
+  CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+  CGContextRef context = CGBitmapContextCreate(NULL, rect.size.width, rect.size.height, 8, 0, colorSpace, kCGImageAlphaPremultipliedLast);  
+  CGColorSpaceRelease(colorSpace);    
+  
+  if (context == NULL) {
+    return NULL;
+  }
+  
+  CGContextBeginPath(context);
+  CGContextSetGrayFillColor(context, 1.0, 0.0);
+  CGContextAddRect(context, rect);
+  CGContextClosePath(context);
+  CGContextDrawPath(context, kCGPathFill);
+  
+  CGContextSetGrayFillColor(context, 1.0, 1.0);
+  CGPathRef path = YKCGPathCreateRoundedRect(rect, 0.0, cornerRadius);
+  CGContextAddPath(context, path);
+  CGPathRelease(path);  
+  CGContextDrawPath(context, kCGPathFill);
+
+  CGImageRef bitmapContext = CGBitmapContextCreateImage(context);
+  CGContextRelease(context);
+
+  UIImage *image = [UIImage imageWithCGImage:bitmapContext];
+  CGImageRelease(bitmapContext);
+  return image;
+}  

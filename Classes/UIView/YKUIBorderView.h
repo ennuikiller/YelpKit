@@ -1,9 +1,9 @@
 //
-//  YKUILayoutView.h
+//  YKUIBorderView.h
 //  YelpKit
 //
-//  Created by Gabriel Handford on 6/19/09.
-//  Copyright 2009 Yelp. All rights reserved.
+//  Created by Gabriel Handford on 3/25/12.
+//  Copyright (c) 2012 Yelp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -27,29 +27,18 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "YKLayout.h"
+@class YKUIBorder;
 
-typedef void (^YKUIViewSubviewNeedsLayoutBlock)(UIView *view);
-
-@interface YKUILayoutView : UIView {
-  YKLayout *_layout;
-  
-  YKUIViewSubviewNeedsLayoutBlock _needsLayoutBlock;
+@interface YKUIBorderView : UIView {
+  YKUIBorder *_border;
+  UIView *_view;
 }
 
-@property (retain, nonatomic) YKLayout *layout;
-@property (copy, nonatomic) YKUIViewSubviewNeedsLayoutBlock needsLayoutBlock;
+- (id)initWithView:(UIView *)view;
 
-/*!
- Force the layout, if using YKLayout.
- You can use this instead of setNeedsLayout + layoutIfNeeded.
- This is also useful when using animations and setNeedsLayout + layoutIfNeeded don't work as expected.
- */
-- (void)layoutView;
-
-/*!
- Calls needsLayoutBlock, in the case where you want to make the superview trigger an layout update.
- */
-- (void)notifyNeedsLayout;
+@property (assign, nonatomic) CGFloat cornerRadius;
+@property (retain, nonatomic) UIColor *shadowColor;
+@property (retain, nonatomic) UIColor *borderColor;
+@property (retain, nonatomic) UIColor *fillColor;
 
 @end

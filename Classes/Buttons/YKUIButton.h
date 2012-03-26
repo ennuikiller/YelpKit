@@ -98,6 +98,7 @@ typedef enum {
   
   UIImageView *_iconImageView;
   CGSize _iconImageSize;
+  CGPoint _iconOrigin;
   UIImageView *_accessoryImageView;
   YKUIButtonIconPosition _iconPosition;
   
@@ -259,6 +260,13 @@ typedef enum {
  Defaults to CGSizeZero (disabled).
  */
 @property (assign, nonatomic) CGSize iconImageSize; 
+
+/*!
+ Override position for icon.
+ Only supported for YKUIButtonIconPositionTop.
+ Set a value of CGFLOAT_MAX to skip.
+ */
+@property (assign, nonatomic) CGPoint iconOrigin;
 
 /*!
  Icon position.

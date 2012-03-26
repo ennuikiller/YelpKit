@@ -396,3 +396,9 @@ void YKTransformRGBHSV(float *components);
 void YKCGContextDrawLinearGradient(CGContextRef context, CGRect rect, CGColorRef startColor, CGColorRef  endColor);
 
 UIImage *YKCreateVerticalGradientImage(CGFloat height, CGColorRef topColor, CGColorRef bottomColor);
+
+
+/*!
+ Get a rounded corner mask. For example, for using as a CALayer mask.
+ */
+UIImage *YKCGContextRoundedMask(CGRect rect, CGFloat cornerRadius);
