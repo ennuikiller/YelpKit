@@ -90,6 +90,7 @@
     }
   }
   [_views removeObjectsInArray:views];
+  [views release];
   [self setNeedsLayout];
   [_appearance setNeedsDisplay];
 }

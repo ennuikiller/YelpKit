@@ -375,7 +375,6 @@ CGPathRef YKCGPathCreateStyledRect(CGRect rect, YKUIBorderStyle style, CGFloat s
   CGFloat cornerWidth = cornerRadius, cornerHeight = cornerRadius;  
   
   if (style == YKUIBorderStyleRounded) {
-    assert(cornerRadius > 0);
     return YKCGPathCreateRoundedRect(rect, strokeWidth, cornerRadius);
   }
   

@@ -496,7 +496,7 @@
     }
 
     x += _titleInsets.left;
-    CGSize titleSize = [_title drawInRect:CGRectMake(x, y, _titleSize.width, _titleSize.height) withFont:font lineBreakMode:UILineBreakModeTailTruncation];
+    CGSize titleSize = [_title drawInRect:CGRectMake(x, y, _titleSize.width, _titleSize.height) withFont:font lineBreakMode:UILineBreakModeTailTruncation alignment:_titleAlignment];
     x += titleSize.width;
     if (_secondaryTitle) {
       if (_secondaryTitleColor) [_secondaryTitleColor set];
