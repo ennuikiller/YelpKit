@@ -51,22 +51,30 @@
   [super layoutSubviews];
   _view.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
   _border.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-
+  
   CGRect maskRect = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
 
-  if (_border.cornerRadius) {
+  if (_border.cornerRadius > 0) {
     UIImage *mask = YKCGContextRoundedMask(maskRect, _border.cornerRadius);
     CALayer *layerMask = [CALayer layer];
     layerMask.frame = maskRect;       
     layerMask.contents = (id)mask.CGImage;   
     _view.layer.mask = layerMask;
+  } else {
+    _view.layer.mask = NULL;
   }
+}
+
+// Not sure why we have to do this
+- (void)setFrame:(CGRect)frame {
+  [super setFrame:frame];
+  [_border setNeedsDisplay];
+  [self setNeedsLayout];
 }
 
 - (void)setCornerRadius:(CGFloat)cornerRadius {
   _border.cornerRadius = cornerRadius;
   [_border setNeedsDisplay];
-  [self setNeedsLayout];
 }
 
 - (CGFloat)cornerRadius {

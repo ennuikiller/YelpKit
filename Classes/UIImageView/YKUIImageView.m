@@ -188,58 +188,40 @@
 
 @implementation YKUIImageView
 
-@synthesize strokeColor=_strokeColor, strokeWidth=_strokeWidth, cornerRadius=_cornerRadius;
+@synthesize strokeColor=_strokeColor, strokeWidth=_strokeWidth, cornerRadius=_cornerRadius, color=_color, overlayColor=_overlayColor;
 
 - (void)dealloc {
   [_strokeColor release];
+  [_color release];
+  [_overlayColor release];
   [super dealloc];
 }
 
-#pragma mark Drawing
-
-// From Three20: UIImageAdditions
-+ (void)drawImage:(UIImage *)image inRect:(CGRect)rect contentMode:(UIViewContentMode)contentMode {
-  if (!image) return;
-  
-  BOOL clip = NO;
-  CGRect originalRect = rect;
-  if (image.size.width != rect.size.width || image.size.height != rect.size.height) {
-    clip = contentMode != UIViewContentModeScaleAspectFill && contentMode != UIViewContentModeScaleAspectFit;
-    rect = YKCGRectConvert(rect, image.size, contentMode);
-  }
-  
-  CGContextRef context = UIGraphicsGetCurrentContext();
-  if (clip) {
-    CGContextSaveGState(context);
-    CGContextAddRect(context, originalRect);
-    CGContextClip(context);
-  }
-  
-  //YKDebug(@"Drawing image with size: %@ in %@ (%@)", NSStringFromCGSize(image.size), NSStringFromCGRect(rect), YKNSStringFromUIViewContentMode(contentMode));
-  [image drawInRect:rect];
-  
-  if (clip) {
-    CGContextRestoreGState(context);
-  }
-}
-
 - (void)drawInRect:(CGRect)rect contentMode:(UIViewContentMode)contentMode {
-  [YKUIImageView drawImage:_image inRect:rect contentMode:contentMode];
-}
-
-- (void)drawInRect:(CGRect)rect {
   CGRect bounds = rect;
   
   CGContextRef context = UIGraphicsGetCurrentContext();
 
-  if (_cornerRadius > 0) {
-    YKCGContextDrawRoundedRectImage(context, self.image.CGImage, rect, _strokeColor.CGColor, _strokeWidth, _cornerRadius, YES, YES, self.backgroundColor.CGColor);
-  } else {  
-    if (self.backgroundColor) {
-      YKCGContextDrawRect(context, bounds, self.backgroundColor.CGColor, NULL, 0);
-    }
-    [self drawInRect:bounds contentMode:self.contentMode];  
+  if (self.backgroundColor) {
+    YKCGContextDrawRect(context, bounds, self.backgroundColor.CGColor, NULL, 0);
   }
+  
+  if (_color) {
+    YKCGContextDrawRoundedRect(context, rect, _color.CGColor, NULL, 0, _cornerRadius);
+  }
+  
+  UIColor *color = _color;
+  if (!color) color = self.backgroundColor;
+  
+  YKCGContextDrawRoundedRectImage(context, self.image.CGImage, self.image.size, rect, _strokeColor.CGColor, _strokeWidth, _cornerRadius, self.contentMode, color.CGColor);
+  
+  if (_overlayColor) {
+    YKCGContextDrawRoundedRect(context, rect, _overlayColor.CGColor, NULL, 0, _cornerRadius);
+  }
+}
+
+- (void)drawInRect:(CGRect)rect {
+  [self drawInRect:rect contentMode:self.contentMode];
 }
 
 - (void)drawRect:(CGRect)rect {

@@ -117,12 +117,16 @@ typedef enum {
   UIColor *_strokeColor;
   CGFloat _strokeWidth;
   CGFloat _cornerRadius;
-  
+    
+  UIColor *_color; // Fill (background) color
+  UIColor *_overlayColor; // Fill overlay color
 }
 
 @property (retain, nonatomic) UIColor *strokeColor;
 @property (assign, nonatomic) CGFloat strokeWidth;
 @property (assign, nonatomic) CGFloat cornerRadius;
+@property (retain, nonatomic) UIColor *color;
+@property (retain, nonatomic) UIColor *overlayColor;
 
 /*!
  Draw image in rect for current graphics context.

@@ -5,6 +5,27 @@
 //  Created by Gabriel Handford on 3/24/12.
 //  Copyright (c) 2012 Yelp. All rights reserved.
 //
+//  Permission is hereby granted, free of charge, to any person
+//  obtaining a copy of this software and associated documentation
+//  files (the "Software"), to deal in the Software without
+//  restriction, including without limitation the rights to use,
+//  copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the
+//  Software is furnished to do so, subject to the following
+//  conditions:
+//
+//  The above copyright notice and this permission notice shall be
+//  included in all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+//  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+//  OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+//  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+//  HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+//  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+//  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+//  OTHER DEALINGS IN THE SOFTWARE.
+//
 
 #import "YKUIListView.h"
 #import "YKCGUtils.h"
@@ -17,6 +38,7 @@
   if ((self = [super initWithFrame:frame])) {
     self.layout = [YKLayout layoutForView:self];
     self.backgroundColor = [UIColor whiteColor];
+    _insets = UIEdgeInsetsMake(0, 0, 0, 0);
     _appearance = [[YKUIListViewAppearance alloc] init];
     _appearance.userInteractionEnabled = NO;
     [self addSubview:_appearance];
@@ -31,12 +53,13 @@
 }
 
 - (CGSize)layout:(id<YKLayout>)layout size:(CGSize)size {
-  CGFloat x = 0;
-  CGFloat y = 0;
+  CGFloat x = _insets.left;
+  CGFloat y = _insets.top;
   for (UIView *view in _views) {
-    CGRect viewRect = [layout setFrame:CGRectMake(x, y, size.width, 0) view:view sizeToFit:YES];
+    CGRect viewRect = [layout setFrame:CGRectMake(x, y, size.width - x - _insets.right, 0) view:view sizeToFit:YES];
     y += viewRect.size.height;
   }
+  y += _insets.bottom;
   [layout setFrame:CGRectMake(0, 0, size.width, size.height) view:_appearance];
   return CGSizeMake(size.width, y);
 }
@@ -58,6 +81,19 @@
   [_appearance setNeedsDisplay];
 }
 
+- (void)removeViewsWithTag:(NSInteger)tag {
+  NSMutableArray *views = [[NSMutableArray alloc] init];
+  for (UIView *view in _views) {
+    if (view.tag == tag) {
+      [views addObject:view];
+      [view removeFromSuperview];
+    }
+  }
+  [_views removeObjectsInArray:views];
+  [self setNeedsLayout];
+  [_appearance setNeedsDisplay];
+}
+
 @end
 
 
@@ -68,6 +104,7 @@
 - (id)initWithFrame:(CGRect)frame {
   if ((self = [super initWithFrame:frame])) {
     self.backgroundColor = [UIColor clearColor];
+    _insets = UIEdgeInsetsMake(0, 10, 0, 10);
   }
   return self;
 }
@@ -82,7 +119,7 @@
   [super drawRect:rect];
   CGContextRef context = UIGraphicsGetCurrentContext();
   if (_topBorderColor) {
-    YKCGContextDrawLine(context, 0, 0.5, self.frame.size.width, 0.5, _topBorderColor.CGColor, 0.5);
+    YKCGContextDrawLine(context, _insets.left, 0.5 + _insets.top, self.frame.size.width - _insets.right, 0.5 + _insets.top, _topBorderColor.CGColor, 0.5);
   }
 
   if (_lineSeparatorColor) {
@@ -92,7 +129,7 @@
     for (UIView *view in views) {
       y += view.frame.size.height;
       if (index++ != [views count] - 1) {
-        YKCGContextDrawLine(context, 0, y - 0.5, self.frame.size.width, y - 0.5, _lineSeparatorColor.CGColor, 0.5);
+        YKCGContextDrawLine(context, _insets.left, y - 0.5 + _insets.bottom, self.frame.size.width - _insets.right, y - 0.5 + _insets.bottom, _lineSeparatorColor.CGColor, 0.5);
       }
     }
   }

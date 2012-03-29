@@ -10,8 +10,7 @@
 
 @implementation YKUIControl 
 
-@synthesize target=_target, action=_action, highlightedEnabled=_highlightedEnabled, selectedEnabled=_selectedEnabled,
-layout=_layout;
+@synthesize target=_target, action=_action, highlightedEnabled=_highlightedEnabled, selectedEnabled=_selectedEnabled, layout=_layout, context=_context;
 
 + (void)removeAllTargets:(UIControl *)control {
   for (id target in [control allTargets]) {
@@ -56,14 +55,20 @@ layout=_layout;
 }
 
 - (void)setTarget:(id)target action:(SEL)action {
+  [self setTarget:target action:action context:nil];
+}
+
+- (void)setTarget:(id)target action:(SEL)action context:(id)context {
   [self removeTarget:self action:@selector(_didTouchUpInside) forControlEvents:UIControlEventTouchUpInside];
   [self addTarget:self action:@selector(_didTouchUpInside) forControlEvents:UIControlEventTouchUpInside];
   _target = target;
   _action = action;
+  _context = context;
+  _highlightedEnabled = YES;
 }
 
 - (void)_didTouchUpInside {
-  [_target performSelector:_action withObject:self];
+  [_target performSelector:_action withObject:(_context ? _context : self)];
   [self didTouchUpInside];
 }
 

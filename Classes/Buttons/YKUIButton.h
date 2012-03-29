@@ -108,6 +108,10 @@ typedef enum {
   UIColor *_secondaryTitleColor;
   UIFont *_secondaryTitleFont;
   
+  NSInteger _maxLineCount;
+  
+  UIView *_contentView;
+  
   BOOL _titleHidden;
   
 }
@@ -392,6 +396,16 @@ typedef enum {
 @property (retain, nonatomic) UIFont *secondaryTitleFont;
 
 /*!
+ For a custom button content view.
+ */
+@property (retain, nonatomic) UIView *contentView;
+
+/*!
+ Maximum line count. Default is no max (0).
+ */
+@property (assign, nonatomic) NSInteger maxLineCount;
+
+/*!
  Create button.
  @param frame Frame
  @param title Title
@@ -406,6 +420,12 @@ typedef enum {
  @param title Title
  */
 - (id)initWithFrame:(CGRect)frame title:(NSString *)title;
+
+/*!
+ Create button with content view.
+ @param contentView
+ */
+- (id)initWithContentView:(UIView *)contentView;
 
 /*!
  @result Button

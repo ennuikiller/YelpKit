@@ -1,9 +1,9 @@
 //
-//  YKUIButtons.h
-//  YelpKit
+//  YKUIActivityView.h
+//  YelpIPhone
 //
-//  Created by Gabriel Handford on 3/22/12.
-//  Copyright (c) 2012 Yelp. All rights reserved.
+//  Created by Gabriel Handford on 12/14/10.
+//  Copyright 2010 Yelp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -28,25 +28,30 @@
 //
 
 #import "YKUILayoutView.h"
-@class YKUIButton;
 
-typedef enum {
-  YKUIButtonsStyleHorizontal = 0, // Default
-  YKUIButtonsStyleVertical,
-} YKUIButtonsStyle;
-
-typedef void (^YKUIButtonsApplyBlock)(YKUIButton *button, NSInteger index);
-
-@interface YKUIButtons : YKUILayoutView {
-  NSMutableArray *_buttons;
-  
-  YKUIButtonsStyle _style;
+/*!
+ View with activity indicator and label.
+ */
+@interface YKUIActivityView : YKUILayoutView {
+  UIActivityIndicatorViewStyle _activityStyle;
+  UIActivityIndicatorView *_activityIndicator;  
+  UILabel *_label;
+  BOOL _activityEnabled;
 }
 
-- (id)initWithCount:(NSInteger)count style:(YKUIButtonsStyle)style apply:(YKUIButtonsApplyBlock)apply;
+@property (assign, nonatomic) UIActivityIndicatorViewStyle activityStyle;
+@property (retain, nonatomic) UILabel *label;
 
-- (id)initWithButtons:(NSArray *)buttons style:(YKUIButtonsStyle)style apply:(YKUIButtonsApplyBlock)apply;
+/*!
+ Set text.
+ @param text
+ */
+- (void)setText:(NSString *)text;
 
-- (NSArray *)buttons;
+- (void)setAnimating:(BOOL)animating;
+
+- (void)start;
+- (void)stop;
+- (void)setErrorWithDescription:(NSString *)description;
 
 @end

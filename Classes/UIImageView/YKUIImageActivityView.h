@@ -1,9 +1,9 @@
 //
-//  YKUIButtons.h
-//  YelpKit
+//  YKUIImageActivityView.h
+//  YelpIPhone
 //
-//  Created by Gabriel Handford on 3/22/12.
-//  Copyright (c) 2012 Yelp. All rights reserved.
+//  Created by Gabriel Handford on 12/14/10.
+//  Copyright 2010 Yelp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -27,26 +27,30 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "YKUILayoutView.h"
-@class YKUIButton;
+#import "YKUIImageView.h"
+#import "YKUIActivityView.h"
+#import "YKUIControl.h"
 
-typedef enum {
-  YKUIButtonsStyleHorizontal = 0, // Default
-  YKUIButtonsStyleVertical,
-} YKUIButtonsStyle;
 
-typedef void (^YKUIButtonsApplyBlock)(YKUIButton *button, NSInteger index);
+@protocol YKUIImageActivityView <YKUIImageView>
+@property (readonly, nonatomic) YKUIImageViewStatus status;
+@property (assign, nonatomic) UIActivityIndicatorViewStyle activityStyle;
+- (void)startActivity;
+- (void)stopActivity;
+- (void)cancel;
+@end
 
-@interface YKUIButtons : YKUILayoutView {
-  NSMutableArray *_buttons;
-  
-  YKUIButtonsStyle _style;
+
+/*!
+ View for an activity indicator while loading images.
+ */
+@interface YKUIImageActivityView : YKUIImageView <YKUIImageActivityView> {
+  YKUIActivityView *_activityView;
 }
 
-- (id)initWithCount:(NSInteger)count style:(YKUIButtonsStyle)style apply:(YKUIButtonsApplyBlock)apply;
+@property (readonly, nonatomic) YKUIActivityView *activityView;
 
-- (id)initWithButtons:(NSArray *)buttons style:(YKUIButtonsStyle)style apply:(YKUIButtonsApplyBlock)apply;
-
-- (NSArray *)buttons;
+- (void)startActivity;
+- (void)stopActivity;
 
 @end

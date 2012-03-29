@@ -31,6 +31,7 @@
 #import "YKDefines.h"
 
 void _YKCGContextDrawStyledRect(CGContextRef context, CGRect rect, YKUIBorderStyle style, CGColorRef fillColor, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius);
+void _YKCGContextDrawImage(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor);
 void _horizontalEdgeColorBlendFunctionImpl(void *info, const CGFloat *in, CGFloat *out, BOOL reverse);
 void _metalEdgeColorBlendFunctionImpl(void *info, const CGFloat *in, CGFloat *out);
 void _horizontalEdgeColorBlendFunction(void *info, const CGFloat *in, CGFloat *out);
@@ -123,23 +124,18 @@ void YKCGContextDrawLine(CGContextRef context, CGFloat x, CGFloat y, CGFloat x2,
   CGContextStrokePath(context);   
 }
 
-void _YKCGContextDrawImage(CGContextRef context, CGImageRef image, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, 
-                           CGFloat cornerRadius, BOOL scaleToAspect, BOOL fill, CGColorRef backgroundColor);
-
-void YKCGContextDrawImage(CGContextRef context, CGImageRef image, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, 
-                          BOOL scaleToAspect, CGColorRef backgroundColor) { 
-  _YKCGContextDrawImage(context, image, rect, strokeColor, strokeWidth, 0.0, scaleToAspect, NO, backgroundColor);
+void YKCGContextDrawImage(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, 
+                          UIViewContentMode contentMode, CGColorRef backgroundColor) { 
+  _YKCGContextDrawImage(context, image, imageSize, rect, strokeColor, strokeWidth, 0.0, contentMode, backgroundColor);
 }
 
-void YKCGContextDrawRoundedRectImage(CGContextRef context, CGImageRef image, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, 
-                                     CGFloat cornerRadius, BOOL scaleToAspect, BOOL fill, CGColorRef backgroundColor) {  
+void YKCGContextDrawRoundedRectImage(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor) {  
   CGContextSaveGState(context);
-  _YKCGContextDrawImage(context, image, rect, strokeColor, strokeWidth, cornerRadius, scaleToAspect, fill, backgroundColor);
+  _YKCGContextDrawImage(context, image, imageSize, rect, strokeColor, strokeWidth, cornerRadius, contentMode, backgroundColor);
   CGContextRestoreGState(context);
 }
 
-void _YKCGContextDrawImage(CGContextRef context, CGImageRef image, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, 
-                           CGFloat cornerRadius, BOOL scaleToAspect, BOOL fill, CGColorRef backgroundColor) {
+void _YKCGContextDrawImage(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor) {
   
   // TODO(gabe): Fails if cornerRadius = 0
   if (strokeWidth > 0 && cornerRadius > 0) {
@@ -152,24 +148,13 @@ void _YKCGContextDrawImage(CGContextRef context, CGImageRef image, CGRect rect, 
     CGContextFillRect(context, rect);
   }
   
-  // Reset maintainAspectRatio if image is NULL; forcing draw bounds to be same as rect
-  if (image == NULL) scaleToAspect = NO;
-  
-  CGRect imageBounds;
-  // If we are scaling image, then image bounds are rect
-  // Otherwise figure out y, height (for squeezing horizontal) or x, width (for squeezing vertical)
-  if (!scaleToAspect) {
-    imageBounds = rect;
-  } else {
-    CGFloat imageHeight = (CGFloat)CGImageGetHeight(image);
-    CGFloat imageWidth = (CGFloat)CGImageGetWidth(image);
-    imageBounds = YKCGRectScaleAspectAndCenter(CGSizeMake(imageWidth, imageHeight), rect.size, fill);
-  }
-  
+  CGRect imageBounds = YKCGRectConvert(rect, imageSize, contentMode);
+  if (image == NULL) imageBounds = rect;
+    
   if (image != NULL) {
     CGContextSaveGState(context);
-    // Flip coordinate system, otherwise image will be drawn upside down  
-    CGContextTranslateCTM (context, rect.origin.x, imageBounds.size.height + rect.origin.y);
+    // Flip coordinate system, otherwise image will be drawn upside down
+    CGContextTranslateCTM (context, 0, imageBounds.size.height);
     CGContextScaleCTM (context, 1.0, -1.0);   
     imageBounds.origin.y *= -1; // Going opposite direction
     CGContextDrawImage(context, imageBounds, image);
@@ -401,7 +386,7 @@ CGPathRef YKCGPathCreateStyledRect(CGRect rect, YKUIBorderStyle style, CGFloat s
   CGRect insetBounds;
   switch(style) {
     case YKUIBorderStyleRoundedBottomWithAlternateTop:
-      insetBounds = CGRectMake(rect.origin.x + strokeInset, rect.origin.y + alternateStrokeInset, rect.size.width - (strokeInset * 2), rect.size.height - alternateStrokeInset - strokeInset);
+      insetBounds = CGRectMake(rect.origin.x + strokeInset, rect.origin.y, rect.size.width - (strokeInset * 2), rect.size.height);
       break;
       
     case YKUIBorderStyleLeftRightWithAlternateTop:
@@ -820,11 +805,13 @@ CGRect YKCGRectConvert(CGRect rect, CGSize size, UIViewContentMode contentMode) 
                         size.width, size.height);
     } else if (contentMode == UIViewContentModeScaleAspectFill) {
       CGSize imageSize = size;
-      if (imageSize.height < imageSize.width) {
-        imageSize.width = floorf((imageSize.width/imageSize.height) * rect.size.height);
+      CGFloat imageRatio = imageSize.width / imageSize.height;
+      CGFloat rectRatio = rect.size.width / rect.size.height;
+      if (imageRatio > rectRatio) {
+        imageSize.width = floorf(imageRatio * rect.size.height);
         imageSize.height = rect.size.height;
       } else {
-        imageSize.height = floorf((imageSize.height/imageSize.width) * rect.size.width);
+        imageSize.height = floorf(rect.size.width / imageRatio);
         imageSize.width = rect.size.width;
       }
       return CGRectMake(rect.origin.x + floorf(rect.size.width/2 - imageSize.width/2),

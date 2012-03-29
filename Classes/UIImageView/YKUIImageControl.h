@@ -1,8 +1,8 @@
 //
-//  YKUIButtons.h
+//  YKUIImageControl.h
 //  YelpKit
 //
-//  Created by Gabriel Handford on 3/22/12.
+//  Created by Gabriel Handford on 3/29/12.
 //  Copyright (c) 2012 Yelp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
@@ -27,26 +27,21 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "YKUILayoutView.h"
-@class YKUIButton;
+#import "YKUIControl.h"
 
-typedef enum {
-  YKUIButtonsStyleHorizontal = 0, // Default
-  YKUIButtonsStyleVertical,
-} YKUIButtonsStyle;
+@class YKUIImageView;
 
-typedef void (^YKUIButtonsApplyBlock)(YKUIButton *button, NSInteger index);
-
-@interface YKUIButtons : YKUILayoutView {
-  NSMutableArray *_buttons;
+@interface YKUIImageControl : YKUIControl {
+  YKUIImageView *_view;  
   
-  YKUIButtonsStyle _style;
+  UIColor *_highlightedColor;
 }
 
-- (id)initWithCount:(NSInteger)count style:(YKUIButtonsStyle)style apply:(YKUIButtonsApplyBlock)apply;
+@property (retain, nonatomic) UIImage *image;
+@property (retain, nonatomic) NSString *URLString;
+@property (retain, nonatomic) YKUIImageView *view;
+@property (retain, nonatomic) UIColor *highlightedColor;
 
-- (id)initWithButtons:(NSArray *)buttons style:(YKUIButtonsStyle)style apply:(YKUIButtonsApplyBlock)apply;
-
-- (NSArray *)buttons;
+- (void)cancel;
 
 @end

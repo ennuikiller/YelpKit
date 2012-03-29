@@ -1,8 +1,8 @@
 //
-//  YKUIButtons.h
+//  YKUISwipeView.h
 //  YelpKit
 //
-//  Created by Gabriel Handford on 3/22/12.
+//  Created by Gabriel Handford on 3/26/12.
 //  Copyright (c) 2012 Yelp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
@@ -27,26 +27,33 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "YKUILayoutView.h"
-@class YKUIButton;
-
-typedef enum {
-  YKUIButtonsStyleHorizontal = 0, // Default
-  YKUIButtonsStyleVertical,
-} YKUIButtonsStyle;
-
-typedef void (^YKUIButtonsApplyBlock)(YKUIButton *button, NSInteger index);
-
-@interface YKUIButtons : YKUILayoutView {
-  NSMutableArray *_buttons;
+/*!
+ Swipe view.
+ */
+@interface YKUISwipeView : UIView <UIScrollViewDelegate> {
+  UIScrollView *_scrollView;
   
-  YKUIButtonsStyle _style;
+  NSArray *_views;
+  
+  CGFloat _peekWidth;
+  UIEdgeInsets _insets;
 }
 
-- (id)initWithCount:(NSInteger)count style:(YKUIButtonsStyle)style apply:(YKUIButtonsApplyBlock)apply;
+@property (readonly, nonatomic) UIScrollView *scrollView;
 
-- (id)initWithButtons:(NSArray *)buttons style:(YKUIButtonsStyle)style apply:(YKUIButtonsApplyBlock)apply;
+/*!
+ Amount of space to make the next view visible.
+ */
+@property (assign, nonatomic) CGFloat peekWidth;
 
-- (NSArray *)buttons;
+/*!
+ Amount of space in between views.
+ */
+@property (assign, nonatomic) UIEdgeInsets insets;
+
+/*!
+ Subviews.
+ */
+@property (retain, nonatomic) NSArray *views;
 
 @end

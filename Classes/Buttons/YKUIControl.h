@@ -16,6 +16,8 @@
   BOOL _highlightedEnabled;
   BOOL _selectedEnabled;
   
+  id _context;
+  
   id<YKLayout> _layout;
 }
 
@@ -24,6 +26,7 @@
 @property (assign, nonatomic, getter=isHighlightedEnabled) BOOL highlightedEnabled; // If YES, will set highlighted state while in between touch begin/end (or cancel); Default is NO
 @property (assign, nonatomic, getter=isSelectedEnabled) BOOL selectedEnabled; // If YES, will set selected state when touch (ended); Default is NO
 @property (retain, nonatomic) id<YKLayout> layout;
+@property (assign, nonatomic) id context;
 
 /*!
  This method gets called by both initWithFrame and initWithCoder. Subclasses taking advantage of
@@ -63,12 +66,22 @@
 
 /*!
  Set target and action.
- Will pass self as the argument if you specify an argument.
+ Will pass self as the argument.
  Selected status is set before this method is called.
  @param target
  @param action
  */
 - (void)setTarget:(id)target action:(SEL)action;
+
+/*!
+ Set target and action.
+ Will pass context as the argument or self if context is nil.
+ Selected status is set before this method is called.
+ @param target
+ @param action
+ @param context Weak
+ */
+- (void)setTarget:(id)target action:(SEL)action context:(id)context;
 
 /*!
  Notification of touch (for subclasses).
