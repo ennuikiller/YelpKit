@@ -271,7 +271,7 @@
 
 - (void)setCornerRadius:(CGFloat)cornerRadius {
   _cornerRadius = cornerRadius;
-  if (_borderStyle == YKUIBorderStyleNone) {
+  if (_borderStyle == YKUIBorderStyleNone && _cornerRadius > 0) {
     _borderStyle = YKUIBorderStyleRounded;
   }
   [self didChangeValueForKey:@"cornerRadius"];
@@ -366,7 +366,7 @@
   
   UIColor *borderShadowColor = _borderShadowColor;
   CGFloat borderShadowBlur = _borderShadowBlur;
-  
+
   if (isDisabled) {
     if (_disabledShadingType != YKUIShadingTypeUnknown) shadingType = _disabledShadingType;
     if (_disabledColor) color = _disabledColor;
