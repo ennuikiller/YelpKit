@@ -104,7 +104,7 @@
       button.disabledColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
       button.disabledColor2 = [UIColor colorWithRed:0.675 green:0.675 blue:0.675 alpha:1.0];
       
-      [button setBorderStyle:YKUIBorderStyleRounded color:[UIColor colorWithWhite:0.5 alpha:1.0] width:1.0 alternateWidth:0 cornerRadius:10.0];
+      [button setBorderStyle:YKUIBorderStyleRounded color:[UIColor colorWithRed:0.659 green:0.671 blue:0.678 alpha:1.0] width:1.0 alternateWidth:0 cornerRadius:10.0];
       break;
       
     case YKUIButtonStyleDarkBlue:           
