@@ -37,7 +37,7 @@
 - (void)sharedInit {
   self.opaque = NO;
   _cornerRadius = 10.0;
-  _alternateStrokeWidth = 0.5;
+  _alternateStrokeWidth = 1.0;
   _shadingType = YKUIShadingTypeNone;
   _shadowBlur = 3.0;
   _clippingInset = 0;
@@ -63,7 +63,7 @@
 }
 
 - (id)initWithFrame:(CGRect)frame style:(YKUIBorderStyle)style {
-  return [self initWithFrame:frame style:style stroke:0.5 color:[UIColor grayColor]];
+  return [self initWithFrame:frame style:style stroke:1.0 color:[UIColor lightGrayColor]];
 }
 
 - (id)initWithFrame:(CGRect)frame {

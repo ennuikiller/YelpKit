@@ -385,7 +385,7 @@ CGPathRef YKCGPathCreateStyledRect(CGRect rect, YKUIBorderStyle style, CGFloat s
   CGRect insetBounds;
   switch(style) {
     case YKUIBorderStyleRoundedBottomWithAlternateTop:
-      insetBounds = CGRectMake(rect.origin.x + strokeInset, rect.origin.y, rect.size.width - (strokeInset * 2), rect.size.height);
+      insetBounds = CGRectMake(rect.origin.x + strokeInset, rect.origin.y, rect.size.width - (strokeInset * 2), rect.size.height - strokeInset);
       break;
       
     case YKUIBorderStyleLeftRightWithAlternateTop:
