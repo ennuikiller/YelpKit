@@ -46,9 +46,16 @@
  */
 @interface YKUIImageActivityView : YKUIImageView <YKUIImageActivityView> {
   YKUIActivityView *_activityView;
+  BOOL _autoActivityDisabled;
 }
 
 @property (readonly, nonatomic) YKUIActivityView *activityView;
+
+/*!
+ The activity indicator will show on image load start automatically. Defaults to NO.
+ You can disabled it by setting autoActivityDisabled to YES.
+ */
+@property (assign, nonatomic, getter=isAutoActivityDisabled) BOOL autoActivityDisabled;
 
 - (void)startActivity;
 - (void)stopActivity;

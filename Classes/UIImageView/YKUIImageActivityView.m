@@ -32,7 +32,7 @@
 
 @implementation YKUIImageActivityView 
 
-@synthesize activityView=_activityView;
+@synthesize activityView=_activityView, autoActivityDisabled=_autoActivityDisabled;
 
 @dynamic image, status, URLString;
 
@@ -82,14 +82,14 @@
     [self setURLString:nil loadingImage:nil defaultImage:nil];
     [_activityView stop];
   } else {
-    [_activityView start];
+    if (!_autoActivityDisabled) [_activityView start];
     [self setURLString:URLString loadingImage:nil defaultImage:nil];
   }
 }
 
 - (void)imageLoaderDidStart:(YKImageLoader *)imageLoader {
   [super imageLoaderDidStart:imageLoader];
-  [_activityView start];
+  if (!_autoActivityDisabled) [_activityView start];
 }
 
 - (void)imageLoader:(YKImageLoader *)imageLoader didUpdateStatus:(YKImageLoaderStatus)status image:(UIImage *)image { 

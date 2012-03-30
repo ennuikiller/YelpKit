@@ -493,9 +493,12 @@
     }
 
     x += _titleInsets.left;
-    CGSize titleSize = [_title drawInRect:CGRectMake(x, y, _titleSize.width, _titleSize.height) withFont:font lineBreakMode:UILineBreakModeTailTruncation alignment:_titleAlignment];
-    x += titleSize.width;
-    if (_secondaryTitle) {
+    if (!_secondaryTitle) {
+      CGSize titleSize = [_title drawInRect:CGRectMake(x, y, _titleSize.width, _titleSize.height) withFont:font lineBreakMode:UILineBreakModeTailTruncation alignment:_titleAlignment];
+      x += titleSize.width;
+    } else if (_secondaryTitle) {
+      CGSize titleSize = [_title drawInRect:CGRectMake(x, y, _titleSize.width, _titleSize.height) withFont:font lineBreakMode:UILineBreakModeTailTruncation];
+      x += titleSize.width;
       if (_secondaryTitleColor) [_secondaryTitleColor set];
       if (_secondaryTitleFont) font = _secondaryTitleFont;
       [_secondaryTitle drawAtPoint:CGPointMake(x, y) withFont:font];  

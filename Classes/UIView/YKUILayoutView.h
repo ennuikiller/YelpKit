@@ -29,7 +29,7 @@
 
 #import "YKLayout.h"
 
-typedef void (^YKUIViewSubviewNeedsLayoutBlock)(UIView *view);
+typedef void (^YKUIViewSubviewNeedsLayoutBlock)(UIView *view, BOOL animated);
 
 @interface YKUILayoutView : UIView {
   YKLayout *_layout;
@@ -49,7 +49,8 @@ typedef void (^YKUIViewSubviewNeedsLayoutBlock)(UIView *view);
 
 /*!
  Calls needsLayoutBlock, in the case where you want to make the superview trigger an layout update.
+ @param animated YES if the layout should animate
  */
-- (void)notifyNeedsLayout;
+- (void)notifyNeedsLayout:(BOOL)animated;
 
 @end
