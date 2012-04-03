@@ -91,6 +91,8 @@
   if (URLString) {
     _imageLoader = [[YKImageLoader alloc] initWithLoadingImage:loadingImage defaultImage:defaultImage delegate:self];
     [_imageLoader setURL:[YKURL URLString:URLString]];
+  } else if (defaultImage) {
+    self.image = defaultImage;
   }
 }
 
