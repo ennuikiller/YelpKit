@@ -65,12 +65,14 @@
   }
 }
 
+/*
 // Not sure why we have to do this
 - (void)setFrame:(CGRect)frame {
   [super setFrame:frame];
   [_border setNeedsDisplay];
   [self setNeedsLayout];
 }
+ */
 
 - (void)setCornerRadius:(CGFloat)cornerRadius {
   _border.cornerRadius = cornerRadius;
@@ -97,6 +99,15 @@
 - (void)setBorderColor:(UIColor *)borderColor {
   _border.color = borderColor;
   [_border setNeedsDisplay];
+}
+
+- (void)setStrokeWidth:(CGFloat)strokeWidth {
+  _border.strokeWidth = strokeWidth;
+  [self setNeedsDisplay];
+}
+
+- (CGFloat)strokeWidth {
+  return _border.strokeWidth;
 }
 
 - (void)setFillColor:(UIColor *)fillColor {

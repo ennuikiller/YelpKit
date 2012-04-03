@@ -1,8 +1,8 @@
 //
-//  YKUIBorderView.h
+//  YKUINavigationBar.h
 //  YelpKit
 //
-//  Created by Gabriel Handford on 3/25/12.
+//  Created by Gabriel Handford on 3/31/12.
 //  Copyright (c) 2012 Yelp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
@@ -27,19 +27,31 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-@class YKUIBorder;
-
-@interface YKUIBorderView : UIView {
-  YKUIBorder *_border;
-  UIView *_view;
+@interface YKUINavigationBar : UIView {
+  UIView *_contentView;
+  UIControl *_leftButton;
+  UIControl *_rightButton;
+  
+  CGSize _defaultContentViewSize;
 }
 
-- (id)initWithView:(UIView *)view;
+@property (retain, nonatomic) UIControl *leftButton;
+@property (retain, nonatomic) UIControl *rightButton;
+@property (retain, nonatomic) UIView *contentView;
 
-@property (assign, nonatomic) CGFloat cornerRadius;
-@property (retain, nonatomic) UIColor *shadowColor;
-@property (retain, nonatomic) UIColor *borderColor;
-@property (retain, nonatomic) UIColor *fillColor;
-@property (assign, nonatomic) CGFloat strokeWidth;
+/*!
+ Set the content view to a UILabel with title.
+ @param title
+ @param animated
+ */
+- (void)setTitle:(NSString *)title animated:(BOOL)animated;
+
+/*!
+ Set the content view.
+ Content view must return a valid sizeThatFits: method.
+ @param contentView
+ @param animated
+ */
+- (void)setContentView:(UIView *)contentView animated:(BOOL)animated;
 
 @end

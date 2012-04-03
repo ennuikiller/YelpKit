@@ -29,7 +29,7 @@
 
 typedef enum {
   YKLayoutOptionsSizeToFit = 1 << 0, // Size to fit the view
-  YKLayoutOptionsSizeToFitVariableWidth = 1 << 1,
+  YKLayoutOptionsVariableWidth = 1 << 1,
   
   // Alignment
   // Center the view in the specified size (horizontal + vertical). If you use this with YKLayoutOptionsSizeToFit then the origin width is maintained.
@@ -272,8 +272,6 @@ typedef enum {
   NSMutableArray */*of UIView*/_subviews; // For manual subview handling
   
   CGSize _sizeThatFits;
-  
-  BOOL _debugEnabled;  
 }
 
 @property (readonly, retain, nonatomic) NSArray *accessibleElements;
@@ -285,8 +283,6 @@ typedef enum {
  If height is not set (is 0), then we will use this size value for sizeThatFits:.
  */
 @property (assign, nonatomic) CGSize sizeThatFits;
-
-@property (assign, nonatomic) BOOL debugEnabled;
 
 /*!
  Create layout for view.
@@ -342,8 +338,6 @@ typedef enum {
  @param view View
  */
 + (YKLayoutStats *)statsForView:(UIView *)view;
-
-+ (void)dumpStats;
 
 /*!
  Assert layout parameters are correct.

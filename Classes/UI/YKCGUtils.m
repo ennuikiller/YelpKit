@@ -385,7 +385,7 @@ CGPathRef YKCGPathCreateStyledRect(CGRect rect, YKUIBorderStyle style, CGFloat s
   CGRect insetBounds;
   switch(style) {
     case YKUIBorderStyleRoundedBottomWithAlternateTop:
-      insetBounds = CGRectMake(rect.origin.x + strokeInset, rect.origin.y, rect.size.width - (strokeInset * 2), rect.size.height - strokeInset);
+      insetBounds = CGRectMake(rect.origin.x + strokeInset, rect.origin.y + alternateStrokeInset, rect.size.width - (strokeInset * 2), rect.size.height - strokeInset - alternateStrokeInset);
       break;
       
     case YKUIBorderStyleLeftRightWithAlternateTop:
@@ -394,7 +394,6 @@ CGPathRef YKCGPathCreateStyledRect(CGRect rect, YKUIBorderStyle style, CGFloat s
       
     case YKUIBorderStyleRoundedTop:
     case YKUIBorderStyleRoundedTopOnly:
-      // Inset stroke width except for bottom border
       insetBounds = CGRectMake(rect.origin.x + strokeInset, rect.origin.y + strokeInset, rect.size.width - (strokeInset * 2), rect.size.height - strokeInset);
       break;
       
@@ -407,7 +406,7 @@ CGPathRef YKCGPathCreateStyledRect(CGRect rect, YKUIBorderStyle style, CGFloat s
       break;
       
     case YKUIBorderStyleBottomOnly:
-      insetBounds = CGRectMake(rect.origin.x, rect.origin.y + strokeInset, rect.size.width, rect.size.height - strokeInset);
+      insetBounds = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height - strokeInset);
       break;
       
     case YKUIBorderStyleNormal:
@@ -496,15 +495,6 @@ CGPathRef YKCGPathCreateStyledRect(CGRect rect, YKUIBorderStyle style, CGFloat s
       CGPathAddLineToPoint(path, &transform, 0, fh);
       break;
       
-      /*
-       case YKUIBorderStyleTopBottomRight:
-       CGPathMoveToPoint(path, &transform, -2, fh);
-       CGPathAddLineToPoint(path, &transform, -2, 0);
-       CGPathAddLineToPoint(path, &transform, fw, 0);      
-       CGPathAddLineToPoint(path, &transform, fw, fh);
-       CGPathAddLineToPoint(path, &transform, -2, fh);
-       break;
-       */
     case YKUIBorderStyleRoundedLeftCap:
       CGPathMoveToPoint(path, &transform, 0, fh/2);
       CGPathAddArcToPoint(path, &transform, 0, 0, fw/2, 0, 1);
@@ -523,7 +513,7 @@ CGPathRef YKCGPathCreateStyledRect(CGRect rect, YKUIBorderStyle style, CGFloat s
       CGPathAddArcToPoint(path, &transform, fw, fh, fw/2, fh, 1);
       CGPathAddLineToPoint(path, &transform, 0, fh);
       break;
-    
+
     case YKUIBorderStyleRounded:
       // Drawn in different method
       break;
@@ -556,8 +546,16 @@ BOOL YKCGContextAddAlternateBorderToPath(CGContextRef context, CGRect rect, YKUI
 }
 
 void _YKCGContextDrawStyledRect(CGContextRef context, CGRect rect, YKUIBorderStyle style, CGColorRef fillColor, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius) {
-  CGContextSetLineWidth(context, strokeWidth);
+
+  // If style is not a complete path, then we need to fill the rect as a separate operation
+  if (fillColor != NULL && (style == YKUIBorderStyleTopOnly || style == YKUIBorderStyleBottomOnly || style == YKUIBorderStyleTopBottom)) {
+    if (fillColor != NULL) CGContextSetFillColorWithColor(context, fillColor);
+    CGContextFillRect(context, rect);
+    fillColor = NULL;
+  }
   
+  CGContextSetLineWidth(context, strokeWidth);
+
   YKCGContextAddStyledRect(context, rect, style, strokeWidth, 0, cornerRadius); 
   
   if (strokeColor != NULL) CGContextSetStrokeColorWithColor(context, strokeColor);  

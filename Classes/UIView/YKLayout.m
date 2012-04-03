@@ -42,7 +42,7 @@ static NSMutableDictionary *gDebugStats = NULL;
 
 @implementation YKLayout
 
-@synthesize debugEnabled=_debugEnabled, sizeThatFits=_sizeThatFits;
+@synthesize sizeThatFits=_sizeThatFits;
 
 - (id)init {
   [NSException raise:NSDestinationInvalidException format:@"Layout must be associated with a view; Use initWithView:"];
@@ -148,7 +148,7 @@ static NSMutableDictionary *gDebugStats = NULL;
 - (CGRect)setFrame:(CGRect)frame view:(UIView *)view options:(YKLayoutOptions)options {
   CGRect originalFrame = frame;
   BOOL sizeToFit = ((options & YKLayoutOptionsSizeToFit) == YKLayoutOptionsSizeToFit)
-  || ((options & YKLayoutOptionsSizeToFitVariableWidth) == YKLayoutOptionsSizeToFitVariableWidth)
+  || ((options & YKLayoutOptionsVariableWidth) == YKLayoutOptionsVariableWidth)
   || ((options & YKLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio) == YKLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio);
 
   CGSize sizeThatFits = CGSizeZero;
@@ -185,12 +185,12 @@ static NSMutableDictionary *gDebugStats = NULL;
     // If size that fits returns different width than passed in, it can cause weirdness when sizeToFit is called multiple times in succession.
     // Here we assert the size passed into sizeThatFits returns the same width, unless you explicitly override this behavior.
     // This is because most views are sized based on a width. If you had a view (a button, for example) with a variable width, then you should specify the
-    // YKLayoutOptionsSizeToFitVariableWidth to override this check.
+    // YKLayoutOptionsVariableWidth to override this check.
     // This check only applies to YKUIView subclasses.
-    if (((options & YKLayoutOptionsSizeToFitVariableWidth) != YKLayoutOptionsSizeToFitVariableWidth)
+    if (((options & YKLayoutOptionsVariableWidth) != YKLayoutOptionsVariableWidth)
         && ((options & YKLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio) != YKLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio)
         && sizeThatFits.width != frame.size.width && [view isKindOfClass:[YKUILayoutView class]]) {
-      YKAssert(NO, @"sizeThatFits: returned width different from passed in width. If you have a variable width view, you can pass in the option YKLayoutOptionsSizeToFitVariableWidth to avoid this check.");
+      YKAssert(NO, @"sizeThatFits: returned width different from passed in width. If you have a variable width view, you can pass in the option YKLayoutOptionsVariableWidth to avoid this check.");
     }
     
     if (frame.size.width > 0) {
@@ -295,10 +295,12 @@ static NSMutableDictionary *gDebugStats = NULL;
 
 void YKLayoutAssert(UIView *view, id<YKLayout> layout) {
 #if DEBUG
-  if ([view respondsToSelector:@selector(layout:size:)] && !layout) {
+  BOOL hasLayoutMethod = ([view respondsToSelector:@selector(layout:size:)]);
+  
+  if (hasLayoutMethod && !layout) {
     [NSException raise:NSObjectNotAvailableException format:@"Missing layout instance for %@", view];
   }
-  if (![view respondsToSelector:@selector(layout:size:)] && layout) {
+  if (!hasLayoutMethod && layout) {
     [NSException raise:NSObjectNotAvailableException format:@"Missing layout:size: for %@", view];
   }
 #endif
@@ -314,22 +316,6 @@ void YKLayoutAssert(UIView *view, id<YKLayout> layout) {
     [stats release];
   }
   return stats;
-}
-
-+ (void)dumpStats {
-  /*
-#if DEBUG
-  YKDebug(@"\n\n");
-  YKDebug(@"Layout stats");
-  YKDebug(@"-------------------------------------");
-  for (NSString *name in gDebugStats) {
-    YKDebug(@"name=%@, stats=%@", name, [gDebugStats objectForKey:name]);
-  }
-  YKDebug(@"-------------------------------------\n\n");
-  [gDebugStats release];
-  gDebugStats = nil;
-#endif
-   */
 }
 
 @end

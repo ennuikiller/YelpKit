@@ -65,12 +65,16 @@
 		00D575741457C47A00DE6487 /* YKUIButtonStyles.h in Headers */ = {isa = PBXBuildFile; fileRef = 00D575721457C47900DE6487 /* YKUIButtonStyles.h */; };
 		00D575751457C47A00DE6487 /* YKUIButtonStyles.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D575731457C47900DE6487 /* YKUIButtonStyles.m */; };
 		00D5757B1457C65200DE6487 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D5757A1457C65200DE6487 /* QuartzCore.framework */; };
+		00D5FD231527E89000F72FEB /* YKUINavigationBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 00D5FD211527E89000F72FEB /* YKUINavigationBar.h */; };
+		00D5FD241527E89000F72FEB /* YKUINavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D5FD221527E89000F72FEB /* YKUINavigationBar.m */; };
 		00E928AE1524D93600E90AF1 /* YKUIImageControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 00E928AC1524D93600E90AF1 /* YKUIImageControl.h */; };
 		00E928AF1524D93600E90AF1 /* YKUIImageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E928AD1524D93600E90AF1 /* YKUIImageControl.m */; };
 		00E928B31524DED800E90AF1 /* YKUIImageActivityView.h in Headers */ = {isa = PBXBuildFile; fileRef = 00E928B11524DED800E90AF1 /* YKUIImageActivityView.h */; };
 		00E928B41524DED800E90AF1 /* YKUIImageActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E928B21524DED800E90AF1 /* YKUIImageActivityView.m */; };
 		00E928B71524DEEC00E90AF1 /* YKUIActivityView.h in Headers */ = {isa = PBXBuildFile; fileRef = 00E928B51524DEEC00E90AF1 /* YKUIActivityView.h */; };
 		00E928B81524DEEC00E90AF1 /* YKUIActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E928B61524DEEC00E90AF1 /* YKUIActivityView.m */; };
+		00F882E61527C92A000FF1AB /* YKUIActionSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = 00F882E41527C92A000FF1AB /* YKUIActionSheet.h */; };
+		00F882E71527C92A000FF1AB /* YKUIActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F882E51527C92A000FF1AB /* YKUIActionSheet.m */; };
 		4227623E150FFDC1002E177D /* UIColor+YKUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4227623C150FFDC1002E177D /* UIColor+YKUtils.h */; };
 		4227623F150FFDC1002E177D /* UIColor+YKUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4227623D150FFDC1002E177D /* UIColor+YKUtils.m */; };
 /* End PBXBuildFile section */
@@ -139,12 +143,16 @@
 		00D575761457C62A00DE6487 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		00D575781457C63400DE6487 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		00D5757A1457C65200DE6487 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		00D5FD211527E89000F72FEB /* YKUINavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUINavigationBar.h; sourceTree = "<group>"; };
+		00D5FD221527E89000F72FEB /* YKUINavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUINavigationBar.m; sourceTree = "<group>"; };
 		00E928AC1524D93600E90AF1 /* YKUIImageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUIImageControl.h; sourceTree = "<group>"; };
 		00E928AD1524D93600E90AF1 /* YKUIImageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIImageControl.m; sourceTree = "<group>"; };
 		00E928B11524DED800E90AF1 /* YKUIImageActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YKUIImageActivityView.h; path = Classes/UIImageView/YKUIImageActivityView.h; sourceTree = SOURCE_ROOT; };
 		00E928B21524DED800E90AF1 /* YKUIImageActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YKUIImageActivityView.m; path = Classes/UIImageView/YKUIImageActivityView.m; sourceTree = SOURCE_ROOT; };
 		00E928B51524DEEC00E90AF1 /* YKUIActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YKUIActivityView.h; path = Classes/UIView/YKUIActivityView.h; sourceTree = SOURCE_ROOT; };
 		00E928B61524DEEC00E90AF1 /* YKUIActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YKUIActivityView.m; path = Classes/UIView/YKUIActivityView.m; sourceTree = SOURCE_ROOT; };
+		00F882E41527C92A000FF1AB /* YKUIActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUIActionSheet.h; sourceTree = "<group>"; };
+		00F882E51527C92A000FF1AB /* YKUIActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIActionSheet.m; sourceTree = "<group>"; };
 		4227623C150FFDC1002E177D /* UIColor+YKUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+YKUtils.h"; sourceTree = "<group>"; };
 		4227623D150FFDC1002E177D /* UIColor+YKUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+YKUtils.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -206,6 +214,7 @@
 				0055930F140B00F6001E9C43 /* PullToRefresh */,
 				00559315140B00F6001E9C43 /* UIImageView */,
 				00559318140B00F6001E9C43 /* UIView */,
+				00F882E31527C92A000FF1AB /* UIActionSheet */,
 				00559324140B00F6001E9C43 /* YKDefines.h */,
 				00559325140B00F6001E9C43 /* YKError.h */,
 				00559326140B00F6001E9C43 /* YKError.m */,
@@ -291,6 +300,8 @@
 				0072E458151E74D2006EAC84 /* YKUIListView.m */,
 				00149F2B1521040800321DF4 /* YKUISwipeView.h */,
 				00149F2C1521040800321DF4 /* YKUISwipeView.m */,
+				00D5FD211527E89000F72FEB /* YKUINavigationBar.h */,
+				00D5FD221527E89000F72FEB /* YKUINavigationBar.m */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -343,6 +354,15 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		00F882E31527C92A000FF1AB /* UIActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				00F882E41527C92A000FF1AB /* YKUIActionSheet.h */,
+				00F882E51527C92A000FF1AB /* YKUIActionSheet.m */,
+			);
+			path = UIActionSheet;
+			sourceTree = "<group>";
+		};
 		4227623A150FFDAE002E177D /* UIColor */ = {
 			isa = PBXGroup;
 			children = (
@@ -392,6 +412,8 @@
 				00E928AE1524D93600E90AF1 /* YKUIImageControl.h in Headers */,
 				00E928B31524DED800E90AF1 /* YKUIImageActivityView.h in Headers */,
 				00E928B71524DEEC00E90AF1 /* YKUIActivityView.h in Headers */,
+				00F882E61527C92A000FF1AB /* YKUIActionSheet.h in Headers */,
+				00D5FD231527E89000F72FEB /* YKUINavigationBar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +499,8 @@
 				00E928AF1524D93600E90AF1 /* YKUIImageControl.m in Sources */,
 				00E928B41524DED800E90AF1 /* YKUIImageActivityView.m in Sources */,
 				00E928B81524DEEC00E90AF1 /* YKUIActivityView.m in Sources */,
+				00F882E71527C92A000FF1AB /* YKUIActionSheet.m in Sources */,
+				00D5FD241527E89000F72FEB /* YKUINavigationBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -24,16 +24,22 @@
 //  THE SOFTWARE.
 //
 
+#import "YKUILayoutView.h"
+
 /*!
  Label that includes an activity indicator or image and text, with optional detailed text below it.
  For example, the pull to refresh loading indicator.
  */
-@interface YKUIActivityLabel : UIView {
+@interface YKUIActivityLabel : YKUILayoutView {
   UILabel *_textLabel;
   UILabel *_detailLabel;
   UIActivityIndicatorView *_activityIndicator;
   UIImageView *_imageView;
+  
+  BOOL _hidesWhenStopped;
 }
+
+@property (assign, nonatomic) BOOL hidesWhenStopped;
 
 /*!
  Text label.
@@ -78,6 +84,12 @@
  Stop activity indicator.
  */
 - (void)stopAnimating;
+
+/*!
+ Start or stop animating.
+ @param animating
+ */
+- (void)setAnimating:(BOOL)animating;
 
 /*!
  Check if animating (activity indicator).

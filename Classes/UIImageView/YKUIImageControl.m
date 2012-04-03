@@ -61,6 +61,9 @@
   _view = view;
   [self addSubview:_view];
   _view.userInteractionEnabled = NO;
+  [_view setBackgroundColor:self.backgroundColor];
+  [self setNeedsDisplay];
+  [self setNeedsLayout];
 }
 
 - (void)setBackgroundColor:(UIColor *)backgroundColor {

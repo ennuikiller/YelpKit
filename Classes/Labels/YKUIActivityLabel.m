@@ -31,10 +31,13 @@
 
 @implementation YKUIActivityLabel
 
-@synthesize textLabel=_textLabel, detailLabel=_detailLabel, imageView=_imageView;
+@synthesize textLabel=_textLabel, detailLabel=_detailLabel, imageView=_imageView, hidesWhenStopped=_hidesWhenStopped;
 
 - (id)initWithFrame:(CGRect)frame {
   if ((self = [super initWithFrame:frame])) {
+    self.backgroundColor = [UIColor whiteColor];
+    self.layout = [YKLayout layoutForView:self];
+    
     _textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     _textLabel.text = YKLocalizedString(@"Loading...");
     _textLabel.font = [UIFont systemFontOfSize:16.0];
@@ -60,15 +63,12 @@
   return self;
 }
 
-- (void)layoutSubviews {
-  [super layoutSubviews];
-  CGSize size = self.frame.size;
+- (CGSize)layout:(id<YKLayout>)layout size:(CGSize)size {
   CGFloat height = 20;  
   
   CGSize lineSize = CGSizeZero;
   if (![NSString gh_isBlank:_textLabel.text]) {
-    lineSize = [_textLabel.text sizeWithFont:_textLabel.font constrainedToSize:size
-                               lineBreakMode:UILineBreakModeTailTruncation];    
+    lineSize = [_textLabel.text sizeWithFont:_textLabel.font constrainedToSize:size lineBreakMode:UILineBreakModeTailTruncation];    
   }
   
   if (![NSString gh_isBlank:_detailLabel.text]) height += 20;
@@ -78,24 +78,30 @@
   CGFloat x = YKCGFloatToCenter(lineSize.width, size.width, 0);
   CGFloat y = YKCGFloatToCenter(height, size.height, 0);
   
-  _activityIndicator.frame = CGRectMake(x, y, 20, 20);
+  [layout setFrame:CGRectMake(x, y, 20, 20) view:_activityIndicator];
   if (_activityIndicator.isAnimating) x += 24;
   
-  _imageView.frame = CGRectMake(x, y, 20, 20);
+  [layout setFrame:CGRectMake(x, y, 20, 20) view:_imageView];
   if (!_imageView.hidden) x += 24;
 
-  _textLabel.frame = CGRectMake(x, y, size.width, 20);
+  [layout setFrame:CGRectMake(x, y, size.width, 20) view:_textLabel];
   y += 24;
-  _detailLabel.frame = CGRectMake(0, y, size.width, 20);  
+  if (![NSString gh_isBlank:_detailLabel.text]) {
+    [layout setFrame:CGRectMake(0, y, size.width, 20) view:_detailLabel];
+    y += 24;
+  }
+  return CGSizeMake(size.width, y);
 }
 
 - (void)startAnimating {
+  if (_hidesWhenStopped) self.hidden = NO;
   _imageView.hidden = YES;
   [_activityIndicator startAnimating];
   [self setNeedsLayout];
 }
 
 - (void)stopAnimating {
+  if (_hidesWhenStopped) self.hidden = YES;
   [_activityIndicator stopAnimating];
   if (_imageView.image)
     _imageView.hidden = NO;
@@ -104,6 +110,11 @@
 
 - (void)setText:(NSString *)text {
   self.textLabel.text = text;
+}
+
+- (void)setAnimating:(BOOL)animating {
+  if (animating) [self startAnimating];
+  else [self stopAnimating];
 }
 
 - (BOOL)isAnimating {

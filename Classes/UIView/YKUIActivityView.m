@@ -44,9 +44,7 @@
 
 - (void)dealloc {
   [_activityIndicator release];
-  _activityIndicator = nil;
   [_label release];
-  _label = nil;
   [super dealloc];
 }
 

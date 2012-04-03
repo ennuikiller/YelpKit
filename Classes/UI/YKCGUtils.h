@@ -354,8 +354,8 @@ void YKCGColorGetComponents(CGColorRef color, CGFloat *red, CGFloat *green, CGFl
 typedef enum {
   YKUIShadingTypeUnknown = -1,
   YKUIShadingTypeNone = 0,
-  YKUIShadingTypeLinear, // Linear color blend (or solid color)
-  YKUIShadingTypeHorizontalEdge, // Horizontal edge
+  YKUIShadingTypeLinear, // Linear color blend (for color to color2)
+  YKUIShadingTypeHorizontalEdge, // Horizontal edge (for color to color2 and color3 to color4)
   YKUIShadingTypeHorizontalReverseEdge, // Horizontal edge reversed
   YKUIShadingTypeExponential,
   YKUIShadingTypeMetalEdge,
