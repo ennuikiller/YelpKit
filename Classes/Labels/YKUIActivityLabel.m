@@ -35,8 +35,8 @@
 
 - (id)initWithFrame:(CGRect)frame {
   if ((self = [super initWithFrame:frame])) {
-    self.backgroundColor = [UIColor whiteColor];
     self.layout = [YKLayout layoutForView:self];
+    self.backgroundColor = [UIColor whiteColor];
     
     _textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     _textLabel.text = YKLocalizedString(@"Loading...");
@@ -57,40 +57,64 @@
     _imageView.hidden = YES;
     [self addSubview:_imageView];
     [_imageView release];
-    
-    [self setNeedsLayout];
   }
   return self;
 }
 
 - (CGSize)layout:(id<YKLayout>)layout size:(CGSize)size {
-  CGFloat height = 20;  
+  CGFloat width = size.width - 10;
   
   CGSize lineSize = CGSizeZero;
+  CGSize textLabelSize = CGSizeZero;
   if (![NSString gh_isBlank:_textLabel.text]) {
-    lineSize = [_textLabel.text sizeWithFont:_textLabel.font constrainedToSize:size lineBreakMode:UILineBreakModeTailTruncation];    
+    textLabelSize = [_textLabel.text sizeWithFont:_textLabel.font constrainedToSize:CGSizeMake(width, size.height) lineBreakMode:UILineBreakModeTailTruncation];    
+    lineSize.width += textLabelSize.width;
+    lineSize.height += textLabelSize.height;
   }
   
-  if (![NSString gh_isBlank:_detailLabel.text]) height += 20;
-  
-  if (_activityIndicator.isAnimating || !_imageView.hidden) lineSize.width += 24;
-  
-  CGFloat x = YKCGFloatToCenter(lineSize.width, size.width, 0);
-  CGFloat y = YKCGFloatToCenter(height, size.height, 0);
-  
-  [layout setFrame:CGRectMake(x, y, 20, 20) view:_activityIndicator];
-  if (_activityIndicator.isAnimating) x += 24;
-  
-  [layout setFrame:CGRectMake(x, y, 20, 20) view:_imageView];
-  if (!_imageView.hidden) x += 24;
-
-  [layout setFrame:CGRectMake(x, y, size.width, 20) view:_textLabel];
-  y += 24;
+  CGSize detailLabelSize = CGSizeZero;
   if (![NSString gh_isBlank:_detailLabel.text]) {
-    [layout setFrame:CGRectMake(0, y, size.width, 20) view:_detailLabel];
-    y += 24;
+    detailLabelSize = [_detailLabel.text sizeWithFont:_detailLabel.font constrainedToSize:CGSizeMake(width, size.height) lineBreakMode:UILineBreakModeTailTruncation];    
+    lineSize.height += detailLabelSize.height + 2;
   }
-  return CGSizeMake(size.width, y);
+  
+  if (_activityIndicator.isAnimating) {
+    lineSize.width += _activityIndicator.frame.size.width + 4;
+    lineSize.height = MAX(lineSize.height, _activityIndicator.frame.size.height);
+  }
+  
+  if (!_imageView.hidden) {
+    lineSize.width += _imageView.image.size.width + 4;
+    lineSize.height = MAX(lineSize.height, _imageView.image.size.height);
+  }
+  
+  if (lineSize.height == 0) return CGSizeMake(size.width, self.frame.size.height);
+  
+  CGFloat x = YKCGFloatToCenter(lineSize.width, width, 0);
+  CGFloat centerY = YKCGFloatToCenter(lineSize.height, size.height, 0);
+  CGFloat height = lineSize.height;
+  
+  if (_activityIndicator.isAnimating) {
+    [layout setOrigin:CGPointMake(x, centerY) view:_activityIndicator];
+    x += _activityIndicator.frame.size.width + 4;
+  }
+
+  if (!_imageView.hidden) {
+    [layout setOrigin:CGPointMake(x, centerY) view:_imageView];
+    x += _imageView.image.size.width + 4;
+  }
+
+  if (![NSString gh_isBlank:_textLabel.text]) {
+    [layout setFrame:CGRectMake(x, centerY, textLabelSize.width, textLabelSize.height) view:_textLabel];
+    centerY += textLabelSize.height + 2;
+  }
+  
+  if (![NSString gh_isBlank:_detailLabel.text]) {
+    [layout setFrame:CGRectMake(x, centerY, detailLabelSize.width, detailLabelSize.height) view:_detailLabel];
+    centerY += detailLabelSize.height;
+    height += detailLabelSize.height;
+  }
+  return CGSizeMake(size.width, height);
 }
 
 - (void)startAnimating {
@@ -144,7 +168,8 @@
 
 - (UILabel *)detailLabel {
   if (!_detailLabel) {
-    _detailLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    _detailLabel = [[UILabel alloc] init];
+    _detailLabel.backgroundColor = [UIColor clearColor];
     _detailLabel.font = [UIFont systemFontOfSize:14.0];
     _detailLabel.textColor = [UIColor colorWithWhite:0.45 alpha:1.0];
     _detailLabel.textAlignment = UITextAlignmentCenter;
