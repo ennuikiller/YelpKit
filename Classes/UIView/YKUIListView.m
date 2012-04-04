@@ -42,13 +42,13 @@
     _appearance = [[YKUIListViewAppearance alloc] init];
     _appearance.userInteractionEnabled = NO;
     [self addSubview:_appearance];
+    [_appearance release];
   }
   return self;
 }
 
 - (void)dealloc {
   [_views release];
-  [_appearance release];
   [super dealloc];
 }
 
@@ -60,7 +60,8 @@
     y += viewRect.size.height;
   }
   y += _insets.bottom;
-  [layout setFrame:CGRectMake(0, 0, size.width, size.height) view:_appearance];
+  [layout setFrame:CGRectMake(0, 0, size.width, y) view:_appearance];
+  [_appearance setNeedsDisplay];
   return CGSizeMake(size.width, y);
 }
 
@@ -76,9 +77,10 @@
   if (!_views) _views = [[NSMutableArray alloc] init];
   [_views addObject:view];
   [self addSubview:view];
-  [self sendSubviewToBack:view];
+  
+  [self bringSubviewToFront:_appearance];
+  [self setNeedsDisplay];
   [self setNeedsLayout];
-  [_appearance setNeedsDisplay];
 }
 
 - (void)removeViewsWithTag:(NSInteger)tag {
@@ -91,8 +93,8 @@
   }
   [_views removeObjectsInArray:views];
   [views release];
+  [self setNeedsDisplay];
   [self setNeedsLayout];
-  [_appearance setNeedsDisplay];
 }
 
 @end
@@ -105,6 +107,7 @@
 - (id)initWithFrame:(CGRect)frame {
   if ((self = [super initWithFrame:frame])) {
     self.backgroundColor = [UIColor clearColor];
+    self.opaque = NO;
     _insets = UIEdgeInsetsMake(0, 10, 0, 10);
   }
   return self;

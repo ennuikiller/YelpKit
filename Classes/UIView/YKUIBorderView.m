@@ -37,10 +37,9 @@
   if ((self = [super init])) {
     _view = view;
     [self addSubview:_view];
-
     _border = [[YKUIBorder alloc] initWithFrame:CGRectZero style:YKUIBorderStyleRounded];
-    
-    _border.color = [UIColor colorWithWhite:0.7 alpha:1.0];
+    _border.color = [UIColor blackColor];
+    _border.strokeWidth = 1.0;
     [self addSubview:_border];
     [_border release];
   }
@@ -49,8 +48,8 @@
 
 - (void)layoutSubviews {
   [super layoutSubviews];
-  _view.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
   _border.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+  _view.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);  
   
   CGRect maskRect = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
 
@@ -65,14 +64,9 @@
   }
 }
 
-/*
-// Not sure why we have to do this
-- (void)setFrame:(CGRect)frame {
-  [super setFrame:frame];
-  [_border setNeedsDisplay];
-  [self setNeedsLayout];
+- (CGSize)sizeThatFits:(CGSize)size {
+  return [_view sizeThatFits:size];
 }
- */
 
 - (void)setCornerRadius:(CGFloat)cornerRadius {
   _border.cornerRadius = cornerRadius;

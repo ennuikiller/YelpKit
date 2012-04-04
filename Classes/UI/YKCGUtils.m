@@ -373,7 +373,12 @@ CGPathRef YKCGPathCreateStyledRect(CGRect rect, YKUIBorderStyle style, CGFloat s
   
   CGFloat fw, fh;
   CGFloat cornerWidth = cornerRadius, cornerHeight = cornerRadius;  
-  
+
+  // Handle case where we have 0 corner radius
+  if (cornerRadius == 0 && style == YKUIBorderStyleRounded) {
+    style = YKUIBorderStyleNormal;
+  }
+
   if (style == YKUIBorderStyleRounded) {
     return YKCGPathCreateRoundedRect(rect, strokeWidth, cornerRadius);
   }
