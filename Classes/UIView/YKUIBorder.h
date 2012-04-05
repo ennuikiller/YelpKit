@@ -92,4 +92,17 @@
  */
 - (id)initWithFrame:(CGRect)frame style:(YKUIBorderStyle)style stroke:(CGFloat)stroke color:(UIColor *)color;
 
+/*!
+ Draw border in a given rect. Useful for directly drawing YKUIBorder to a context.
+ @param rect The rect in which to draw the border
+ */
+- (void)drawInRect:(CGRect)rect;
+
+/*!
+ Layer mask for the border. This creates a layer mask in the shape of the border.
+ Returns nil if self.cornerRadius is 0.
+ @return CALayer that can be used as a layer mask
+ */
+- (CALayer *)layerMask;
+
 @end

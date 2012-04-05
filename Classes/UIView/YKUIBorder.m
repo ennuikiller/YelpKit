@@ -85,22 +85,38 @@
   [self setNeedsDisplay];
 }
 
-- (void)drawRect:(CGRect)rect {
+- (CALayer *)layerMask {
+  CALayer *layerMask = nil;
+  CGRect maskRect = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+  if (self.cornerRadius > 0) {
+    UIImage *mask = YKCGContextRoundedMask(maskRect, self.cornerRadius);
+    layerMask = [CALayer layer];
+    layerMask.frame = maskRect;
+    layerMask.contents = (id)mask.CGImage;
+  }
+  return layerMask;
+}
+
+- (void)drawInRect:(CGRect)rect {
   CGContextRef context = UIGraphicsGetCurrentContext(); 
   
   if (_shadingType != YKUIShadingTypeNone) {
-    YKCGContextDrawShadingWithHeight(context, _shadingColor.CGColor, _shadingAlternateColor.CGColor, NULL, NULL, self.bounds.size.height, _shadingType);
+    YKCGContextDrawShading(context, _shadingColor.CGColor, _shadingAlternateColor.CGColor, NULL, NULL, rect.origin, CGPointMake(rect.origin.x, rect.origin.y + rect.size.height), _shadingType, YES, YES);
   }
   
   if (_shadowColor) {
-    CGPathRef path = YKCGPathCreateStyledRect(CGRectInset(self.bounds, _clippingInset, _clippingInset), _style, _strokeWidth, _alternateStrokeWidth, _cornerRadius);
+    CGPathRef path = YKCGPathCreateStyledRect(CGRectInset(rect, _clippingInset, _clippingInset), _style, _strokeWidth, _alternateStrokeWidth, _cornerRadius);
     CGContextAddPath(context, path);
     CGContextClip(context);
-    YKCGContextDrawBorderWithShadow(context, self.bounds, _style, (self.highlighted ? _highlightedColor.CGColor : _fillColor.CGColor), _color.CGColor, _strokeWidth, _alternateStrokeWidth, _cornerRadius, _shadowColor.CGColor, _shadowBlur);
+    YKCGContextDrawBorderWithShadow(context, rect, _style, (self.highlighted ? _highlightedColor.CGColor : _fillColor.CGColor), _color.CGColor, _strokeWidth, _alternateStrokeWidth, _cornerRadius, _shadowColor.CGColor, _shadowBlur);
     CGPathRelease(path);
   } else {
-    YKCGContextDrawBorder(context, self.bounds, _style, (self.highlighted ? _highlightedColor.CGColor : _fillColor.CGColor), _color.CGColor, _strokeWidth, _alternateStrokeWidth, _cornerRadius);
+    YKCGContextDrawBorder(context, rect, _style, (self.highlighted ? _highlightedColor.CGColor : _fillColor.CGColor), _color.CGColor, _strokeWidth, _alternateStrokeWidth, _cornerRadius);
   }
+}
+
+- (void)drawRect:(CGRect)rect {
+  [self drawInRect:self.bounds];
 }
 
 @end
