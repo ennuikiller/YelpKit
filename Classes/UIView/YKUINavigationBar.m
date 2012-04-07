@@ -51,10 +51,11 @@
   CGRect leftRect = [self rectForLeftButton:size];
   CGRect rightRect = [self rectForRightButton:size];
   
-  CGFloat maxContentWidth = (size.width - (leftRect.size.width + rightRect.size.width + 10));
+  CGFloat maxContentWidth = (size.width - (leftRect.size.width + rightRect.size.width + 20));
   CGSize contentSize = [_contentView sizeThatFits:CGSizeMake(maxContentWidth, size.height)];
   if (YKCGSizeIsZero(contentSize)) contentSize = _defaultContentViewSize;
-  CGRect contentCenter = YKCGRectToCenter(contentSize, size);
+  // Let the content center adjust up a tiny bit
+  CGRect contentCenter = YKCGRectToCenter(contentSize, CGSizeMake(size.width, size.height - 1));
   
   // If content view width is more than the max, then left align;
   // If the left position of the content will overlap the left button, then also left align;
@@ -76,13 +77,15 @@
 - (void)setTitle:(NSString *)title animated:(BOOL)animated {
   UILabel *label = [[UILabel alloc] init];
   label.font = [UIFont boldSystemFontOfSize:20];
-  label.minimumFontSize = 14;
+  label.minimumFontSize = 16;
+  label.numberOfLines = 1;
+  label.lineBreakMode = UILineBreakModeMiddleTruncation;
+  label.adjustsFontSizeToFitWidth = YES;
   label.shadowColor = [UIColor darkGrayColor];
   label.textColor = [UIColor whiteColor];
   label.textAlignment = UITextAlignmentCenter;
   label.opaque = NO;
   label.contentMode = UIViewContentModeCenter;
-  label.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
   label.backgroundColor = [UIColor clearColor];
   label.text = title;
   label.userInteractionEnabled = NO;
@@ -94,17 +97,23 @@
   [self setContentView:contentView animated:NO];
 }
 
-- (void)setContentView:(UIView *)contentView animated:(BOOL)animated {  
-  if (animated && contentView) {
-    UIView *oldContentView = _contentView;
-    contentView.alpha = 0.0;
+- (void)setContentView:(UIView *)contentView animated:(BOOL)animated {
+  if (contentView) {
+    contentView.contentMode = UIViewContentModeCenter;
+  }
+  
+  if (animated) {
+    UIView *oldContentView = _contentView;    
     _contentView = contentView;
-    _defaultContentViewSize = contentView.frame.size;
-    _contentView.frame = [self rectForContentView:self.frame.size];
-    [self addSubview:_contentView];
+    if (_contentView) {
+      _contentView.alpha = 0.0;
+      _defaultContentViewSize = _contentView.frame.size;
+      _contentView.frame = [self rectForContentView:self.frame.size];
+      [self addSubview:_contentView];
+    }
     [UIView animateWithDuration:0.5 animations:^{
       oldContentView.alpha = 0.0;
-      contentView.alpha = 1.0;
+      _contentView.alpha = 1.0;
     } completion:^(BOOL finished) {
       [oldContentView removeFromSuperview];
       oldContentView.alpha = 1.0;
@@ -134,14 +143,35 @@
 }
 
 - (void)setRightButton:(UIControl *)rightButton {
-  [_rightButton removeFromSuperview];
-  _rightButton = nil;
-  if (rightButton) {
+  [self setRightButton:rightButton animated:NO];
+}
+
+- (void)setRightButton:(UIControl *)rightButton animated:(BOOL)animated {
+  if (animated) {
+    UIView *oldRightButton = _rightButton;
     _rightButton = rightButton;
-    [self addSubview:_rightButton];
+    if (_rightButton) {
+      _rightButton.alpha = 0.0;
+      _rightButton.frame = [self rectForRightButton:self.frame.size];
+      [self addSubview:_rightButton];
+    }
+    [UIView animateWithDuration:0.5 animations:^{
+      oldRightButton.alpha = 0.0;
+      _rightButton.alpha = 1.0;
+    } completion:^(BOOL finished) {
+      [oldRightButton removeFromSuperview];
+      oldRightButton.alpha = 1.0;
+    }];
+  } else {
+    [_rightButton removeFromSuperview];
+    _rightButton = nil;
+    if (rightButton) {
+      _rightButton = rightButton;
+      [self addSubview:_rightButton];
+    }
+    [self setNeedsLayout];
+    [self setNeedsDisplay];
   }
-  [self setNeedsLayout];
-  [self setNeedsDisplay];
 }
 
 @end

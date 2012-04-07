@@ -54,4 +54,11 @@
  */
 - (void)setContentView:(UIView *)contentView animated:(BOOL)animated;
 
+/*!
+ Set right button.
+ @param rightButton
+ @param animated
+ */
+- (void)setRightButton:(UIControl *)rightButton animated:(BOOL)animated;
+
 @end
