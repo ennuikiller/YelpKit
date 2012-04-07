@@ -108,7 +108,7 @@
       CGFloat buttonWidth = roundf(size.width / (CGFloat)[_buttons count]);
       NSInteger i = 0;
       for (YKUIButton *button in _buttons) {
-        CGFloat padding = (i == [_buttons count] - 1 ? 0 : 2);
+        CGFloat padding = (i == [_buttons count] - 1 ? 0 : 1);
         [layout setFrame:CGRectMake(x, 0, buttonWidth + padding, size.height) view:button];
         x += buttonWidth;
         i++;

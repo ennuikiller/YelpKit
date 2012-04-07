@@ -69,6 +69,7 @@ typedef enum {
   UIColor *_highlightedColor;
   UIColor *_highlightedColor2;
   YKUIShadingType _highlightedShadingType;
+  UIColor *_highlightedBorderColor;
   UIColor *_highlightedBorderShadowColor;
   CGFloat _highlightedBorderShadowBlur;
   
@@ -299,6 +300,11 @@ typedef enum {
  Shading type for background (highlighted).
  */
 @property (assign, nonatomic) YKUIShadingType highlightedShadingType;
+
+/*!
+ Border color (highlighted).
+ */
+@property (retain, nonatomic) UIColor *highlightedBorderColor;
 
 /*!
  Border shadow color (highlighted).
