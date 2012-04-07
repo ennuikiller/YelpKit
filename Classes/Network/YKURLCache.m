@@ -75,10 +75,14 @@ static NSMutableDictionary *gNamedCaches = NULL;
     _invalidationAge = YKTimeIntervalDay;
     _maxPixelCount = 262144; // ~1 MB
     
-    if ([YKURLCache totalMemory] > (220 * 1000 * 1000)) { // 256 MB iPhone/iPad
+    if ([YKURLCache totalMemory] > (220 * 1000 * 1000)) { // 256 MB Device
       _maxPixelCount *= 4; // ~4 MB
     }
-    
+
+    if ([YKURLCache totalMemory] > (500 * 1000 * 1000)) { // 512 MB Device
+      _maxPixelCount *= 8; // ~8 MB
+    }
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveMemoryWarning:) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
   }
   return self;
@@ -366,7 +370,6 @@ static NSMutableDictionary *gNamedCaches = NULL;
   
   static const CGFloat kLargeImageSize = 600 * 400;
   
-  // Cache is full
   if (pixelCount >= kLargeImageSize) {
     YKDebug(@"NOT caching image in in memory (too large, pixelCount=%d > %.0f)", pixelCount, kLargeImageSize);
     return NO;
