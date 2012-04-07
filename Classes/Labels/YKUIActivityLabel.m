@@ -110,6 +110,7 @@
   }
   
   if (![NSString gh_isBlank:_detailLabel.text]) {
+    x = YKCGFloatToCenter(detailLabelSize.width, size.width, 0);
     [layout setFrame:CGRectMake(x, centerY, detailLabelSize.width, detailLabelSize.height) view:_detailLabel];
     centerY += detailLabelSize.height;
     height += detailLabelSize.height;
