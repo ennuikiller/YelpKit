@@ -34,7 +34,7 @@
 
 @implementation YKUIImageBaseView
 
-@synthesize image=_image, status=_status, delegate=_delegate, imageLoader=_imageLoader;
+@synthesize image=_image, status=_status, delegate=_delegate, imageLoader=_imageLoader, statusBlock=_statusBlock;
 
 - (id)initWithFrame:(CGRect)frame {
   if ((self = [super initWithFrame:frame])) {
@@ -63,6 +63,7 @@
 }
 
 - (void)dealloc {
+  Block_release(_statusBlock);
   _imageLoader.delegate = nil;
   [_imageLoader release];
   [_image release];
@@ -168,6 +169,7 @@
     if ([self.delegate respondsToSelector:@selector(imageView:didLoadImage:)])
       [self.delegate imageView:self didLoadImage:self.image];
   }
+  if (_statusBlock) _statusBlock(self, _status, image); 
 }
 
 - (void)imageLoader:(YKImageLoader *)imageLoader didError:(YKError *)error {
@@ -176,6 +178,7 @@
   
   if ([self.delegate respondsToSelector:@selector(imageView:didError:)])
     [self.delegate imageView:self didError:error];
+  if (_statusBlock) _statusBlock(self, _status, nil); 
 }
 
 - (void)imageLoaderDidCancel:(YKImageLoader *)imageLoader { 

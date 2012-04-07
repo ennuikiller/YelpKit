@@ -46,6 +46,8 @@ typedef enum {
 
 @class YKUIImageView;
 
+typedef void (^YKUIImageViewStatusBlock)(id<YKUIImageView> imageView, YKUIImageViewStatus status, UIImage *image);
+
 @protocol YKUIImageViewDelegate <NSObject>
 @optional
 - (void)imageView:(id<YKUIImageView>)imageView didLoadImage:(UIImage *)image;
@@ -62,12 +64,14 @@ typedef enum {
   YKImageLoader *_imageLoader;
   YKUIImageViewStatus _status;
   UIImage *_image;  
+  YKUIImageViewStatusBlock _statusBlock;
   id<YKUIImageViewDelegate> _delegate;
 }
 
 @property (readonly, nonatomic) YKUIImageViewStatus status;
 @property (assign, nonatomic) id<YKUIImageViewDelegate> delegate;
 @property (readonly, nonatomic) YKImageLoader *imageLoader;
+@property (copy, nonatomic) YKUIImageViewStatusBlock statusBlock;
 
 
 /*!
