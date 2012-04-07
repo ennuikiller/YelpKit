@@ -31,6 +31,9 @@
 
 @class YKUIListViewAppearance;
 
+/*!
+ List view.
+ */
 @interface YKUIListView : YKUILayoutView {
   NSMutableArray *_views;
   UIEdgeInsets _insets;
@@ -46,6 +49,8 @@
 - (void)addView:(UIView *)view;
 
 - (void)removeViewsWithTag:(NSInteger)tag;
+
+- (void)removeAllViews;
 
 @end
 

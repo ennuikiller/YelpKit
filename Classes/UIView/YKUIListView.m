@@ -97,6 +97,15 @@
   [self setNeedsLayout];
 }
 
+- (void)removeAllViews {
+  for (UIView *view in _views) {
+    [view removeFromSuperview];
+  }
+  [_views removeAllObjects];
+  [self setNeedsDisplay];
+  [self setNeedsLayout];
+}
+
 @end
 
 
