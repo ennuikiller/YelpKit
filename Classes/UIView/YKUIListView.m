@@ -65,7 +65,7 @@
   return CGSizeMake(size.width, y);
 }
 
-- (NSArray *)views {
+- (NSArray *)listSubviews {
   return _views;
 }
 
@@ -137,11 +137,24 @@
 
   if (_lineSeparatorColor) {
     CGFloat y = 0;
-    NSInteger index = 0;
-    NSArray *views = [(YKUIListView *)[self superview] views];
-    for (UIView *view in views) {
+    NSArray *views = [(YKUIListView *)[self superview] listSubviews];
+    for (NSInteger i = 0; i < [views count]; i++) {
+      UIView *view = [views objectAtIndex:i];
       y += view.frame.size.height;
-      if (index++ != [views count] - 1) {
+      UIView *nextView = nil;
+      if (i < ([views count] - 1)) nextView = [views objectAtIndex:i + 1];
+
+      BOOL viewHasCustomListViewAppearance = NO;
+      if ([view respondsToSelector:@selector(hasCustomListViewAppearance)]) {
+        viewHasCustomListViewAppearance = [(id)view hasCustomListViewAppearance];
+      }
+      
+      BOOL nextViewHasCustomListViewAppearance = NO;
+      if ([nextView respondsToSelector:@selector(hasCustomListViewAppearance)]) {
+        nextViewHasCustomListViewAppearance = [(id)nextView hasCustomListViewAppearance];
+      }
+
+      if (!viewHasCustomListViewAppearance && !nextViewHasCustomListViewAppearance && nextView) {
         YKCGContextDrawLine(context, _insets.left, y - 0.5 + _insets.bottom, self.frame.size.width - _insets.right, y - 0.5 + _insets.bottom, _lineSeparatorColor.CGColor, 0.5);
       }
     }

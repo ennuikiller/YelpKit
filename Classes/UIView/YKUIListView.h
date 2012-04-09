@@ -31,6 +31,13 @@
 
 @class YKUIListViewAppearance;
 
+@protocol YKUIListViewSubview <NSObject>
+/*!
+ If subview returns YES, then we won't draw list appearance for that view.
+ */
+- (BOOL)hasCustomListViewAppearance;
+@end
+
 /*!
  List view.
  */
@@ -42,7 +49,7 @@
 
 @property (retain, nonatomic) YKUIListViewAppearance *appearance;
 
-- (NSArray *)views;
+- (NSArray *)listSubviews;
 
 - (NSInteger)count;
 
