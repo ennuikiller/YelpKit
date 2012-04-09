@@ -138,7 +138,7 @@ void YKCGContextDrawRoundedRectImage(CGContextRef context, CGImageRef image, CGS
 void _YKCGContextDrawImage(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor) {
   
   // TODO(gabe): Fails if cornerRadius = 0
-  if (strokeWidth > 0 && cornerRadius > 0) {
+  if (strokeWidth >= 0 && cornerRadius > 0) {
     YKCGContextAddRoundedRect(context, rect, strokeWidth, cornerRadius);
     CGContextClip(context);
   }
