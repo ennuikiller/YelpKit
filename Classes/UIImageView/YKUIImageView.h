@@ -124,6 +124,8 @@ typedef void (^YKUIImageViewStatusBlock)(id<YKUIImageView> imageView, YKUIImageV
     
   UIColor *_color; // Fill (background) color
   UIColor *_overlayColor; // Fill overlay color
+
+  UIViewContentMode _imageContentMode;
 }
 
 @property (retain, nonatomic) UIColor *strokeColor;
@@ -131,6 +133,11 @@ typedef void (^YKUIImageViewStatusBlock)(id<YKUIImageView> imageView, YKUIImageV
 @property (assign, nonatomic) CGFloat cornerRadius;
 @property (retain, nonatomic) UIColor *color;
 @property (retain, nonatomic) UIColor *overlayColor;
+/*!
+ Content mode with which to draw the image. If unset, this will use self.contentMode.
+ @result Current imageContentMode or -1 if unset.
+ */
+@property (assign, nonatomic) UIViewContentMode imageContentMode;
 
 /*!
  Draw image in rect for current graphics context.

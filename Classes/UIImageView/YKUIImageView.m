@@ -193,13 +193,25 @@
 
 @implementation YKUIImageView
 
-@synthesize strokeColor=_strokeColor, strokeWidth=_strokeWidth, cornerRadius=_cornerRadius, color=_color, overlayColor=_overlayColor;
+@synthesize strokeColor=_strokeColor, strokeWidth=_strokeWidth, cornerRadius=_cornerRadius, color=_color, overlayColor=_overlayColor, imageContentMode=_imageContentMode;
+
+- (id)initWithFrame:(CGRect)frame {
+  if ((self = [super initWithFrame:frame])) {
+    _imageContentMode = -1;
+  }
+  return self;
+}
 
 - (void)dealloc {
   [_strokeColor release];
   [_color release];
   [_overlayColor release];
   [super dealloc];
+}
+
+- (UIViewContentMode)imageContentMode {
+  if (_imageContentMode == -1) return self.contentMode;
+  return _imageContentMode;
 }
 
 - (void)drawInRect:(CGRect)rect contentMode:(UIViewContentMode)contentMode {
@@ -218,7 +230,7 @@
   UIColor *color = _color;
   if (!color) color = self.backgroundColor;
   
-  YKCGContextDrawRoundedRectImage(context, self.image.CGImage, self.image.size, rect, _strokeColor.CGColor, _strokeWidth, _cornerRadius, self.contentMode, color.CGColor);
+  YKCGContextDrawRoundedRectImage(context, self.image.CGImage, self.image.size, rect, _strokeColor.CGColor, _strokeWidth, _cornerRadius, self.imageContentMode, color.CGColor);
   
   if (_overlayColor) {
     YKCGContextDrawRoundedRect(context, rect, _overlayColor.CGColor, NULL, 0, _cornerRadius);
