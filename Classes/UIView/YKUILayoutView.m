@@ -35,6 +35,22 @@
 
 @synthesize layout=_layout, needsLayoutBlock=_needsLayoutBlock;
 
+- (void)sharedInit { }
+
+- (id)initWithFrame:(CGRect)frame {
+  if ((self = [super initWithFrame:frame])) {
+    [self sharedInit];
+  }
+  return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+  if ((self = [super initWithCoder:aDecoder])) {
+    [self sharedInit];
+  }
+  return self;
+}
+
 - (void)dealloc {
   [_layout clear];
   [_layout release];

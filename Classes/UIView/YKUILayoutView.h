@@ -41,6 +41,11 @@ typedef void (^YKUIViewSubviewNeedsLayoutBlock)(UIView *view, BOOL animated);
 @property (copy, nonatomic) YKUIViewSubviewNeedsLayoutBlock needsLayoutBlock;
 
 /*!
+ Subclasses can override this method to perform initialization tasks that occur during both initWithFrame: and initWithCoder:
+ */
+- (void)sharedInit;
+
+/*!
  Force the layout, if using YKLayout.
  You can use this instead of setNeedsLayout + layoutIfNeeded.
  This is also useful when using animations and setNeedsLayout + layoutIfNeeded don't work as expected.

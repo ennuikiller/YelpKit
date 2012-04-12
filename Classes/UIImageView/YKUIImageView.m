@@ -36,16 +36,13 @@
 
 @synthesize image=_image, status=_status, delegate=_delegate, imageLoader=_imageLoader, statusBlock=_statusBlock;
 
-- (id)initWithFrame:(CGRect)frame {
-  if ((self = [super initWithFrame:frame])) {
-    self.opaque = NO;
-    self.backgroundColor = [UIColor whiteColor];
-    self.contentMode = UIViewContentModeScaleAspectFit;
+- (void)sharedInit {
+  self.opaque = NO;
+  self.backgroundColor = [UIColor whiteColor];
+  self.contentMode = UIViewContentModeScaleAspectFit;
 
-    [self setIsAccessibilityElement:YES];
-    [self setAccessibilityTraits:UIAccessibilityTraitImage];
-  }
-  return self;
+  [self setIsAccessibilityElement:YES];
+  [self setAccessibilityTraits:UIAccessibilityTraitImage];
 }
 
 - (id)initWithImage:(UIImage *)image {
@@ -195,11 +192,8 @@
 
 @synthesize strokeColor=_strokeColor, strokeWidth=_strokeWidth, cornerRadius=_cornerRadius, color=_color, overlayColor=_overlayColor, imageContentMode=_imageContentMode;
 
-- (id)initWithFrame:(CGRect)frame {
-  if ((self = [super initWithFrame:frame])) {
-    _imageContentMode = -1;
-  }
-  return self;
+- (void)sharedInit {
+  _imageContentMode = -1;  
 }
 
 - (void)dealloc {
