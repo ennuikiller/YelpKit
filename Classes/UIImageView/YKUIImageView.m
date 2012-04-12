@@ -193,6 +193,7 @@
 @synthesize strokeColor=_strokeColor, strokeWidth=_strokeWidth, cornerRadius=_cornerRadius, color=_color, overlayColor=_overlayColor, imageContentMode=_imageContentMode;
 
 - (void)sharedInit {
+  [super sharedInit];
   _imageContentMode = -1;  
 }
 
