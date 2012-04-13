@@ -103,9 +103,6 @@ void YKCGContextDrawLine(CGContextRef context, CGFloat x, CGFloat y, CGFloat x2,
 /*!
  Draws image inside rounded rect.
  
- If the rect is larger than the image size, the image is centered in 
- rect and maintains its aspect ratio. 
- 
  @param context Context
  @param image Image to draw
  @param imageSize Image size
@@ -117,6 +114,23 @@ void YKCGContextDrawLine(CGContextRef context, CGFloat x, CGFloat y, CGFloat x2,
  @param backgroundColor If image is smaller than rect (and not scaling image), this background color is used.
  */
 void YKCGContextDrawRoundedRectImage(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor);
+
+/*!
+ Draws image inside rounded rect with shadow.
+ 
+ @param context Context
+ @param image Image to draw
+ @param imageSize Image size
+ @param rect Rect to draw
+ @param strokeColor Stroke color
+ @param strokeWidth Stroke size
+ @param cornerRadius Corner radius for rounded rect
+ @param contentMode Content Mode
+ @param backgroundColor If image is smaller than rect (and not scaling image), this background color is used.
+ @param shadowColor Shadow color (or NULL)
+ @param shadowBlur Shadow blur amount
+ */
+void YKCGContextDrawRoundedRectImageWithShadow(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor, CGColorRef shadowColor, CGFloat shadowBlur);
 
 /*!
  Draws image.

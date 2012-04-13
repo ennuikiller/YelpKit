@@ -31,7 +31,7 @@
 #import "YKDefines.h"
 
 void _YKCGContextDrawStyledRect(CGContextRef context, CGRect rect, YKUIBorderStyle style, CGColorRef fillColor, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius);
-void _YKCGContextDrawImage(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor);
+void _YKCGContextDrawImage(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor, CGColorRef shadowColor, CGFloat shadowBlur);
 void _horizontalEdgeColorBlendFunctionImpl(void *info, const CGFloat *in, CGFloat *out, BOOL reverse);
 void _metalEdgeColorBlendFunctionImpl(void *info, const CGFloat *in, CGFloat *out);
 void _horizontalEdgeColorBlendFunction(void *info, const CGFloat *in, CGFloat *out);
@@ -126,23 +126,28 @@ void YKCGContextDrawLine(CGContextRef context, CGFloat x, CGFloat y, CGFloat x2,
 
 void YKCGContextDrawImage(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, 
                           UIViewContentMode contentMode, CGColorRef backgroundColor) { 
-  _YKCGContextDrawImage(context, image, imageSize, rect, strokeColor, strokeWidth, 0.0, contentMode, backgroundColor);
+  _YKCGContextDrawImage(context, image, imageSize, rect, strokeColor, strokeWidth, 0.0, contentMode, backgroundColor, NULL, 0);
 }
 
-void YKCGContextDrawRoundedRectImage(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor) {  
+void YKCGContextDrawRoundedRectImage(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor) {
+  YKCGContextDrawRoundedRectImageWithShadow(context, image, imageSize, rect, strokeColor, strokeWidth, cornerRadius, contentMode, backgroundColor, NULL, 0);
+}
+
+void YKCGContextDrawRoundedRectImageWithShadow(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor, CGColorRef shadowColor, CGFloat shadowBlur) {  
   CGContextSaveGState(context);
-  _YKCGContextDrawImage(context, image, imageSize, rect, strokeColor, strokeWidth, cornerRadius, contentMode, backgroundColor);
+  _YKCGContextDrawImage(context, image, imageSize, rect, strokeColor, strokeWidth, cornerRadius, contentMode, backgroundColor, shadowColor, shadowBlur);
   CGContextRestoreGState(context);
 }
 
-void _YKCGContextDrawImage(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor) {
+void _YKCGContextDrawImage(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor, CGColorRef shadowColor, CGFloat shadowBlur) {
   
-  // TODO(gabe): Fails if cornerRadius = 0
-  if (strokeWidth >= 0 && cornerRadius > 0) {
-    YKCGContextAddRoundedRect(context, rect, strokeWidth, cornerRadius);
+  // Clip for rounded corners
+  if (cornerRadius > 0) {
+    YKCGContextAddRoundedRect(context, rect, 0, cornerRadius);
     CGContextClip(context);
   }
   
+  // Fill background color
   if (backgroundColor != NULL) {
     CGContextSetFillColorWithColor(context, backgroundColor);
     CGContextFillRect(context, rect);
@@ -161,8 +166,11 @@ void _YKCGContextDrawImage(CGContextRef context, CGImageRef image, CGSize imageS
     CGContextRestoreGState(context);
   }
   
-  if (strokeColor != NULL && strokeWidth > 0 && cornerRadius > 0)
+  if (shadowColor != NULL) {
+    YKCGContextDrawBorderWithShadow(context, rect, YKUIBorderStyleRounded, NULL, strokeColor, strokeWidth, 0, cornerRadius, shadowColor, shadowBlur);
+  } else if (strokeColor != NULL && strokeWidth > 0) {    
     YKCGContextDrawRoundedRect(context, rect, NULL, strokeColor, strokeWidth, cornerRadius);
+  }
 }
 
 CGRect YKCGRectScaleAspectAndCenter(CGSize size, CGSize inSize, BOOL fill) {
