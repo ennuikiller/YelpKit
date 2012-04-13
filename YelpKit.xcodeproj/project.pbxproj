@@ -12,8 +12,16 @@
 		00149F2E1521040800321DF4 /* YKUISwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00149F2C1521040800321DF4 /* YKUISwipeView.m */; };
 		002629AF151BABB800F840DB /* YKUIButtons.h in Headers */ = {isa = PBXBuildFile; fileRef = 002629AD151BABB800F840DB /* YKUIButtons.h */; };
 		002629B0151BABB800F840DB /* YKUIButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 002629AE151BABB800F840DB /* YKUIButtons.m */; };
-		004DA802145235F100247993 /* YKUILayoutView.h in Headers */ = {isa = PBXBuildFile; fileRef = 004DA800145235F000247993 /* YKUILayoutView.h */; };
-		004DA803145235F100247993 /* YKUILayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 004DA801145235F100247993 /* YKUILayoutView.m */; };
+		0041271215366FAB0090F268 /* YKLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 0041270E15366FAB0090F268 /* YKLayout.h */; };
+		0041271315366FAB0090F268 /* YKLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0041270F15366FAB0090F268 /* YKLayout.m */; };
+		0041271415366FAB0090F268 /* YKUILayoutView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0041271015366FAB0090F268 /* YKUILayoutView.h */; };
+		0041271515366FAB0090F268 /* YKUILayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0041271115366FAB0090F268 /* YKUILayoutView.m */; };
+		0041271C15366FF30090F268 /* YKLText.h in Headers */ = {isa = PBXBuildFile; fileRef = 0041271A15366FF30090F268 /* YKLText.h */; };
+		0041271D15366FF30090F268 /* YKLText.m in Sources */ = {isa = PBXBuildFile; fileRef = 0041271B15366FF30090F268 /* YKLText.m */; };
+		004127201536716D0090F268 /* YKLView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0041271E1536716D0090F268 /* YKLView.h */; };
+		004127211536716D0090F268 /* YKLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0041271F1536716D0090F268 /* YKLView.m */; };
+		00412724153673410090F268 /* YKLImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 00412722153673400090F268 /* YKLImage.h */; };
+		00412725153673410090F268 /* YKLImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 00412723153673400090F268 /* YKLImage.m */; };
 		005592EC140B0085001E9C43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005592EB140B0085001E9C43 /* Foundation.framework */; };
 		00559329140B00F6001E9C43 /* YKImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559300140B00F6001E9C43 /* YKImageLoader.h */; };
 		0055932A140B00F6001E9C43 /* YKImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 00559301140B00F6001E9C43 /* YKImageLoader.m */; };
@@ -34,8 +42,6 @@
 		00559339140B00F6001E9C43 /* YKUIRefreshTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00559314140B00F6001E9C43 /* YKUIRefreshTableView.m */; };
 		0055933A140B00F6001E9C43 /* YKUIImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559316140B00F6001E9C43 /* YKUIImageView.h */; };
 		0055933B140B00F6001E9C43 /* YKUIImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00559317140B00F6001E9C43 /* YKUIImageView.m */; };
-		00559342140B00F6001E9C43 /* YKLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559320140B00F6001E9C43 /* YKLayout.h */; };
-		00559343140B00F6001E9C43 /* YKLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 00559321140B00F6001E9C43 /* YKLayout.m */; };
 		00559346140B00F6001E9C43 /* YKDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559324140B00F6001E9C43 /* YKDefines.h */; settings = {ATTRIBUTES = (); }; };
 		00559347140B00F6001E9C43 /* YKError.h in Headers */ = {isa = PBXBuildFile; fileRef = 00559325140B00F6001E9C43 /* YKError.h */; settings = {ATTRIBUTES = (); }; };
 		00559348140B00F6001E9C43 /* YKError.m in Sources */ = {isa = PBXBuildFile; fileRef = 00559326140B00F6001E9C43 /* YKError.m */; };
@@ -44,8 +50,6 @@
 		00559353140B0102001E9C43 /* GHKitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00559352140B0102001E9C43 /* GHKitIOS.framework */; };
 		006E7DAD151FF2DE005FD9D3 /* YKUIBorder.h in Headers */ = {isa = PBXBuildFile; fileRef = 006E7DAB151FF2DE005FD9D3 /* YKUIBorder.h */; };
 		006E7DAE151FF2DE005FD9D3 /* YKUIBorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 006E7DAC151FF2DE005FD9D3 /* YKUIBorder.m */; };
-		006E7DB2151FF3C5005FD9D3 /* YKUIBorderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 006E7DB0151FF3C5005FD9D3 /* YKUIBorderView.h */; };
-		006E7DB3151FF3C5005FD9D3 /* YKUIBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 006E7DB1151FF3C5005FD9D3 /* YKUIBorderView.m */; };
 		0072E459151E74D2006EAC84 /* YKUIListView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0072E457151E74D2006EAC84 /* YKUIListView.h */; };
 		0072E45A151E74D2006EAC84 /* YKUIListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0072E458151E74D2006EAC84 /* YKUIListView.m */; };
 		00BE005D14A148A8006B733B /* YKCLSortDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 00BE005514A148A8006B733B /* YKCLSortDescriptor.h */; };
@@ -85,8 +89,16 @@
 		00149F2C1521040800321DF4 /* YKUISwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUISwipeView.m; sourceTree = "<group>"; };
 		002629AD151BABB800F840DB /* YKUIButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUIButtons.h; sourceTree = "<group>"; };
 		002629AE151BABB800F840DB /* YKUIButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIButtons.m; sourceTree = "<group>"; };
-		004DA800145235F000247993 /* YKUILayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUILayoutView.h; sourceTree = "<group>"; };
-		004DA801145235F100247993 /* YKUILayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUILayoutView.m; sourceTree = "<group>"; };
+		0041270E15366FAB0090F268 /* YKLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKLayout.h; sourceTree = "<group>"; };
+		0041270F15366FAB0090F268 /* YKLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKLayout.m; sourceTree = "<group>"; };
+		0041271015366FAB0090F268 /* YKUILayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUILayoutView.h; sourceTree = "<group>"; };
+		0041271115366FAB0090F268 /* YKUILayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUILayoutView.m; sourceTree = "<group>"; };
+		0041271A15366FF30090F268 /* YKLText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKLText.h; sourceTree = "<group>"; };
+		0041271B15366FF30090F268 /* YKLText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKLText.m; sourceTree = "<group>"; };
+		0041271E1536716D0090F268 /* YKLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKLView.h; sourceTree = "<group>"; };
+		0041271F1536716D0090F268 /* YKLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKLView.m; sourceTree = "<group>"; };
+		00412722153673400090F268 /* YKLImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKLImage.h; sourceTree = "<group>"; };
+		00412723153673400090F268 /* YKLImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKLImage.m; sourceTree = "<group>"; };
 		005592E8140B0085001E9C43 /* libYelpKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libYelpKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		005592EB140B0085001E9C43 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		005592FD140B00E2001E9C43 /* YelpKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YelpKit-Prefix.pch"; sourceTree = "<group>"; };
@@ -110,8 +122,6 @@
 		00559314140B00F6001E9C43 /* YKUIRefreshTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIRefreshTableView.m; sourceTree = "<group>"; };
 		00559316140B00F6001E9C43 /* YKUIImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUIImageView.h; sourceTree = "<group>"; };
 		00559317140B00F6001E9C43 /* YKUIImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIImageView.m; sourceTree = "<group>"; };
-		00559320140B00F6001E9C43 /* YKLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKLayout.h; sourceTree = "<group>"; };
-		00559321140B00F6001E9C43 /* YKLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKLayout.m; sourceTree = "<group>"; };
 		00559324140B00F6001E9C43 /* YKDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKDefines.h; sourceTree = "<group>"; };
 		00559325140B00F6001E9C43 /* YKError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKError.h; sourceTree = "<group>"; };
 		00559326140B00F6001E9C43 /* YKError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKError.m; sourceTree = "<group>"; };
@@ -120,8 +130,6 @@
 		00559352140B0102001E9C43 /* GHKitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHKitIOS.framework; sourceTree = "<group>"; };
 		006E7DAB151FF2DE005FD9D3 /* YKUIBorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUIBorder.h; sourceTree = "<group>"; };
 		006E7DAC151FF2DE005FD9D3 /* YKUIBorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIBorder.m; sourceTree = "<group>"; };
-		006E7DB0151FF3C5005FD9D3 /* YKUIBorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUIBorderView.h; sourceTree = "<group>"; };
-		006E7DB1151FF3C5005FD9D3 /* YKUIBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIBorderView.m; sourceTree = "<group>"; };
 		0072E457151E74D2006EAC84 /* YKUIListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUIListView.h; sourceTree = "<group>"; };
 		0072E458151E74D2006EAC84 /* YKUIListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIListView.m; sourceTree = "<group>"; };
 		00BE005514A148A8006B733B /* YKCLSortDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKCLSortDescriptor.h; sourceTree = "<group>"; };
@@ -171,6 +179,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0041270D15366FAB0090F268 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				0041270E15366FAB0090F268 /* YKLayout.h */,
+				0041270F15366FAB0090F268 /* YKLayout.m */,
+				0041271015366FAB0090F268 /* YKUILayoutView.h */,
+				0041271115366FAB0090F268 /* YKUILayoutView.m */,
+				0041271E1536716D0090F268 /* YKLView.h */,
+				0041271F1536716D0090F268 /* YKLView.m */,
+				0041271A15366FF30090F268 /* YKLText.h */,
+				0041271B15366FF30090F268 /* YKLText.m */,
+				00412722153673400090F268 /* YKLImage.h */,
+				00412723153673400090F268 /* YKLImage.m */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
 		005592DD140B0085001E9C43 = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +235,7 @@
 				00D575651457C35C00DE6487 /* UI */,
 				005592FF140B00F6001E9C43 /* ImageLoader */,
 				00559302140B00F6001E9C43 /* Labels */,
+				0041270D15366FAB0090F268 /* Layout */,
 				00559305140B00F6001E9C43 /* Network */,
 				0055930F140B00F6001E9C43 /* PullToRefresh */,
 				00559315140B00F6001E9C43 /* UIImageView */,
@@ -290,12 +316,6 @@
 				00E928B61524DEEC00E90AF1 /* YKUIActivityView.m */,
 				006E7DAB151FF2DE005FD9D3 /* YKUIBorder.h */,
 				006E7DAC151FF2DE005FD9D3 /* YKUIBorder.m */,
-				006E7DB0151FF3C5005FD9D3 /* YKUIBorderView.h */,
-				006E7DB1151FF3C5005FD9D3 /* YKUIBorderView.m */,
-				00559320140B00F6001E9C43 /* YKLayout.h */,
-				00559321140B00F6001E9C43 /* YKLayout.m */,
-				004DA800145235F000247993 /* YKUILayoutView.h */,
-				004DA801145235F100247993 /* YKUILayoutView.m */,
 				0072E457151E74D2006EAC84 /* YKUIListView.h */,
 				0072E458151E74D2006EAC84 /* YKUIListView.m */,
 				00149F2B1521040800321DF4 /* YKUISwipeView.h */,
@@ -389,11 +409,9 @@
 				00559336140B00F6001E9C43 /* YKUIRefreshTableHeaderView.h in Headers */,
 				00559338140B00F6001E9C43 /* YKUIRefreshTableView.h in Headers */,
 				0055933A140B00F6001E9C43 /* YKUIImageView.h in Headers */,
-				00559342140B00F6001E9C43 /* YKLayout.h in Headers */,
 				00559346140B00F6001E9C43 /* YKDefines.h in Headers */,
 				00559347140B00F6001E9C43 /* YKError.h in Headers */,
 				00559349140B00F6001E9C43 /* YKLocalized.h in Headers */,
-				004DA802145235F100247993 /* YKUILayoutView.h in Headers */,
 				00D575681457C35C00DE6487 /* YKCGUtils.h in Headers */,
 				00D5756C1457C38900DE6487 /* YKUIButton.h in Headers */,
 				00D575701457C3CF00DE6487 /* YKUIControl.h in Headers */,
@@ -407,13 +425,17 @@
 				002629AF151BABB800F840DB /* YKUIButtons.h in Headers */,
 				0072E459151E74D2006EAC84 /* YKUIListView.h in Headers */,
 				006E7DAD151FF2DE005FD9D3 /* YKUIBorder.h in Headers */,
-				006E7DB2151FF3C5005FD9D3 /* YKUIBorderView.h in Headers */,
 				00149F2D1521040800321DF4 /* YKUISwipeView.h in Headers */,
 				00E928AE1524D93600E90AF1 /* YKUIImageControl.h in Headers */,
 				00E928B31524DED800E90AF1 /* YKUIImageActivityView.h in Headers */,
 				00E928B71524DEEC00E90AF1 /* YKUIActivityView.h in Headers */,
 				00F882E61527C92A000FF1AB /* YKUIActionSheet.h in Headers */,
 				00D5FD231527E89000F72FEB /* YKUINavigationBar.h in Headers */,
+				0041271215366FAB0090F268 /* YKLayout.h in Headers */,
+				0041271415366FAB0090F268 /* YKUILayoutView.h in Headers */,
+				0041271C15366FF30090F268 /* YKLText.h in Headers */,
+				004127201536716D0090F268 /* YKLView.h in Headers */,
+				00412724153673410090F268 /* YKLImage.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,10 +500,8 @@
 				00559337140B00F6001E9C43 /* YKUIRefreshTableHeaderView.m in Sources */,
 				00559339140B00F6001E9C43 /* YKUIRefreshTableView.m in Sources */,
 				0055933B140B00F6001E9C43 /* YKUIImageView.m in Sources */,
-				00559343140B00F6001E9C43 /* YKLayout.m in Sources */,
 				00559348140B00F6001E9C43 /* YKError.m in Sources */,
 				0055934A140B00F6001E9C43 /* YKLocalized.m in Sources */,
-				004DA803145235F100247993 /* YKUILayoutView.m in Sources */,
 				00D575691457C35C00DE6487 /* YKCGUtils.m in Sources */,
 				00D5756D1457C38900DE6487 /* YKUIButton.m in Sources */,
 				00D575711457C3CF00DE6487 /* YKUIControl.m in Sources */,
@@ -494,13 +514,17 @@
 				002629B0151BABB800F840DB /* YKUIButtons.m in Sources */,
 				0072E45A151E74D2006EAC84 /* YKUIListView.m in Sources */,
 				006E7DAE151FF2DE005FD9D3 /* YKUIBorder.m in Sources */,
-				006E7DB3151FF3C5005FD9D3 /* YKUIBorderView.m in Sources */,
 				00149F2E1521040800321DF4 /* YKUISwipeView.m in Sources */,
 				00E928AF1524D93600E90AF1 /* YKUIImageControl.m in Sources */,
 				00E928B41524DED800E90AF1 /* YKUIImageActivityView.m in Sources */,
 				00E928B81524DEEC00E90AF1 /* YKUIActivityView.m in Sources */,
 				00F882E71527C92A000FF1AB /* YKUIActionSheet.m in Sources */,
 				00D5FD241527E89000F72FEB /* YKUINavigationBar.m in Sources */,
+				0041271315366FAB0090F268 /* YKLayout.m in Sources */,
+				0041271515366FAB0090F268 /* YKUILayoutView.m in Sources */,
+				0041271D15366FF30090F268 /* YKLText.m in Sources */,
+				004127211536716D0090F268 /* YKLView.m in Sources */,
+				00412725153673410090F268 /* YKLImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
