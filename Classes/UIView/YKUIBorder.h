@@ -46,6 +46,7 @@
   CGFloat _alternateStrokeWidth;
   UIColor *_fillColor;
   UIColor *_highlightedColor;
+  UIColor *_cornerColor;
   
   BOOL _highlighted;
   
@@ -55,7 +56,7 @@
   
   UIColor *_shadowColor;
   CGFloat _shadowBlur;
-  CGFloat _clippingInset;
+  UIEdgeInsets _insets;
 }
 
 @property (retain, nonatomic) UIView *contentView;
@@ -65,6 +66,7 @@
 @property (assign, nonatomic) CGFloat strokeWidth;
 @property (assign, nonatomic) CGFloat alternateStrokeWidth;
 @property (retain, nonatomic) UIColor *fillColor;
+@property (retain, nonatomic) UIColor *cornerColor;
 @property (retain, nonatomic) UIColor *highlightedColor;
 @property (assign, nonatomic, getter=isHighlighted) BOOL highlighted;
 
@@ -74,7 +76,7 @@
 
 @property (retain, nonatomic) UIColor *shadowColor;
 @property (assign, nonatomic) CGFloat shadowBlur;
-@property (assign, nonatomic) CGFloat clippingInset;
+@property (assign, nonatomic) UIEdgeInsets insets;
 
 /*!
  Create border view with style.
@@ -97,12 +99,5 @@
  @param rect The rect in which to draw the border
  */
 - (void)drawInRect:(CGRect)rect;
-
-/*!
- Layer mask for the border. This creates a layer mask in the shape of the border.
- Returns nil if self.cornerRadius is 0.
- @return CALayer that can be used as a layer mask
- */
-- (CALayer *)layerMask;
 
 @end

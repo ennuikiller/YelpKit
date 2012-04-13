@@ -57,12 +57,15 @@
   // Let the content center adjust up a tiny bit
   CGRect contentCenter = YKCGRectToCenter(contentSize, CGSizeMake(size.width, size.height - 1));
   
-  // If content view width is more than the max, then left align;
-  // If the left position of the content will overlap the left button, then also left align;
+  // If content view width is more than the max, then left align.
+  // If the left position of the content will overlap the left button, then also left align.
+  // If the right position of the content will overlap the right button, then right align.
   // Otherwise center it.
   if (contentCenter.origin.x > maxContentWidth || contentCenter.origin.x < leftRect.size.width + 10) {
     return CGRectMake(leftRect.size.width + 10, contentCenter.origin.y, maxContentWidth, contentSize.height);
-  } else {
+  } else if (!_leftButton && _rightButton && contentCenter.origin.x + contentCenter.size.width > (rightRect.origin.x - 10)) {
+    return CGRectMake(rightRect.origin.x - maxContentWidth - 10, contentCenter.origin.y, maxContentWidth, contentSize.height);
+  } else { 
     return CGRectMake(contentCenter.origin.x, contentCenter.origin.y, contentSize.width, contentSize.height);
   }
 }
@@ -132,14 +135,35 @@
 }
 
 - (void)setLeftButton:(UIControl *)leftButton {
-  [_leftButton removeFromSuperview];
-  _leftButton = nil;
-  if (leftButton) {
+  [self setLeftButton:leftButton animated:NO];
+}
+
+- (void)setLeftButton:(UIControl *)leftButton animated:(BOOL)animated {
+  if (animated) {
+    UIView *oldLeftButton = _leftButton;
     _leftButton = leftButton;
-    [self addSubview:_leftButton];
+    if (_leftButton) {
+      _leftButton.alpha = 0.0;
+      _leftButton.frame = [self rectForLeftButton:self.frame.size];
+      [self addSubview:_leftButton];
+    }
+    [UIView animateWithDuration:0.5 animations:^{
+      oldLeftButton.alpha = 0.0;
+      _leftButton.alpha = 1.0;
+    } completion:^(BOOL finished) {
+      [oldLeftButton removeFromSuperview];
+      oldLeftButton.alpha = 1.0;
+    }];
+  } else {
+    [_leftButton removeFromSuperview];
+    _leftButton = nil;
+    if (leftButton) {
+      _leftButton = leftButton;
+      [self addSubview:_leftButton];
+    }
+    [self setNeedsLayout];
+    [self setNeedsDisplay];
   }
-  [self setNeedsLayout];
-  [self setNeedsDisplay];
 }
 
 - (void)setRightButton:(UIControl *)rightButton {

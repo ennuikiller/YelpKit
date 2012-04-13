@@ -91,12 +91,20 @@
 
 - (void)setText:(NSString *)text {
   if (!text) {
-    self.label.hidden = YES;
+    if (_label) {
+      _label.hidden = YES;
+    }
   } else {
-    [self addSubview:self.label];
-    self.label.text = text;
-    self.label.hidden = NO;   
+    UILabel *label = self.label;
+    if (![label superview]) {
+      [self addSubview:label];
+    }
+    label.text = text;
+    label.hidden = NO;   
+    [label setNeedsLayout];
   }
+  [self setNeedsDisplay];
+  [self setNeedsLayout];
 }
 
 - (void)setAnimating:(BOOL)animating {

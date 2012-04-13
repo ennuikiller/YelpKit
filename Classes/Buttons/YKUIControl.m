@@ -37,6 +37,11 @@
   return self;
 }
 
+- (void)dealloc {
+  [_context release];
+  [super dealloc];
+}
+
 - (void)removeAllTargets {
   [YKUIControl removeAllTargets:self];
 }
@@ -63,6 +68,8 @@
   [self addTarget:self action:@selector(_didTouchUpInside) forControlEvents:UIControlEventTouchUpInside];
   _target = target;
   _action = action;
+  [context retain];
+  [_context release];
   _context = context;
   _highlightedEnabled = YES;
 }

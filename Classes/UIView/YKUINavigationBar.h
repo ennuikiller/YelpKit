@@ -61,4 +61,11 @@
  */
 - (void)setRightButton:(UIControl *)rightButton animated:(BOOL)animated;
 
+/*!
+ Set left button.
+ @param leftButton
+ @param animated
+ */
+- (void)setLeftButton:(UIControl *)leftButton animated:(BOOL)animated;
+
 @end

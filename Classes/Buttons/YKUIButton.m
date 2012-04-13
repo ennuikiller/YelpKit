@@ -472,11 +472,11 @@
           break;
         }
         case YKUIButtonIconPositionTop: {
-          CGPoint iconTop = YKCGPointToCenter(iconSize, CGSizeMake(size.width, size.height - _titleSize.height - _titleInsets.top - _titleInsets.bottom));
+          CGPoint iconTop = YKCGPointToCenter(iconSize, CGSizeMake(size.width, size.height - _titleSize.height));
           if (_iconOrigin.x != CGFLOAT_MAX) iconTop.x = _iconOrigin.x;
           if (_iconOrigin.y != CGFLOAT_MAX) iconTop.y = _iconOrigin.y;
-          [icon drawInRect:CGRectMake(iconTop.x, iconTop.y, iconSize.width, iconSize.height)];
-          y = iconTop.y + iconSize.height;
+          [icon drawInRect:CGRectMake(iconTop.x, iconTop.y + _insets.top, iconSize.width, iconSize.height)];
+          y = iconTop.y + iconSize.height + _titleInsets.top;
           break;
         }
       }

@@ -44,31 +44,50 @@
 @interface YKUIListView : YKUILayoutView {
   NSMutableArray *_views;
   UIEdgeInsets _insets;
-  YKUIListViewAppearance *_appearance;
+
+  UIColor *_lineSeparatorColor;
+  UIColor *_topBorderColor;
+  UIEdgeInsets _lineInsets;
+  
+  NSInteger _tagRemovalAnimating;
 }
 
-@property (retain, nonatomic) YKUIListViewAppearance *appearance;
+@property (retain, nonatomic) UIColor *topBorderColor;
+@property (retain, nonatomic) UIColor *lineSeparatorColor;
+@property (assign, nonatomic) UIEdgeInsets lineInsets;
 
 - (NSArray *)listSubviews;
 
 - (NSInteger)count;
 
+/*!
+ Add view.
+ @param view
+ */
 - (void)addView:(UIView *)view;
 
+/*!
+ Remove views with tag.
+ @param tag
+ */
 - (void)removeViewsWithTag:(NSInteger)tag;
 
+/*!
+ @result Views with tag
+ */
+- (NSArray *)viewsWithTag:(NSInteger)tag;
+
+/*!
+ Set views hidden with tag.
+ Useful for animating a fade.
+ @param hidden
+ @param tag
+ @param animationDuration If 0, not animated
+ */
+- (void)setViewsHidden:(BOOL)hidden tag:(NSInteger)tag animationDuration:(NSTimeInterval)animationDuration;
+
+/*!
+ */
 - (void)removeAllViews;
-
-@end
-
-
-@interface YKUIListViewAppearance : UIView {
-  UIColor *_lineSeparatorColor;
-  UIColor *_topBorderColor;
-  UIEdgeInsets _insets;
-}
-
-@property (retain, nonatomic) UIColor *topBorderColor;
-@property (retain, nonatomic) UIColor *lineSeparatorColor;
 
 @end

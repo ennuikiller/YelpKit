@@ -32,15 +32,16 @@
 
 @implementation YKUIBorder
 
-@synthesize contentView=_contentView, cornerRadius=_cornerRadius, color=_color, strokeWidth=_strokeWidth, alternateStrokeWidth=_alternateStrokeWidth, fillColor=_fillColor, highlightedColor=_highlightedColor, highlighted=_highlighted, style=_style, shadowColor=_shadowColor, shadowBlur=_shadowBlur, clippingInset=_clippingInset, shadingType=_shadingType, shadingColor=_shadingColor, shadingAlternateColor=_shadingAlternateColor;
+@synthesize contentView=_contentView, cornerRadius=_cornerRadius, color=_color, strokeWidth=_strokeWidth, alternateStrokeWidth=_alternateStrokeWidth, fillColor=_fillColor, highlightedColor=_highlightedColor, highlighted=_highlighted, style=_style, shadowColor=_shadowColor, shadowBlur=_shadowBlur, insets=_insets, shadingType=_shadingType, shadingColor=_shadingColor, shadingAlternateColor=_shadingAlternateColor, cornerColor=_cornerColor;
 
 - (void)sharedInit {
   self.opaque = NO;
   _cornerRadius = 10.0;
+  _strokeWidth = 1.0;
   _alternateStrokeWidth = 1.0;
   _shadingType = YKUIShadingTypeNone;
   _shadowBlur = 3.0;
-  _clippingInset = 0;
+  _insets = UIEdgeInsetsZero;
   self.userInteractionEnabled = NO;
 }
 
@@ -77,24 +78,13 @@
   [_shadingColor release];
   [_shadingAlternateColor release];
   [_shadowColor release];
+  [_cornerColor release];
   [super dealloc];
 }
 
 - (void)setHighlighted:(BOOL)highlighted {
   _highlighted = highlighted;
   [self setNeedsDisplay];
-}
-
-- (CALayer *)layerMask {
-  CALayer *layerMask = nil;
-  CGRect maskRect = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-  if (self.cornerRadius > 0) {
-    UIImage *mask = YKCGContextRoundedMask(maskRect, self.cornerRadius);
-    layerMask = [CALayer layer];
-    layerMask.frame = maskRect;
-    layerMask.contents = (id)mask.CGImage;
-  }
-  return layerMask;
 }
 
 - (void)drawInRect:(CGRect)rect {
@@ -104,14 +94,31 @@
     YKCGContextDrawShading(context, _shadingColor.CGColor, _shadingAlternateColor.CGColor, NULL, NULL, rect.origin, CGPointMake(rect.origin.x, rect.origin.y + rect.size.height), _shadingType, YES, YES);
   }
   
+  CGRect insetRect = UIEdgeInsetsInsetRect(rect, _insets);
+  
+  // Use even-odd rule to draw rounded corner background
+  if (_cornerColor && (_style != YKUIBorderStyleNone || _style != YKUIBorderStyleNormal)) {
+    CGContextSaveGState(context);
+    [_cornerColor setFill];
+    CGPathRef rectPath = CGPathCreateWithRect(rect, NULL);
+    CGPathRef roundPath = YKCGPathCreateStyledRect(insetRect, _style, _strokeWidth, _alternateStrokeWidth, _cornerRadius);
+    CGContextAddPath(context, rectPath);  
+    CGContextAddPath(context, roundPath);
+    CGContextEOClip(context);  
+    CGContextFillRect(context, rect);
+    CGPathRelease(roundPath);
+    CGPathRelease(rectPath);
+    CGContextRestoreGState(context);
+  }
+  
   if (_shadowColor) {
-    CGPathRef path = YKCGPathCreateStyledRect(CGRectInset(rect, _clippingInset, _clippingInset), _style, _strokeWidth, _alternateStrokeWidth, _cornerRadius);
+    CGPathRef path = YKCGPathCreateStyledRect(insetRect, _style, _strokeWidth, _alternateStrokeWidth, _cornerRadius);
     CGContextAddPath(context, path);
     CGContextClip(context);
-    YKCGContextDrawBorderWithShadow(context, rect, _style, (self.highlighted ? _highlightedColor.CGColor : _fillColor.CGColor), _color.CGColor, _strokeWidth, _alternateStrokeWidth, _cornerRadius, _shadowColor.CGColor, _shadowBlur);
+    YKCGContextDrawBorderWithShadow(context, insetRect, _style, (self.highlighted ? _highlightedColor.CGColor : _fillColor.CGColor), _color.CGColor, _strokeWidth, _alternateStrokeWidth, _cornerRadius, _shadowColor.CGColor, _shadowBlur);
     CGPathRelease(path);
   } else {
-    YKCGContextDrawBorder(context, rect, _style, (self.highlighted ? _highlightedColor.CGColor : _fillColor.CGColor), _color.CGColor, _strokeWidth, _alternateStrokeWidth, _cornerRadius);
+    YKCGContextDrawBorder(context, insetRect, _style, (self.highlighted ? _highlightedColor.CGColor : _fillColor.CGColor), _color.CGColor, _strokeWidth, _alternateStrokeWidth, _cornerRadius);
   }
 }
 
