@@ -194,7 +194,7 @@
 
 - (void)sharedInit {
   [super sharedInit];
-  _imageContentMode = -1;  
+  _imageContentMode = -1;
 }
 
 - (void)dealloc {
@@ -210,12 +210,10 @@
 }
 
 - (void)drawInRect:(CGRect)rect contentMode:(UIViewContentMode)contentMode {
-  CGRect bounds = rect;
-  
   CGContextRef context = UIGraphicsGetCurrentContext();
 
   if (self.backgroundColor) {
-    YKCGContextDrawRect(context, bounds, self.backgroundColor.CGColor, NULL, 0);
+    YKCGContextDrawRect(context, rect, self.backgroundColor.CGColor, NULL, 0);
   }
   
   if (_color) {
@@ -225,7 +223,7 @@
   UIColor *color = _color;
   if (!color) color = self.backgroundColor;
   
-  YKCGContextDrawRoundedRectImage(context, self.image.CGImage, self.image.size, rect, _strokeColor.CGColor, _strokeWidth, _cornerRadius, self.imageContentMode, color.CGColor);
+  YKCGContextDrawRoundedRectImage(context, self.image.CGImage, self.image.size, rect, _strokeColor.CGColor, _strokeWidth, _cornerRadius, contentMode, color.CGColor);
   
   if (_overlayColor) {
     YKCGContextDrawRoundedRect(context, rect, _overlayColor.CGColor, NULL, 0, _cornerRadius);
@@ -233,7 +231,7 @@
 }
 
 - (void)drawInRect:(CGRect)rect {
-  [self drawInRect:rect contentMode:self.contentMode];
+  [self drawInRect:rect contentMode:self.imageContentMode];
 }
 
 - (void)drawRect:(CGRect)rect {
