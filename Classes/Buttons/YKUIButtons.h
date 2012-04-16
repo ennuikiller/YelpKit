@@ -33,20 +33,40 @@
 typedef enum {
   YKUIButtonsStyleHorizontal = 0, // Default
   YKUIButtonsStyleVertical,
+  YKUIButtonsStyleHorizontalRounded, // Horizontal with rounded ends
+  YKUIButtonsStyleVerticalRounded, // Vertical with rounded ends
 } YKUIButtonsStyle;
 
 typedef void (^YKUIButtonsApplyBlock)(YKUIButton *button, NSInteger index);
 
+/*!
+ A list of buttons. This is similar to a segmented control.
+ */
 @interface YKUIButtons : YKUILayoutView {
   NSMutableArray *_buttons;
   
   YKUIButtonsStyle _style;
 }
 
+/*!
+ Create a number of buttons.
+ @param count
+ @param style Style, use rounded style if you want the YKUIButton border style to be automatically set.
+ @param apply
+ */
 - (id)initWithCount:(NSInteger)count style:(YKUIButtonsStyle)style apply:(YKUIButtonsApplyBlock)apply;
 
-- (id)initWithButtons:(NSArray *)buttons style:(YKUIButtonsStyle)style apply:(YKUIButtonsApplyBlock)apply;
+/*!
+ Create a set of buttons.
+ @param buttons List of YKUIButton
+ @param style Style, use rounded style if you want the YKUIButton border style to be automatically set.
+ @param apply
+ */
+- (id)initWithButtons:(NSArray */*of YKUIButton*/)buttons style:(YKUIButtonsStyle)style apply:(YKUIButtonsApplyBlock)apply;
 
+/*!
+ @result The buttons
+ */
 - (NSArray *)buttons;
 
 @end

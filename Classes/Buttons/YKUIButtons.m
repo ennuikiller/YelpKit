@@ -33,6 +33,14 @@
 
 @implementation YKUIButtons
 
+- (id)initWithFrame:(CGRect)frame {
+  if ((self = [super initWithFrame:frame])) {
+    self.backgroundColor = [UIColor whiteColor];
+    self.layout = [YKLayout layoutForView:self];
+  }
+  return self;
+}
+
 - (id)initWithCount:(NSInteger)count style:(YKUIButtonsStyle)style apply:(YKUIButtonsApplyBlock)apply {
   NSMutableArray *buttons = [NSMutableArray arrayWithCapacity:count];
   for (NSInteger i = 0; i < count; i++) {
@@ -42,43 +50,53 @@
 }
 
 - (id)initWithButtons:(NSArray *)buttons style:(YKUIButtonsStyle)style apply:(YKUIButtonsApplyBlock)apply {
-  if ((self = [super init])) {
-    self.backgroundColor = [UIColor whiteColor];
-    self.layout = [YKLayout layoutForView:self];
-
+  if ((self = [self initWithFrame:CGRectZero])) {
     _style = style;
     _buttons = [buttons mutableCopy];
     for (NSInteger i = 0, count = [_buttons count]; i < count; i++) {
       YKUIButton *button = [_buttons objectAtIndex:i];
 
       if (count == 1) {
-        button.borderStyle = YKUIBorderStyleRounded;
+        switch (style) {
+          case YKUIButtonsStyleHorizontalRounded:
+          case YKUIButtonsStyleVerticalRounded:
+            button.borderStyle = YKUIBorderStyleRounded;
+            break;
+          default:
+            break;
+        }
       } else {
         if (i == 0) {
           switch (style) {
-            case YKUIButtonsStyleHorizontal:
+            case YKUIButtonsStyleHorizontalRounded:
               button.borderStyle = YKUIBorderStyleRoundedLeftCap;
               break;
-            case YKUIButtonsStyleVertical:
+            case YKUIButtonsStyleVerticalRounded:
               button.borderStyle = YKUIBorderStyleRoundedTop;
+              break;
+            default:
               break;
           }
         } else if (i == count - 1) {
           switch (style) {
-            case YKUIButtonsStyleHorizontal:
+            case YKUIButtonsStyleHorizontalRounded:
               button.borderStyle = YKUIBorderStyleRoundedRightCap;
               break;
-            case YKUIButtonsStyleVertical:
+            case YKUIButtonsStyleVerticalRounded:
               button.borderStyle = YKUIBorderStyleRoundedBottomWithAlternateTop;
+              break;
+            default:
               break;
           }
         } else {
           switch (style) {
-            case YKUIButtonsStyleHorizontal:
+            case YKUIButtonsStyleHorizontalRounded:
               button.borderStyle = YKUIBorderStyleNormal;
               break;
-            case YKUIButtonsStyleVertical:
+            case YKUIButtonsStyleVerticalRounded:
               button.borderStyle = YKUIBorderStyleLeftRightWithAlternateTop;
+              break;
+            default:
               break;
           }          
         }
@@ -103,7 +121,8 @@
   CGFloat y = 0;
 
   switch (_style) {
-    case YKUIButtonsStyleHorizontal: {
+    case YKUIButtonsStyleHorizontal:
+    case YKUIButtonsStyleHorizontalRounded:{
       CGFloat x = 0;
       CGFloat buttonWidth = roundf(size.width / (CGFloat)[_buttons count]);
       NSInteger i = 0;
@@ -116,7 +135,8 @@
       y = size.height;
       break;
     }
-    case YKUIButtonsStyleVertical: {
+    case YKUIButtonsStyleVertical:
+    case YKUIButtonsStyleVerticalRounded: {
       for (YKUIButton *button in _buttons) {
         CGRect buttonFrame = [layout setFrame:CGRectMake(0, y, size.width, button.frame.size.height) view:button sizeToFit:YES];
         y += buttonFrame.size.height;
