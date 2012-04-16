@@ -10,19 +10,19 @@
 #import "YKCLUtils.h"
 
 
-#define kDefaultLatitudedDelta .005
-#define kDefaultLongitudeDelta .005
+#define kDefaultLatitudedDelta (.005)
+#define kDefaultLongitudeDelta (.005)
 #define kDefaultSpan MKCoordinateSpanMake(kDefaultLatitudedDelta, kDefaultLongitudeDelta)
 
 //! Maximum distance from annotations to location coordinate in regionThatFits
-#define kMaxRegionThatFitsDistance 3000
+#define kMaxDistanceThatFitsRegion (3000)
 
 #define kMaxRegionThatFitsRelativeCenterDistance (50 * 1000)
-#define kDefaultRegionSpanDelta .1
-#define kMinLatitudeDelta .00001
-#define kMinLongitudeDelta .00001
-#define kMaxLatitudeDelta .3
-#define kMaxLongitudeDelta .3
+#define kDefaultRegionSpanDelta (.1)
+#define kMinLatitudeDelta (.00001)
+#define kMinLongitudeDelta (.00001)
+#define kMaxLatitudeDelta (.3)
+#define kMaxLongitudeDelta (.3)
 
 
 NSString *YKNSStringFromMKCoordinateSpan(MKCoordinateSpan span);
@@ -104,6 +104,15 @@ MKCoordinateRegion YKMKCoordinateRegionInset(MKCoordinateRegion region, CLLocati
 
 // NOTE: This function centers on the annotation but includes the current location
 + (MKCoordinateRegion)regionThatCentersOnAnnotation:(id<MKAnnotation>)annotation location:(CLLocation *)location;
+
+/*!
+ Region that is centered on annotation with location, if within maxDistance.
+ @param annotation Annotation
+ @param location Location (maybe Current Location)
+ @param maxDistance Max distance between annotation and location before we decide not to include location in the region
+ @param coordinateSpan Span to use if location not included
+ */
++ (MKCoordinateRegion)regionThatCentersOnAnnotation:(id<MKAnnotation>)annotation location:(CLLocation *)location maxDistance:(CLLocationDistance)maxDistance coordinateSpan:(MKCoordinateSpan)coordinateSpan;
 
 + (id<MKAnnotation>)annotationFromCLLocation:(CLLocation *)location title:(NSString *)title;
 

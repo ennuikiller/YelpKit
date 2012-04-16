@@ -188,7 +188,7 @@ BOOL YKCLLocationCoordinate2DIsInsideRegion(CLLocationCoordinate2D coordinate, M
         CLLocationDegrees centerLatitude = minLatitude + ((maxLatitude - minLatitude) / 2.0);
         CLLocationDegrees centerLongitude = minLongitude + ((maxLongitude - minLongitude) / 2.0);
         // Make sure the current location is somewhere near the annotations
-        if (YKCLLocationCoordinateDistance(YKCLLocationCoordinate2DMake(centerLatitude, centerLongitude), coordinate, YES) < kMaxRegionThatFitsDistance) {
+        if (YKCLLocationCoordinateDistance(YKCLLocationCoordinate2DMake(centerLatitude, centerLongitude), coordinate, YES) < kMaxDistanceThatFitsRegion) {
           if (coordinate.latitude < minLatitude) minLatitude = coordinate.latitude;
           if (coordinate.longitude < minLongitude) minLongitude = coordinate.longitude;
           if (coordinate.latitude > maxLatitude) maxLatitude = coordinate.latitude;
@@ -260,13 +260,17 @@ BOOL YKCLLocationCoordinate2DIsInsideRegion(CLLocationCoordinate2D coordinate, M
 }
 
 + (MKCoordinateRegion)regionThatCentersOnAnnotation:(id<MKAnnotation>)annotation location:(CLLocation *)location {
+  return [self regionThatCentersOnAnnotation:annotation location:location maxDistance:kMaxDistanceThatFitsRegion coordinateSpan:kDefaultSpan];
+}
+
++ (MKCoordinateRegion)regionThatCentersOnAnnotation:(id<MKAnnotation>)annotation location:(CLLocation *)location maxDistance:(CLLocationDistance)maxDistance coordinateSpan:(MKCoordinateSpan)coordinateSpan {
   if (location) {
-    if (YKCLLocationCoordinate2DIsNull(location.coordinate) || (YKCLLocationCoordinateDistance(annotation.coordinate, location.coordinate, YES) > kMaxRegionThatFitsDistance))
-      return MKCoordinateRegionMake(annotation.coordinate, kDefaultSpan);
+    if (YKCLLocationCoordinate2DIsNull(location.coordinate) || (YKCLLocationCoordinateDistance(annotation.coordinate, location.coordinate, YES) > maxDistance))
+      return MKCoordinateRegionMake(annotation.coordinate, coordinateSpan);
     else
-      return [self regionThatFits:[NSArray arrayWithObjects:annotation, [self annotationFromCLLocation:location title:@"Current Location"], nil] center:annotation.coordinate];  
+      return [self regionThatFits:[NSArray arrayWithObjects:annotation, [self annotationFromCLLocation:location title:NSLocalizedString(@"Current Location", nil)], nil] center:annotation.coordinate];  
   } else {
-    return MKCoordinateRegionMake(annotation.coordinate, kDefaultSpan);
+    return MKCoordinateRegionMake(annotation.coordinate, coordinateSpan);
   }
 }
   
