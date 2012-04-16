@@ -134,11 +134,11 @@
   }
 }
 
-- (void)setLeftButton:(UIControl *)leftButton {
+- (void)setLeftButton:(UIView *)leftButton {
   [self setLeftButton:leftButton animated:NO];
 }
 
-- (void)setLeftButton:(UIControl *)leftButton animated:(BOOL)animated {
+- (void)setLeftButton:(UIView *)leftButton animated:(BOOL)animated {
   if (animated) {
     UIView *oldLeftButton = _leftButton;
     _leftButton = leftButton;
@@ -166,11 +166,11 @@
   }
 }
 
-- (void)setRightButton:(UIControl *)rightButton {
+- (void)setRightButton:(UIView *)rightButton {
   [self setRightButton:rightButton animated:NO];
 }
 
-- (void)setRightButton:(UIControl *)rightButton animated:(BOOL)animated {
+- (void)setRightButton:(UIView *)rightButton animated:(BOOL)animated {
   if (animated) {
     UIView *oldRightButton = _rightButton;
     _rightButton = rightButton;

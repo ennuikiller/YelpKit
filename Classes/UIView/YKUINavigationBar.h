@@ -29,14 +29,14 @@
 
 @interface YKUINavigationBar : UIView {
   UIView *_contentView;
-  UIControl *_leftButton;
-  UIControl *_rightButton;
+  UIView *_leftButton;
+  UIView *_rightButton;
   
   CGSize _defaultContentViewSize;
 }
 
-@property (retain, nonatomic) UIControl *leftButton;
-@property (retain, nonatomic) UIControl *rightButton;
+@property (retain, nonatomic) UIView *leftButton;
+@property (retain, nonatomic) UIView *rightButton;
 @property (retain, nonatomic) UIView *contentView;
 
 /*!
@@ -59,13 +59,13 @@
  @param rightButton
  @param animated
  */
-- (void)setRightButton:(UIControl *)rightButton animated:(BOOL)animated;
+- (void)setRightButton:(UIView *)rightButton animated:(BOOL)animated;
 
 /*!
  Set left button.
  @param leftButton
  @param animated
  */
-- (void)setLeftButton:(UIControl *)leftButton animated:(BOOL)animated;
+- (void)setLeftButton:(UIView *)leftButton animated:(BOOL)animated;
 
 @end
