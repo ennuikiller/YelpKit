@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -56,6 +56,10 @@
 	<option value="instance_methods">Instance Methods</option>
 	
 	<option value="//api/name/isAnimating">&nbsp;&nbsp;&nbsp;&nbsp;- isAnimating</option>
+	
+	<option value="//api/name/setAnimating:">&nbsp;&nbsp;&nbsp;&nbsp;- setAnimating:</option>
+	
+	<option value="//api/name/setDetailText:">&nbsp;&nbsp;&nbsp;&nbsp;- setDetailText:</option>
 	
 	<option value="//api/name/setImage:">&nbsp;&nbsp;&nbsp;&nbsp;- setImage:</option>
 	
@@ -107,6 +111,10 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isAnimating">isAnimating</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setAnimating:">setAnimating:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setDetailText:">setDetailText:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setImage:">setImage:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setText:">setText:</a></span></li>
@@ -139,7 +147,7 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value">UIView</td>
+	<td class="specification-value"><a href="../Classes/YKUILayoutView.html">YKUILayoutView</a> : UIView</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
 	<td class="specification-value">YKUIActivityLabel.h<br />YKUIActivityLabel.m</td>
@@ -209,7 +217,16 @@ By default no image is shown.</p></span>
 	<span class="tooltip">
 		<code><a href="#//api/name/setText:">&ndash;&nbsp;setText:</a></code>
 		<span class="tooltip"><p>Set text.
-Alternatively, you can set <a href="#//api/name/textLabel">textLabel</a>.text.</p></span>
+Alternatively, you can set <a href="#//api/name/textLabel">textLabel</a>.text.
+You should call setNeedsLayout.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setDetailText:">&ndash;&nbsp;setDetailText:</a></code>
+		<span class="tooltip"><p>Set detail text.
+You should call setNeedsLayout.</p></span>
 	</span>
 	
 	
@@ -224,6 +241,14 @@ Alternatively, you can set <a href="#//api/name/textLabel">textLabel</a>.text.</
 	<span class="tooltip">
 		<code><a href="#//api/name/stopAnimating">&ndash;&nbsp;stopAnimating</a></code>
 		<span class="tooltip"><p>Stop activity indicator.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setAnimating:">&ndash;&nbsp;setAnimating:</a></code>
+		<span class="tooltip"><p>Start or stop animating.
+@param animating</p></span>
 	</span>
 	
 	
@@ -257,9 +282,11 @@ Alternatively, you can set <a href="#//api/name/textLabel">textLabel</a>.text.</
 		<p>Activity indicator style.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) UIActivityIndicatorViewStyle activityIndicatorViewStyle</code></div>
-	
+
+    
 	
 	
 	
@@ -291,9 +318,11 @@ Alternatively, you can set <a href="#//api/name/textLabel">textLabel</a>.text.</
 		<p>Detail label, which appears under the <a href="#//api/name/textLabel">textLabel</a>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic) UILabel *detailLabel</code></div>
-	
+
+    
 	
 	
 	
@@ -325,9 +354,11 @@ Alternatively, you can set <a href="#//api/name/textLabel">textLabel</a>.text.</
 		<p>Image view, when not animating (activity indicator).</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic) UIImageView *imageView</code></div>
-	
+
+    
 	
 	
 	
@@ -359,9 +390,11 @@ Alternatively, you can set <a href="#//api/name/textLabel">textLabel</a>.text.</
 		<p>Text label.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic) UILabel *textLabel</code></div>
-	
+
+    
 	
 	
 	
@@ -403,9 +436,95 @@ Alternatively, you can set <a href="#//api/name/textLabel">textLabel</a>.text.</
 		<p>Check if animating (activity indicator).</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (BOOL)isAnimating</code></div>
+
+    
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIActivityLabel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setAnimating:" title="setAnimating:"></a>
+	<h3 class="subsubtitle method-title">setAnimating:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Start or stop animating.
+@param animating</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setAnimating:(BOOL)<em>animating</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIActivityLabel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setDetailText:" title="setDetailText:"></a>
+	<h3 class="subsubtitle method-title">setDetailText:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Set detail text.
+You should call setNeedsLayout.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setDetailText:(NSString *)<em>detailText</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>detailText</em></dt>
+			<dd><p>Detail text</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -438,9 +557,11 @@ Alternatively, you can set <a href="#//api/name/textLabel">textLabel</a>.text.</
 By default no image is shown.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)setImage:(UIImage *)<em>image</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -480,12 +601,15 @@ By default no image is shown.</p>
 	
 	<div class="method-subsection brief-description">
 		<p>Set text.
-Alternatively, you can set <a href="#//api/name/textLabel">textLabel</a>.text.</p>
+Alternatively, you can set <a href="#//api/name/textLabel">textLabel</a>.text.
+You should call setNeedsLayout.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)setText:(NSString *)<em>text</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -527,9 +651,11 @@ Alternatively, you can set <a href="#//api/name/textLabel">textLabel</a>.text.</
 		<p>Start activity indicator.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)startAnimating</code></div>
-	
+
+    
 	
 	
 	
@@ -561,9 +687,11 @@ Alternatively, you can set <a href="#//api/name/textLabel">textLabel</a>.text.</
 		<p>Stop activity indicator.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)stopAnimating</code></div>
-	
+
+    
 	
 	
 	
@@ -598,9 +726,9 @@ Alternatively, you can set <a href="#//api/name/textLabel">textLabel</a>.text.</
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 YelpKit. All rights reserved. (Last updated: 2011-12-20)</span><br />
+						<p><span class="copyright">&copy; 2012 YelpKit. All rights reserved. (Last updated: 2012-04-16)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						
 					</div>
 				</div>
@@ -688,6 +816,14 @@ Alternatively, you can set <a href="#//api/name/textLabel">textLabel</a>.text.</
 			}
 			
 			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
 		</script>
 	</body>
 </html>

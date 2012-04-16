@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -453,9 +453,11 @@ time minus the default cache expiration age.</p></span>
 		<p>Gets the path to the directory of the disk cache for ETags.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *ETagCachePath</code></div>
-	
+
+    
 	
 	
 	
@@ -487,9 +489,11 @@ time minus the default cache expiration age.</p></span>
 		<p>Gets the path to the directory of the disk cache.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *cachePath</code></div>
-	
+
+    
 	
 	
 	
@@ -521,9 +525,11 @@ time minus the default cache expiration age.</p></span>
 		<p>Disables the disk cache. Disables ETag support as well.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL disableDiskCache</code></div>
-	
+
+    
 	
 	
 	
@@ -555,9 +561,11 @@ time minus the default cache expiration age.</p></span>
 		<p>  The amount of time to set back the modification timestamp on files when invalidating them.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (nonatomic) NSTimeInterval invalidationAge</code></div>
-	
+
+    
 	
 	
 	
@@ -589,9 +597,11 @@ time minus the default cache expiration age.</p></span>
 		<p>The maximum number of pixels to keep in memory for cached images.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (nonatomic) NSUInteger maxPixelCount</code></div>
-	
+
+    
 	
 	
 	
@@ -636,9 +646,11 @@ time minus the default cache expiration age.</p></span>
 		<p>Gets a shared cache identified with a unique name.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (YKURLCache *)cacheWithName:(NSString *)<em>name</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -680,9 +692,11 @@ time minus the default cache expiration age.</p></span>
 		<p>Get shared cache.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (YKURLCache *)sharedCache</code></div>
-	
+
+    
 	
 	
 	
@@ -714,9 +728,11 @@ time minus the default cache expiration age.</p></span>
 		<p>Total memory for the device.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (NSUInteger)totalMemory</code></div>
-	
+
+    
 	
 	
 	
@@ -758,9 +774,11 @@ File name: <key>
 File data: <ETag value></p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSString *)ETagCachePathForKey:(NSString *)<em>key</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -807,9 +825,11 @@ File data: <ETag value></p>
 		<p>Get an ETag value for a given cache key.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSString *)ETagForKey:(NSString *)<em>key</em></code></div>
-	
+
+    
 	
 	
 	
@@ -841,9 +861,11 @@ File data: <ETag value></p>
 		<p>   Stores an image in the memory cache.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (BOOL)cacheImage:(UIImage *)<em>image</em> forURLString:(NSString *)<em>URLString</em></code></div>
-	
+
+    
 	
 	
 	
@@ -875,9 +897,11 @@ File data: <ETag value></p>
 		<p>Gets the path in the cache where a key may be stored.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSString *)cachePathForKey:(NSString *)<em>key</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -919,9 +943,11 @@ File data: <ETag value></p>
 		<p>Gets the path in the cache where a URL may be stored.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSString *)cachePathForURLString:(NSString *)<em>URLString</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -963,9 +989,11 @@ File data: <ETag value></p>
 		<p>Gets the data for a URL from the cache if it exists.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSData *)dataForURLString:(NSString *)<em>URLString</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -1012,9 +1040,11 @@ File data: <ETag value></p>
 		<p>Gets the data for a URL from the cache if it exists and is newer than a minimum timestamp.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSData *)dataForURLString:(NSString *)<em>URLString</em> expires:(NSTimeInterval)<em>expirationAge</em> timestamp:(NSDate **)<em>timestamp</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -1071,9 +1101,11 @@ File data: <ETag value></p>
 		<p>Determines if there is a cache entry for a key.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (BOOL)hasDataForKey:(NSString *)<em>key</em> expires:(NSTimeInterval)<em>expirationAge</em></code></div>
-	
+
+    
 	
 	
 	
@@ -1105,9 +1137,11 @@ File data: <ETag value></p>
 		<p>Determines if there is a cache entry for a URL.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (BOOL)hasDataForURLString:(NSString *)<em>URLString</em></code></div>
-	
+
+    
 	
 	
 	
@@ -1139,9 +1173,11 @@ File data: <ETag value></p>
 		<p>Create cache.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id)initWithName:(NSString *)<em>name</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -1183,9 +1219,11 @@ File data: <ETag value></p>
 		<p>Invalidates all files in the disk cache according to rules explained in <code>invalidateURL</code>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)invalidateAll</code></div>
-	
+
+    
 	
 	
 	
@@ -1218,9 +1256,11 @@ File data: <ETag value></p>
 time minus the default cache expiration age.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)invalidateURLString:(NSString *)<em>URL</em></code></div>
-	
+
+    
 	
 	
 	
@@ -1258,9 +1298,11 @@ from the network if the default cache expiration age is used.</p>
 		<p>Gets the key that would be used to cache a URL response.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSString *)keyForURLString:(NSString *)<em>URLString</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -1302,9 +1344,11 @@ from the network if the default cache expiration age is used.</p>
 		<p>Soves the data currently stored under one URL to another URL.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)moveDataForURLString:(NSString *)<em>oldURLString</em> toURLString:(NSString *)<em>newURLString</em></code></div>
-	
+
+    
 	
 	
 	
@@ -1342,9 +1386,11 @@ retrieved from a server.  Once you know the permanent URL you can use this to mo
 		<p>Erases the memory cache and optionally the disk cache.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)removeAll:(BOOL)<em>fromDisk</em></code></div>
-	
+
+    
 	
 	
 	
@@ -1376,9 +1422,11 @@ retrieved from a server.  Once you know the permanent URL you can use this to mo
 		<p>Removes the data for a URL from the memory cache and optionally from the disk cache.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)removeURLString:(NSString *)<em>URLString</em> fromDisk:(BOOL)<em>fromDisk</em></code></div>
-	
+
+    
 	
 	
 	
@@ -1410,9 +1458,11 @@ retrieved from a server.  Once you know the permanent URL you can use this to mo
 		<p>Stores a data on disk.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)storeData:(NSData *)<em>data</em> forURLString:(NSString *)<em>URLString</em></code></div>
-	
+
+    
 	
 	
 	
@@ -1444,9 +1494,11 @@ retrieved from a server.  Once you know the permanent URL you can use this to mo
 		<p>Stores an ETag value in the ETag cache.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)storeETag:(NSString *)<em>ETag</em> forKey:(NSString *)<em>key</em></code></div>
-	
+
+    
 	
 	
 	
@@ -1481,9 +1533,9 @@ retrieved from a server.  Once you know the permanent URL you can use this to mo
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 YelpKit. All rights reserved. (Last updated: 2011-12-20)</span><br />
+						<p><span class="copyright">&copy; 2012 YelpKit. All rights reserved. (Last updated: 2012-04-16)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						
 					</div>
 				</div>
@@ -1571,6 +1623,14 @@ retrieved from a server.  Once you know the permanent URL you can use this to mo
 			}
 			
 			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
 		</script>
 	</body>
 </html>

@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -42,11 +42,15 @@
 	
 	<option value="class_methods">Class Methods</option>
 	
+	<option value="//api/name/regionForRegion:insets:size:">&nbsp;&nbsp;&nbsp;&nbsp;+ regionForRegion:insets:size:</option>
+	
+	<option value="//api/name/regionThatCentersOnAnnotation:location:maxDistance:coordinateSpan:">&nbsp;&nbsp;&nbsp;&nbsp;+ regionThatCentersOnAnnotation:location:maxDistance:coordinateSpan:</option>
+	
 	<option value="//api/name/regionThatFits:">&nbsp;&nbsp;&nbsp;&nbsp;+ regionThatFits:</option>
 	
 	<option value="//api/name/regionThatFits:center:">&nbsp;&nbsp;&nbsp;&nbsp;+ regionThatFits:center:</option>
 	
-	<option value="//api/name/regionThatFits:useCurrentLocation:currentLocationCoordinate:">&nbsp;&nbsp;&nbsp;&nbsp;+ regionThatFits:useCurrentLocation:currentLocationCoordinate:</option>
+	<option value="//api/name/regionThatFits:locationCoordinate:">&nbsp;&nbsp;&nbsp;&nbsp;+ regionThatFits:locationCoordinate:</option>
 	
 	
 	
@@ -76,11 +80,15 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/regionForRegion:insets:size:">regionForRegion:insets:size:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/regionThatCentersOnAnnotation:location:maxDistance:coordinateSpan:">regionThatCentersOnAnnotation:location:maxDistance:coordinateSpan:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/regionThatFits:">regionThatFits:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/regionThatFits:center:">regionThatFits:center:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/regionThatFits:useCurrentLocation:currentLocationCoordinate:">regionThatFits:useCurrentLocation:currentLocationCoordinate:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/regionThatFits:locationCoordinate:">regionThatFits:locationCoordinate:</a></span></li>
 	
 </ul></li>
 
@@ -139,8 +147,15 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/regionThatFits:useCurrentLocation:currentLocationCoordinate:">+&nbsp;regionThatFits:useCurrentLocation:currentLocationCoordinate:</a></code>
+		<code><a href="#//api/name/regionThatFits:locationCoordinate:">+&nbsp;regionThatFits:locationCoordinate:</a></code>
 		<span class="tooltip"><p>Region that fits annotations.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/regionForRegion:insets:size:">+&nbsp;regionForRegion:insets:size:</a></code>
+		<span class="tooltip"><p>Region with insets.</p></span>
 	</span>
 	
 	
@@ -154,7 +169,14 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/regionThatFits:center:">+&nbsp;regionThatFits:center:</a></code>
-		<span class="tooltip"><p>Region that fits annotations.</p></span>
+		<span class="tooltip"><p>Region that fits annotations with center point.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/regionThatCentersOnAnnotation:location:maxDistance:coordinateSpan:">+&nbsp;regionThatCentersOnAnnotation:location:maxDistance:coordinateSpan:</a></code>
+		<span class="tooltip"><p>Region that is centered on annotation with location, if within maxDistance.</p></span>
 	</span>
 	
 	
@@ -174,6 +196,103 @@
 						<h2 class="subtitle subtitle-methods">Class Methods</h2>
 						
 						<div class="section-method">
+	<a name="//api/name/regionForRegion:insets:size:" title="regionForRegion:insets:size:"></a>
+	<h3 class="subsubtitle method-title">regionForRegion:insets:size:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Region with insets.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (MKCoordinateRegion)regionForRegion:(MKCoordinateRegion)<em>region</em> insets:(CGPoint)<em>insets</em> size:(CGSize)<em>size</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKMKUtils.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/regionThatCentersOnAnnotation:location:maxDistance:coordinateSpan:" title="regionThatCentersOnAnnotation:location:maxDistance:coordinateSpan:"></a>
+	<h3 class="subsubtitle method-title">regionThatCentersOnAnnotation:location:maxDistance:coordinateSpan:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Region that is centered on annotation with location, if within maxDistance.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (MKCoordinateRegion)regionThatCentersOnAnnotation:(id&lt;MKAnnotation&gt;)<em>annotation</em> location:(CLLocation *)<em>location</em> maxDistance:(CLLocationDistance)<em>maxDistance</em> coordinateSpan:(MKCoordinateSpan)<em>coordinateSpan</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>annotation</em></dt>
+			<dd><p>Annotation</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>location</em></dt>
+			<dd><p>Location (maybe Current Location)</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>maxDistance</em></dt>
+			<dd><p>Max distance between annotation and location before we decide not to include location in the region</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>coordinateSpan</em></dt>
+			<dd><p>Span to use if location not included</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKMKUtils.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/regionThatFits:" title="regionThatFits:"></a>
 	<h3 class="subsubtitle method-title">regionThatFits:</h3>
 	
@@ -183,9 +302,11 @@
 		<p>Region that fits annotations.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (MKCoordinateRegion)regionThatFits:(NSArray *)<em>annotations</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -224,12 +345,14 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Region that fits annotations.</p>
+		<p>Region that fits annotations with center point.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (MKCoordinateRegion)regionThatFits:(NSArray *)<em>annotations</em> center:(CLLocationCoordinate2D)<em>center</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -267,8 +390,8 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/regionThatFits:useCurrentLocation:currentLocationCoordinate:" title="regionThatFits:useCurrentLocation:currentLocationCoordinate:"></a>
-	<h3 class="subsubtitle method-title">regionThatFits:useCurrentLocation:currentLocationCoordinate:</h3>
+	<a name="//api/name/regionThatFits:locationCoordinate:" title="regionThatFits:locationCoordinate:"></a>
+	<h3 class="subsubtitle method-title">regionThatFits:locationCoordinate:</h3>
 	
 	
 	
@@ -276,9 +399,11 @@
 		<p>Region that fits annotations.</p>
 	</div>		
 	
-	
-	<div class="method-subsection method-declaration"><code>+ (MKCoordinateRegion)regionThatFits:(NSArray *)<em>annotations</em> useCurrentLocation:(BOOL)<em>useCurrentLocation</em> currentLocationCoordinate:(CLLocationCoordinate2D)<em>currentLocationCoordinate</em></code></div>
-	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (MKCoordinateRegion)regionThatFits:(NSArray *)<em>annotations</em> locationCoordinate:(CLLocationCoordinate2D)<em>locationCoordinate</em></code></div>
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -289,13 +414,8 @@
 		</dl>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>useCurrentLocation</em></dt>
-			<dd><p>If YES, will use currentLocationCoordinate</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>currentLocationCoordinate</em></dt>
-			<dd><p>Coordinate to include</p></dd>
+			<dt><em>locationCoordinate</em></dt>
+			<dd><p>Coordinate to include. It won&rsquo;t include if the distance from any annotation is > kMaxRegionThatFitsDistance.</p></dd>
 		</dl>
 		
 	</div>
@@ -335,9 +455,9 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 YelpKit. All rights reserved. (Last updated: 2011-12-20)</span><br />
+						<p><span class="copyright">&copy; 2012 YelpKit. All rights reserved. (Last updated: 2012-04-16)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						
 					</div>
 				</div>
@@ -425,6 +545,14 @@
 			}
 			
 			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
 		</script>
 	</body>
 </html>

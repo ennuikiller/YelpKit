@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -58,6 +58,8 @@
 	<option value="//api/name/errorWithKey:">&nbsp;&nbsp;&nbsp;&nbsp;+ errorWithKey:</option>
 	
 	<option value="//api/name/errorWithKey:error:">&nbsp;&nbsp;&nbsp;&nbsp;+ errorWithKey:error:</option>
+	
+	<option value="//api/name/errorWithKey:localizedDescription:">&nbsp;&nbsp;&nbsp;&nbsp;+ errorWithKey:localizedDescription:</option>
 	
 	<option value="//api/name/errorWithKey:userInfo:">&nbsp;&nbsp;&nbsp;&nbsp;+ errorWithKey:userInfo:</option>
 	
@@ -125,6 +127,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/errorWithKey:">errorWithKey:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/errorWithKey:error:">errorWithKey:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/errorWithKey:localizedDescription:">errorWithKey:localizedDescription:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/errorWithKey:userInfo:">errorWithKey:userInfo:</a></span></li>
 	
@@ -277,6 +281,13 @@ See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p></span>
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/errorWithKey:localizedDescription:">+&nbsp;errorWithKey:localizedDescription:</a></code>
+		<span class="tooltip"><p>See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/errorWithKey:">+&nbsp;errorWithKey:</a></code>
 		<span class="tooltip"><p>See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p></span>
 	</span>
@@ -329,7 +340,7 @@ See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p></span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/errorForError:">+&nbsp;errorForError:</a></code>
-		<span class="tooltip"><p>Create <a href="YKError.html">YKError</a> from NSError.</p></span>
+		<span class="tooltip"><p>Create YKError from NSError.</p></span>
 	</span>
 	
 	
@@ -363,9 +374,11 @@ See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p></span>
 		<p>Description for error, to override in userInfo.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (retain, nonatomic) NSString *description</code></div>
-	
+
+    
 	
 	
 	
@@ -397,9 +410,11 @@ See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p></span>
 		<p>The unique string identifier for this error.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (readonly, retain, nonatomic) NSString *key</code></div>
-	
+
+    
 	
 	
 	
@@ -432,9 +447,11 @@ See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p></span>
 For example, if there was an error in talk we might set this to:</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (retain, nonatomic) NSString *unknownDescription</code></div>
-	
+
+    
 	
 	
 	
@@ -477,18 +494,20 @@ For example, if there was an error in talk we might set this to:</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Create <a href="YKError.html">YKError</a> from NSError.</p>
+		<p>Create YKError from NSError.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (YKError *)errorForError:(NSError *)<em>error</em></code></div>
-	
+
+    
 	
 	
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>Results passed in error if that was already a <a href="YKError.html">YKError</a></p>
+		<p>Results passed in error if that was already a YKError</p>
 	</div>
 	
 	
@@ -520,9 +539,11 @@ For example, if there was an error in talk we might set this to:</p>
 @param <a href="#//api/name/description">description</a></p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (id)errorWithDescription:(NSString *)<em>description</em></code></div>
-	
+
+    
 	
 	
 	
@@ -554,9 +575,11 @@ For example, if there was an error in talk we might set this to:</p>
 		<p>See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (id)errorWithKey:(NSString *const)<em>key</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -598,9 +621,11 @@ For example, if there was an error in talk we might set this to:</p>
 		<p>See <a href="#//api/name/initWithKey:error:">initWithKey:error:</a>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (id)errorWithKey:(NSString *const)<em>key</em> error:(NSError *)<em>error</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -638,6 +663,57 @@ For example, if there was an error in talk we might set this to:</p>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/errorWithKey:localizedDescription:" title="errorWithKey:localizedDescription:"></a>
+	<h3 class="subsubtitle method-title">errorWithKey:localizedDescription:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (id)errorWithKey:(NSString *const)<em>key</em> localizedDescription:(NSString *)<em>localizedDescription</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>key</em></dt>
+			<dd><p>Key</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>localizedDescription</em></dt>
+			<dd><p>Localized <a href="#//api/name/description">description</a></p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKError.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/errorWithKey:userInfo:" title="errorWithKey:userInfo:"></a>
 	<h3 class="subsubtitle method-title">errorWithKey:userInfo:</h3>
 	
@@ -647,9 +723,11 @@ For example, if there was an error in talk we might set this to:</p>
 		<p>See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (id)errorWithKey:(NSString *const)<em>key</em> userInfo:(NSDictionary *)<em>userInfo</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -704,9 +782,11 @@ For example, if there was an error in talk we might set this to:</p>
 		<p>Fields that caused the error.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSArray *)fields</code></div>
-	
+
+    
 	
 	
 	
@@ -743,9 +823,11 @@ For example, if there was an error in talk we might set this to:</p>
 		<p>Create error with <a href="#//api/name/key">key</a>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id)initWithKey:(NSString *const)<em>key</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -802,9 +884,11 @@ The domain is set to YKErrorDomain.</p>
 See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id)initWithKey:(NSString *const)<em>key</em> error:(NSError *)<em>error</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -857,9 +941,11 @@ See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p>
 See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id)initWithKey:(NSString *const)<em>key</em> userInfo:(NSDictionary *)<em>userInfo</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -911,9 +997,11 @@ See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p>
 		<p>For subclasses to overide the default implementation for localized <a href="#//api/name/description">description</a> from <a href="#//api/name/key">key</a>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSString *)localizedDescriptionForKey</code></div>
-	
+
+    
 	
 	
 	
@@ -951,9 +1039,11 @@ See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p>
 @param <a href="#//api/name/description">description</a></p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)setDescription:(NSString *)<em>description</em></code></div>
-	
+
+    
 	
 	
 	
@@ -985,9 +1075,11 @@ See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p>
 		<p>Get the user info for <a href="#//api/name/key">key</a>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id)userInfoForKey:(NSString *)<em>key</em></code></div>
-	
+
+    
 	
 	
 	
@@ -1019,9 +1111,11 @@ See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p>
 		<p>Get the user info for <a href="#//api/name/key">key</a> and subKey.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id)userInfoForKey:(NSString *)<em>key</em> subKey:(NSString *)<em>subKey</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -1071,9 +1165,9 @@ See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 YelpKit. All rights reserved. (Last updated: 2011-12-20)</span><br />
+						<p><span class="copyright">&copy; 2012 YelpKit. All rights reserved. (Last updated: 2012-04-16)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						
 					</div>
 				</div>
@@ -1161,6 +1255,14 @@ See <a href="#//api/name/initWithKey:">initWithKey:</a>.</p>
 			}
 			
 			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
 		</script>
 	</body>
 </html>

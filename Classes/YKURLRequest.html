@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -256,7 +256,7 @@ The delegate is retained for the duration of the connection.</p></span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/compressor">+&nbsp;compressor</a></code>
-		<span class="tooltip"><p>the <a href="#//api/name/compressor">compressor</a> used for request compression.</p></span>
+		<span class="tooltip"><p>the compressor used for request compression.</p></span>
 	</span>
 	
 	
@@ -334,7 +334,7 @@ A <a href="#//api/name/compressor">compressor</a> for gzip with GTM would look l
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/cache">&ndash;&nbsp;cache</a></code>
-		<span class="tooltip"><p>The shared <a href="#//api/name/cache">cache</a> used by this request.</p></span>
+		<span class="tooltip"><p>The shared cache used by this request.</p></span>
 	</span>
 	
 	
@@ -367,18 +367,20 @@ A <a href="#//api/name/compressor">compressor</a> for gzip with GTM would look l
 	
 	
 	<div class="method-subsection brief-description">
-		<p>the <a href="#//api/name/compressor">compressor</a> used for request compression.</p>
+		<p>the compressor used for request compression.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (id&lt;YKCompressor&gt;)compressor</code></div>
-	
+
+    
 	
 	
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>the <a href="#//api/name/compressor">compressor</a> used for request compression.</p>
+		<p>the compressor used for request compression.</p>
 	</div>
 	
 	
@@ -409,9 +411,11 @@ A <a href="#//api/name/compressor">compressor</a> for gzip with GTM would look l
 		<p>Connection class (for mocking).</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (Class)connectionClass</code></div>
-	
+
+    
 	
 	
 	
@@ -448,9 +452,11 @@ A <a href="#//api/name/compressor">compressor</a> for gzip with GTM would look l
 		<p>Set whether to ignore auth errors. Useful for testing in debug environments with self signed certs.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (void)setAuthProtectionDisabled:(BOOL)<em>authProtectionDisabled</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -492,9 +498,11 @@ A <a href="#//api/name/compressor">compressor</a> for gzip with GTM would look l
 		<p>To disable the <a href="#//api/name/cache">cache</a> globally. (For testing.)</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (void)setCacheEnabled:(BOOL)<em>cacheEnabled</em></code></div>
-	
+
+    
 	
 	
 	
@@ -527,9 +535,11 @@ A <a href="#//api/name/compressor">compressor</a> for gzip with GTM would look l
 A <a href="#//api/name/compressor">compressor</a> for gzip with GTM would look like:</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (void)setCompressor:(id&lt;YKCompressor&gt;)<em>compressor</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -592,9 +602,11 @@ A <a href="#//api/name/compressor">compressor</a> for gzip with GTM would look l
 		<p>Override connection class.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (void)setConnectionClass:(Class)<em>theClass</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -641,12 +653,14 @@ A <a href="#//api/name/compressor">compressor</a> for gzip with GTM would look l
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The shared <a href="#//api/name/cache">cache</a> used by this request.</p>
+		<p>The shared cache used by this request.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (YKURLCache *)cache</code></div>
-	
+
+    
 	
 	
 	
@@ -678,9 +692,11 @@ A <a href="#//api/name/compressor">compressor</a> for gzip with GTM would look l
 		<p>Cancel request. Will issued a cancelled notification to the delegate</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)cancel</code></div>
-	
+
+    
 	
 	
 	
@@ -712,9 +728,11 @@ A <a href="#//api/name/compressor">compressor</a> for gzip with GTM would look l
 		<p>Close request. Releases connection and delegate.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)close</code></div>
-	
+
+    
 	
 	
 	
@@ -746,9 +764,11 @@ A <a href="#//api/name/compressor">compressor</a> for gzip with GTM would look l
 		<p>Get downloaded data as string (UTF-8).</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSString *)downloadedDataAsString</code></div>
-	
+
+    
 	
 	
 	
@@ -780,9 +800,11 @@ A <a href="#//api/name/compressor">compressor</a> for gzip with GTM would look l
 		<p>Description of request metrics.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSString *)metricsDescription</code></div>
-	
+
+    
 	
 	
 	
@@ -815,9 +837,11 @@ A <a href="#//api/name/compressor">compressor</a> for gzip with GTM would look l
 The delegate is retained for the duration of the connection.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (BOOL)requestWithURL:(YKURL *)<em>URL</em> headers:(NSDictionary *)<em>headers</em> delegate:(id)<em>delegate</em> finishSelector:(SEL)<em>finishSelector</em> failSelector:(SEL)<em>failSelector</em> cancelSelector:(SEL)<em>cancelSelector</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -841,7 +865,7 @@ The delegate is retained for the duration of the connection.</p>
 			<dt><em>finishSelector</em></dt>
 			<dd><p>Finished selector, with a signature like:
   @code
-  &ndash; (void)requestDidFinish:(<a href="YKURLRequest.html">YKURLRequest</a> *)request;
+  &ndash; (void)requestDidFinish:(YKURLRequest *)request;
   @endcode</p></dd>
 		</dl>
 		
@@ -849,7 +873,7 @@ The delegate is retained for the duration of the connection.</p>
 			<dt><em>failSelector</em></dt>
 			<dd><p>Failure selector, with a signature like:
   @code
-  &ndash; (void)request:(<a href="YKURLRequest.html">YKURLRequest</a> <strong>)request failedWithError:(<a href="../Classes/YKError.html">YKError</a> </strong>)error;
+  &ndash; (void)request:(YKURLRequest <em>)request failedWithError:(<a href="../Classes/YKError.html">YKError</a> </em>)error;
   @endcode</p></dd>
 		</dl>
 		
@@ -857,7 +881,7 @@ The delegate is retained for the duration of the connection.</p>
 			<dt><em>cancelSelector</em></dt>
 			<dd><p>Cancel selector, with a signature like:
   @code
-  &ndash; (void)requestDidCancel:(<a href="YKURLRequest.html">YKURLRequest</a> *)request;
+  &ndash; (void)requestDidCancel:(YKURLRequest *)request;
   @endcode</p></dd>
 		</dl>
 		
@@ -905,9 +929,11 @@ The delegate is retained for the duration of the connection.</p>
 		<p>Date from response header, if any.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSDate *)responseDate</code></div>
-	
+
+    
 	
 	
 	
@@ -939,9 +965,11 @@ The delegate is retained for the duration of the connection.</p>
 		<p>Response headers.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSDictionary *)responseHeaderFields</code></div>
-	
+
+    
 	
 	
 	
@@ -973,9 +1001,11 @@ The delegate is retained for the duration of the connection.</p>
 		<p>Response status code (If HTTP response, the HTTP response code.)</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (NSInteger)responseStatusCode</code></div>
-	
+
+    
 	
 	
 	
@@ -1007,9 +1037,11 @@ The delegate is retained for the duration of the connection.</p>
 		<p>Set the HTTP body data.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)setHTTPBody:(NSData *)<em>data</em> compress:(BOOL)<em>compress</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -1056,9 +1088,11 @@ The delegate is retained for the duration of the connection.</p>
 		<p>Set the HTTP multipart data.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)setHTTPBodyMultipart:(NSDictionary *)<em>multipart</em> keyEnumerator:(NSEnumerator *)<em>keyEnumerator</em> compress:(BOOL)<em>compress</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -1110,9 +1144,11 @@ The delegate is retained for the duration of the connection.</p>
 		<p>Should load from <a href="#//api/name/cache">cache</a>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (BOOL)shouldAttemptLoadFromCache</code></div>
-	
+
+    
 	
 	
 	
@@ -1144,9 +1180,11 @@ The delegate is retained for the duration of the connection.</p>
 		<p>Should store in <a href="#//api/name/cache">cache</a>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (BOOL)shouldStoreInCache</code></div>
-	
+
+    
 	
 	
 	
@@ -1186,9 +1224,9 @@ The delegate is retained for the duration of the connection.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 YelpKit. All rights reserved. (Last updated: 2011-12-20)</span><br />
+						<p><span class="copyright">&copy; 2012 YelpKit. All rights reserved. (Last updated: 2012-04-16)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						
 					</div>
 				</div>
@@ -1276,6 +1314,14 @@ The delegate is retained for the duration of the connection.</p>
 			}
 			
 			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
 		</script>
 	</body>
 </html>

@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -51,9 +51,13 @@
 	
 	<option value="//api/name/didTouchUpInside">&nbsp;&nbsp;&nbsp;&nbsp;- didTouchUpInside</option>
 	
+	<option value="//api/name/layoutView">&nbsp;&nbsp;&nbsp;&nbsp;- layoutView</option>
+	
 	<option value="//api/name/removeAllTargets">&nbsp;&nbsp;&nbsp;&nbsp;- removeAllTargets</option>
 	
 	<option value="//api/name/setTarget:action:">&nbsp;&nbsp;&nbsp;&nbsp;- setTarget:action:</option>
+	
+	<option value="//api/name/setTarget:action:context:">&nbsp;&nbsp;&nbsp;&nbsp;- setTarget:action:context:</option>
 	
 	<option value="//api/name/sharedInit">&nbsp;&nbsp;&nbsp;&nbsp;- sharedInit</option>
 	
@@ -95,9 +99,13 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didTouchUpInside">didTouchUpInside</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/layoutView">layoutView</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeAllTargets">removeAllTargets</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setTarget:action:">setTarget:action:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setTarget:action:context:">setTarget:action:context:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedInit">sharedInit</a></span></li>
 	
@@ -153,7 +161,7 @@
 		<code><a href="#//api/name/sharedInit">&ndash;&nbsp;sharedInit</a></code>
 		<span class="tooltip"><p>This method gets called by both initWithFrame and initWithCoder. Subclasses taking advantage of
 this method should make sure to call [super sharedInit] at the top of their implementation
-of <a href="../Classes/YKUIControl.html#//api/name/sharedInit">sharedInit</a></p></span>
+of sharedInit</p></span>
 	</span>
 	
 	
@@ -196,7 +204,18 @@ Does NOT remove targets that the control has set for itself.</p></span>
 	<span class="tooltip">
 		<code><a href="#//api/name/setTarget:action:">&ndash;&nbsp;setTarget:action:</a></code>
 		<span class="tooltip"><p>Set target and action.
-Will pass self as the argument if you specify an argument.
+Will pass self as the argument.
+Selected status is set before this method is called.
+@param target
+@param action</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setTarget:action:context:">&ndash;&nbsp;setTarget:action:context:</a></code>
+		<span class="tooltip"><p>Set target and action.
+Will pass context as the argument or self if context is nil.
 Selected status is set before this method is called.
 @param target
 @param action</p></span>
@@ -207,6 +226,15 @@ Selected status is set before this method is called.
 	<span class="tooltip">
 		<code><a href="#//api/name/didTouchUpInside">&ndash;&nbsp;didTouchUpInside</a></code>
 		<span class="tooltip"><p>Notification of touch (for subclasses).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/layoutView">&ndash;&nbsp;layoutView</a></code>
+		<span class="tooltip"><p>Force the layout, if using <a href="../Classes/YKLayout.html">YKLayout</a>.
+You can use this instead of <a href="#//api/name/setNeedsLayout">setNeedsLayout</a> + layoutIfNeeded.
+This is also useful when using animations and <a href="#//api/name/setNeedsLayout">setNeedsLayout</a> + layoutIfNeeded don&rsquo;t work as expected.</p></span>
 	</span>
 	
 	
@@ -236,9 +264,11 @@ Selected status is set before this method is called.
 Does NOT remove targets that the control has set for itself.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (void)removeAllTargets:(UIControl *)<em>control</em></code></div>
-	
+
+    
 	
 	
 	
@@ -273,9 +303,11 @@ Does NOT remove targets that the control has set for itself.</p>
 @param event</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (BOOL)touchesAllInView:(UIView *)<em>view</em> touches:(NSSet *)<em>touches</em> withEvent:(UIEvent *)<em>event</em></code></div>
-	
+
+    
 	
 	
 	
@@ -320,9 +352,49 @@ Does NOT remove targets that the control has set for itself.</p>
 		<p>Notification of touch (for subclasses).</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)didTouchUpInside</code></div>
+
+    
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIControl.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/layoutView" title="layoutView"></a>
+	<h3 class="subsubtitle method-title">layoutView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Force the layout, if using <a href="../Classes/YKLayout.html">YKLayout</a>.
+You can use this instead of <a href="#//api/name/setNeedsLayout">setNeedsLayout</a> + layoutIfNeeded.
+This is also useful when using animations and <a href="#//api/name/setNeedsLayout">setNeedsLayout</a> + layoutIfNeeded don&rsquo;t work as expected.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)layoutView</code></div>
+
+    
 	
 	
 	
@@ -355,9 +427,11 @@ Does NOT remove targets that the control has set for itself.</p>
 Does NOT remove or clear the <a href="#//api/name/setTarget:action:">setTarget:action:</a>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)removeAllTargets</code></div>
-	
+
+    
 	
 	
 	
@@ -387,15 +461,67 @@ Does NOT remove or clear the <a href="#//api/name/setTarget:action:">setTarget:a
 	
 	<div class="method-subsection brief-description">
 		<p>Set target and action.
-Will pass self as the argument if you specify an argument.
+Will pass self as the argument.
 Selected status is set before this method is called.
 @param target
 @param action</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)setTarget:(id)<em>target</em> action:(SEL)<em>action</em></code></div>
+
+    
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIControl.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setTarget:action:context:" title="setTarget:action:context:"></a>
+	<h3 class="subsubtitle method-title">setTarget:action:context:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Set target and action.
+Will pass context as the argument or self if context is nil.
+Selected status is set before this method is called.
+@param target
+@param action</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setTarget:(id)<em>target</em> action:(SEL)<em>action</em> context:(id)<em>context</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>context</em></dt>
+			<dd><p>Weak</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -426,12 +552,14 @@ Selected status is set before this method is called.
 	<div class="method-subsection brief-description">
 		<p>This method gets called by both initWithFrame and initWithCoder. Subclasses taking advantage of
 this method should make sure to call [super sharedInit] at the top of their implementation
-of <a href="../Classes/YKUIControl.html#//api/name/sharedInit">sharedInit</a></p>
+of sharedInit</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)sharedInit</code></div>
-	
+
+    
 	
 	
 	
@@ -465,9 +593,11 @@ of <a href="../Classes/YKUIControl.html#//api/name/sharedInit">sharedInit</a></p
 @param event</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (BOOL)touchesAllInView:(NSSet *)<em>touches</em> withEvent:(UIEvent *)<em>event</em></code></div>
-	
+
+    
 	
 	
 	
@@ -507,9 +637,9 @@ of <a href="../Classes/YKUIControl.html#//api/name/sharedInit">sharedInit</a></p
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 YelpKit. All rights reserved. (Last updated: 2011-12-20)</span><br />
+						<p><span class="copyright">&copy; 2012 YelpKit. All rights reserved. (Last updated: 2012-04-16)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						
 					</div>
 				</div>
@@ -597,6 +727,14 @@ of <a href="../Classes/YKUIControl.html#//api/name/sharedInit">sharedInit</a></p
 			}
 			
 			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
 		</script>
 	</body>
 </html>

@@ -1,0 +1,766 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>YKUIActionSheet Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">YelpKit </a></h1>
+				<a id="developerHome" href="../index.html">YelpKit</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">YKUIActionSheet Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/addButtonWithTitle:action:">&nbsp;&nbsp;&nbsp;&nbsp;- addButtonWithTitle:action:</option>
+	
+	<option value="//api/name/cancel">&nbsp;&nbsp;&nbsp;&nbsp;- cancel</option>
+	
+	<option value="//api/name/dismissWithClickedButtonIndex:animated:">&nbsp;&nbsp;&nbsp;&nbsp;- dismissWithClickedButtonIndex:animated:</option>
+	
+	<option value="//api/name/initWithTitle:target:cancelButtonTitle:cancelAction:destructiveButtonTitle:destructiveAction:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithTitle:target:cancelButtonTitle:cancelAction:destructiveButtonTitle:destructiveAction:</option>
+	
+	<option value="//api/name/showFromBarButtonItem:animated:">&nbsp;&nbsp;&nbsp;&nbsp;- showFromBarButtonItem:animated:</option>
+	
+	<option value="//api/name/showFromRect:inView:animated:">&nbsp;&nbsp;&nbsp;&nbsp;- showFromRect:inView:animated:</option>
+	
+	<option value="//api/name/showFromTabBar:">&nbsp;&nbsp;&nbsp;&nbsp;- showFromTabBar:</option>
+	
+	<option value="//api/name/showFromToolbar:">&nbsp;&nbsp;&nbsp;&nbsp;- showFromToolbar:</option>
+	
+	<option value="//api/name/showInView:">&nbsp;&nbsp;&nbsp;&nbsp;- showInView:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addButtonWithTitle:action:">addButtonWithTitle:action:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cancel">cancel</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dismissWithClickedButtonIndex:animated:">dismissWithClickedButtonIndex:animated:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithTitle:target:cancelButtonTitle:cancelAction:destructiveButtonTitle:destructiveAction:">initWithTitle:target:cancelButtonTitle:cancelAction:destructiveButtonTitle:destructiveAction:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/showFromBarButtonItem:animated:">showFromBarButtonItem:animated:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/showFromRect:inView:animated:">showFromRect:inView:animated:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/showFromTabBar:">showFromTabBar:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/showFromToolbar:">showFromToolbar:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/showInView:">showInView:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="YKUIActionSheet Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">YKUIActionSheet Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">UIActionSheetDelegate</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">YKUIActionSheet.h<br />YKUIActionSheet.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Action sheet with target and actions associated with titles.
+Useful for conditional titles and not having to deal with a single delegate, and button index.</p>
+
+<pre><code> YKUIActionSheet *actionSheet = [[YKUIActionSheet alloc] initWithTitle:nil target:self cancelButtonTitle:NSLocalizedString(@"Cancel") cancelAction:NULL
+    destructiveButtonTitle:nil destructiveAction:NULL];
+
+ if (...) [actionSheet addButtonWithTitle:NSLocalizedString(@"Use My Facebook Photo") action:@selector(_useFacebookProfilePhoto)];
+ if (...) [actionSheet addButtonWithTitle:YKLocalizedString(@"TakePhoto") action:@selector(_takePhoto)];
+ [actionSheet addButtonWithTitle:YKLocalizedString(@"ChooseExistingPhoto") action:@selector(_choosePhoto)];
+ actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+ [actionSheet showInView:[UIApplication sharedApplication].keyWindow];
+ [actionSheet autorelease];
+</code></pre>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithTitle:target:cancelButtonTitle:cancelAction:destructiveButtonTitle:destructiveAction:">&ndash;&nbsp;initWithTitle:target:cancelButtonTitle:cancelAction:destructiveButtonTitle:destructiveAction:</a></code>
+		<span class="tooltip"><p>Create action sheet.
+@param title
+@param target
+@param cancelButtonTitle
+@param cancelAction
+@param destructiveButtonTitle
+@param destructiveAction</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addButtonWithTitle:action:">&ndash;&nbsp;addButtonWithTitle:action:</a></code>
+		<span class="tooltip"><p>Add button to action sheet.
+@param title
+@param action</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/showFromToolbar:">&ndash;&nbsp;showFromToolbar:</a></code>
+		<span class="tooltip"><p>Show action sheet from toolbar.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/showFromTabBar:">&ndash;&nbsp;showFromTabBar:</a></code>
+		<span class="tooltip"><p>Show action sheet from tab bar.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/showInView:">&ndash;&nbsp;showInView:</a></code>
+		<span class="tooltip"><p>Show action sheet from view.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/showFromBarButtonItem:animated:">&ndash;&nbsp;showFromBarButtonItem:animated:</a></code>
+		<span class="tooltip"><p>Show action sheet from bar button item.
+@param item
+@param animated</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/showFromRect:inView:animated:">&ndash;&nbsp;showFromRect:inView:animated:</a></code>
+		<span class="tooltip"><p>Show action sheet in rect.
+@param rect
+@param view
+@param animated</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/dismissWithClickedButtonIndex:animated:">&ndash;&nbsp;dismissWithClickedButtonIndex:animated:</a></code>
+		<span class="tooltip"><p>Dismiss sheet as if the buttonIndex was pressed.
+@param buttonIndex
+@param animated</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cancel">&ndash;&nbsp;cancel</a></code>
+		<span class="tooltip"><p>Dismiss the sheet.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/addButtonWithTitle:action:" title="addButtonWithTitle:action:"></a>
+	<h3 class="subsubtitle method-title">addButtonWithTitle:action:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add button to action sheet.
+@param title
+@param action</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)addButtonWithTitle:(NSString *)<em>title</em> action:(SEL)<em>action</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIActionSheet.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cancel" title="cancel"></a>
+	<h3 class="subsubtitle method-title">cancel</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Dismiss the sheet.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)cancel</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIActionSheet.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/dismissWithClickedButtonIndex:animated:" title="dismissWithClickedButtonIndex:animated:"></a>
+	<h3 class="subsubtitle method-title">dismissWithClickedButtonIndex:animated:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Dismiss sheet as if the buttonIndex was pressed.
+@param buttonIndex
+@param animated</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)dismissWithClickedButtonIndex:(NSInteger)<em>buttonIndex</em> animated:(BOOL)<em>animated</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIActionSheet.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithTitle:target:cancelButtonTitle:cancelAction:destructiveButtonTitle:destructiveAction:" title="initWithTitle:target:cancelButtonTitle:cancelAction:destructiveButtonTitle:destructiveAction:"></a>
+	<h3 class="subsubtitle method-title">initWithTitle:target:cancelButtonTitle:cancelAction:destructiveButtonTitle:destructiveAction:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create action sheet.
+@param title
+@param target
+@param cancelButtonTitle
+@param cancelAction
+@param destructiveButtonTitle
+@param destructiveAction</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithTitle:(NSString *)<em>title</em> target:(id)<em>target</em> cancelButtonTitle:(NSString *)<em>cancelButtonTitle</em> cancelAction:(SEL)<em>cancelAction</em> destructiveButtonTitle:(NSString *)<em>destructiveButtonTitle</em> destructiveAction:(SEL)<em>destructiveAction</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIActionSheet.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/showFromBarButtonItem:animated:" title="showFromBarButtonItem:animated:"></a>
+	<h3 class="subsubtitle method-title">showFromBarButtonItem:animated:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Show action sheet from bar button item.
+@param item
+@param animated</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)showFromBarButtonItem:(UIBarButtonItem *)<em>item</em> animated:(BOOL)<em>animated</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Available in iOS3.2 and later.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIActionSheet.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/showFromRect:inView:animated:" title="showFromRect:inView:animated:"></a>
+	<h3 class="subsubtitle method-title">showFromRect:inView:animated:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Show action sheet in rect.
+@param rect
+@param view
+@param animated</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)showFromRect:(CGRect)<em>rect</em> inView:(UIView *)<em>view</em> animated:(BOOL)<em>animated</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Available in iOS3.2 and later.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIActionSheet.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/showFromTabBar:" title="showFromTabBar:"></a>
+	<h3 class="subsubtitle method-title">showFromTabBar:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Show action sheet from tab bar.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)showFromTabBar:(UITabBar *)<em>view</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>view</em></dt>
+			<dd><p>Source view</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIActionSheet.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/showFromToolbar:" title="showFromToolbar:"></a>
+	<h3 class="subsubtitle method-title">showFromToolbar:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Show action sheet from toolbar.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)showFromToolbar:(UIToolbar *)<em>view</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>view</em></dt>
+			<dd><p>Source view</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIActionSheet.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/showInView:" title="showInView:"></a>
+	<h3 class="subsubtitle method-title">showInView:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Show action sheet from view.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)showInView:(UIView *)<em>view</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>view</em></dt>
+			<dd><p>Source view</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIActionSheet.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2012 YelpKit. All rights reserved. (Last updated: 2012-04-16)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

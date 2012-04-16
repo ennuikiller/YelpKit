@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -42,11 +42,15 @@
 	
 	<option value="class_methods">Class Methods</option>
 	
+	<option value="//api/name/countryCode">&nbsp;&nbsp;&nbsp;&nbsp;+ countryCode</option>
+	
 	<option value="//api/name/currencySymbol">&nbsp;&nbsp;&nbsp;&nbsp;+ currencySymbol</option>
 	
 	<option value="//api/name/currentLocale">&nbsp;&nbsp;&nbsp;&nbsp;+ currentLocale</option>
 	
 	<option value="//api/name/dateFormatter">&nbsp;&nbsp;&nbsp;&nbsp;+ dateFormatter</option>
+	
+	<option value="//api/name/disableMockCountryCode">&nbsp;&nbsp;&nbsp;&nbsp;+ disableMockCountryCode</option>
 	
 	<option value="//api/name/isMetric">&nbsp;&nbsp;&nbsp;&nbsp;+ isMetric</option>
 	
@@ -65,6 +69,8 @@
 	<option value="//api/name/localizedPath:ofType:">&nbsp;&nbsp;&nbsp;&nbsp;+ localizedPath:ofType:</option>
 	
 	<option value="//api/name/setDefaultTableName:">&nbsp;&nbsp;&nbsp;&nbsp;+ setDefaultTableName:</option>
+	
+	<option value="//api/name/setMockCountryCode:">&nbsp;&nbsp;&nbsp;&nbsp;+ setMockCountryCode:</option>
 	
 	<option value="//api/name/setSupportedLanguages:">&nbsp;&nbsp;&nbsp;&nbsp;+ setSupportedLanguages:</option>
 	
@@ -98,11 +104,15 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/countryCode">countryCode</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currencySymbol">currencySymbol</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currentLocale">currentLocale</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dateFormatter">dateFormatter</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/disableMockCountryCode">disableMockCountryCode</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isMetric">isMetric</a></span></li>
 	
@@ -121,6 +131,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/localizedPath:ofType:">localizedPath:ofType:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setDefaultTableName:">setDefaultTableName:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setMockCountryCode:">setMockCountryCode:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setSupportedLanguages:">setSupportedLanguages:</a></span></li>
 	
@@ -235,6 +247,27 @@ relevant to the region format. That is, for language = Español and region forma
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/countryCode">+&nbsp;countryCode</a></code>
+		<span class="tooltip"><p>Get the country code (for locale region format).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setMockCountryCode:">+&nbsp;setMockCountryCode:</a></code>
+		<span class="tooltip"><p>Set the mock country code (for testing)</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/disableMockCountryCode">+&nbsp;disableMockCountryCode</a></code>
+		<span class="tooltip"><p>Disable the mock country code (for testing)</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/languageCode">+&nbsp;languageCode</a></code>
 		<span class="tooltip"><p>Current language code.</p></span>
 	</span>
@@ -299,6 +332,42 @@ relevant to the region format. That is, for language = Español and region forma
 						<h2 class="subtitle subtitle-methods">Class Methods</h2>
 						
 						<div class="section-method">
+	<a name="//api/name/countryCode" title="countryCode"></a>
+	<h3 class="subsubtitle method-title">countryCode</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get the country code (for locale region format).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (NSString *)countryCode</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKLocalized.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/currencySymbol" title="currencySymbol"></a>
 	<h3 class="subsubtitle method-title">currencySymbol</h3>
 	
@@ -308,9 +377,11 @@ relevant to the region format. That is, for language = Español and region forma
 		<p>Shortcut for determining currency symbol.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (NSString *)currencySymbol</code></div>
-	
+
+    
 	
 	
 	
@@ -342,9 +413,11 @@ relevant to the region format. That is, for language = Español and region forma
 		<p>Current locale with the correct language code.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (NSLocale *)currentLocale</code></div>
-	
+
+    
 	
 	
 	
@@ -377,9 +450,11 @@ relevant to the region format. That is, for language = Español and region forma
 [NSLocale currentLocale] seems to only use region format when figuring out the locale.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (NSDateFormatter *)dateFormatter</code></div>
-	
+
+    
 	
 	
 	
@@ -419,6 +494,42 @@ will correctly localize for the region</p></code></li>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/disableMockCountryCode" title="disableMockCountryCode"></a>
+	<h3 class="subsubtitle method-title">disableMockCountryCode</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Disable the mock country code (for testing)</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)disableMockCountryCode</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKLocalized.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/isMetric" title="isMetric"></a>
 	<h3 class="subsubtitle method-title">isMetric</h3>
 	
@@ -428,9 +539,11 @@ will correctly localize for the region</p></code></li>
 		<p>Shortcut for determining if current locale is metric.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (BOOL)isMetric</code></div>
-	
+
+    
 	
 	
 	
@@ -462,9 +575,11 @@ will correctly localize for the region</p></code></li>
 		<p>Shortcut for determining if current locale is metric.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (BOOL)isMetric:(id)<em>locale</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -506,9 +621,11 @@ will correctly localize for the region</p></code></li>
 		<p>Current language code.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (NSString *)languageCode</code></div>
-	
+
+    
 	
 	
 	
@@ -548,9 +665,11 @@ relevant to the region format. That is, for language = Español and region forma
 [[NSLocale currentLocale] localeIdentifier] == @&ldquo;en_US&rdquo;.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (NSString *)localeIdentifier</code></div>
-	
+
+    
 	
 	
 	
@@ -587,9 +706,11 @@ relevant to the region format. That is, for language = Español and region forma
 		<p>Get localized string for specified locale</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (NSString *)localize:(NSString *)<em>key</em> tableName:(NSString *)<em>tableName</em> locale:(NSString *)<em>locale</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -636,9 +757,11 @@ relevant to the region format. That is, for language = Español and region forma
 		<p>Get localized string.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (NSString *)localize:(NSString *)<em>key</em> tableName:(NSString *)<em>tableName</em> value:(NSString *)<em>value</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -690,9 +813,11 @@ relevant to the region format. That is, for language = Español and region forma
 		<p>Localized list.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (NSString *)localizedListFromStrings:(NSArray *)<em>strings</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -740,9 +865,11 @@ relevant to the region format. That is, for language = Español and region forma
 		<p>Get localized path.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (NSString *)localizedPath:(NSString *)<em>name</em> ofType:(NSString *)<em>type</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -801,9 +928,11 @@ relevant to the region format. That is, for language = Español and region forma
 		<p>Set default table name.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (void)setDefaultTableName:(NSString *)<em>defaultTableName</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -836,6 +965,42 @@ relevant to the region format. That is, for language = Español and region forma
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/setMockCountryCode:" title="setMockCountryCode:"></a>
+	<h3 class="subsubtitle method-title">setMockCountryCode:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Set the mock country code (for testing)</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)setMockCountryCode:(NSString *)<em>countryCode</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKLocalized.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/setSupportedLanguages:" title="setSupportedLanguages:"></a>
 	<h3 class="subsubtitle method-title">setSupportedLanguages:</h3>
 	
@@ -845,9 +1010,11 @@ relevant to the region format. That is, for language = Español and region forma
 		<p>Set supported languages.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (void)setSupportedLanguages:(NSSet *)<em>supportedLanguages</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -889,9 +1056,11 @@ relevant to the region format. That is, for language = Español and region forma
 		<p>Supported languages, or nil if not set.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (NSSet *)supportedLanguages</code></div>
-	
+
+    
 	
 	
 	
@@ -928,9 +1097,9 @@ relevant to the region format. That is, for language = Español and region forma
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 YelpKit. All rights reserved. (Last updated: 2011-12-20)</span><br />
+						<p><span class="copyright">&copy; 2012 YelpKit. All rights reserved. (Last updated: 2012-04-16)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						
 					</div>
 				</div>
@@ -1018,6 +1187,14 @@ relevant to the region format. That is, for language = Español and region forma
 			}
 			
 			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
 		</script>
 	</body>
 </html>

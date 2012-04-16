@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -53,6 +53,8 @@
 	
 	<option value="//api/name/setURLString:loadingImage:defaultImage:">&nbsp;&nbsp;&nbsp;&nbsp;- setURLString:loadingImage:defaultImage:</option>
 	
+	<option value="//api/name/sharedInit">&nbsp;&nbsp;&nbsp;&nbsp;- sharedInit</option>
+	
 	
 	
 </select>
@@ -91,6 +93,8 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setURLString:loadingImage:defaultImage:">setURLString:loadingImage:defaultImage:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedInit">sharedInit</a></span></li>
+	
 </ul></li>
 
 
@@ -115,7 +119,7 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value">YKUILayoutView : UIView</td>
+	<td class="specification-value"><a href="../Classes/YKUILayoutView.html">YKUILayoutView</a> : UIView</td>
 </tr><tr>
 	<td class="specification-title">Conforms to</td>
 	<td class="specification-value">YKImageLoaderDelegate<br />YKUIImageView</td>
@@ -144,13 +148,13 @@
 						
 						
 						
-						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
 
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/size">&nbsp;&nbsp;size</a></code>
-		<span class="tooltip"><p>Image <a href="#//api/name/size">size</a>.</p></span>
+		<span class="tooltip"><p>Image size.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -165,6 +169,21 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/setURLString:loadingImage:defaultImage:">&ndash;&nbsp;setURLString:loadingImage:defaultImage:</a></code>
 		<span class="tooltip"><p>Set <a href="#//api/name/URLString">URLString</a> to load with loading image and default image (if loading fails).</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sharedInit">&ndash;&nbsp;sharedInit</a></code>
+		<span class="tooltip"><p>Subclasses can override this method to perform initialization tasks that occur during both <a href="#//api/name/initWithFrame:">initWithFrame:</a> and <a href="#//api/name/initWithCoder:">initWithCoder:</a></p></span>
 	</span>
 	
 	
@@ -188,18 +207,20 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Image <a href="#//api/name/size">size</a>.</p>
+		<p>Image size.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic) CGSize size</code></div>
-	
+
+    
 	
 	
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>Image <a href="#//api/name/size">size</a> or CGSizeZero if no image set</p>
+		<p>Image size or CGSizeZero if no image set</p>
 	</div>
 	
 	
@@ -240,9 +261,11 @@
 		<p>Cancel any image loading.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)cancel</code></div>
-	
+
+    
 	
 	
 	
@@ -274,9 +297,11 @@
 		<p>Set <a href="#//api/name/URLString">URLString</a> to load with loading image and default image (if loading fails).</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)setURLString:(NSString *)<em>URLString</em> loadingImage:(UIImage *)<em>loadingImage</em> defaultImage:(UIImage *)<em>defaultImage</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -318,6 +343,42 @@
 	
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/sharedInit" title="sharedInit"></a>
+	<h3 class="subsubtitle method-title">sharedInit</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Subclasses can override this method to perform initialization tasks that occur during both <a href="#//api/name/initWithFrame:">initWithFrame:</a> and <a href="#//api/name/initWithCoder:">initWithCoder:</a></p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)sharedInit</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUILayoutView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
 					</div>
 					
 					
@@ -331,9 +392,9 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 YelpKit. All rights reserved. (Last updated: 2011-12-20)</span><br />
+						<p><span class="copyright">&copy; 2012 YelpKit. All rights reserved. (Last updated: 2012-04-16)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						
 					</div>
 				</div>
@@ -421,6 +482,14 @@
 			}
 			
 			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
 		</script>
 	</body>
 </html>

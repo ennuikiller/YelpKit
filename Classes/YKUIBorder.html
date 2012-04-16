@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>YKUIViewLayout Protocol Reference</title>
+		<title>YKUIBorder Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">YKUIViewLayout Protocol Reference</h1>
+				<h1 class="hideInXcode">YKUIBorder Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -26,6 +26,8 @@
 				<li id="jumpto_button" role="navigation">
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
 	
 	
 	
@@ -42,7 +44,11 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/layout:size:">&nbsp;&nbsp;&nbsp;&nbsp;- layout:size:</option>
+	<option value="//api/name/drawInRect:">&nbsp;&nbsp;&nbsp;&nbsp;- drawInRect:</option>
+	
+	<option value="//api/name/initWithFrame:style:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithFrame:style:</option>
+	
+	<option value="//api/name/initWithFrame:style:stroke:color:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithFrame:style:stroke:color:</option>
 	
 	
 	
@@ -53,6 +59,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -70,7 +78,11 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/layout:size:">layout:size:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/drawInRect:">drawInRect:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithFrame:style:">initWithFrame:style:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithFrame:style:stroke:color:">initWithFrame:style:stroke:color:</a></span></li>
 	
 </ul></li>
 
@@ -79,7 +91,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="YKUIViewLayout Protocol Reference" name="top"></a>
+				<a title="YKUIBorder Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -88,21 +100,34 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">YKUIViewLayout Protocol Reference</h1>
+						<h1 class="title title-header">YKUIBorder Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<td class="specification-title">Conforms to</td>
-	<td class="specification-value">NSObject</td>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">UIView</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">YKLayout.h</td>
+	<td class="specification-value">YKUIBorder.h<br />YKUIBorder.m</td>
 </tr>
 						</tbody></table></div>
 					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Border view component.</p>
+
+<p>For example,
+   UILabel <em>label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 0)];
+   YKUIBorder </em>border = [[YKUIBorder alloc] initWithFrame:CGRectMake(10, 10, 300, 0) style:YKUIBorderStyleRounded stroke:1.0 color:[UIColor grayColor]];
+   border.fillColor = [UIColor whiteColor];</p>
+					</div>
 					
 					
 					
@@ -119,13 +144,27 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/layout:size:">&ndash;&nbsp;layout:size:</a></code>
-		<span class="tooltip"><p>Layout or size the current view, with the specified size as a hint.
-Return the size used. The returned size.width should match the width that was
-passed in.</p></span>
+		<code><a href="#//api/name/initWithFrame:style:">&ndash;&nbsp;initWithFrame:style:</a></code>
+		<span class="tooltip"><p>Create border view with style.
+@param frame</p></span>
 	</span>
 	
-	<span class="task-item-suffix">required method</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithFrame:style:stroke:color:">&ndash;&nbsp;initWithFrame:style:stroke:color:</a></code>
+		<span class="tooltip"><p>Create border view with style.
+@param frame</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/drawInRect:">&ndash;&nbsp;drawInRect:</a></code>
+		<span class="tooltip"><p>Draw border in a given rect. Useful for directly drawing YKUIBorder to a context.</p></span>
+	</span>
+	
+	
 </li>
 						</ul>
 						
@@ -144,20 +183,18 @@ passed in.</p></span>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/layout:size:" title="layout:size:"></a>
-	<h3 class="subsubtitle method-title">layout:size:</h3>
+	<a name="//api/name/drawInRect:" title="drawInRect:"></a>
+	<h3 class="subsubtitle method-title">drawInRect:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Layout or size the current view, with the specified size as a hint.
-Return the size used. The returned size.width should match the width that was
-passed in.</p>
+		<p>Draw border in a given rect. Useful for directly drawing YKUIBorder to a context.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (CGSize)layout:(id&lt;YKLayout&gt;)<em>layout</em> size:(CGSize)<em>size</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)drawInRect:(CGRect)<em>rect</em></code></div>
 
     
 	
@@ -165,13 +202,8 @@ passed in.</p>
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>layout</em></dt>
-			<dd><p>Layout</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>size</em></dt>
-			<dd><p>Size to layout in</p></dd>
+			<dt><em>rect</em></dt>
+			<dd><p>The rect in which to draw the border</p></dd>
 		</dl>
 		
 	</div>
@@ -181,13 +213,6 @@ passed in.</p>
 	
 	
 	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>You should never setFrame on subviews in this method. Instead use the methods
-in layout in order to setFrame, and use what those methods return to layout other
-subviews. This is because setFrame calls are no-ops when the view is only sizing.</p>
-	</div>
 	
 	
 	
@@ -197,7 +222,111 @@ subviews. This is because setFrame calls are no-ops when the view is only sizing
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">YKLayout.h</code><br />
+		<code class="declared-in-ref">YKUIBorder.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithFrame:style:" title="initWithFrame:style:"></a>
+	<h3 class="subsubtitle method-title">initWithFrame:style:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create border view with style.
+@param frame</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithFrame:(CGRect)<em>frame</em> style:(YKUIBorderStyle)<em>style</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>style</em></dt>
+			<dd><p>The border style</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIBorder.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithFrame:style:stroke:color:" title="initWithFrame:style:stroke:color:"></a>
+	<h3 class="subsubtitle method-title">initWithFrame:style:stroke:color:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create border view with style.
+@param frame</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithFrame:(CGRect)<em>frame</em> style:(YKUIBorderStyle)<em>style</em> stroke:(CGFloat)<em>stroke</em> color:(UIColor *)<em>color</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>style</em></dt>
+			<dd><p>The border style</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>stroke</em></dt>
+			<dd><p>Border width</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>color</em></dt>
+			<dd><p>Border color</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIBorder.h</code><br />
 	</div>				
 	
 	

@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.4 (build 703)" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -206,14 +206,14 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p><a href="YKLayout.html">YKLayout</a> is a way to size and layout dynamic (sub)views.</p>
+						<p>YKLayout is a way to size and layout dynamic (sub)views.</p>
 
-<p><a href="YKLayout.html">YKLayout</a> is designed to calculate and return a size that best fits the receiver’s subviews,
+<p>YKLayout is designed to calculate and return a size that best fits the receiver’s subviews,
 without altering the subviews frames, or affecting layoutSubviews call hierarchy.</p>
 
 <p>Instead of defining both <a href="#//api/name/sizeThatFits:">sizeThatFits:</a> and layoutSubviews, you define a single method called:</p>
 
-<pre><code>  - (CGSize)layout:(idYKLayout)layout size:(CGSize)size;
+<pre><code>  - (CGSize)layout:(id&lt;YKLayout&gt;)layout size:(CGSize)size;
 </code></pre>
 
 <p>Then in this method you use the layout instance to set the subview frames (if sizing).</p>
@@ -333,45 +333,21 @@ This should be called when a views data changes.</p></span>
 	</span>
 	
 	
-</li>
-						</ul>
-						
-						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
-
-						<ul class="task-list">
-							<li>
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/layoutSubviews:">&ndash;&nbsp;layoutSubviews:</a></code>
 		<span class="tooltip"><p>Layout the subviews.</p></span>
 	</span>
 	
 	
-</li>
-						</ul>
-						
-						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
-
-						<ul class="task-list">
-							<li>
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/sizeThatFits:">&ndash;&nbsp;sizeThatFits:</a></code>
 		<span class="tooltip"><p>Size that fits.</p></span>
 	</span>
 	
 	
-</li>
-						</ul>
-						
-						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
-
-						<ul class="task-list">
-							<li>
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setFrame:view:sizeToFit:">&ndash;&nbsp;setFrame:view:sizeToFit:</a></code>
 		<span class="tooltip"><p>Set the (sub)view frame, then size to fit the view.
@@ -380,15 +356,7 @@ Use this value instead of view.frame since the views frame might not have been s
 	</span>
 	
 	
-</li>
-						</ul>
-						
-						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
-
-						<ul class="task-list">
-							<li>
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setFrame:view:options:">&ndash;&nbsp;setFrame:view:options:</a></code>
 		<span class="tooltip"><p>Set the (sub)view frame.
@@ -397,15 +365,7 @@ Use this value instead of view.frame since the views frame might not have been s
 	</span>
 	
 	
-</li>
-						</ul>
-						
-						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
-
-						<ul class="task-list">
-							<li>
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setX:frame:view:">&ndash;&nbsp;setX:frame:view:</a></code>
 		<span class="tooltip"><p>Set origin, x position.
@@ -413,30 +373,14 @@ Use this value instead of view.frame since the views frame might not have been s
 	</span>
 	
 	
-</li>
-						</ul>
-						
-						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
-
-						<ul class="task-list">
-							<li>
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setY:frame:view:">&ndash;&nbsp;setY:frame:view:</a></code>
 		<span class="tooltip"><p>Set origin, y position.</p></span>
 	</span>
 	
 	
-</li>
-						</ul>
-						
-						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
-
-						<ul class="task-list">
-							<li>
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setOrigin:frame:view:">&ndash;&nbsp;setOrigin:frame:view:</a></code>
 		<span class="tooltip"><p>Set origin for the (sub)view (for views with fixed sizes).
@@ -445,45 +389,21 @@ Use this value instead of view.frame since the views frame might not have been s
 	</span>
 	
 	
-</li>
-						</ul>
-						
-						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
-
-						<ul class="task-list">
-							<li>
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setOrigin:view:">&ndash;&nbsp;setOrigin:view:</a></code>
 		<span class="tooltip"><p>@deprecated Use <a href="../Protocols/YKLayout.html#//api/name/setOrigin:frame:view:">setOrigin:frame:view:</a></p></span>
 	</span>
 	
 	
-</li>
-						</ul>
-						
-						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
-
-						<ul class="task-list">
-							<li>
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setY:view:">&ndash;&nbsp;setY:view:</a></code>
 		<span class="tooltip"><p>@deprecated Use <a href="../Protocols/YKLayout.html#//api/name/setY:frame:view:">setY:frame:view:</a></p></span>
 	</span>
 	
 	
-</li>
-						</ul>
-						
-						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
-
-						<ul class="task-list">
-							<li>
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setFrame:view:">&ndash;&nbsp;setFrame:view:</a></code>
 		<span class="tooltip"><p>Set frame for the (sub)view.
@@ -491,15 +411,7 @@ If we are calculating sizeThatFits, this doesn&rsquo;t actually set the views fr
 	</span>
 	
 	
-</li>
-						</ul>
-						
-						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
-
-						<ul class="task-list">
-							<li>
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/isSizing">&ndash;&nbsp;isSizing</a></code>
 		<span class="tooltip"><p>For subclasses, in rare cases, if they need to know whether the layout will
@@ -533,9 +445,11 @@ Defaults to CGSizeZero, which is unset.
 If height is not set (is 0), then we will use this size value for <a href="#//api/name/sizeThatFits:">sizeThatFits:</a>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) CGSize sizeThatFits</code></div>
-	
+
+    
 	
 	
 	
@@ -575,9 +489,11 @@ If height is not set (is 0), then we will use this size value for <a href="#//ap
 		<p>Default layout.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (YKLayout *)layoutForView:(UIView *)<em>view</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -624,9 +540,11 @@ If height is not set (is 0), then we will use this size value for <a href="#//ap
 		<p>Get debug stats.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (YKLayoutStats *)statsForView:(UIView *)<em>view</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -676,9 +594,11 @@ If height is not set (is 0), then we will use this size value for <a href="#//ap
 		<p>Add subview.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)addSubview:(UIView *)<em>view</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -699,7 +619,7 @@ If height is not set (is 0), then we will use this size value for <a href="#//ap
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Call YKLayout#drawSubviews in the superview drawRect: method to
-draw <a href="YKLayout.html">YKLayout</a> managed subviews.</p>
+draw YKLayout managed subviews.</p>
 
 <p>Subviews managed by the layout don&rsquo;t automatically handle re-display,
 or touches. Layout managed subviews are intended for simple views
@@ -731,9 +651,11 @@ For resizing you may need to adjust the contentMode.</p>
 		<p>Remove view reference and all subviews.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)clear</code></div>
-	
+
+    
 	
 	
 	
@@ -766,9 +688,11 @@ For resizing you may need to adjust the contentMode.</p>
 Each view is draw at their view frame.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)drawSubviewsInRect:(CGRect)<em>rect</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -810,9 +734,11 @@ Each view is draw at their view frame.</p>
 		<p>Create layout for view.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (id)initWithView:(UIView *)<em>view</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -855,9 +781,11 @@ Each view is draw at their view frame.</p>
 be applied or not via <a href="../Protocols/YKLayout.html#//api/name/setFrame:view:">setFrame:view:</a></p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (BOOL)isSizing</code></div>
-	
+
+    
 	
 	
 	
@@ -894,9 +822,11 @@ be applied or not via <a href="../Protocols/YKLayout.html#//api/name/setFrame:vi
 		<p>Layout the subviews.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (CGSize)layoutSubviews:(CGSize)<em>size</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -938,9 +868,11 @@ be applied or not via <a href="../Protocols/YKLayout.html#//api/name/setFrame:vi
 		<p>Remove subview.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)removeSubview:(UIView *)<em>view</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -983,9 +915,11 @@ be applied or not via <a href="../Protocols/YKLayout.html#//api/name/setFrame:vi
 If we are calculating sizeThatFits, this doesn&rsquo;t actually set the views frame.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (CGRect)setFrame:(CGRect)<em>frame</em> view:(UIView *)<em>view</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -1034,9 +968,11 @@ If we are calculating sizeThatFits, this doesn&rsquo;t actually set the views fr
 Use this value instead of view.frame since the views frame might not have been set.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (CGRect)setFrame:(CGRect)<em>frame</em> view:(UIView *)<em>view</em> options:(YKLayoutOptions)<em>options</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -1090,9 +1026,11 @@ If we are calculating sizeThatFits, this doesn&rsquo;t actually set the views fr
 Use this value instead of view.frame since the views frame might not have been set.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (CGRect)setFrame:(CGRect)<em>frame</em> view:(UIView *)<em>view</em> sizeToFit:(BOOL)<em>sizeToFit</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -1150,9 +1088,11 @@ Use this value instead of view.frame since the views frame might not have been s
 This should be called when a views data changes.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)setNeedsLayout</code></div>
-	
+
+    
 	
 	
 	
@@ -1186,9 +1126,11 @@ If we are calculating sizeThatFits, this doesn&rsquo;t actually set the views fr
 Use this value instead of view.frame since the views frame might not have been set.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (CGRect)setOrigin:(CGPoint)<em>origin</em> frame:(CGRect)<em>frame</em> view:(UIView *)<em>view</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -1245,9 +1187,11 @@ Use this value instead of view.frame since the views frame might not have been s
 		<p>@deprecated Use <a href="../Protocols/YKLayout.html#//api/name/setOrigin:frame:view:">setOrigin:frame:view:</a></p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (CGRect)setOrigin:(CGPoint)<em>origin</em> view:(UIView *)<em>view</em></code></div>
-	
+
+    
 	
 	
 	
@@ -1280,9 +1224,11 @@ Use this value instead of view.frame since the views frame might not have been s
 Use this value instead of view.frame since the views frame might not have been set.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (CGRect)setX:(CGFloat)<em>x</em> frame:(CGRect)<em>frame</em> view:(UIView *)<em>view</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -1344,9 +1290,11 @@ Use this value instead of view.frame since the views frame might not have been s
 		<p>Set origin, y position.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (CGRect)setY:(CGFloat)<em>y</em> frame:(CGRect)<em>frame</em> view:(UIView *)<em>view</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -1413,9 +1361,11 @@ Use this value instead of view.frame since the views frame might not have been s
 		<p>@deprecated Use <a href="../Protocols/YKLayout.html#//api/name/setY:frame:view:">setY:frame:view:</a></p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (CGRect)setY:(CGFloat)<em>y</em> view:(UIView *)<em>view</em></code></div>
-	
+
+    
 	
 	
 	
@@ -1447,9 +1397,11 @@ Use this value instead of view.frame since the views frame might not have been s
 		<p>Size that fits.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (CGSize)sizeThatFits:(CGSize)<em>size</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -1499,9 +1451,9 @@ Use this value instead of view.frame since the views frame might not have been s
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 YelpKit. All rights reserved. (Last updated: 2011-12-20)</span><br />
+						<p><span class="copyright">&copy; 2012 YelpKit. All rights reserved. (Last updated: 2012-04-16)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						
 					</div>
 				</div>
@@ -1589,6 +1541,14 @@ Use this value instead of view.frame since the views frame might not have been s
 			}
 			
 			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
 		</script>
 	</body>
 </html>
