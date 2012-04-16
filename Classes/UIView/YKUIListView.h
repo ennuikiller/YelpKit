@@ -39,7 +39,7 @@
 @end
 
 /*!
- List view.
+ A view which lays out its subviews vertically, and can apply line separators.
  */
 @interface YKUIListView : YKUILayoutView {
   NSMutableArray *_views;

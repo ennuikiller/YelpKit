@@ -89,12 +89,19 @@ typedef enum {
 
 /*!
  Load URL.
- By default this will use a loader queue; To override loadURLString:queue: with nil queue.
+ 
+ By default this will use the default [YKImageLoaderQueue sharedQueue] loader queue.
+ To use a custom loader queue use setURL:queue:.
 
  @param URL URL
  */
 - (void)setURL:(YKURL *)URL;
 
+/*!
+ Load URL.
+ @param URL URL
+ @param queue Loader queue
+ */
 - (void)setURL:(YKURL *)URL queue:(YKImageLoaderQueue *)queue;
 
 /*!
@@ -103,12 +110,22 @@ typedef enum {
  */
 - (void)setURLString:(NSString *)URLString;
 
+/*!
+ Start the request. You shouldn't ever need to call this directly.
+ */
 - (void)load;
 
+/*!
+ Cancel any request.
+ */
 - (void)cancel;
 
 @end
 
+
+/*!
+ Image loader queue.
+ */
 @interface YKImageLoaderQueue : NSObject {
   NSMutableArray *_waitingQueue;
   NSMutableArray *_loadingQueue;
@@ -118,11 +135,27 @@ typedef enum {
 
 + (YKImageLoaderQueue *)sharedQueue;
 
+/*!
+ Enqueue an image loader.
+ @param imageLoader Image laoder to enqueue
+ */
 - (void)enqueue:(YKImageLoader *)imageLoader;
+
+/*!
+ Dequeue an image loader.
+ @param imageLoader Image laoder to dequeue
+ */
 - (void)dequeue:(YKImageLoader *)imageLoader;
 
+/*!
+ Check the queue.
+ */
 - (void)check;
 
+/*!
+ Called when the image loader finished.
+ @param imageLoader Image loader that finished
+ */
 - (void)imageLoaderDidEnd:(YKImageLoader *)imageLoader;
 
 @end

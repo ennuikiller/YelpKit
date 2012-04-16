@@ -40,7 +40,7 @@ typedef enum {
 typedef void (^YKUIButtonsApplyBlock)(YKUIButton *button, NSInteger index);
 
 /*!
- A list of buttons. This is similar to a segmented control.
+ A group of buttons (either horizontal or vertical). This is similar to a segmented control.
  */
 @interface YKUIButtons : YKUILayoutView {
   NSMutableArray *_buttons;

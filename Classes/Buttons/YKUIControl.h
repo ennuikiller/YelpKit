@@ -8,7 +8,11 @@
 
 #import "YKLayout.h"
 
+/*!
+ UIControl with some helpers.
 
+ Also implements YKLayout.
+ */
 @interface YKUIControl : UIControl {
   id _target; // weak
   SEL _action;

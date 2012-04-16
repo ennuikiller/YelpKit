@@ -42,7 +42,7 @@
 
 
 /*!
- View for an activity indicator while loading images.
+ YKUIImageView that includes an activity indicator/label while loading images.
  */
 @interface YKUIImageActivityView : YKUIImageView <YKUIImageActivityView> {
   YKUIActivityView *_activityView;
