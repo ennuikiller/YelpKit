@@ -49,7 +49,13 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
+	<option value="//api/name/cancel">&nbsp;&nbsp;&nbsp;&nbsp;- cancel</option>
+	
+	<option value="//api/name/load">&nbsp;&nbsp;&nbsp;&nbsp;- load</option>
+	
 	<option value="//api/name/setURL:">&nbsp;&nbsp;&nbsp;&nbsp;- setURL:</option>
+	
+	<option value="//api/name/setURL:queue:">&nbsp;&nbsp;&nbsp;&nbsp;- setURL:queue:</option>
 	
 	<option value="//api/name/setURLString:">&nbsp;&nbsp;&nbsp;&nbsp;- setURLString:</option>
 	
@@ -87,7 +93,13 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cancel">cancel</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/load">load</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setURL:">setURL:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setURL:queue:">setURL:queue:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setURLString:">setURLString:</a></span></li>
 	
@@ -159,8 +171,14 @@ This is useful for UI verification.</p></span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setURL:">&ndash;&nbsp;setURL:</a></code>
-		<span class="tooltip"><p>Load URL.
-By default this will use a loader queue; To override loadURLString:queue: with nil queue.</p></span>
+		<span class="tooltip"><p>Load URL.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setURL:queue:">&ndash;&nbsp;setURL:queue:</a></code>
+		<span class="tooltip"><p>Load URL.</p></span>
 	</span>
 	
 	
@@ -168,6 +186,20 @@ By default this will use a loader queue; To override loadURLString:queue: with n
 	<span class="tooltip">
 		<code><a href="#//api/name/setURLString:">&ndash;&nbsp;setURLString:</a></code>
 		<span class="tooltip"><p>Load URL string.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/load">&ndash;&nbsp;load</a></code>
+		<span class="tooltip"><p>Start the request. You shouldn&rsquo;t ever need to call this directly.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cancel">&ndash;&nbsp;cancel</a></code>
+		<span class="tooltip"><p>Cancel any request.</p></span>
 	</span>
 	
 	
@@ -244,14 +276,85 @@ This is useful for UI verification.</p>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
+	<a name="//api/name/cancel" title="cancel"></a>
+	<h3 class="subsubtitle method-title">cancel</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Cancel any request.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)cancel</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKImageLoader.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/load" title="load"></a>
+	<h3 class="subsubtitle method-title">load</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Start the request. You shouldn&rsquo;t ever need to call this directly.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)load</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKImageLoader.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/setURL:" title="setURL:"></a>
 	<h3 class="subsubtitle method-title">setURL:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Load URL.
-By default this will use a loader queue; To override loadURLString:queue: with nil queue.</p>
+		<p>Load URL.</p>
 	</div>		
 	
     
@@ -266,6 +369,63 @@ By default this will use a loader queue; To override loadURLString:queue: with n
 		<dl class="argument-def parameter-def">
 			<dt><em>URL</em></dt>
 			<dd><p>URL</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>By default this will use the default <a href="../Classes/YKImageLoaderQueue.html#//api/name/sharedQueue">[YKImageLoaderQueue sharedQueue]</a> loader queue.
+To use a custom loader queue use <a href="#//api/name/setURL:queue:">setURL:queue:</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKImageLoader.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setURL:queue:" title="setURL:queue:"></a>
+	<h3 class="subsubtitle method-title">setURL:queue:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Load URL.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setURL:(YKURL *)<em>URL</em> queue:(YKImageLoaderQueue *)<em>queue</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>URL</em></dt>
+			<dd><p>URL</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>queue</em></dt>
+			<dd><p>Loader queue</p></dd>
 		</dl>
 		
 	</div>

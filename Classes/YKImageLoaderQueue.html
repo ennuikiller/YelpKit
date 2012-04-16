@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>YKUIListView Class Reference</title>
+		<title>YKImageLoaderQueue Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">YKUIListView Class Reference</h1>
+				<h1 class="hideInXcode">YKImageLoaderQueue Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -44,15 +44,13 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/addView:">&nbsp;&nbsp;&nbsp;&nbsp;- addView:</option>
+	<option value="//api/name/check">&nbsp;&nbsp;&nbsp;&nbsp;- check</option>
 	
-	<option value="//api/name/removeAllViews">&nbsp;&nbsp;&nbsp;&nbsp;- removeAllViews</option>
+	<option value="//api/name/dequeue:">&nbsp;&nbsp;&nbsp;&nbsp;- dequeue:</option>
 	
-	<option value="//api/name/removeViewsWithTag:">&nbsp;&nbsp;&nbsp;&nbsp;- removeViewsWithTag:</option>
+	<option value="//api/name/enqueue:">&nbsp;&nbsp;&nbsp;&nbsp;- enqueue:</option>
 	
-	<option value="//api/name/setViewsHidden:tag:animationDuration:">&nbsp;&nbsp;&nbsp;&nbsp;- setViewsHidden:tag:animationDuration:</option>
-	
-	<option value="//api/name/viewsWithTag:">&nbsp;&nbsp;&nbsp;&nbsp;- viewsWithTag:</option>
+	<option value="//api/name/imageLoaderDidEnd:">&nbsp;&nbsp;&nbsp;&nbsp;- imageLoaderDidEnd:</option>
 	
 	
 	
@@ -82,15 +80,13 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addView:">addView:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/check">check</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeAllViews">removeAllViews</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dequeue:">dequeue:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeViewsWithTag:">removeViewsWithTag:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/enqueue:">enqueue:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setViewsHidden:tag:animationDuration:">setViewsHidden:tag:animationDuration:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/viewsWithTag:">viewsWithTag:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/imageLoaderDidEnd:">imageLoaderDidEnd:</a></span></li>
 	
 </ul></li>
 
@@ -99,7 +95,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="YKUIListView Class Reference" name="top"></a>
+				<a title="YKImageLoaderQueue Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -108,7 +104,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">YKUIListView Class Reference</h1>
+						<h1 class="title title-header">YKImageLoaderQueue Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -116,10 +112,10 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value"><a href="../Classes/YKUILayoutView.html">YKUILayoutView</a> : UIView</td>
+	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">YKUIListView.h<br />YKUIListView.m</td>
+	<td class="specification-value">YKImageLoader.h<br />YKImageLoader.m</td>
 </tr>
 						</tbody></table></div>
 					
@@ -129,7 +125,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>A view which lays out its subviews vertically, and can apply line separators.</p>
+						<p>Image loader queue.</p>
 					</div>
 					
 					
@@ -147,41 +143,29 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/addView:">&ndash;&nbsp;addView:</a></code>
-		<span class="tooltip"><p>Add view.
-@param view</p></span>
+		<code><a href="#//api/name/enqueue:">&ndash;&nbsp;enqueue:</a></code>
+		<span class="tooltip"><p>Enqueue an image loader.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/removeViewsWithTag:">&ndash;&nbsp;removeViewsWithTag:</a></code>
-		<span class="tooltip"><p>Remove views with tag.
-@param tag</p></span>
+		<code><a href="#//api/name/dequeue:">&ndash;&nbsp;dequeue:</a></code>
+		<span class="tooltip"><p>Dequeue an image loader.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/viewsWithTag:">&ndash;&nbsp;viewsWithTag:</a></code>
-		<span class="tooltip"><p>Views with tag</p></span>
+		<code><a href="#//api/name/check">&ndash;&nbsp;check</a></code>
+		<span class="tooltip"><p>Check the queue.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/setViewsHidden:tag:animationDuration:">&ndash;&nbsp;setViewsHidden:tag:animationDuration:</a></code>
-		<span class="tooltip"><p>Set views hidden with tag.
-Useful for animating a fade.
-@param hidden
-@param tag</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/removeAllViews">&ndash;&nbsp;removeAllViews</a></code>
-		
+		<code><a href="#//api/name/imageLoaderDidEnd:">&ndash;&nbsp;imageLoaderDidEnd:</a></code>
+		<span class="tooltip"><p>Called when the image loader finished.</p></span>
 	</span>
 	
 	
@@ -203,19 +187,18 @@ Useful for animating a fade.
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/addView:" title="addView:"></a>
-	<h3 class="subsubtitle method-title">addView:</h3>
+	<a name="//api/name/check" title="check"></a>
+	<h3 class="subsubtitle method-title">check</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Add view.
-@param view</p>
+		<p>Check the queue.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)addView:(UIView *)<em>view</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)check</code></div>
 
     
 	
@@ -233,97 +216,25 @@ Useful for animating a fade.
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">YKUIListView.h</code><br />
+		<code class="declared-in-ref">YKImageLoader.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/removeAllViews" title="removeAllViews"></a>
-	<h3 class="subsubtitle method-title">removeAllViews</h3>
-	
-	
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)removeAllViews</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">YKUIListView.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/removeViewsWithTag:" title="removeViewsWithTag:"></a>
-	<h3 class="subsubtitle method-title">removeViewsWithTag:</h3>
+	<a name="//api/name/dequeue:" title="dequeue:"></a>
+	<h3 class="subsubtitle method-title">dequeue:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Remove views with tag.
-@param tag</p>
+		<p>Dequeue an image loader.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)removeViewsWithTag:(NSInteger)<em>tag</em></code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">YKUIListView.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/setViewsHidden:tag:animationDuration:" title="setViewsHidden:tag:animationDuration:"></a>
-	<h3 class="subsubtitle method-title">setViewsHidden:tag:animationDuration:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Set views hidden with tag.
-Useful for animating a fade.
-@param hidden
-@param tag</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)setViewsHidden:(BOOL)<em>hidden</em> tag:(NSInteger)<em>tag</em> animationDuration:(NSTimeInterval)<em>animationDuration</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)dequeue:(YKImageLoader *)<em>imageLoader</em></code></div>
 
     
 	
@@ -331,8 +242,8 @@ Useful for animating a fade.
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>animationDuration</em></dt>
-			<dd><p>If 0, not animated</p></dd>
+			<dt><em>imageLoader</em></dt>
+			<dd><p>Image laoder to dequeue</p></dd>
 		</dl>
 		
 	</div>
@@ -351,34 +262,39 @@ Useful for animating a fade.
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">YKUIListView.h</code><br />
+		<code class="declared-in-ref">YKImageLoader.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/viewsWithTag:" title="viewsWithTag:"></a>
-	<h3 class="subsubtitle method-title">viewsWithTag:</h3>
+	<a name="//api/name/enqueue:" title="enqueue:"></a>
+	<h3 class="subsubtitle method-title">enqueue:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Views with tag</p>
+		<p>Enqueue an image loader.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (NSArray *)viewsWithTag:(NSInteger)<em>tag</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)enqueue:(YKImageLoader *)<em>imageLoader</em></code></div>
 
     
 	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>Views with tag</p>
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>imageLoader</em></dt>
+			<dd><p>Image laoder to enqueue</p></dd>
+		</dl>
+		
 	</div>
+	
+	
 	
 	
 	
@@ -392,7 +308,53 @@ Useful for animating a fade.
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">YKUIListView.h</code><br />
+		<code class="declared-in-ref">YKImageLoader.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/imageLoaderDidEnd:" title="imageLoaderDidEnd:"></a>
+	<h3 class="subsubtitle method-title">imageLoaderDidEnd:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Called when the image loader finished.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)imageLoaderDidEnd:(YKImageLoader *)<em>imageLoader</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>imageLoader</em></dt>
+			<dd><p>Image loader that finished</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKImageLoader.h</code><br />
 	</div>				
 	
 	
