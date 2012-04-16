@@ -71,9 +71,17 @@
 /*!
  Set text.
  Alternatively, you can set textLabel.text.
+ You should call setNeedsLayout.
  @param text Text
  */
 - (void)setText:(NSString *)text;
+
+/*!
+ Set detail text.
+ You should call setNeedsLayout.
+ @param detailText Detail text
+ */
+- (void)setDetailText:(NSString *)detailText;
 
 /*!
  Start activity indicator.

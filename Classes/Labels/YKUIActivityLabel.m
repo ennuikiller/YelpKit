@@ -135,6 +135,7 @@
 
 - (void)setText:(NSString *)text {
   self.textLabel.text = text;
+  [self setNeedsLayout];
 }
 
 - (void)setAnimating:(BOOL)animating {
@@ -165,6 +166,11 @@
   }
   [self setNeedsLayout];
   [self setNeedsDisplay];
+}
+
+- (void)setDetailText:(NSString *)detailText {
+  self.detailLabel.text = detailText;
+  [self setNeedsLayout];
 }
 
 - (UILabel *)detailLabel {
