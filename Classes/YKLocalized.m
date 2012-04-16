@@ -170,7 +170,8 @@ static NSMutableDictionary *gLocalizationCache = nil;
 static NSString *gLocaleIdentifier = nil;
 static NSSet *gSupportedLanguages = nil;
 static NSString *gLanguageCode = nil;
-static NSString *gCountryCode = nil;
+static NSString *gMockCountryCode = nil;
+static NSSet *gSupportedCountries = nil;
 
 + (NSMutableDictionary *)localizationCache {
   @synchronized([YKLocalized class]) {
@@ -244,19 +245,31 @@ static NSString *gCountryCode = nil;
 }
 
 + (NSString *)countryCode {
-  if (gCountryCode) return gCountryCode;
-  return [[NSLocale autoupdatingCurrentLocale] objectForKey:NSLocaleCountryCode];
+  if (gMockCountryCode) return gMockCountryCode;
+  NSString *currentCountryCode = [[NSLocale autoupdatingCurrentLocale] objectForKey:NSLocaleCountryCode];
+  if (!gSupportedCountries || [gSupportedCountries containsObject:currentCountryCode]) return currentCountryCode;
+  else return @"US";
 }
 
 + (void)setMockCountryCode:(NSString *)countryCode {
   [countryCode retain];
-  [gCountryCode release];
-  gCountryCode = countryCode;
+  [gMockCountryCode release];
+  gMockCountryCode = countryCode;
 }
 
 + (void)disableMockCountryCode {
-  [gCountryCode release];
-  gCountryCode = nil;
+  [gMockCountryCode release];
+  gMockCountryCode = nil;
+}
+
++ (void)setSupportedCountries:(NSSet *)supportedCountries {
+  [supportedCountries retain];
+  [gSupportedCountries release];
+  gSupportedCountries = supportedCountries;
+}
+
++ (NSSet *)supportedCountries {
+  return gSupportedCountries;
 }
 
 + (NSString *)languageCode {

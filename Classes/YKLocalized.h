@@ -212,7 +212,8 @@
 + (NSString *)localeIdentifier;
 
 /*!
- Get the country code (for locale region format).
+ Get the country code (for locale region format). If supportedCountries is set, and the
+ device's country code is not in supportedCountries, this will default to @"US".
  */
 + (NSString *)countryCode;
 
@@ -242,6 +243,17 @@
  Supported languages, or nil if not set.
  */
 + (NSSet *)supportedLanguages;
+
+/*!
+ Set supported countries.
+ @param supportedCountries Set of supported countries
+ */
++ (void)setSupportedCountries:(NSSet *)supportedCountries;
+
+/*!
+ Supported countries, or nil if not set.
+ */
++ (NSSet *)supportedCountries;
 
 // If country code (for phone locale region format)
 + (BOOL)isCountryCode:(NSString *)code;
