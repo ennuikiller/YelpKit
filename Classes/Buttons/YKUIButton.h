@@ -61,6 +61,8 @@ typedef enum {
   UIImage *_image;
   UIImage *_highlightedImage;
   UIImage *_disabledImage;
+
+  UIEdgeInsets _margin;
   
   UIColor *_highlightedTitleColor;
   UIColor *_highlightedTitleShadowColor;
@@ -215,6 +217,11 @@ typedef enum {
 @property (retain, nonatomic) UIImage *image;
 
 /*!
+ Margins for element.
+ */
+@property (assign, nonatomic) UIEdgeInsets margin;
+
+/*!
  Background image (highlighted).
  */
 @property (retain, nonatomic) UIImage *highlightedImage;
@@ -246,7 +253,7 @@ typedef enum {
 @property (assign, nonatomic) UIEdgeInsets titleInsets; 
 
 /*!
- Insets for the button.
+ Insets (padding).
  */
 @property (assign, nonatomic) UIEdgeInsets insets;
 
