@@ -211,7 +211,7 @@
     accessoryImageSize = _accessoryImageView.image.size;
     accessoryImageSize.width += 10;
   }
-  return CGSizeMake(titleSize.width + _insets.left + _insets.right + _titleInsets.left + _titleInsets.right + accessoryImageSize.width, titleSize.height + _titleInsets.top + _titleInsets.bottom);
+  return CGSizeMake(titleSize.width + _insets.left + _insets.right + _titleInsets.left + _titleInsets.right + accessoryImageSize.width, titleSize.height + _titleInsets.top + _titleInsets.bottom + _insets.top + _insets.bottom);
 }
 
 - (CGSize)sizeThatFitsTitleAndIcon:(CGSize)size {
@@ -220,7 +220,7 @@
   if (_iconImageView.image && YKCGSizeIsZero(iconSize)) {
     iconSize = _iconImageView.image.size;
   }
-  return CGSizeMake(titleSize.width + iconSize.width + _insets.left + _insets.right + 2, titleSize.height + iconSize.height + _insets.top + _insets.bottom);
+  return CGSizeMake(titleSize.width + iconSize.width + 2, titleSize.height + iconSize.height);
 }
 
 - (void)setHighlighted:(BOOL)highlighted {
