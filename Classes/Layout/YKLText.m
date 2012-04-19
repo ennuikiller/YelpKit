@@ -32,6 +32,8 @@
 
 @implementation YKLText
 
+@synthesize shadowColor=_shadowColor, shadowOffset=_shadowOffset;
+
 - (id)initWithText:(NSString *)text font:(UIFont *)font color:(UIColor *)color lineBreakMode:(UILineBreakMode)lineBreakMode {
   if ((self = [super init])) {
     _text = [text retain];
@@ -48,6 +50,7 @@
   [_text release];
   [_font release];
   [_color release];
+  [_shadowColor release];
   [super dealloc];
 }
 
@@ -77,12 +80,16 @@
   return _sizeThatFits;
 }
 
-- (void)draw {
+- (void)drawInRect:(CGRect)rect {
   if (_color) [_color setFill];
+  if (_shadowColor) {
+    CGContextRef context = UIGraphicsGetCurrentContext();	
+    CGContextSetShadowWithColor(context, _shadowOffset, 0, _shadowColor.CGColor);
+  }
   if (_lineBreakMode == -1 || _frame.size.width > 0) {
-    [_text drawAtPoint:_frame.origin withFont:_font];
+    [_text drawAtPoint:rect.origin withFont:_font];
   } else {
-    [_text drawAtPoint:_frame.origin forWidth:_frame.size.width withFont:_font lineBreakMode:_lineBreakMode];
+    [_text drawAtPoint:rect.origin forWidth:rect.size.width withFont:_font lineBreakMode:_lineBreakMode];
   }
 }
 

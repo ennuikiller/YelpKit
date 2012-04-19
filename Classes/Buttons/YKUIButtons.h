@@ -69,4 +69,11 @@ typedef void (^YKUIButtonsApplyBlock)(YKUIButton *button, NSInteger index);
  */
 - (NSArray *)buttons;
 
+/*!
+ Set disabled at button index.
+ @param enabled
+ @param index
+ */
+- (void)setEnabled:(BOOL)enabled index:(NSInteger)index;
+
 @end

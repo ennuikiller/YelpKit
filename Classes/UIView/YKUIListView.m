@@ -132,7 +132,7 @@
   CGContextRef context = UIGraphicsGetCurrentContext();  
   CGFloat y = 1;
   if (_topBorderColor) {
-    YKCGContextDrawLine(context, _lineInsets.left, 0.5 + _lineInsets.top, self.frame.size.width - _lineInsets.right, 0.5 + _lineInsets.top, _topBorderColor.CGColor, 0.5);
+    YKCGContextDrawLine(context, _lineInsets.left, 0.5 + _lineInsets.top, self.frame.size.width - _lineInsets.right, 0.5 + _lineInsets.top, _topBorderColor.CGColor, 1.0);
   }
   
   if (_lineSeparatorColor) {
@@ -153,7 +153,7 @@
       }
       
       if (!viewHasCustomListViewAppearance && !nextViewHasCustomListViewAppearance && nextView) {
-        YKCGContextDrawLine(context, _lineInsets.left, y + 0.5 + _lineInsets.bottom, self.frame.size.width - _lineInsets.right, y + 0.5 + _lineInsets.bottom, _lineSeparatorColor.CGColor, 0.5);
+        YKCGContextDrawLine(context, _lineInsets.left, y + 0.5 + _lineInsets.bottom, self.frame.size.width - _lineInsets.right, y + 0.5 + _lineInsets.bottom, _lineSeparatorColor.CGColor, 1.0);
       }
 
       y += 1;

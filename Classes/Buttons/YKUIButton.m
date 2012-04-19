@@ -32,7 +32,7 @@
 
 @implementation YKUIButton
 
-@synthesize title=_title, titleColor=_titleColor, titleFont=_titleFont, borderWidth=_borderWidth, borderAlternateWidth=_borderAlternateWidth, color=_color, color2=_color2, color3=_color3, color4=_color4, highlightedTitleColor=_highlightedTitleColor, highlightedColor=_highlightedColor, highlightedColor2=_highlightedColor2, highlightedShadingType=_highlightedShadingType, disabledTitleColor=_disabledTitleColor, disabledColor=_disabledColor, disabledColor2=_disabledColor2, disabledShadingType=_disabledShadingType, shadingType=_shadingType, borderColor=_borderColor, borderStyle=_borderStyle, titleShadowColor=_titleShadowColor, accessoryImageView=_accessoryImageView, titleAlignment=_titleAlignment, titleHidden=_titleHidden, titleInsets=_titleInsets, titleShadowOffset=_titleShadowOffset, selectedTitleColor=_selectedTitleColor, selectedColor=_selectedColor, selectedColor2=_selectedColor2, selectedShadingType=_selectedShadingType, cornerRadius=_cornerRadius, highlightedTitleShadowColor=_highlightedTitleShadowColor, highlightedTitleShadowOffset=_highlightedTitleShadowOffset, disabledBorderColor=_disabledBorderColor, insets=_insets, borderShadowColor=_borderShadowColor, borderShadowBlur=_borderShadowBlur, iconImageSize=_iconImageSize, iconImageView=_iconImageView, highlightedImage=_highlightedImage, image=_image, selectedBorderShadowColor=_selectedBorderShadowColor, selectedBorderShadowBlur=_selectedBorderShadowBlur, disabledImage=_disabledImage, iconPosition=_iconPosition, highlightedBorderShadowColor=_highlightedBorderShadowColor, highlightedBorderShadowBlur=_highlightedBorderShadowBlur, secondaryTitle=_secondaryTitle, secondaryTitleColor=_secondaryTitleColor, secondaryTitleFont=_secondaryTitleFont, iconOrigin=_iconOrigin, contentView=_contentView, maxLineCount=_maxLineCount, highlightedBorderColor=_highlightedBorderColor;
+@synthesize title=_title, titleColor=_titleColor, titleFont=_titleFont, borderWidth=_borderWidth, borderAlternateWidth=_borderAlternateWidth, color=_color, color2=_color2, color3=_color3, color4=_color4, highlightedTitleColor=_highlightedTitleColor, highlightedColor=_highlightedColor, highlightedColor2=_highlightedColor2, highlightedShadingType=_highlightedShadingType, disabledTitleColor=_disabledTitleColor, disabledColor=_disabledColor, disabledColor2=_disabledColor2, disabledShadingType=_disabledShadingType, shadingType=_shadingType, borderColor=_borderColor, borderStyle=_borderStyle, titleShadowColor=_titleShadowColor, accessoryImageView=_accessoryImageView, titleAlignment=_titleAlignment, titleHidden=_titleHidden, titleInsets=_titleInsets, titleShadowOffset=_titleShadowOffset, selectedTitleColor=_selectedTitleColor, selectedColor=_selectedColor, selectedColor2=_selectedColor2, selectedShadingType=_selectedShadingType, cornerRadius=_cornerRadius, highlightedTitleShadowColor=_highlightedTitleShadowColor, highlightedTitleShadowOffset=_highlightedTitleShadowOffset, disabledBorderColor=_disabledBorderColor, insets=_insets, borderShadowColor=_borderShadowColor, borderShadowBlur=_borderShadowBlur, iconImageSize=_iconImageSize, iconImageView=_iconImageView, highlightedImage=_highlightedImage, image=_image, selectedBorderShadowColor=_selectedBorderShadowColor, selectedBorderShadowBlur=_selectedBorderShadowBlur, disabledImage=_disabledImage, iconPosition=_iconPosition, highlightedBorderShadowColor=_highlightedBorderShadowColor, highlightedBorderShadowBlur=_highlightedBorderShadowBlur, secondaryTitle=_secondaryTitle, secondaryTitleColor=_secondaryTitleColor, secondaryTitleFont=_secondaryTitleFont, iconOrigin=_iconOrigin, contentView=_contentView, maxLineCount=_maxLineCount, highlightedBorderColor=_highlightedBorderColor, disabledIconImage=_disabledIconImage;
 ;
 
 
@@ -96,6 +96,7 @@
   [_disabledColor2 release];
   [_disabledTitleColor release];
   [_disabledColor release];
+  [_disabledIconImage release];
   [_disabledBorderColor release];
   [_borderColor release];
   [_borderShadowColor release];
@@ -208,7 +209,7 @@
     accessoryImageSize = _accessoryImageView.image.size;
     accessoryImageSize.width += 10;
   }
-  return CGSizeMake(titleSize.width + _titleInsets.left + _titleInsets.right + accessoryImageSize.width, titleSize.height + _titleInsets.top + _titleInsets.bottom);
+  return CGSizeMake(titleSize.width + _insets.left + _insets.right + _titleInsets.left + _titleInsets.right + accessoryImageSize.width, titleSize.height + _titleInsets.top + _titleInsets.bottom);
 }
 
 - (CGSize)sizeThatFitsTitleAndIcon:(CGSize)size {
@@ -383,7 +384,7 @@
     if (_disabledColor2) color2 = _disabledColor2;
     if (_disabledBorderColor) borderColor = _disabledBorderColor;
     if (_disabledImage) image = _disabledImage;
-  } else if (isHighlighted) { //  || self.isTracking ; TODO(gabe): Check if we still need the tracking
+  } else if (isHighlighted) {
     if (_highlightedShadingType != YKUIShadingTypeUnknown) shadingType = _highlightedShadingType;
     if (_highlightedColor) color = _highlightedColor;
     if (_highlightedColor2) color2 = _highlightedColor2;
@@ -411,6 +412,7 @@
   
   UIImage *icon = _iconImageView.image;
   if (isHighlighted && [_iconImageView respondsToSelector:@selector(highlightedImage)] && _iconImageView.highlightedImage) icon = _iconImageView.highlightedImage;
+  if (isDisabled && _disabledIconImage) icon = _disabledIconImage;
   
   UIImage *accessoryIcon = _accessoryImageView.image;
   if (isHighlighted && _accessoryImageView.highlightedImage) accessoryIcon = _accessoryImageView.highlightedImage;
@@ -468,9 +470,9 @@
     CGFloat x = bounds.origin.x + _insets.left;
     
     if (_titleAlignment == UITextAlignmentCenter) {
-      CGFloat width = size.width;
+      CGFloat width = size.width - _insets.left - _insets.right;
       if (accessoryIcon) width -= accessoryIcon.size.width;
-      x = bounds.origin.x + roundf(width/2.0 - lineWidth/2.0);      
+      x = bounds.origin.x + roundf(width/2.0 - lineWidth/2.0) + _insets.left;      
     } else {
       x = _insets.left;
     }
@@ -479,19 +481,19 @@
     if (showIcon) {
       switch (_iconPosition) {
         case YKUIButtonIconPositionLeft: {
-          CGPoint iconTop = YKCGPointToCenter(iconSize, bounds.size);
-          iconTop.x = x;     
-          iconTop.y += bounds.origin.y;
+          CGPoint iconTop = YKCGPointToCenter(iconSize, size);
+          iconTop.x = x;
+          iconTop.y += bounds.origin.y + _insets.top;
           [icon drawInRect:CGRectMake(iconTop.x, iconTop.y, iconSize.width, iconSize.height)];
           x += iconSize.width + 2; // TODO(gabe): This 2px padding should come from default inset
           break;
         }
-        case YKUIButtonIconPositionTop: {
+        case YKUIButtonIconPositionTopCenter: {
           CGPoint iconTop = YKCGPointToCenter(iconSize, CGSizeMake(size.width, size.height - _titleSize.height));
           if (_iconOrigin.x != CGFLOAT_MAX) iconTop.x = _iconOrigin.x;
           if (_iconOrigin.y != CGFLOAT_MAX) iconTop.y = _iconOrigin.y;
           [icon drawInRect:CGRectMake(iconTop.x, iconTop.y + _insets.top, iconSize.width, iconSize.height)];
-          y = iconTop.y + iconSize.height + _titleInsets.top;
+          y = iconTop.y + _insets.top + iconSize.height;
           break;
         }
       }

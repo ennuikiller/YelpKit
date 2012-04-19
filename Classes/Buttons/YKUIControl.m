@@ -10,7 +10,7 @@
 
 @implementation YKUIControl 
 
-@synthesize target=_target, action=_action, highlightedEnabled=_highlightedEnabled, selectedEnabled=_selectedEnabled, layout=_layout, context=_context;
+@synthesize target=_target, action=_action, highlightedEnabled=_highlightedEnabled, selectedEnabled=_selectedEnabled, layout=_layout, context=_context, targetBlock=_targetBlock;
 
 + (void)removeAllTargets:(UIControl *)control {
   for (id target in [control allTargets]) {
@@ -39,6 +39,7 @@
 
 - (void)dealloc {
   [_context release];
+  Block_release(_targetBlock);
   [super dealloc];
 }
 
@@ -76,7 +77,7 @@
 
 - (void)_didTouchUpInside {
   [_target performSelector:_action withObject:(_context ? _context : self)];
-  [self didTouchUpInside];
+  if (_targetBlock != NULL) _targetBlock(self, _context);
 }
 
 //

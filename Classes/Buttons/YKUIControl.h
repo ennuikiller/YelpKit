@@ -8,6 +8,8 @@
 
 #import "YKLayout.h"
 
+typedef void (^UIControlTargetBlock)(UIControl *control, id context);
+
 /*!
  UIControl with some helpers.
 
@@ -22,6 +24,8 @@
   
   id _context;
   
+  UIControlTargetBlock _targetBlock;
+  
   id<YKLayout> _layout;
 }
 
@@ -31,6 +35,7 @@
 @property (assign, nonatomic, getter=isSelectedEnabled) BOOL selectedEnabled; // If YES, will set selected state when touch (ended); Default is NO
 @property (retain, nonatomic) id<YKLayout> layout;
 @property (assign, nonatomic) id context;
+@property (copy, nonatomic) UIControlTargetBlock targetBlock;
 
 /*!
  This method gets called by both initWithFrame and initWithCoder. Subclasses taking advantage of
@@ -86,11 +91,6 @@
  @param context Weak
  */
 - (void)setTarget:(id)target action:(SEL)action context:(id)context;
-
-/*!
- Notification of touch (for subclasses).
- */
-- (void)didTouchUpInside;
 
 /*!
  Force the layout, if using YKLayout.

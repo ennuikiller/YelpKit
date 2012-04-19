@@ -148,6 +148,11 @@
   return CGSizeMake(size.width, y);
 }
 
+- (void)setEnabled:(BOOL)enabled index:(NSInteger)index {
+  YKUIButton *button = [_buttons objectAtIndex:index];
+  [button setEnabled:enabled];
+}
+
 - (NSArray *)buttons {
   return _buttons;
 }

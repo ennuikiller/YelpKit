@@ -53,8 +53,8 @@
   return _image.size;
 }
 
-- (void)draw {
-  [_image drawAtPoint:_frame.origin];
+- (void)drawInRect:(CGRect)rect {
+  [_image drawAtPoint:rect.origin];
 }
 
 @end

@@ -27,6 +27,9 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+/*!
+ Base class for YKLayout subviews.
+ */
 @interface YKLView : NSObject {
   CGRect _frame;
 }
@@ -34,8 +37,35 @@
 @property (assign, nonatomic) CGRect frame;
 @property (assign, nonatomic) CGPoint origin;
 
+/*!
+ Size that fits for this view.
+ */
 - (CGSize)sizeThatFits:(CGSize)size;
 
+/*!
+ Returns rect for this view in the superview frame based on content mode.
+ @param rect Superview frame
+ @param contentMode Where to place view in rect
+ */
+- (CGRect)sizeThatFitsInRect:(CGRect)rect contentMode:(UIViewContentMode)contentMode;
+
+/*!
+ Draw view in rect.
+ @param rect Rect to draw at/in.
+ */
+- (void)drawInRect:(CGRect)rect;
+
+/*!
+ Draw this view at the current frame.
+ Defaults to [self drawInRect:self.frame];.
+ @param rect Dirty rect
+ */
+- (void)drawRect:(CGRect)rect;
+
+/*!
+ Draw this view.
+ Defaults to [self drawRect:self.frame];.
+ */
 - (void)draw;
 
 @end

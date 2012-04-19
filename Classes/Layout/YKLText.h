@@ -35,9 +35,15 @@
   UIColor *_color;
   UILineBreakMode _lineBreakMode;
   
+  UIColor *_shadowColor;
+  CGSize _shadowOffset;
+  
   CGSize _sizeThatFits;
   CGSize _sizeForSizeThatFits;
 }
+
+@property (retain, nonatomic) UIColor *shadowColor;
+@property (assign, nonatomic) CGSize shadowOffset;
 
 - (id)initWithText:(NSString *)text font:(UIFont *)font color:(UIColor *)color lineBreakMode:(UILineBreakMode)lineBreakMode;
 

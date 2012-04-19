@@ -28,6 +28,7 @@
 //
 
 #import "YKLView.h"
+#import "YKCGUtils.h"
 
 @implementation YKLView
 
@@ -35,6 +36,19 @@
 
 - (CGSize)sizeThatFits:(CGSize)size {
   return _frame.size;
+}
+
+- (CGRect)sizeThatFitsInRect:(CGRect)rect contentMode:(UIViewContentMode)contentMode {
+  CGSize sizeThatFits = [self sizeThatFits:rect.size];
+  CGRect frame;
+  if (contentMode == UIViewContentModeCenter) {
+    frame = YKCGRectToCenter(sizeThatFits, rect.size);
+    frame.origin.x += rect.origin.x;
+    frame.origin.y += rect.origin.y;
+  } else {
+    [NSException raise:NSInvalidArgumentException format:@"Only contentMode UIViewContentModeCenter is supported"];
+  }
+  return frame;
 }
 
 - (CGPoint)origin {
@@ -45,6 +59,14 @@
   _frame = CGRectMake(origin.x, origin.y, _frame.size.width, _frame.size.height);
 }
 
-- (void)draw { }
+- (void)drawInRect:(CGRect)rect { }
+
+- (void)drawRect:(CGRect)rect { 
+  [self drawInRect:self.frame];
+}
+
+- (void)draw {
+  [self drawRect:self.frame];
+}
 
 @end

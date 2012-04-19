@@ -35,7 +35,7 @@
 
 typedef enum {
   YKUIButtonIconPositionLeft = 0, // Default
-  YKUIButtonIconPositionTop = 1,
+  YKUIButtonIconPositionTopCenter,
 } YKUIButtonIconPosition;
 
 /*!
@@ -78,6 +78,7 @@ typedef enum {
   UIColor *_disabledColor2; 
   UIColor *_disabledBorderColor;
   YKUIShadingType _disabledShadingType;
+  UIImage *_disabledIconImage;
   
   UIColor *_selectedTitleColor;
   UIColor *_selectedColor;
@@ -385,6 +386,11 @@ typedef enum {
  Shading type for background (disabled).
  */
 @property (assign, nonatomic) YKUIShadingType disabledShadingType;
+
+/*!
+ Icon (disabled).
+ */
+@property (retain, nonatomic) UIImage *disabledIconImage;
 
 /*!
  Secondary title, that appears next to title.
