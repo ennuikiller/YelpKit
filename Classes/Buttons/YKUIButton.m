@@ -28,6 +28,7 @@
 //
 
 #import "YKUIButton.h"
+#import "YKDefines.h"
 
 
 @implementation YKUIButton
@@ -433,7 +434,7 @@
     YKCGContextAddStyledRect(context, bounds, _borderStyle, _borderWidth, _borderAlternateWidth, _cornerRadius);  
     if (clip) CGContextClip(context);
 
-    YKCGContextDrawShadingWithHeight(context, color.CGColor, color2.CGColor, color3.CGColor, color4.CGColor, bounds.size.height, shadingType);
+    YKCGContextDrawShading(context, color.CGColor, color2.CGColor, color3.CGColor, color4.CGColor, bounds.origin, CGPointMake(bounds.origin.x, CGRectBottom(bounds)), shadingType, YES, YES);
 
     fillColor = nil;
     if (clip) {
