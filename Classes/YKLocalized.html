@@ -72,7 +72,11 @@
 	
 	<option value="//api/name/setMockCountryCode:">&nbsp;&nbsp;&nbsp;&nbsp;+ setMockCountryCode:</option>
 	
+	<option value="//api/name/setSupportedCountries:">&nbsp;&nbsp;&nbsp;&nbsp;+ setSupportedCountries:</option>
+	
 	<option value="//api/name/setSupportedLanguages:">&nbsp;&nbsp;&nbsp;&nbsp;+ setSupportedLanguages:</option>
+	
+	<option value="//api/name/supportedCountries">&nbsp;&nbsp;&nbsp;&nbsp;+ supportedCountries</option>
 	
 	<option value="//api/name/supportedLanguages">&nbsp;&nbsp;&nbsp;&nbsp;+ supportedLanguages</option>
 	
@@ -134,7 +138,11 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setMockCountryCode:">setMockCountryCode:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setSupportedCountries:">setSupportedCountries:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setSupportedLanguages:">setSupportedLanguages:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/supportedCountries">supportedCountries</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/supportedLanguages">supportedLanguages</a></span></li>
 	
@@ -248,7 +256,8 @@ relevant to the region format. That is, for language = Español and region forma
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/countryCode">+&nbsp;countryCode</a></code>
-		<span class="tooltip"><p>Get the country code (for locale region format).</p></span>
+		<span class="tooltip"><p>Get the country code (for locale region format). If <a href="#//api/name/supportedCountries">supportedCountries</a> is set, and the
+device&rsquo;s country code is not in <a href="#//api/name/supportedCountries">supportedCountries</a>, this will default to @&ldquo;US&rdquo;.</p></span>
 	</span>
 	
 	
@@ -284,6 +293,20 @@ relevant to the region format. That is, for language = Español and region forma
 	<span class="tooltip">
 		<code><a href="#//api/name/supportedLanguages">+&nbsp;supportedLanguages</a></code>
 		<span class="tooltip"><p>Supported languages, or nil if not set.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setSupportedCountries:">+&nbsp;setSupportedCountries:</a></code>
+		<span class="tooltip"><p>Set supported countries.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/supportedCountries">+&nbsp;supportedCountries</a></code>
+		<span class="tooltip"><p>Supported countries, or nil if not set.</p></span>
 	</span>
 	
 	
@@ -338,7 +361,8 @@ relevant to the region format. That is, for language = Español and region forma
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Get the country code (for locale region format).</p>
+		<p>Get the country code (for locale region format). If <a href="#//api/name/supportedCountries">supportedCountries</a> is set, and the
+device&rsquo;s country code is not in <a href="#//api/name/supportedCountries">supportedCountries</a>, this will default to @&ldquo;US&rdquo;.</p>
 	</div>		
 	
     
@@ -1001,6 +1025,52 @@ relevant to the region format. That is, for language = Español and region forma
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/setSupportedCountries:" title="setSupportedCountries:"></a>
+	<h3 class="subsubtitle method-title">setSupportedCountries:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Set supported countries.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)setSupportedCountries:(NSSet *)<em>supportedCountries</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>supportedCountries</em></dt>
+			<dd><p>Set of supported countries</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKLocalized.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/setSupportedLanguages:" title="setSupportedLanguages:"></a>
 	<h3 class="subsubtitle method-title">setSupportedLanguages:</h3>
 	
@@ -1025,6 +1095,42 @@ relevant to the region format. That is, for language = Español and region forma
 		</dl>
 		
 	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKLocalized.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/supportedCountries" title="supportedCountries"></a>
+	<h3 class="subsubtitle method-title">supportedCountries</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Supported countries, or nil if not set.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (NSSet *)supportedCountries</code></div>
+
+    
 	
 	
 	
@@ -1097,7 +1203,7 @@ relevant to the region format. That is, for language = Español and region forma
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 YelpKit. All rights reserved. (Last updated: 2012-04-16)</span><br />
+						<p><span class="copyright">&copy; 2012 YelpKit. All rights reserved. (Last updated: 2012-04-19)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>YKUIImageView Class Reference</title>
+		<title>YKLView Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">YKUIImageView Class Reference</h1>
+				<h1 class="hideInXcode">YKLView Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -38,20 +38,21 @@
 	
 	
 	
-	<option value="properties">Properties</option>
-	
-	<option value="//api/name/imageContentMode">&nbsp;&nbsp;&nbsp;&nbsp;imageContentMode</option>
-	
-	
 	
 	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/drawInRect:contentMode:">&nbsp;&nbsp;&nbsp;&nbsp;- drawInRect:contentMode:</option>
+	<option value="//api/name/draw">&nbsp;&nbsp;&nbsp;&nbsp;- draw</option>
 	
-	<option value="//api/name/sharedInit">&nbsp;&nbsp;&nbsp;&nbsp;- sharedInit</option>
+	<option value="//api/name/drawInRect:">&nbsp;&nbsp;&nbsp;&nbsp;- drawInRect:</option>
+	
+	<option value="//api/name/drawRect:">&nbsp;&nbsp;&nbsp;&nbsp;- drawRect:</option>
+	
+	<option value="//api/name/sizeThatFits:">&nbsp;&nbsp;&nbsp;&nbsp;- sizeThatFits:</option>
+	
+	<option value="//api/name/sizeThatFitsInRect:contentMode:">&nbsp;&nbsp;&nbsp;&nbsp;- sizeThatFitsInRect:contentMode:</option>
 	
 	
 	
@@ -75,21 +76,21 @@
 
 
 
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/imageContentMode">imageContentMode</a></span></li>
-	
-</ul></li>
-
 
 
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/drawInRect:contentMode:">drawInRect:contentMode:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/draw">draw</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedInit">sharedInit</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/drawInRect:">drawInRect:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/drawRect:">drawRect:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sizeThatFits:">sizeThatFits:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sizeThatFitsInRect:contentMode:">sizeThatFitsInRect:contentMode:</a></span></li>
 	
 </ul></li>
 
@@ -98,7 +99,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="YKUIImageView Class Reference" name="top"></a>
+				<a title="YKLView Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -107,7 +108,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">YKUIImageView Class Reference</h1>
+						<h1 class="title title-header">YKLView Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -115,10 +116,10 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value"><a href="../Classes/YKUIImageBaseView.html">YKUIImageBaseView</a> : <a href="../Classes/YKUILayoutView.html">YKUILayoutView</a> : UIView</td>
+	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">YKUIImageView.h<br />YKUIImageView.m</td>
+	<td class="specification-value">YKLView.h<br />YKLView.m</td>
 </tr>
 						</tbody></table></div>
 					
@@ -128,9 +129,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Image view.</p>
-
-<p>Defaults to non-opaque with white background and fill aspect fit content mode.</p>
+						<p>Base class for <a href="../Classes/YKLayout.html">YKLayout</a> subviews.</p>
 					</div>
 					
 					
@@ -143,35 +142,43 @@
 						
 						
 						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
+						
 
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/imageContentMode">&nbsp;&nbsp;imageContentMode</a></code>
-		<span class="tooltip"><p>Content mode with which to draw the image. If unset, this will use self.contentMode.</p></span>
+		<code><a href="#//api/name/sizeThatFits:">&ndash;&nbsp;sizeThatFits:</a></code>
+		<span class="tooltip"><p>Size that fits for this view.</p></span>
 	</span>
-	<span class="task-item-suffix">property</span>
+	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/drawInRect:contentMode:">&ndash;&nbsp;drawInRect:contentMode:</a></code>
-		<span class="tooltip"><p>Draw image in rect for current graphics context.</p></span>
+		<code><a href="#//api/name/sizeThatFitsInRect:contentMode:">&ndash;&nbsp;sizeThatFitsInRect:contentMode:</a></code>
+		<span class="tooltip"><p>Returns rect for this view in the superview frame based on content mode.</p></span>
 	</span>
 	
 	
-</li>
-						</ul>
-						
-						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
-
-						<ul class="task-list">
-							<li>
+</li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/sharedInit">&ndash;&nbsp;sharedInit</a></code>
-		<span class="tooltip"><p>Subclasses can override this method to perform initialization tasks that occur during both <a href="../Classes/YKUILayoutView.html#//api/name/initWithFrame:">initWithFrame:</a> and <a href="../Classes/YKUILayoutView.html#//api/name/initWithCoder:">initWithCoder:</a></p></span>
+		<code><a href="#//api/name/drawInRect:">&ndash;&nbsp;drawInRect:</a></code>
+		<span class="tooltip"><p>Draw view in rect.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/drawRect:">&ndash;&nbsp;drawRect:</a></code>
+		<span class="tooltip"><p>Draw this view at the current frame.
+Defaults to [self drawInRect:self.frame];.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/draw">&ndash;&nbsp;draw</a></code>
+		<span class="tooltip"><p>Draw this view.
+Defaults to [self drawRect:self.frame];.</p></span>
 	</span>
 	
 	
@@ -183,53 +190,6 @@
 					
 					
 					
-					
-					<div class="section section-methods">
-						<a title="Properties" name="properties"></a>
-						<h2 class="subtitle subtitle-methods">Properties</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/imageContentMode" title="imageContentMode"></a>
-	<h3 class="subsubtitle method-title">imageContentMode</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Content mode with which to draw the image. If unset, this will use self.contentMode.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) UIViewContentMode imageContentMode</code></div>
-
-    
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>Current imageContentMode or -1 if unset.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">YKUIImageView.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
 					
 					
 					
@@ -240,18 +200,55 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/drawInRect:contentMode:" title="drawInRect:contentMode:"></a>
-	<h3 class="subsubtitle method-title">drawInRect:contentMode:</h3>
+	<a name="//api/name/draw" title="draw"></a>
+	<h3 class="subsubtitle method-title">draw</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Draw image in rect for current graphics context.</p>
+		<p>Draw this view.
+Defaults to [self drawRect:self.frame];.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)drawInRect:(CGRect)<em>rect</em> contentMode:(UIViewContentMode)<em>contentMode</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)draw</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKLView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/drawInRect:" title="drawInRect:"></a>
+	<h3 class="subsubtitle method-title">drawInRect:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Draw view in rect.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)drawInRect:(CGRect)<em>rect</em></code></div>
 
     
 	
@@ -260,12 +257,7 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>rect</em></dt>
-			<dd><p>Rect</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>contentMode</em></dt>
-			<dd><p>Content mode</p></dd>
+			<dd><p>Rect to <a href="../Classes/YKLView.html#//api/name/draw">draw</a> at/in.</p></dd>
 		</dl>
 		
 	</div>
@@ -284,25 +276,72 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">YKUIImageView.h</code><br />
+		<code class="declared-in-ref">YKLView.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/sharedInit" title="sharedInit"></a>
-	<h3 class="subsubtitle method-title">sharedInit</h3>
+	<a name="//api/name/drawRect:" title="drawRect:"></a>
+	<h3 class="subsubtitle method-title">drawRect:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Subclasses can override this method to perform initialization tasks that occur during both <a href="../Classes/YKUILayoutView.html#//api/name/initWithFrame:">initWithFrame:</a> and <a href="../Classes/YKUILayoutView.html#//api/name/initWithCoder:">initWithCoder:</a></p>
+		<p>Draw this view at the current frame.
+Defaults to [self drawInRect:self.frame];.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)sharedInit</code></div>
+	<div class="method-subsection method-declaration"><code>- (void)drawRect:(CGRect)<em>rect</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>rect</em></dt>
+			<dd><p>Dirty rect</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKLView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sizeThatFits:" title="sizeThatFits:"></a>
+	<h3 class="subsubtitle method-title">sizeThatFits:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Size that fits for this view.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (CGSize)sizeThatFits:(CGSize)<em>size</em></code></div>
 
     
 	
@@ -320,7 +359,58 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">YKUILayoutView.h</code><br />
+		<code class="declared-in-ref">YKLView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sizeThatFitsInRect:contentMode:" title="sizeThatFitsInRect:contentMode:"></a>
+	<h3 class="subsubtitle method-title">sizeThatFitsInRect:contentMode:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns rect for this view in the superview frame based on content mode.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (CGRect)sizeThatFitsInRect:(CGRect)<em>rect</em> contentMode:(UIViewContentMode)<em>contentMode</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>rect</em></dt>
+			<dd><p>Superview frame</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>contentMode</em></dt>
+			<dd><p>Where to place view in rect</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKLView.h</code><br />
 	</div>				
 	
 	

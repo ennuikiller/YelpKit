@@ -72,6 +72,8 @@
 	
 	<option value="//api/name/disabledColor2">&nbsp;&nbsp;&nbsp;&nbsp;disabledColor2</option>
 	
+	<option value="//api/name/disabledIconImage">&nbsp;&nbsp;&nbsp;&nbsp;disabledIconImage</option>
+	
 	<option value="//api/name/disabledShadingType">&nbsp;&nbsp;&nbsp;&nbsp;disabledShadingType</option>
 	
 	<option value="//api/name/disabledTitleColor">&nbsp;&nbsp;&nbsp;&nbsp;disabledTitleColor</option>
@@ -164,6 +166,8 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
+	<option value="//api/name/drawInRect:">&nbsp;&nbsp;&nbsp;&nbsp;- drawInRect:</option>
+	
 	<option value="//api/name/initWithContentView:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithContentView:</option>
 	
 	<option value="//api/name/initWithFrame:title:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithFrame:title:</option>
@@ -181,6 +185,8 @@
 	<option value="//api/name/sizeThatFitsTitle:">&nbsp;&nbsp;&nbsp;&nbsp;- sizeThatFitsTitle:</option>
 	
 	<option value="//api/name/sizeThatFitsTitle:minWidth:">&nbsp;&nbsp;&nbsp;&nbsp;- sizeThatFitsTitle:minWidth:</option>
+	
+	<option value="//api/name/sizeThatFitsTitleAndIcon:">&nbsp;&nbsp;&nbsp;&nbsp;- sizeThatFitsTitleAndIcon:</option>
 	
 	<option value="//api/name/sizeToFitWithMinimumSize:">&nbsp;&nbsp;&nbsp;&nbsp;- sizeToFitWithMinimumSize:</option>
 	
@@ -239,6 +245,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/disabledColor">disabledColor</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/disabledColor2">disabledColor2</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/disabledIconImage">disabledIconImage</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/disabledShadingType">disabledShadingType</a></span></li>
 	
@@ -334,6 +342,8 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/drawInRect:">drawInRect:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithContentView:">initWithContentView:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithFrame:title:">initWithFrame:title:</a></span></li>
@@ -351,6 +361,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sizeThatFitsTitle:">sizeThatFitsTitle:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sizeThatFitsTitle:minWidth:">sizeThatFitsTitle:minWidth:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sizeThatFitsTitleAndIcon:">sizeThatFitsTitleAndIcon:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sizeToFitWithMinimumSize:">sizeToFitWithMinimumSize:</a></span></li>
 	
@@ -770,6 +782,13 @@ Not all shading types use <a href="#//api/name/color2">color2</a>.</p></span>
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/disabledIconImage">&nbsp;&nbsp;disabledIconImage</a></code>
+		<span class="tooltip"><p>Icon (disabled).</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/secondaryTitle">&nbsp;&nbsp;secondaryTitle</a></code>
 		<span class="tooltip"><p>Secondary <a href="#//api/name/title">title</a>, that appears next to <a href="#//api/name/title">title</a>.</p></span>
 	</span>
@@ -869,6 +888,13 @@ Not all shading types use <a href="#//api/name/color2">color2</a>.</p></span>
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/sizeThatFitsTitleAndIcon:">&ndash;&nbsp;sizeThatFitsTitleAndIcon:</a></code>
+		<span class="tooltip"><p>Size that fits <a href="#//api/name/title">title</a> and icon.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/setBorderStyle:color:width:alternateWidth:cornerRadius:">&ndash;&nbsp;setBorderStyle:color:width:alternateWidth:cornerRadius:</a></code>
 		<span class="tooltip"><p>Set border.</p></span>
 	</span>
@@ -886,6 +912,13 @@ Not all shading types use <a href="#//api/name/color2">color2</a>.</p></span>
 	<span class="tooltip">
 		<code><a href="#//api/name/isAnimating">&ndash;&nbsp;isAnimating</a></code>
 		<span class="tooltip"><p>YES if activity indicator is animating</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/drawInRect:">&ndash;&nbsp;drawInRect:</a></code>
+		<span class="tooltip"><p>Draw the view in the given rect.</p></span>
 	</span>
 	
 	
@@ -1480,6 +1513,42 @@ Not all shading types use <a href="#//api/name/color2">color2</a>.</p>
     
 
 	<div class="method-subsection method-declaration"><code>@property (retain, nonatomic) UIColor *disabledColor2</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIButton.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/disabledIconImage" title="disabledIconImage"></a>
+	<h3 class="subsubtitle method-title">disabledIconImage</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Icon (disabled).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (retain, nonatomic) UIImage *disabledIconImage</code></div>
 
     
 	
@@ -3051,6 +3120,52 @@ Not all shading types use <a href="#//api/name/color2">color2</a>.</p>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
+	<a name="//api/name/drawInRect:" title="drawInRect:"></a>
+	<h3 class="subsubtitle method-title">drawInRect:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Draw the view in the given rect.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)drawInRect:(CGRect)<em>rect</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>rect</em></dt>
+			<dd><p>Rect to draw in.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIButton.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/initWithContentView:" title="initWithContentView:"></a>
 	<h3 class="subsubtitle method-title">initWithContentView:</h3>
 	
@@ -3489,6 +3604,57 @@ of sharedInit</p>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/sizeThatFitsTitleAndIcon:" title="sizeThatFitsTitleAndIcon:"></a>
+	<h3 class="subsubtitle method-title">sizeThatFitsTitleAndIcon:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Size that fits <a href="#//api/name/title">title</a> and icon.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (CGSize)sizeThatFitsTitleAndIcon:(CGSize)<em>size</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>size</em></dt>
+			<dd><p>Size</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Size to fit the <a href="#//api/name/title">title</a> text and icon (with <a href="#//api/name/insets">insets</a>).</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">YKUIButton.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/sizeToFitWithMinimumSize:" title="sizeToFitWithMinimumSize:"></a>
 	<h3 class="subsubtitle method-title">sizeToFitWithMinimumSize:</h3>
 	
@@ -3547,7 +3713,7 @@ of sharedInit</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 YelpKit. All rights reserved. (Last updated: 2012-04-16)</span><br />
+						<p><span class="copyright">&copy; 2012 YelpKit. All rights reserved. (Last updated: 2012-04-19)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						
