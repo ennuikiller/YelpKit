@@ -12,7 +12,7 @@
 #import "YKMKAnnotation.h"
 #import <GHKitIOS/GHNSDictionary+Utils.h>
 #import <GHKitIOS/GHNSDictionary+NSNull.h>
-
+#import "NSDictionary+YKValidation.h"
 
 NSString *YKNSStringFromMKCoordinateSpan(MKCoordinateSpan span) {
   return [NSString stringWithFormat:@"(Δ%0.6f, Δ%0.6f)", span.latitudeDelta, span.longitudeDelta];
@@ -80,8 +80,8 @@ extern BOOL YKMKCoordinateRegionIsNull(MKCoordinateRegion region) {
 
 MKCoordinateSpan YKMKCoordinateSpanDecode(id dict) {
   MKCoordinateSpan span;
-  span.latitudeDelta = [dict gh_doubleForKey:@"latitudeDelta"];
-  span.longitudeDelta = [dict gh_doubleForKey:@"longitudeDelta"];
+  span.latitudeDelta = [dict yk_doubleForKey:@"latitudeDelta"];
+  span.longitudeDelta = [dict yk_doubleForKey:@"longitudeDelta"];
   return span;
 }
 
@@ -93,9 +93,9 @@ id YKMKCoordinateSpanEncode(MKCoordinateSpan span) {
 
 MKCoordinateRegion YKMKCoordinateRegionDecode(id dict) {
   if (dict == nil) return YKMKCoordinateRegionNull;
-  CLLocationCoordinate2D center = YKCLLocationCoordinate2DDecode([dict gh_objectMaybeNilForKey:@"center"]);
+  CLLocationCoordinate2D center = YKCLLocationCoordinate2DDecode([dict yk_NSDictionaryMaybeNilForKey:@"center"]);
   if (YKCLLocationCoordinate2DIsNull(center)) return YKMKCoordinateRegionNull;
-  MKCoordinateSpan span = YKMKCoordinateSpanDecode([dict gh_objectMaybeNilForKey:@"span"]);
+  MKCoordinateSpan span = YKMKCoordinateSpanDecode([dict yk_NSDictionaryMaybeNilForKey:@"span"]);
   return MKCoordinateRegionMake(center, span);
 }
 
@@ -283,11 +283,11 @@ BOOL YKCLLocationCoordinate2DIsInsideRegion(CLLocationCoordinate2D coordinate, M
 
 + (MKCoordinateRegion)regionFromJSON:(NSDictionary *)JSONDict {
   MKCoordinateRegion region = YKMKCoordinateRegionNull;
-  NSDictionary *centerDict = [JSONDict gh_objectMaybeNilForKey:@"center"];
-  NSDictionary *spanDict = [JSONDict gh_objectMaybeNilForKey:@"span"];
+  NSDictionary *centerDict = [JSONDict yk_NSDictionaryMaybeNilForKey:@"center"];
+  NSDictionary *spanDict = [JSONDict yk_NSDictionaryMaybeNilForKey:@"span"];
   if (centerDict && spanDict) {
-    region = MKCoordinateRegionMake(YKCLLocationCoordinate2DMake([centerDict gh_doubleForKey:@"latitude"], [centerDict gh_doubleForKey:@"longitude"]), 
-                                    MKCoordinateSpanMake([spanDict gh_doubleForKey:@"latitude_delta"], [spanDict gh_doubleForKey:@"longitude_delta"]));
+    region = MKCoordinateRegionMake(YKCLLocationCoordinate2DMake([centerDict yk_doubleForKey:@"latitude"], [centerDict yk_doubleForKey:@"longitude"]), 
+                                    MKCoordinateSpanMake([spanDict yk_doubleForKey:@"latitude_delta"], [spanDict yk_doubleForKey:@"longitude_delta"]));
   }
   return region;
 }

@@ -79,8 +79,14 @@
 		00E928B81524DEEC00E90AF1 /* YKUIActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E928B61524DEEC00E90AF1 /* YKUIActivityView.m */; };
 		00F882E61527C92A000FF1AB /* YKUIActionSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = 00F882E41527C92A000FF1AB /* YKUIActionSheet.h */; };
 		00F882E71527C92A000FF1AB /* YKUIActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F882E51527C92A000FF1AB /* YKUIActionSheet.m */; };
+		420E62B7153F44FF00F114DC /* NSDictionary+YKValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 420E62B5153F44FF00F114DC /* NSDictionary+YKValidation.h */; };
+		420E62B8153F44FF00F114DC /* NSDictionary+YKValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 420E62B6153F44FF00F114DC /* NSDictionary+YKValidation.m */; };
 		4227623E150FFDC1002E177D /* UIColor+YKUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4227623C150FFDC1002E177D /* UIColor+YKUtils.h */; };
 		4227623F150FFDC1002E177D /* UIColor+YKUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4227623D150FFDC1002E177D /* UIColor+YKUtils.m */; };
+		42DF281F1540F53300EA955F /* NSArray+YKValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 42DF281D1540F53300EA955F /* NSArray+YKValidation.h */; };
+		42DF28201540F53300EA955F /* NSArray+YKValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 42DF281E1540F53300EA955F /* NSArray+YKValidation.m */; };
+		42DF28231540F6B200EA955F /* YKValidationException.h in Headers */ = {isa = PBXBuildFile; fileRef = 42DF28211540F6B200EA955F /* YKValidationException.h */; };
+		42DF28241540F6B200EA955F /* YKValidationException.m in Sources */ = {isa = PBXBuildFile; fileRef = 42DF28221540F6B200EA955F /* YKValidationException.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -161,8 +167,14 @@
 		00E928B61524DEEC00E90AF1 /* YKUIActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YKUIActivityView.m; path = Classes/UIView/YKUIActivityView.m; sourceTree = SOURCE_ROOT; };
 		00F882E41527C92A000FF1AB /* YKUIActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUIActionSheet.h; sourceTree = "<group>"; };
 		00F882E51527C92A000FF1AB /* YKUIActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIActionSheet.m; sourceTree = "<group>"; };
+		420E62B5153F44FF00F114DC /* NSDictionary+YKValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+YKValidation.h"; sourceTree = "<group>"; };
+		420E62B6153F44FF00F114DC /* NSDictionary+YKValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+YKValidation.m"; sourceTree = "<group>"; };
 		4227623C150FFDC1002E177D /* UIColor+YKUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+YKUtils.h"; sourceTree = "<group>"; };
 		4227623D150FFDC1002E177D /* UIColor+YKUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+YKUtils.m"; sourceTree = "<group>"; };
+		42DF281D1540F53300EA955F /* NSArray+YKValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+YKValidation.h"; sourceTree = "<group>"; };
+		42DF281E1540F53300EA955F /* NSArray+YKValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+YKValidation.m"; sourceTree = "<group>"; };
+		42DF28211540F6B200EA955F /* YKValidationException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKValidationException.h; sourceTree = "<group>"; };
+		42DF28221540F6B200EA955F /* YKValidationException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKValidationException.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +292,12 @@
 				0055930C140B00F6001E9C43 /* YKURLCache.m */,
 				0055930D140B00F6001E9C43 /* YKURLRequest.h */,
 				0055930E140B00F6001E9C43 /* YKURLRequest.m */,
+				42DF28211540F6B200EA955F /* YKValidationException.h */,
+				42DF28221540F6B200EA955F /* YKValidationException.m */,
+				420E62B5153F44FF00F114DC /* NSDictionary+YKValidation.h */,
+				420E62B6153F44FF00F114DC /* NSDictionary+YKValidation.m */,
+				42DF281D1540F53300EA955F /* NSArray+YKValidation.h */,
+				42DF281E1540F53300EA955F /* NSArray+YKValidation.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -436,6 +454,9 @@
 				0041271C15366FF30090F268 /* YKLText.h in Headers */,
 				004127201536716D0090F268 /* YKLView.h in Headers */,
 				00412724153673410090F268 /* YKLImage.h in Headers */,
+				420E62B7153F44FF00F114DC /* NSDictionary+YKValidation.h in Headers */,
+				42DF281F1540F53300EA955F /* NSArray+YKValidation.h in Headers */,
+				42DF28231540F6B200EA955F /* YKValidationException.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,6 +546,9 @@
 				0041271D15366FF30090F268 /* YKLText.m in Sources */,
 				004127211536716D0090F268 /* YKLView.m in Sources */,
 				00412725153673410090F268 /* YKLImage.m in Sources */,
+				420E62B8153F44FF00F114DC /* NSDictionary+YKValidation.m in Sources */,
+				42DF28201540F53300EA955F /* NSArray+YKValidation.m in Sources */,
+				42DF28241540F6B200EA955F /* YKValidationException.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
