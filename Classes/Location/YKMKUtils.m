@@ -72,10 +72,15 @@ CLLocationDegrees YKMKCoordinateSpanMaxDelta(MKCoordinateSpan span1, MKCoordinat
   return maxDelta;
 }
 
-const MKCoordinateRegion YKMKCoordinateRegionNull = {{DBL_MAX, DBL_MAX}, {0, 0}};
+const MKCoordinateSpan YKMKCoordinateSpanNull = {DBL_MAX, DBL_MAX};
+const MKCoordinateRegion YKMKCoordinateRegionNull = {{DBL_MAX, DBL_MAX}, {DBL_MAX, DBL_MAX}};
 
 extern BOOL YKMKCoordinateRegionIsNull(MKCoordinateRegion region) {
-  return region.center.latitude == YKCLLocationCoordinate2DNull.latitude && region.center.longitude == YKCLLocationCoordinate2DNull.longitude;
+  return region.center.latitude == DBL_MAX && region.center.longitude == DBL_MAX;
+}
+
+extern BOOL YKMKCoordinateSpanIsNull(MKCoordinateSpan span) {
+  return span.latitudeDelta == DBL_MAX && span.longitudeDelta == DBL_MAX;
 }
 
 MKCoordinateSpan YKMKCoordinateSpanDecode(id dict) {
@@ -241,34 +246,50 @@ BOOL YKCLLocationCoordinate2DIsInsideRegion(CLLocationCoordinate2D coordinate, M
 }
 
 + (MKCoordinateRegion)regionThatFits:(NSArray *)annotations center:(CLLocationCoordinate2D)center {
+  return [self regionThatFits:annotations center:center minCoordinateSpan:kMinSpan maxCoordinateSpan:kMaxSpan];
+}
+
++ (MKCoordinateRegion)regionThatFits:(NSArray *)annotations center:(CLLocationCoordinate2D)center minCoordinateSpan:(MKCoordinateSpan)minCoordinateSpan maxCoordinateSpan:(MKCoordinateSpan)maxCoordinateSpan {
   CLLocationDegrees latitudeDelta = 0;
   CLLocationDegrees longitudeDelta = 0;
-  for(id<MKAnnotation> annotation in annotations) {
+  for (id<MKAnnotation> annotation in annotations) {
     if (YKCLLocationCoordinate2DIsNull(annotation.coordinate)) continue;
     if (fabs(center.latitude - annotation.coordinate.latitude) > latitudeDelta) latitudeDelta = fabs(center.latitude - annotation.coordinate.latitude);
     if (fabs(center.longitude - annotation.coordinate.longitude) > longitudeDelta) longitudeDelta = fabs(center.longitude - annotation.coordinate.longitude);    
   }
-  if (longitudeDelta < kMinLongitudeDelta && latitudeDelta < kMinLatitudeDelta)
-    return MKCoordinateRegionMake(center, MKCoordinateSpanMake(kDefaultRegionSpanDelta, kDefaultRegionSpanDelta));  
   latitudeDelta = latitudeDelta * 2;
   longitudeDelta = longitudeDelta * 2;
-  if (latitudeDelta > kMaxLatitudeDelta)
-    latitudeDelta = kDefaultLatitudedDelta;
-  if (longitudeDelta > kMaxLongitudeDelta)
-    longitudeDelta = kDefaultLongitudeDelta;
+  
+  if (!YKMKCoordinateSpanIsNull(minCoordinateSpan)) {
+    if (longitudeDelta < minCoordinateSpan.longitudeDelta) {
+      longitudeDelta = minCoordinateSpan.longitudeDelta;
+    }
+    if (latitudeDelta < minCoordinateSpan.latitudeDelta) {
+      latitudeDelta = minCoordinateSpan.latitudeDelta;
+    }
+  }
+
+  if (!YKMKCoordinateSpanIsNull(maxCoordinateSpan)) {
+    if (longitudeDelta > maxCoordinateSpan.longitudeDelta) {
+      longitudeDelta = maxCoordinateSpan.longitudeDelta;
+    }
+    if (latitudeDelta > maxCoordinateSpan.latitudeDelta) {
+      latitudeDelta = maxCoordinateSpan.latitudeDelta;
+    }
+  }
   return MKCoordinateRegionMake(center, MKCoordinateSpanMake(latitudeDelta, longitudeDelta));
 }
 
 + (MKCoordinateRegion)regionThatCentersOnAnnotation:(id<MKAnnotation>)annotation location:(CLLocation *)location {
-  return [self regionThatCentersOnAnnotation:annotation location:location maxDistance:kMaxDistanceThatFitsRegion coordinateSpan:kDefaultSpan];
+  return [self regionThatCentersOnAnnotation:annotation location:location maxDistance:kMaxDistanceThatFitsRegion coordinateSpan:kDefaultSpan minCoordinateSpan:YKMKCoordinateSpanNull];
 }
 
-+ (MKCoordinateRegion)regionThatCentersOnAnnotation:(id<MKAnnotation>)annotation location:(CLLocation *)location maxDistance:(CLLocationDistance)maxDistance coordinateSpan:(MKCoordinateSpan)coordinateSpan {
++ (MKCoordinateRegion)regionThatCentersOnAnnotation:(id<MKAnnotation>)annotation location:(CLLocation *)location maxDistance:(CLLocationDistance)maxDistance coordinateSpan:(MKCoordinateSpan)coordinateSpan minCoordinateSpan:(MKCoordinateSpan)minCoordinateSpan {
   if (location) {
     if (YKCLLocationCoordinate2DIsNull(location.coordinate) || (YKCLLocationCoordinateDistance(annotation.coordinate, location.coordinate, YES) > maxDistance))
       return MKCoordinateRegionMake(annotation.coordinate, coordinateSpan);
     else
-      return [self regionThatFits:[NSArray arrayWithObjects:annotation, [self annotationFromCLLocation:location title:NSLocalizedString(@"Current Location", nil)], nil] center:annotation.coordinate];  
+      return [self regionThatFits:[NSArray arrayWithObjects:annotation, [self annotationFromCLLocation:location title:NSLocalizedString(@"Current Location", nil)], nil] center:annotation.coordinate minCoordinateSpan:minCoordinateSpan maxCoordinateSpan:YKMKCoordinateSpanNull];  
   } else {
     return MKCoordinateRegionMake(annotation.coordinate, coordinateSpan);
   }

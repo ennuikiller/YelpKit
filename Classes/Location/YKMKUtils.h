@@ -21,8 +21,10 @@
 #define kDefaultRegionSpanDelta (.1)
 #define kMinLatitudeDelta (.00001)
 #define kMinLongitudeDelta (.00001)
+#define kMinSpan MKCoordinateSpanMake(kMinLatitudeDelta, kMinLongitudeDelta)
 #define kMaxLatitudeDelta (.3)
 #define kMaxLongitudeDelta (.3)
+#define kMaxSpan MKCoordinateSpanMake(kMaxLatitudeDelta, kMaxLongitudeDelta)
 
 
 NSString *YKNSStringFromMKCoordinateSpan(MKCoordinateSpan span);
@@ -36,8 +38,10 @@ extern BOOL YKMKCoordinateSpanIsSimilar(MKCoordinateSpan s1, MKCoordinateSpan s2
 extern BOOL YKMKCoordinateRegionIsSimilar(MKCoordinateRegion r1, MKCoordinateRegion r2, CLLocationDegrees centerAccuracy, double spanAccuracyPercentage);
 
 extern const MKCoordinateRegion YKMKCoordinateRegionNull;
+extern const MKCoordinateSpan YKMKCoordinateSpanNull;
 
 extern BOOL YKMKCoordinateRegionIsNull(MKCoordinateRegion region);
+extern BOOL YKMKCoordinateSpanIsNull(MKCoordinateSpan region);
 
 MKCoordinateRegion YKMKCoordinateRegionWithDefault(CLLocationCoordinate2D coordinate, MKCoordinateSpan span, CLLocationCoordinate2D defaultCoordinate, MKCoordinateSpan defaultSpan);
 
@@ -102,6 +106,15 @@ MKCoordinateRegion YKMKCoordinateRegionInset(MKCoordinateRegion region, CLLocati
  */
 + (MKCoordinateRegion)regionThatFits:(NSArray *)annotations center:(CLLocationCoordinate2D)center;
 
+/*!
+ Region that fits annotations with center point, with min coordinate span.
+ @param annotations Annotations, id<MKAnnotation> or any object that responds to - (CLLocationCoordinate2D)coordinate
+ @param center Center point
+ @param minCoordinateSpan Min span
+ @param maxCoordinateSpan Max span
+ */
++ (MKCoordinateRegion)regionThatFits:(NSArray *)annotations center:(CLLocationCoordinate2D)center minCoordinateSpan:(MKCoordinateSpan)minCoordinateSpan maxCoordinateSpan:(MKCoordinateSpan)maxCoordinateSpan;
+
 // NOTE: This function centers on the annotation but includes the current location
 + (MKCoordinateRegion)regionThatCentersOnAnnotation:(id<MKAnnotation>)annotation location:(CLLocation *)location;
 
@@ -111,8 +124,9 @@ MKCoordinateRegion YKMKCoordinateRegionInset(MKCoordinateRegion region, CLLocati
  @param location Location (maybe Current Location)
  @param maxDistance Max distance between annotation and location before we decide not to include location in the region
  @param coordinateSpan Span to use if location not included
+ @param minCoordinateSpan Min span
  */
-+ (MKCoordinateRegion)regionThatCentersOnAnnotation:(id<MKAnnotation>)annotation location:(CLLocation *)location maxDistance:(CLLocationDistance)maxDistance coordinateSpan:(MKCoordinateSpan)coordinateSpan;
++ (MKCoordinateRegion)regionThatCentersOnAnnotation:(id<MKAnnotation>)annotation location:(CLLocation *)location maxDistance:(CLLocationDistance)maxDistance coordinateSpan:(MKCoordinateSpan)coordinateSpan minCoordinateSpan:(MKCoordinateSpan)minCoordinateSpan;
 
 + (id<MKAnnotation>)annotationFromCLLocation:(CLLocation *)location title:(NSString *)title;
 
