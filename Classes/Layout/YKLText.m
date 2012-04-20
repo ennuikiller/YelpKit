@@ -66,6 +66,10 @@
   return [[[YKLText alloc] initWithText:text font:font color:color lineBreakMode:lineBreakMode] autorelease];
 }
 
+- (NSString *)description {
+  return _text;
+}
+
 - (CGSize)sizeThatFits:(CGSize)size {
   if (size.width == 0) return size;
   
@@ -74,7 +78,7 @@
   if (_lineBreakMode == -1) {
     _sizeThatFits = [_text sizeWithFont:_font];
   } else {
-    _sizeThatFits = [_text sizeWithFont:_font forWidth:_frame.size.width lineBreakMode:_lineBreakMode];
+    _sizeThatFits = [_text sizeWithFont:_font forWidth:size.width lineBreakMode:_lineBreakMode];
   }
   _sizeForSizeThatFits = size;
   return _sizeThatFits;
