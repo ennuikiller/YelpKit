@@ -131,7 +131,7 @@
     CGSize lineSize = [@" " sizeWithFont:_titleFont];
     constrainedToSize.height = lineSize.height * _maxLineCount;
   }
-  CGSize titleSize = [_title sizeWithFont:_titleFont constrainedToSize:constrainedToSize lineBreakMode:UILineBreakModeTailTruncation];
+  CGSize titleSize = (_title ? [_title sizeWithFont:_titleFont constrainedToSize:constrainedToSize lineBreakMode:UILineBreakModeTailTruncation] : CGSizeZero);
   
   if (_secondaryTitle) {
     constrainedToSize.width -= roundf(titleSize.width);
